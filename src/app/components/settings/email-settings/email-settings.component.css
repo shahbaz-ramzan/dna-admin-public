@@ -1,0 +1,40 @@
+.email-setting {
+    max-width: 650px;
+    width: 100%;
+}
+.email-setting h5 {
+    margin-bottom: 1rem;
+}
+.email-setting .email-setting-label {
+    font-size: 13px;
+}
+
+:host ::ng-deep .switcher-wrap .brSwitch {
+    line-height: initial;
+    position: relative;
+    top: 4px;
+}
+:host ::ng-deep .switcher-wrap .switch-label {
+    color: var(--dullblue-gray-txt);
+    font-size: 14px;
+}
+:host ::ng-deep .switcher-wrap .switch-label .icon-information {
+    color: var(--primary-color);
+    position: relative;
+    left: 2px;
+    top: 2px;
+}
+:host ::ng-deep .email-text-area {
+    max-height: 160px;
+    overflow: auto !important;
+}
+:host ::ng-deep .email-text-area:hover,
+:host ::ng-deep .email-text-area:focus {
+    border-color: var(--primary-color);
+}
+:host ::ng-deep .p-inputswitch-checked .p-inputswitch-slider {
+    background: var(--primary-color) !important;
+}
+:host ::ng-deep .p-inputswitch-checked .p-inputswitch-slider:hover {
+    background: var(--primary-color) !important;
+} /*# sourceMappingURL=email-settings.component.css.map */

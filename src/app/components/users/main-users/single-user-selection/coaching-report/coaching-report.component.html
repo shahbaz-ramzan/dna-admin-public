@@ -1,0 +1,3849 @@
+<style>
+  * {
+  margin: 0;
+}
+
+body {
+margin: 0;
+font-size: 14px;
+font-family: 'Calibri';
+background: #f5f6fa;
+box-sizing: border-box;
+}
+
+table {
+border-collapse: collapse;
+border-spacing: 0;
+/* width: 100%; */
+border-radius: 0;
+/* width: 100%; */
+font-size: 14px;
+}
+
+@media print {
+.page-break {
+display: block;
+page-break-before: always;
+}
+}
+
+td {
+font-weight: 500;
+}
+
+.text-center {
+text-align: center;
+}
+
+.text-left {
+text-align: left;
+}
+
+.text-right {
+text-align: right;
+}
+
+.uppercase {
+text-transform: uppercase;
+}
+
+.insight-table {
+margin-bottom: 2rem;
+}
+
+.insight-table th {
+/* background-color: pri; */
+color: white;
+font-size: 16px;
+padding: 8px;
+}
+
+.insight-table td {
+font-weight: 500;
+}
+
+.workplace-title {
+font-size: 18px;
+padding: 10px 0;
+color: #686868;
+text-align: center;
+}
+
+.bg-semidark {
+background-color: #d0d8e8;
+color: black;
+}
+
+.bg-medium-dark {
+background-color: #376092;
+color: white;
+}
+
+.bg-semilight {
+background-color: #e9edf4;
+color: black;
+}
+
+.bg-darkish {
+background-color: #1a3462;
+color: white;
+}
+
+.insight-table td {
+padding: 6px;
+font-size: 14px;
+}
+
+.portfolio-table {
+margin-bottom: 1rem;
+}
+
+.portfolio-table th {
+padding: 6px;
+vertical-align: top;
+}
+
+.portfolio-table td {
+text-align: center;
+}
+
+.vertical-align-top {
+vertical-align: top;
+}
+
+.portfolio-anylasis-table th {
+color: white;
+padding: 6px;
+font-size: 10px;
+vertical-align: top;
+}
+
+.portfolio-anylasis-table td {
+padding: 6px;
+vertical-align: top;
+font-size: 12px;
+font-weight: 500;
+}
+
+.potential-table th {
+color: white;
+padding: 6px;
+font-size: 10px;
+text-align: center;
+}
+
+.potential-table td {
+padding: 6px;
+font-size: 11px;
+}
+
+.border {
+border-top: 20px solid;
+}
+
+.p-r-0 {
+padding-right: 0 !important;
+}
+
+.ps-0 {
+padding-left: 0 !important;
+}
+
+.ps-40 {
+padding-left: 40px;
+}
+
+.spacer-20 {
+height: 10px;
+/* height: 16px; */
+}
+
+.spacer-40 {
+height: 40px;
+}
+
+.spacer {
+height: 30px;
+}
+
+.spacer-50 {
+height: 50px;
+}
+
+.block {
+display: block;
+}
+
+.mb-35 {
+margin-bottom: 35px;
+}
+
+.mb-16 {
+margin-bottom: 16px;
+}
+
+.m-0 {
+margin: 0;
+}
+
+.p-0 {
+padding: 0;
+}
+
+.fs-14 {
+font-size: 14px;
+}
+
+.reports-wrapper {
+padding-bottom: 24px;
+}
+
+.reports-wrapper > :last-child {
+margin-bottom: 0;
+}
+
+.reports-header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 30px 20px;
+background: white;
+margin-bottom: 40px;
+}
+
+.report-title .icon-arrow-left {
+font-size: 16px;
+color: #7e84a3;
+}
+
+.reports-header button {
+background: var(--primary-color);
+border-color: var(--primary-color);
+}
+
+.page-wrapper {
+width: 610px;
+min-height: 790px;
+padding: 20px;
+margin: 0 auto 24px;
+background-color: #fff;
+position: relative;
+}
+
+.page-wrapper td.primary-color-box {
+height: 32px;
+width: 23px;
+background: #003366;
+}
+
+.page-wrapper .main-heading {
+font-size: 16px;
+font-weight: 700;
+color: #003366;
+padding-left: 16px;
+}
+
+.page-wrapper p {
+line-height: 17px;
+color: #000;
+}
+
+.page-wrapper p,
+.page-wrapper ul li,
+.labled-list ul li {
+line-height: 17px;
+color: #000;
+font-size: 13px;
+}
+
+/* .page-wrapper a {
+color: #000000;
+} */
+.page-wrapper ul {
+margin-top: 0;
+padding-left: 25px;
+margin-bottom: 5px;
+}
+
+h5 {
+font-size: 1.25rem;
+margin: 0 0 8px 0;
+}
+
+h6 {
+font-size: 1rem;
+margin: 0;
+font-weight: 600;
+}
+
+.page-wrapper h5 {
+font-weight: 700;
+font-size: 14px;
+color: #000000;
+}
+
+.page-wrapper ul li {
+margin-bottom: 3px;
+}
+
+.page-footer {
+position: absolute;
+left: 0;
+right: 0;
+bottom: 0;
+width: 100%;
+padding: 0 4px;
+text-align: center;
+box-sizing: border-box;
+background-color: #fff;
+border-top: solid 2px #979797;
+}
+
+.page-footer table {
+width: 100%;
+font-size: 10px;
+}
+
+.page-footer td {
+color: #979797;
+padding: 10px;
+}
+
+.pattren-banner {
+height: 210px;
+padding: 0 15px;
+background-image: url(../../../../../assets/images/pattren-img.jpg);
+background-repeat: repeat;
+}
+.pattren-banner p {
+background-color: #fff;
+padding: 16px;
+border: solid 1px #000;
+font-size: 14px;
+}
+
+.report-card {
+padding: 45px 38px;
+border-top: solid 10px #003366;
+border-bottom: solid 10px #003366;
+}
+
+.report-card img {
+max-height: 60px;
+}
+
+.report-card h1 {
+font-size: 28px;
+line-height: 31px;
+color: #000000;
+margin: 16px 0;
+margin-bottom: 15px;
+font-weight: 700;
+}
+
+.report-card p {
+font-size: 18px;
+font-weight: 400;
+line-height: 25px;
+color: #5f5a5a;
+margin-top: 0;
+margin-bottom: 5px;
+}
+
+.footer-top {
+font-size: 12px;
+font-weight: 700;
+color: #fff;
+text-align: center;
+padding: 10px;
+background: #003366;
+}
+
+.footer {
+font-size: 12px;
+color: #808080;
+padding: 5px 5px;
+text-align: center;
+}
+
+.factors-card {
+border: solid 1px #b7b7b7;
+border-radius: 10px;
+}
+
+.heading-bdna {
+font-weight: 700;
+font-size: 14px;
+color: #000000;
+}
+
+.p-bdna {
+font-weight: 400;
+font-size: 14px;
+color: #000000;
+}
+
+.facilitator-head {
+font-weight: 700 !important;
+font-size: 32px !important;
+}
+
+.span-color {
+color: #003366;
+}
+
+.exuberant-list li {
+line-height: 22px !important;
+}
+
+.financial-insight-wrap {
+display: flex;
+gap: 20px;
+align-items: center;
+}
+
+.mb-4 {
+margin-bottom: 1rem;
+}
+
+.mt-0 {
+margin-top: 0;
+}
+
+p {
+font-size: 13px;
+}
+
+.financial-insight-wrap h6 {
+font-size: 1.125rem;
+color: #000;
+font-weight: 700;
+margin-bottom: 5px;
+}
+
+.financial-insight-wrap + .financial-insight-wrap {
+margin-top: 10px;
+}
+
+.financial-insight-wrap p {
+font-size: 14px;
+font-weight: 400;
+color: #000;
+margin-bottom: 0;
+}
+
+.financial-span-green {
+color: var(--green-color);
+}
+
+.financial-span-gold {
+color: var(--gold-color);
+}
+
+
+.exuGreen {
+font-size: 20px;
+color: #2e9b66;
+}
+
+.exuGray {
+font-size: 20px;
+color: #bebebe;
+}
+
+.exuYellow {
+font-size: 20px;
+color: #eead32;
+}
+
+.exuRed {
+font-size: 20px;
+color: #e05534;
+}
+
+.badge-lock {
+height: 40px;
+width: 40px;
+display: flex;
+justify-content: center;
+align-items: center;
+background-color: var(--primary-color);
+border-radius: 50%;
+margin: auto;
+}
+
+.icon-lock {
+font-size: 18px;
+}
+
+.lock-heading h5 {
+font-weight: 700;
+font-size: 14px;
+color: var(--primary-color);
+margin-bottom: 0;
+}
+
+.lock-heading p {
+font-size: 14px;
+color: var(--primary-color);
+}
+
+.market-condition h6 {
+float: left;
+}
+
+.market-condition i {
+float: left;
+margin-left: 10px;
+}
+
+.mw-700 {
+max-width: 700px;
+width: 100%;
+}
+
+.content-wrapper {
+background-color: #ededed;
+padding: 10px;
+}
+
+.pb-16 {
+/* padding-bottom: 16px; */
+padding-bottom: 10px;
+}
+
+.content-title {
+font-weight: 500;
+font-size: 14px;
+padding-bottom: 6px;
+}
+
+.content-title span {
+font-weight: 600;
+display: inline-block;
+}
+
+.max-w-medium {
+max-width: 50%;
+display: inline-block;
+}
+
+.content-wrapper td.content-title {
+font-weight: 600;
+font-size: 14px;
+padding-bottom: 6px;
+}
+
+/* coaching report */
+.text-success {
+color: #2e9b64;
+}
+
+.text-warning {
+color: #eead32;
+}
+
+.bg-lightgreen {
+background-color: #96cdb1;
+}
+
+.td-padding {
+padding: 10px;
+}
+
+.td-padding.pb-40 {
+padding-bottom: 40px;
+}
+
+.td-background {
+background-color: #ededed;
+}
+
+.mt-10 {
+margin-top: 10px;
+}
+
+.inline-block {
+display: inline-block;
+}
+
+.td-dna-behavior img {
+vertical-align: middle;
+}
+
+.td-dna-behavior p {
+margin: 20px 0;
+}
+
+.td-dna-behavior a {
+display: block;
+margin-bottom: 4px;
+}
+
+.page-wrapper h5 span {
+color: #003366;
+}
+
+.td-wrapper a {
+display: block;
+margin-bottom: 20px;
+}
+
+.pb-20 {
+padding-bottom: 20px;
+}
+
+.pt-20 {
+padding-top: 20px;
+}
+
+.page-wrapper h2 {
+font-size: 20px;
+font-weight: 700;
+}
+
+.page-wrapper img {
+max-width: 100%;
+}
+
+.border-rounded {
+border-radius: 16px;
+padding: 12px;
+border: 1px solid #cecece;
+}
+
+table.border-rounded {
+border-radius: 16px;
+}
+
+.progress-wrapper {
+border: 10px solid #ededed;
+}
+
+.progress-content h3 {
+font-size: 20px;
+margin-bottom: 5px;
+font-weight: 700;
+}
+
+.progress-content p {
+color: #a6a5a3;
+}
+
+.paragraph-wrapper p {
+/* margin: 20px 0; */
+margin: 10px 0;
+}
+
+ol.numbered-list {
+padding-left: 16px;
+}
+
+.table-head {
+padding: 0 10px 10px;
+}
+
+.bg-e8e3d3 {
+background-color: #e8e3d3;
+}
+
+.text-black {
+color: #000;
+}
+
+.underline {
+text-decoration: underline;
+}
+
+.sp1 {
+color: var(--secondary-color);
+}
+
+.sp2 {
+color: var(--primary-color);
+}
+</style>
+
+<body>
+  <app-discovery-incomplete-modal [visible]="discoveryIncomplete"></app-discovery-incomplete-modal>
+  <div class="reports-wrapper">
+    <app-chatbot [chat_payload_data]="chat_payload_data" [isDownloadReady]="isDownloadReady"></app-chatbot>
+    <div class="reports-header">
+      <div class="report-title d-flex align-items-center">
+        <i class="icon-arrow-left" (click)="onBack()"></i>
+        <h3 class="mb-0">{{ reportName }}</h3>
+      </div>
+      <button
+        pButton
+        type="button"
+        [label]="isDownloadReady ? 'Download' : 'Preparing... ' + progressPercentage + '%'"
+        [disabled]="!isDownloadReady"
+        [icon]="isDownloadReady ? 'icon-download' : ''"
+        (click)="downloadPdf()"
+        class="reports-download-btn p-button-sm"
+        iconPos="right"
+      ></button>
+    </div>
+    @if (isLoading) {
+      <app-report-loading-overlay></app-report-loading-overlay>
+    }
+    <div class="page-wrapper p-0" id="1">
+      <table width="100%">
+        <tr>
+          <td colspan="2" class="pattren-banner"></td>
+        </tr>
+        <tr>
+          <td
+            class="report-card"
+                        [ngStyle]="{
+                            borderTopColor: reportColor,
+                            borderBottomColor: reportColor
+                        }"
+            >
+            <img [src]="logo" alt />
+            <h1>
+              Coaching Report
+              <br />
+              {{ participantName }} – {{ uniqueStyle }}
+            </h1>
+            <p class="mb-0">
+              Gain deeper insights to elevate personal strengths, leadership effectiveness, and financial behavior to drive success in life and
+              work.
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" class="pattren-banner">
+            @if (isDigitalScan) {
+              <p>
+                This client's insights are based on a Digital Scan. Use this data for marketing, communication, and alignment purposes only—not for
+                high-stakes decisions.<br />
+                <a style="text-decoration: underline" href="https://kb.dnabehavior.com/gene/predicted-results" target="_blank"
+                  >Learn more in our Digital Scan Knowledge Base.</a
+                  >
+                </p>
+              }
+            </td>
+          </tr>
+          <tr>
+            <td class="footer-top" colspan="2" [ngStyle]="{ backgroundColor: reportColor }">
+              Based on your completion of the Natural Behavior Discovery Process
+            </td>
+          </tr>
+          <tr>
+            <td class="footer" colspan="2">Powered by DNA Behavior</td>
+          </tr>
+        </table>
+      </div>
+      <div class="page-wrapper" id="2">
+        <table cellpadding="0" cellspacing="0">
+          <tr>
+            <td class="table-head pt-0">
+              <table width="100%">
+                <tr>
+                  <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+                  <td class="main-heading" [ngStyle]="{ color: reportColor }">1. Introduction</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="td-padding" colspan="3">
+              {{ participantName.split(' ').at(0) }}, congratulations on completing the Natural Behavior Discovery. The information in this report
+              reflects more than 150-person years of research and experience in developing leaders since 2001. It focuses on some of the key
+              behavioral issues of your work talents and relationship with money that will help you understand what you do well and highlight areas
+              where more development is needed. This report provides a comprehensive amount of information, so you'll want to read it through several
+              times to digest it thoroughly.
+            </td>
+          </tr>
+
+          <tr>
+            <td class="td-background td-padding" colspan="3">
+              <ul class="td-list">
+                <li>
+                  <strong>What is Natural Behavior?</strong> This assessment is designed to reveal some of your strongest natural "hard-wired"
+                  talents for work and money, which are set from early in life. Your report includes important natural strengths and struggles and
+                  how they will impact your approach in crucial leadership and personal life areas.
+                </li>
+                <li>
+                  <strong>Why is it important?</strong> Your best Operating Style is being your authentic self. With objective knowledge of
+                  yourself, you're better able to "grow into a better leader, team mate and in general" make more informed decisions in alignment
+                  with who you are. Likewise, understanding yourself gives you a much better basis to understand and manage others.
+                </li>
+                <li>
+                  <strong>What is the likelihood of my Natural Behavior changing?</strong>
+                  It's almost impossible to change your natural DNA Behavior style given it is inherently instinctive and ingrained. However, you
+                  can and should learn to modify your behaviors for different situations. Developing "learned" behaviors is essential for growing
+                  as a person and leader.
+                </li>
+              </ul>
+              <h5 class="mb-0 mt-10">What Does Your Report Include?</h5>
+              <ul class="td-list">
+                <li>
+                  Insights into your natural strengths and struggles and how they affect your work, leadership, interactions and decision-making.
+                </li>
+                <li>A deep dive into your behavior around money and how it impacts your leadership and personal financial planning.</li>
+                <li>Strategies for maximizing your leadership and work by embracing your authentic self.</li>
+                <li>Tips for managing others more effectively by understanding different behavior styles.</li>
+              </ul>
+            </td>
+          </tr>
+        </table>
+
+        <div class="page-footer">
+          <table>
+            <tr>
+              <td>Page {{ getDisplayPageNumber(2) }}</td>
+              <td>{{ footerDate }}</td>
+              <td>{{ participantName }} - {{ uniqueStyle }}</td>
+              <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+              <td>ID#{{ accountId }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="page-wrapper" id="3">
+        <table width="100%">
+          <tr>
+            <td class="table-head" colspan="3">
+              <table width="100%">
+                <tr>
+                  <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+                  <td class="main-heading" [ngStyle]="{ color: reportColor }">1. Introduction</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" class="spacer-20"></td>
+          </tr>
+          <tr>
+            <td class="td-background td-padding">
+              <h5 class="mb-0 mt-10">Next Steps – Additional Resources:</h5>
+              <tr style="display: flex; justify-content: flex-end; align-items: center; padding-right: 10px; gap: 20px">
+                <td style="text-align: left; font-size: 14px; color: #333">
+                  <p class="mb-4">For an in-depth review of the Scores, Factors, and Traits, review the Strengths and Struggles Deep Dive</p>
+                </td>
+                <td colspan="6" class="pb-16">
+                  <qr-code [value]="'https://kb.dnabehavior.com/gene/performance-keys'" size="105" errorCorrectionLevel="H"></qr-code>
+                </td>
+              </tr>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" class="spacer-20"></td>
+          </tr>
+          <tr>
+            <td width="100%" class="td-background td-padding td-dna-behavior" valign="top">
+              <table width="100%">
+                <tr>
+                  <td width="10%" valign="middle">
+                    <img src="../../../../../../assets/images/gene-main-logo.png" width="40" />
+                  </td>
+                  <td width="2%"></td>
+                  <td width="88%" valign="middle">
+                    <h5 class="inline-block">
+                      If you are ever stuck or have a question, ask Gene, DNA Behavior's AI-powered behavioral expert.
+                    </h5>
+                  </td>
+                </tr>
+              </table>
+
+              <p>
+                Gene is a personalized AI chatbot designed to assist users in understanding and leveraging DNA Behavior insights for effective
+                coaching. With extensive training on the complete Knowledge Base, Gene can help users interpret personal DNA Behavior results,
+                create tailored coaching strategies, and enhance communication with clients or team members.
+              </p>
+              <a href="https://dnabehavior.com" target="_blank" class="text-black underline">Chat with Gene:</a>
+
+              <qr-code [value]="'https://kb.dnabehavior.com/gene/chat-with-gene'" size="105" errorCorrectionLevel="H"></qr-code>
+            </td>
+          </tr>
+        </table>
+        <div class="page-footer">
+          <table>
+            <tr>
+              <td>Page {{ getDisplayPageNumber(3) }}</td>
+              <td>{{ footerDate }}</td>
+              <td>{{ participantName }} - {{ uniqueStyle }}</td>
+              <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+              <td>ID#{{ accountId }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="page-wrapper" id="4">
+        <table width="100%">
+          <tr>
+            <td class="table-head" colspan="3">
+              <table width="100%">
+                <tr>
+                  <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+                  <td class="main-heading" [ngStyle]="{ color: reportColor }">2. About your Unique Style: {{ uniqueStyle }}</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" class="spacer-20"></td>
+          </tr>
+          <tr>
+            <td width="100%" class="td-background td-padding td-wrapper" valign="top">
+              <h5>
+                {{ participantName.split(' ').at(0) }}, your Unique Style Group is: <span>{{ uniqueStyle }}</span>
+              </h5>
+              <p class="mb-4">
+                A unique style refers to how you communicate, operate, make decisions, and interact with others. Understanding these styles is vital
+                in improving your performance and relationships at work and beyond.
+              </p>
+              <p class="mb-4">
+                In the DNA Behavior framework, there are ten unique styles, which are Adapter, Community Builder, Engager, Facilitator, Influencer,
+                Initiator, Reflective Thinker, Relationship Builder, Strategist, and Stylish Thinker.
+              </p>
+              <p class="mb-4">
+                Knowing your style helps you recognize others on your team who are similar or different, making it easier to collaborate and
+                communicate effectively.
+              </p>
+              <tr style="display: flex; justify-content: flex-end; align-items: center; padding-right: 10px; gap: 20px">
+                <td style="text-align: left; font-size: 14px; color: #333">
+                  <p class="mb-4">
+                    Scan the QR code to watch a personalized video about your behavioral style, and explore other unique style videos to deepen
+                    your understanding.
+                  </p>
+                </td>
+                <td colspan="6" class="pb-16">
+                  <qr-code [value]="uniqueStyleVideo" size="105" errorCorrectionLevel="H"></qr-code>
+                </td>
+              </tr>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" class="spacer-20"></td>
+          </tr>
+        </table>
+
+        <div class="page-footer">
+          <table>
+            <tr>
+              <td>Page {{ getDisplayPageNumber(4) }}</td>
+              <td>{{ footerDate }}</td>
+              <td>{{ participantName }} - {{ uniqueStyle }}</td>
+
+              <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+              <td>ID#{{ accountId }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="page-wrapper" id="5">
+        <table width="100%">
+          <tr>
+            <td class="table-head" colspan="3">
+              <table width="100%">
+                <tr>
+                  <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+                  <td class="main-heading" [ngStyle]="{ color: reportColor }">2. About your Unique Style: {{ uniqueStyle }}</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" class="spacer-20"></td>
+          </tr>
+
+          <tr>
+            <td class="td-background td-padding" valign="top" colspan="3" [ngStyle]="{ borderTop: '10px solid ' + reportColor }">
+              <h5>What is {{ (uniqueStyle | article) }} {{ uniqueStyle }}?</h5>
+              <p>
+                {{ uniqueStyleAndDescription }}
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" class="spacer-20"></td>
+          </tr>
+          <td width="49%" class="td-padding td-dna-behavior p-0" align="center">
+            <img [src]="getCurrentUniqueStyleImage()" alt="fast-paced" width="100%" />
+          </td>
+          <tr>
+            <td colspan="2" class="spacer-20"></td>
+          </tr>
+        </table>
+
+        <div class="page-footer">
+          <table>
+            <tr>
+              <td>Page {{ getDisplayPageNumber(5) }}</td>
+              <td>{{ footerDate }}</td>
+              <td>{{ participantName }} - {{ uniqueStyle }}</td>
+
+              <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+              <td>ID#{{ accountId }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="page-wrapper" id="6">
+        <table width="100%">
+          <tr>
+            <td class="table-head">
+              <table width="100%">
+                <tr>
+                  <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+                  <td class="main-heading" [ngStyle]="{ color: reportColor }">3. Your Unique Scores, Factors and Traits</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" class="spacer-20"></td>
+          </tr>
+          <tr>
+            <td class="td-background td-padding td-wrapper" valign="top" colspan="3">
+              <p>
+                Presented below are 32 scores that are known as the Natural Behavior Factor and Subfactor scores. These scores are divided into
+                eight-factor groups with the respective traits shown on the Left and Right sides. The overall factor score is represented first in
+                each factor group, followed by the correlated Subfactor scores.
+              </p>
+              <p>
+                The Natural Behavior T-scores rely on the Normal Distribution Curve, with scores ranging from 20 (on the left side) to 80 (on the
+                right side). It's worth noting that most individuals tend to score near the center of the chart rather than toward the outer edges.
+                It's also important to bear in mind that approximately one-third of the population will score within the Mid-Range (45-55), which is
+                shaded in dark grey, while another one-third will score on the Left, and the final one-third will score on the Right.
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" class="spacer-20"></td>
+          </tr>
+
+          <tr>
+            <td colspan="3" align="center">
+              <img src="../../../../../../assets/images/bell-curved.png" alt="mid range" />
+            </td>
+          </tr>
+        </table>
+
+        <div class="page-footer">
+          <table>
+            <tr>
+              <td>Page {{ getDisplayPageNumber(6) }}</td>
+              <td>{{ footerDate }}</td>
+              <td>{{ participantName }} - {{ uniqueStyle }}</td>
+              <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+              <td>ID#{{ accountId }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="page-wrapper" id="7">
+        <table width="100%">
+          <tr>
+            <td class="table-head" colspan="3">
+              <table width="100%">
+                <tr>
+                  <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+                  <td class="main-heading" [ngStyle]="{ color: reportColor }">3. Your Unique Scores, Factors and Traits (Continued)</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" class="spacer-20"></td>
+          </tr>
+          <tr>
+            <td class="td-background td-padding" valign="top" colspan="3">
+              <p>
+                {{ participantName.split(' ').at(0) }}, this section provides a concise summary of your report for quick review. More in-depth
+                results and information are provided in the remaining sections.
+              </p>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2" class="spacer-20"></td>
+          </tr>
+
+          <tr>
+            <td colspan="2" class="spacer-20"></td>
+          </tr>
+          <tr>
+            <td colspan="3" align="center">
+              <h5 class="mb-0">Key Attributes: Strengths, Challenges, and Communication Strategies</h5>
+            </td>
+          </tr>
+          <tr>
+            <td class="td-background td-padding" valign="top" colspan="3" [ngStyle]="{ borderTop: '10px solid ' + reportColor }">
+              <h5>Strengths</h5>
+              @for (current of performanceGuide?.strengths; track trackByIndex($index, current)) {
+                <ul class="pl-20">
+                  <li>{{ current?.description }}</li>
+                </ul>
+              }
+            </td>
+          </tr>
+          <tr>
+            <td class="pb-16"></td>
+          </tr>
+          <tr>
+            <td class="td-background td-padding" valign="top" colspan="3" [ngStyle]="{ borderTop: '10px solid ' + reportColor }">
+              <h5>Struggles</h5>
+              @for (current of performanceGuide?.struggles; track trackByIndex($index, current)) {
+                <ul class="pl-20">
+                  <li>{{ current?.description }}</li>
+                </ul>
+              }
+            </td>
+          </tr>
+        </table>
+
+        <div class="page-footer">
+          <table>
+            <tr>
+              <td>Page {{ getDisplayPageNumber(7) }}</td>
+              <td>{{ footerDate }}</td>
+              <td>{{ participantName }} - {{ uniqueStyle }}</td>
+              <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+              <td>ID#{{ accountId }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="page-wrapper" id="8">
+        <table width="100%">
+          <tr>
+            <td class="table-head">
+              <table width="100%">
+                <tr>
+                  <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+                  <td class="main-heading" [ngStyle]="{ color: reportColor }">3. Your Unique Scores, Factors and Traits (Continued)</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2" class="spacer-20"></td>
+          </tr>
+
+          <tr>
+            <td class="td-background td-padding" valign="top" colspan="3" [ngStyle]="{ borderTop: '10px solid ' + reportColor }">
+              <h5>Communication Keys</h5>
+              @for (current of performanceGuide?.environmentKeys; track trackByIndex($index, current)) {
+                <ul class="pl-20">
+                  <li>{{ current?.description }}</li>
+                </ul>
+              }
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" class="pb-16"></td>
+          </tr>
+          <tr>
+            <td class="td-background td-padding" valign="top" colspan="3">
+              <p class="mb-0">
+                {{ participantName.split(' ').at(0) }}, this section provides a concise summary of your report for quick review. More in-depth
+                results and information are provided in the remaining sections.
+              </p>
+            </td>
+          </tr>
+        </table>
+
+        <div class="page-footer">
+          <table>
+            <tr>
+              <td>Page {{ getDisplayPageNumber(8) }}</td>
+              <td>{{ footerDate }}</td>
+              <td>{{ participantName }} - {{ uniqueStyle }}</td>
+              <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+              <td>ID#{{ accountId }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="page-wrapper" id="9">
+        <table width="100%">
+          <tr>
+            <td class="table-head">
+              <table width="100%">
+                <tr>
+                  <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+                  <td class="main-heading" [ngStyle]="{ color: reportColor }">3. Your Unique Scores, Factors and Traits (Continued)</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2" class="pb-16"></td>
+          </tr>
+
+          <tr>
+            <td align="center" colspan="3">
+              <div class="border-rounded">
+                <table width="100%">
+                  <tbody>
+                    <tr>
+                      <td colspan="2" width="518" style="text-align: center">
+                        <app-t-scores
+                          [index]="id"
+                          [chartData]="tScoreChartData"
+                          [loading]="tScoreLoading"
+                          [shouldShowSubfactors]="false"
+                          [showFactorList]="true"
+                          [showLabel]="false"
+                          >
+                        </app-t-scores>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </td>
+          </tr>
+        </table>
+
+        <div class="page-footer">
+          <table>
+            <tr>
+              <td>Page {{ getDisplayPageNumber(9) }}</td>
+              <td>{{ footerDate }}</td>
+              <td>{{ participantName }} - {{ uniqueStyle }}</td>
+              <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+              <td>ID#{{ accountId }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="page-wrapper" id="10">
+        <table width="100%">
+          <tr>
+            <td class="table-head" colspan="3">
+              <table width="100%">
+                <tr>
+                  <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+                  <td class="main-heading" [ngStyle]="{ color: reportColor }">3. Your Unique Scores, Factors and Traits (Continued)</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2" class="pb-16"></td>
+          </tr>
+          <tr>
+            <td>
+              <table width="100%">
+                <tr>
+                  <td width="49%" class="td-background td-padding" valign="top" [ngStyle]="{ borderTop: '10px solid ' + reportColor }">
+                    <h5>{{ firstTraitKeyHeading }}</h5>
+                    <p>
+                      {{ coachingReportTraits[firstTraitKey] }}
+                    </p>
+                  </td>
+                  <td width="1%"></td>
+                  <td width="49%" class="td-background td-padding" valign="top" [ngStyle]="{ borderTop: '10px solid ' + reportColor }">
+                    <h5>{{ secondTraitKeyHeading }}</h5>
+                    <p>
+                      {{ coachingReportTraits[secondTraitKey] }}
+                    </p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" class="pb-16"></td>
+          </tr>
+          <tr>
+            <td class="td-background td-padding" valign="top" align="center" colspan="3" [ngStyle]="{ borderTop: '10px solid ' + reportColor }">
+              <h5>Factor Relationship</h5>
+              <p>The above combination of these two traits indicates that you {{ factorRelationShipName?.Description }}.</p>
+            </td>
+          </tr>
+        </table>
+
+        <div class="page-footer">
+          <table>
+            <tr>
+              <td>Page {{ getDisplayPageNumber(10) }}</td>
+              <td>{{ footerDate }}</td>
+              <td>{{ participantName }} - {{ uniqueStyle }}</td>
+              <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+              <td>ID#{{ accountId }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="page-wrapper" id="11">
+        <table width="100%">
+          <tr>
+            <td>
+              <table width="100%">
+                <tr>
+                  <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+                  <td class="main-heading" [ngStyle]="{ color: reportColor }">3. Your Unique Scores, Factors and Traits (Continued)</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2" class="pb-16"></td>
+          </tr>
+          <tr>
+            <td>
+              Each factor group below is shown with the respective traits shown on the left and right sides. The overall factor score is represented
+              first in each factor group, followed by the correlated subfactor scores.
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" class="spacer-20"></td>
+          </tr>
+          <tr>
+            <td align="center">
+              <h2>Commanding</h2>
+            </td>
+          </tr>
+
+          <tr>
+            <td align="center" colspan="3">
+              <div class="border-rounded" id="{{ indexs[0] }}"></div>
+            </td>
+          </tr>
+        </table>
+
+        <div class="page-footer">
+          <table>
+            <tr>
+              <td>Page {{ getDisplayPageNumber(11) }}</td>
+              <td>{{ footerDate }}</td>
+              <td>{{ participantName }} - {{ uniqueStyle }}</td>
+              <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+              <td>ID#{{ accountId }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="page-wrapper" id="12">
+        <table width="100%">
+          <tr>
+            <td>
+              <table width="100%">
+                <tr>
+                  <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+                  <td class="main-heading" [ngStyle]="{ color: reportColor }">3. Your Unique Scores, Factors and Traits (Continued)</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2" class="pb-16"></td>
+          </tr>
+          <tr>
+            <td>
+              Each factor group below is shown with the respective traits shown on the left and right sides. The overall factor score is represented
+              first in each factor group, followed by the correlated subfactor scores.
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" class="spacer-20"></td>
+          </tr>
+
+          <tr>
+            <td align="center">
+              <h2>People</h2>
+            </td>
+          </tr>
+          <tr>
+            <td align="center" colspan="3">
+              <div class="border-rounded" id="{{ indexs[1] }}"></div>
+            </td>
+          </tr>
+        </table>
+
+        <div class="page-footer">
+          <table>
+            <tr>
+              <td>Page {{ getDisplayPageNumber(12) }}</td>
+              <td>{{ footerDate }}</td>
+              <td>{{ participantName }} - {{ uniqueStyle }}</td>
+              <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+              <td>ID#{{ accountId }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="page-wrapper" id="13">
+        <table width="100%">
+          <tr>
+            <td>
+              <table width="100%">
+                <tr>
+                  <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+                  <td class="main-heading" [ngStyle]="{ color: reportColor }">3. Your Unique Scores, Factors and Traits (Continued)</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2" class="pb-16"></td>
+          </tr>
+          <tr>
+            <td>
+              Each factor group below is shown with the respective traits shown on the left and right sides. The overall factor score is represented
+              first in each factor group, followed by the correlated subfactor scores.
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" class="spacer-20"></td>
+          </tr>
+
+          <tr>
+            <td align="center">
+              <h2>Patience</h2>
+            </td>
+          </tr>
+
+          <tr>
+            <td align="center" colspan="3">
+              <div class="border-rounded" id="{{ indexs[2] }}"></div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" class="spacer-20"></td>
+          </tr>
+        </table>
+
+        <div class="page-footer">
+          <table>
+            <tr>
+              <td>Page {{ getDisplayPageNumber(13) }}</td>
+              <td>{{ footerDate }}</td>
+              <td>{{ participantName }} - {{ uniqueStyle }}</td>
+              <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+              <td>ID#{{ accountId }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="page-wrapper" id="14">
+        <table width="100%">
+          <tr>
+            <td>
+              <table width="100%">
+                <tr>
+                  <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+                  <td class="main-heading" [ngStyle]="{ color: reportColor }">3. Your Unique Scores, Factors and Traits (Continued)</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2" class="pb-16"></td>
+          </tr>
+          <tr>
+            <td>
+              Each factor group below is shown with the respective traits shown on the left and right sides. The overall factor score is represented
+              first in each factor group, followed by the correlated subfactor scores.
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" class="spacer-20"></td>
+          </tr>
+
+          <tr>
+            <td align="center">
+              <h2>Structure</h2>
+            </td>
+          </tr>
+
+          <tr>
+            <td align="center" colspan="3">
+              <div class="border-rounded" id="{{ indexs[3] }}"></div>
+            </td>
+          </tr>
+        </table>
+
+        <div class="page-footer">
+          <table>
+            <tr>
+              <td>Page {{ getDisplayPageNumber(14) }}</td>
+              <td>{{ footerDate }}</td>
+              <td>{{ participantName }} - {{ uniqueStyle }}</td>
+              <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+              <td>ID#{{ accountId }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="page-wrapper" id="15">
+        <table width="100%">
+          <tr>
+            <td>
+              <table width="100%">
+                <tr>
+                  <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+                  <td class="main-heading" [ngStyle]="{ color: reportColor }">3. Your Unique Scores, Factors and Traits (Continued)</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2" class="pb-16"></td>
+          </tr>
+          <tr>
+            <td>
+              Each factor group below is shown with the respective traits shown on the left and right sides. The overall factor score is represented
+              first in each factor group, followed by the correlated subfactor scores.
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" class="spacer-20"></td>
+          </tr>
+          <tr>
+            <td align="center">
+              <h2>Trust</h2>
+            </td>
+          </tr>
+
+          <tr>
+            <td align="center" colspan="3">
+              <div class="border-rounded" id="{{ indexs[4] }}"></div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" class="spacer-20"></td>
+          </tr>
+        </table>
+
+        <div class="page-footer">
+          <table>
+            <tr>
+              <td>Page {{ getDisplayPageNumber(15) }}</td>
+              <td>{{ footerDate }}</td>
+              <td>{{ participantName }} - {{ uniqueStyle }}</td>
+              <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+              <td>ID#{{ accountId }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="page-wrapper" id="16">
+        <table width="100%">
+          <tr>
+            <td>
+              <table width="100%">
+                <tr>
+                  <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+                  <td class="main-heading" [ngStyle]="{ color: reportColor }">3. Your Unique Scores, Factors and Traits (Continued)</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" class="pb-16"></td>
+          </tr>
+          <tr>
+            <td>
+              Each factor group below is shown with the respective traits shown on the left and right sides. The overall factor score is represented
+              first in each factor group, followed by the correlated subfactor scores.
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2" class="spacer-20"></td>
+          </tr>
+          <tr>
+            <td align="center">
+              <h2>Pioneering</h2>
+            </td>
+          </tr>
+
+          <tr>
+            <td align="center" colspan="3">
+              <div class="border-rounded" id="{{ indexs[5] }}"></div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" class="spacer-20"></td>
+          </tr>
+        </table>
+
+        <div class="page-footer">
+          <table>
+            <tr>
+              <td>Page {{ getDisplayPageNumber(16) }}</td>
+              <td>{{ footerDate }}</td>
+              <td>{{ participantName }} - {{ uniqueStyle }}</td>
+              <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+              <td>ID#{{ accountId }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="page-wrapper" id="17">
+        <table width="100%">
+          <tr>
+            <td>
+              <table width="100%">
+                <tr>
+                  <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+                  <td class="main-heading" [ngStyle]="{ color: reportColor }">3. Your Unique Scores, Factors and Traits (Continued)</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2" class="pb-16"></td>
+          </tr>
+          <tr>
+            <td>
+              Each factor group below is shown with the respective traits shown on the left and right sides. The overall factor score is represented
+              first in each factor group, followed by the correlated subfactor scores.
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" class="spacer-20"></td>
+          </tr>
+          <tr>
+            <td align="center">
+              <h2>Risk</h2>
+            </td>
+          </tr>
+
+          <tr>
+            <td align="center" colspan="3">
+              <div class="border-rounded" id="{{ indexs[6] }}"></div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" class="spacer-20"></td>
+          </tr>
+        </table>
+
+        <div class="page-footer">
+          <table>
+            <tr>
+              <td>Page {{ getDisplayPageNumber(17) }}</td>
+              <td>{{ footerDate }}</td>
+              <td>{{ participantName }} - {{ uniqueStyle }}</td>
+              <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+              <td>ID#{{ accountId }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="page-wrapper" id="18">
+        <table width="100%">
+          <tr>
+            <td>
+              <table width="100%">
+                <tr>
+                  <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+                  <td class="main-heading" [ngStyle]="{ color: reportColor }">3. Your Unique Scores, Factors and Traits (Continued)</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2" class="pb-16"></td>
+          </tr>
+          <tr>
+            <td>
+              Each factor group below is shown with the respective traits shown on the left and right sides. The overall factor score is represented
+              first in each factor group, followed by the correlated subfactor scores.
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" class="spacer-20"></td>
+          </tr>
+          <tr>
+            <td align="center">
+              <h2>Creativity</h2>
+            </td>
+          </tr>
+
+          <tr>
+            <td align="center" colspan="3">
+              <div class="border-rounded" id="{{ indexs[7] }}"></div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" class="spacer-20"></td>
+          </tr>
+        </table>
+
+        <div class="page-footer">
+          <table>
+            <tr>
+              <td>Page {{ getDisplayPageNumber(18) }}</td>
+              <td>{{ footerDate }}</td>
+              <td>{{ participantName }} - {{ uniqueStyle }}</td>
+              <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+              <td>ID#{{ accountId }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      @if (isBDNA) {
+        <div class="page-wrapper" id="19">
+          <table width="100%">
+            <tr>
+              <td class="table-head">
+                <table width="100%">
+                  <tr>
+                    <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+                    <td class="main-heading" [ngStyle]="{ color: reportColor }">
+                      {{ (4 | mainSectionNumber:isBDNA:isFDNA) }}. Your Workplace Talents as a {{ uniqueStyle }}
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="pb-16"></td>
+            </tr>
+            <tr>
+              <td>
+                @for (workTalent of workTalentsObject; track trackByIndex($index, workTalent)) {
+                  <table width="80%">
+                    <tr>
+                      <td class="td-padding progress-wrapper" valign="top">
+                        <table cellpadding="0" cellspacing="0">
+                          <tr>
+                            <td width="20%">
+                              <circle-progress
+                                [title]="workTalent.value.toString()"
+                                [percent]="workTalent.label === workTalent.comparison1 ? workTalent.value : 100 - workTalent.value"
+                                [radius]="30"
+                                [outerStrokeWidth]="8"
+                                [innerStrokeWidth]="8"
+                                [outerStrokeColor]="secondaryColor"
+                                [innerStrokeColor]="primaryColor"
+                                [animation]="false"
+                                [animationDuration]="300"
+                                [imageHeight]="74"
+                                [imageWidth]="74"
+                                [showSubtitle]="false"
+                                [titleColor]="workTalent.label === workTalent.comparison1 ? secondaryColor : primaryColor"
+                                [unitsColor]="workTalent.label === workTalent.comparison1 ? secondaryColor : primaryColor"
+                              ></circle-progress>
+                            </td>
+                            <td width="5%"></td>
+                            <td width="75%" class="progress-content">
+                              <h3>
+                                <span class="sp1">{{ workTalent.comparison1 }}</span> vs
+                                <span class="sp2">{{ workTalent.comparison2 }}</span>
+                              </h3>
+                              <p>{{ workTalent.description }}</p>
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                }
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="spacer-20"></td>
+            </tr>
+            <tr>
+              <td class="td-padding td-background paragraph-wrapper" valign="top" colspan="3">
+                <h5>{{ getSectionNumber(4, 1) }} Typical Workplace Strengths:</h5>
+                <p>
+                  {{ ('BDNACoachTypicalWorkplaceStrengths1_Statement' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                </p>
+                <strong>Reflect: </strong>
+                <ul class="td-list">
+                  <li>
+                    {{ ('BDNACoachTypicalWorkplaceStrengths2_Reflect1' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                  </li>
+                  <li>
+                    {{ ('BDNACoachTypicalWorkplaceStrengths3_Reflect2' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                  </li>
+                  @if (('BDNACoachTypicalWorkplaceStrengths4_Reflect3' | azureCoachingData:coachingReportAzureData:uniqueStyle)) {
+                    <li>
+                      {{ ('BDNACoachTypicalWorkplaceStrengths4_Reflect3' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                    </li>
+                  }
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="spacer-20"></td>
+            </tr>
+          </table>
+          <div class="page-footer">
+            <table>
+              <tr>
+                <td>Page {{ getDisplayPageNumber(19) }}</td>
+                <td>{{ footerDate }}</td>
+                <td>{{ participantName }} - {{ uniqueStyle }}</td>
+                <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+                <td>ID#{{ accountId }}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="page-wrapper" id="20">
+          <table width="100%">
+            <tr>
+              <td class="table-head">
+                <table width="100%">
+                  <tr>
+                    <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+                    <td class="main-heading" [ngStyle]="{ color: reportColor }">
+                      {{ (4 | mainSectionNumber:isBDNA:isFDNA) }}. Your Workplace Talents as a {{ uniqueStyle }}
+                      (Continued)
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="pb-16"></td>
+            </tr>
+            <tr>
+              <td class="td-padding td-background paragraph-wrapper" valign="top" colspan="3">
+                <h5>{{ getSectionNumber(4, 2) }} Typical Workplace Struggles:</h5>
+                <p>
+                  {{ ('BDNACoachTypicalWorkplaceStruggles1_Statement' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                </p>
+                <strong>Reflect:</strong>
+                <ul class="td-list">
+                  <li>
+                    {{ ('BDNACoachTypicalWorkplaceStruggles2_Reflect1' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                  </li>
+                  <li>
+                    {{ ('BDNACoachTypicalWorkplaceStruggles3_Reflect2' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                  </li>
+                  @if (('BDNACoachTypicalWorkplaceStruggles5_Reflect3' | azureCoachingData:coachingReportAzureData:uniqueStyle)) {
+                    <li>
+                      {{ ('BDNACoachTypicalWorkplaceStruggles5_Reflect3' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                    </li>
+                  }
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="pb-16"></td>
+            </tr>
+          </table>
+          <div class="page-footer">
+            <table>
+              <tr>
+                <td>Page {{ getDisplayPageNumber(20) }}</td>
+                <td>{{ footerDate }}</td>
+                <td>{{ participantName }} - {{ uniqueStyle }}</td>
+                <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+                <td>ID#{{ accountId }}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="page-wrapper" id="21">
+          <table width="100%">
+            <tr>
+              <td class="table-head">
+                <table width="100%">
+                  <tr>
+                    <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+                    <td class="main-heading" [ngStyle]="{ color: reportColor }">
+                      {{ (4 | mainSectionNumber:isBDNA:isFDNA) }}. Your Workplace Talents as a {{ uniqueStyle }}
+                      (Continued)
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="pb-16"></td>
+            </tr>
+            <tr class="p-2">
+              <td colspan="2" class="workplace-title">Workplace Insights</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="chart-wrap">
+                  <app-workplace-insight [barColor]="primaryColor" [chartData]="workplaceInsights"></app-workplace-insight>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="pb-16"></td>
+            </tr>
+          </table>
+          <div class="page-footer">
+            <table>
+              <tr>
+                <td>Page {{ getDisplayPageNumber(21) }}</td>
+                <td>{{ footerDate }}</td>
+                <td>{{ participantName }} - {{ uniqueStyle }}</td>
+                <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+                <td>ID#{{ accountId }}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="page-wrapper" id="22">
+          <table width="100%">
+            <tr>
+              <td class="table-head">
+                <table width="100%">
+                  <tr>
+                    <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+                    <td class="main-heading" [ngStyle]="{ color: reportColor }">
+                      {{ (4 | mainSectionNumber:isBDNA:isFDNA) }}. Your Workplace Talents as a {{ uniqueStyle }}
+                      (Continued)
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="pb-16"></td>
+            </tr>
+            <tr>
+              <td class="td-padding td-background paragraph-wrapper" valign="top" colspan="3">
+                <h5>{{ getSectionNumber(4, 3) }} Workplace Operation Style:</h5>
+                <p>
+                  {{ ('BDNACoachWorkplaceOperationStyle1_Statement' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                </p>
+                <strong>Reflect:</strong>
+                <ul class="td-list">
+                  <li>
+                    {{ ('BDNACoachWorkplaceOperationStyle2_Reflect1' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                  </li>
+                  <li>
+                    {{ ('BDNACoachWorkplaceOperationStyle3_Reflect2' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                  </li>
+                  @if (('BDNACoachWorkplaceOperationStyle5_Reflect3' | azureCoachingData:coachingReportAzureData:uniqueStyle)) {
+                    <li>
+                      {{ ('BDNACoachWorkplaceOperationStyle5_Reflect3' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                    </li>
+                  }
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="pb-16"></td>
+            </tr>
+            <tr>
+              <td class="td-padding td-background paragraph-wrapper" valign="top" colspan="3">
+                <h5>{{ getSectionNumber(4, 4) }} To Maximize Potential:</h5>
+                <p>
+                  {{ ('BDNACoachToMaximizePotential1_Statement' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                </p>
+                <strong>Reflect:</strong>
+                <ul class="td-list">
+                  <li>
+                    {{ ('BDNACoachToMaximizePotential2_Reflect1' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                  </li>
+                  <li>
+                    {{ ('BDNACoachToMaximizePotential3_Reflect2' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                  </li>
+                  @if (('BDNACoachToMaximizePotential5_Reflect3' | azureCoachingData:coachingReportAzureData:uniqueStyle)) {
+                    <li>
+                      {{ ('BDNACoachToMaximizePotential5_Reflect3' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                    </li>
+                  }
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="pb-16"></td>
+            </tr>
+          </table>
+          <div class="page-footer">
+            <table>
+              <tr>
+                <td>Page {{ getDisplayPageNumber(22) }}</td>
+                <td>{{ footerDate }}</td>
+                <td>{{ participantName }} - {{ uniqueStyle }}</td>
+                <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+                <td>ID#{{ accountId }}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="page-wrapper" id="23">
+          <table width="100%">
+            <tr>
+              <td class="table-head">
+                <table width="100%">
+                  <tr>
+                    <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+                    <td class="main-heading" [ngStyle]="{ color: reportColor }">
+                      {{ (4 | mainSectionNumber:isBDNA:isFDNA) }}. Your Workplace Talents as a {{ uniqueStyle }}
+                      (Continued)
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="pb-16"></td>
+            </tr>
+            <tr>
+              <td class="td-padding td-background paragraph-wrapper" valign="top" colspan="3">
+                <h5>{{ getSectionNumber(4, 5) }} Workplace Needs:</h5>
+                <p>
+                  {{ ('BDNACoachWorkplaceNeeds1_Statement' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                </p>
+                <strong>Reflect:</strong>
+                <ul class="td-list">
+                  <li>
+                    {{ ('BDNACoachWorkplaceNeeds2_Reflect1' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                  </li>
+                  <li>
+                    {{ ('BDNACoachWorkplaceNeeds3_Reflect2' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                  </li>
+                  @if (('BDNACoachWorkplaceNeeds5_Reflect3' | azureCoachingData:coachingReportAzureData:uniqueStyle)) {
+                    <li>
+                      {{ ('BDNACoachWorkplaceNeeds5_Reflect3' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                    </li>
+                  }
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="pb-16"></td>
+            </tr>
+            <tr>
+              <td class="td-padding td-background paragraph-wrapper" valign="top" colspan="3">
+                <h5>{{ getSectionNumber(4, 6) }} Ideal Workplace Setting:</h5>
+                <p>
+                  {{ ('BDNACoachIdealWorkplaceSetting1_Statement' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                </p>
+                <strong>Reflect:</strong>
+                <ul class="td-list">
+                  <li>
+                    {{ ('BDNACoachIdealWorkplaceSetting2_Reflect1' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                  </li>
+                  <li>
+                    {{ ('BDNACoachIdealWorkplaceSetting3_Reflect2' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                  </li>
+                  @if (('BDNACoachIdealWorkplaceSetting5_Reflect3' | azureCoachingData:coachingReportAzureData:uniqueStyle)) {
+                    <li>
+                      {{ ('BDNACoachIdealWorkplaceSetting5_Reflect3' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                    </li>
+                  }
+                </ul>
+              </td>
+            </tr>
+          </table>
+          <div class="page-footer">
+            <table>
+              <tr>
+                <td>Page {{ getDisplayPageNumber(23) }}</td>
+                <td>{{ footerDate }}</td>
+                <td>{{ participantName }} - {{ uniqueStyle }}</td>
+                <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+                <td>ID#{{ accountId }}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="page-wrapper" id="24">
+          <table width="100%">
+            <tr>
+              <td class="table-head">
+                <table width="100%">
+                  <tr>
+                    <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+                    <td class="main-heading" [ngStyle]="{ color: reportColor }">
+                      {{ (4 | mainSectionNumber:isBDNA:isFDNA) }}. Your Workplace Talents as a {{ uniqueStyle }}
+                      (Continued)
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="pb-16"></td>
+            </tr>
+            <tr>
+              <td class="td-padding td-background paragraph-wrapper" valign="top" colspan="3">
+                <h5>{{ getSectionNumber(4, 7) }} To Provide a Challenge:</h5>
+                <p>
+                  {{ ('BDNACoachToProvideaChallenge1_Statement' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                </p>
+                <strong>Reflect:</strong>
+                <ul class="td-list">
+                  <li>
+                    {{ ('BDNACoachToProvideaChallenge2_Reflect1' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                  </li>
+                  <li>
+                    {{ ('BDNACoachToProvideaChallenge3_Reflect2' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                  </li>
+                  @if (('BDNACoachToProvideaChallenge5_Reflect3' | azureCoachingData:coachingReportAzureData:uniqueStyle)) {
+                    <li>
+                      {{ ('BDNACoachToProvideaChallenge5_Reflect3' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                    </li>
+                  }
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="pb-16"></td>
+            </tr>
+            <tr>
+              <td class="td-padding td-background paragraph-wrapper" valign="top" colspan="3">
+                <h5>{{ getSectionNumber(4, 8) }} Working with Teammates</h5>
+                <p>
+                  {{ ('BDNACoachWorkingwithTeamMates1_Statement' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                </p>
+                <strong>Reflect:</strong>
+                <ul class="td-list">
+                  <li>
+                    {{ ('BDNACoachWorkingwithTeamMates2_Reflect1' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                  </li>
+                  <li>
+                    {{ ('BDNACoachWorkingwithTeamMates3_Reflect2' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                  </li>
+                  @if (('BDNACoachWorkingwithTeamMates5_Reflect3' | azureCoachingData:coachingReportAzureData:uniqueStyle)) {
+                    <li>
+                      {{ ('BDNACoachWorkingwithTeamMates5_Reflect3' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                    </li>
+                  }
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="pb-16"></td>
+            </tr>
+          </table>
+          <div class="page-footer">
+            <table>
+              <tr>
+                <td>Page {{ getDisplayPageNumber(24) }}</td>
+                <td>{{ footerDate }}</td>
+                <td>{{ participantName }} - {{ uniqueStyle }}</td>
+                <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+                <td>ID#{{ accountId }}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="page-wrapper" id="25">
+          <table width="100%">
+            <tr>
+              <td class="table-head">
+                <table width="100%">
+                  <tr>
+                    <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+                    <td class="main-heading" [ngStyle]="{ color: reportColor }">
+                      {{ (4 | mainSectionNumber:isBDNA:isFDNA) }}. Your Workplace Talents as a {{ uniqueStyle }}
+                      (Continued)
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="pb-16"></td>
+            </tr>
+            <tr>
+              <td class="td-padding td-background paragraph-wrapper" valign="top" colspan="3">
+                <h5>{{ getSectionNumber(4, 9) }} Leadership Style</h5>
+                <p>
+                  {{ ('BDNACoachLeadershipStyle1_Statement' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                </p>
+                <strong>Reflect:</strong>
+                <ul class="td-list">
+                  <li>
+                    {{ ('BDNACoachLeadershipStyle2_Reflect1' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                  </li>
+                  <li>
+                    {{ ('BDNACoachLeadershipStyle3_Reflect2' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                  </li>
+                  @if (('BDNACoachLeadershipStyle5_Reflect3' | azureCoachingData:coachingReportAzureData:uniqueStyle)) {
+                    <li>
+                      {{ ('BDNACoachLeadershipStyle5_Reflect3' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                    </li>
+                  }
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="pb-16"></td>
+            </tr>
+            <tr>
+              <td class="td-padding td-background paragraph-wrapper" valign="top" colspan="3">
+                <h5>{{ getSectionNumber(4, 10) }} Measure of Performance:</h5>
+                <p>
+                  {{ ('BDNACoachMeasureofPerformance1_Statement' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                </p>
+                <strong>Reflect:</strong>
+                <ul class="td-list">
+                  <li>
+                    {{ ('BDNACoachMeasureofPerformance2_Reflect1' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                  </li>
+                  <li>
+                    {{ ('BDNACoachMeasureofPerformance3_Reflect2' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                  </li>
+                  @if (('BDNACoachMeasureofPerformance5_Reflect3' | azureCoachingData:coachingReportAzureData:uniqueStyle)) {
+                    <li>
+                      {{ ('BDNACoachMeasureofPerformance5_Reflect3' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                    </li>
+                  }
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="pb-16"></td>
+            </tr>
+          </table>
+          <div class="page-footer">
+            <table>
+              <tr>
+                <td>Page {{ getDisplayPageNumber(25) }}</td>
+                <td>{{ footerDate }}</td>
+                <td>{{ participantName }} - {{ uniqueStyle }}</td>
+                <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+                <td>ID#{{ accountId }}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="page-wrapper" id="26">
+          <table width="100%">
+            <tr>
+              <td class="table-head">
+                <table width="100%">
+                  <tr>
+                    <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+                    <td class="main-heading" [ngStyle]="{ color: reportColor }">
+                      {{ (4 | mainSectionNumber:isBDNA:isFDNA) }}. Your Workplace Talents as a {{ uniqueStyle }}
+                      (Continued)
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="pb-16"></td>
+            </tr>
+            <tr>
+              <td class="td-padding td-background paragraph-wrapper" valign="top" colspan="3">
+                <h5>{{ getSectionNumber(4, 11) }} Workplace Fears:</h5>
+                <p>
+                  {{ ('BDNACoachWorkplaceFears1_Statement' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                </p>
+                <strong>Reflect:</strong>
+                <ul class="td-list">
+                  <li>
+                    {{ ('BDNACoachWorkplaceFears2_Reflect1' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                  </li>
+                  <li>
+                    {{ ('BDNACoachWorkplaceFears3_Reflect2' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                  </li>
+                  @if (('BDNACoachWorkplaceFears5_Reflect3' | azureCoachingData:coachingReportAzureData:uniqueStyle)) {
+                    <li>
+                      {{ ('BDNACoachWorkplaceFears5_Reflect3' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                    </li>
+                  }
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="pb-16"></td>
+            </tr>
+            <tr>
+              <td class="td-padding td-background paragraph-wrapper" valign="top" colspan="3">
+                <h5>{{ getSectionNumber(4, 12) }} What is Alienating:</h5>
+                <p>
+                  {{ ('BDNACoachWhatisAlienating1_Statement' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                </p>
+                <strong>Reflect:</strong>
+                <ul class="td-list">
+                  <li>
+                    {{ ('BDNACoachWhatisAlienating2_Reflect1' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                  </li>
+                  <li>
+                    {{ ('BDNACoachWhatisAlienating3_Reflect2' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                  </li>
+                  @if (('BDNACoachWhatisAlienating5_Reflect3' | azureCoachingData:coachingReportAzureData:uniqueStyle)) {
+                    <li>
+                      {{ ('BDNACoachWhatisAlienating5_Reflect3' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                    </li>
+                  }
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="pb-16"></td>
+            </tr>
+          </table>
+          <div class="page-footer">
+            <table>
+              <tr>
+                <td>Page {{ getDisplayPageNumber(26) }}</td>
+                <td>{{ footerDate }}</td>
+                <td>{{ participantName }} - {{ uniqueStyle }}</td>
+                <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+                <td>ID#{{ accountId }}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="page-wrapper" id="27">
+          <table width="100%">
+            <tr>
+              <td class="table-head">
+                <table width="100%">
+                  <tr>
+                    <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+                    <td class="main-heading" [ngStyle]="{ color: reportColor }">
+                      {{ (4 | mainSectionNumber:isBDNA:isFDNA) }}. Your Workplace Talents as a {{ uniqueStyle }}
+                      (Continued)
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="pb-16"></td>
+            </tr>
+            <tr>
+              <td class="td-padding td-background paragraph-wrapper" valign="top" colspan="3">
+                <h5>{{ getSectionNumber(4, 13) }} Decision-Making Style:</h5>
+                <p>
+                  {{ ('BDNACoachDecision-MakingStyle1_Statement' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                </p>
+                <strong>Reflect:</strong>
+                <ul class="td-list">
+                  <li>
+                    {{ ('BDNACoachDecision-MakingStyle2_Reflect1' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                  </li>
+                  <li>
+                    {{ ('BDNACoachDecision-MakingStyle3_Reflect2' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                  </li>
+                  @if (('BDNACoachDecision-MakingStyle5_Reflect3' | azureCoachingData:coachingReportAzureData:uniqueStyle)) {
+                    <li>
+                      {{ ('BDNACoachDecision-MakingStyle5_Reflect3' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                    </li>
+                  }
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="pb-16"></td>
+            </tr>
+            <tr>
+              <td class="td-padding td-background paragraph-wrapper" valign="top" colspan="3">
+                <h5>{{ getSectionNumber(4, 14) }} Communication Approach:</h5>
+                <p>
+                  {{ ('BDNACoachCommunicationApproach1_Statement' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                </p>
+                <strong>Reflect:</strong>
+                <ul class="td-list">
+                  <li>
+                    {{ ('BDNACoachCommunicationApproach2_Reflect1' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                  </li>
+                  <li>
+                    {{ ('BDNACoachCommunicationApproach3_Reflect2' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                  </li>
+                  @if (('BDNACoachCommunicationApproach5_Reflect3' | azureCoachingData:coachingReportAzureData:uniqueStyle)) {
+                    <li>
+                      {{ ('BDNACoachCommunicationApproach5_Reflect3' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                    </li>
+                  }
+                </ul>
+              </td>
+            </tr>
+          </table>
+          <div class="page-footer">
+            <table>
+              <tr>
+                <td>Page {{ getDisplayPageNumber(27) }}</td>
+                <td>{{ footerDate }}</td>
+                <td>{{ participantName }} - {{ uniqueStyle }}</td>
+                <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+                <td>ID#{{ accountId }}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="page-wrapper" id="28">
+          <table width="100%">
+            <tr>
+              <td class="table-head">
+                <table width="100%">
+                  <tr>
+                    <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+                    <td class="main-heading" [ngStyle]="{ color: reportColor }">
+                      {{ (4 | mainSectionNumber:isBDNA:isFDNA) }}. Your Workplace Talents as a {{ uniqueStyle }}
+                      (Continued)
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="spacer-20"></td>
+            </tr>
+            <tr>
+              <td class="td-padding bg-lightgreen paragraph-wrapper" valign="top" colspan="3">
+                <h5>Key Questions on Your Work Talents:</h5>
+                <ol class="numbered-list">
+                  <li>
+                    {{ ('BDNACoachKeyQuestions1_Statement' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                  </li>
+                  <li>
+                    {{ ('BDNACoachKeyQuestions2_Reflect1' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                  </li>
+                  <li>
+                    {{ ('BDNACoachKeyQuestions3_Reflect2' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                  </li>
+                </ol>
+              </td>
+            </tr>
+          </table>
+          <div class="page-footer">
+            <table>
+              <tr>
+                <td>Page {{ getDisplayPageNumber(28) }}</td>
+                <td>{{ footerDate }}</td>
+                <td>{{ participantName }} - {{ uniqueStyle }}</td>
+                <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+                <td>ID#{{ accountId }}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      }
+
+      @if (isFDNA) {
+        <div class="page-wrapper" id="29">
+          <table width="100%">
+            <tr>
+              <td class="table-head">
+                <table width="100%">
+                  <tr>
+                    <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+                    <td class="main-heading" [ngStyle]="{ color: reportColor }">
+                      {{ (5 | mainSectionNumber:isBDNA:isFDNA) }}. Your Relationship to Money as a {{ uniqueStyle }}
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3" align="center"></td>
+            </tr>
+            <tr>
+              <td colspan="2" class="pb-16"></td>
+            </tr>
+            <tr>
+              <td align="center" colspan="3">
+                <app-behaviral-biases
+                  data-testId="financial-biases"
+                  [loading]="behaviralBiasesLoading"
+                  [behaviralBiasesObject]="behaviralBiasesObject"
+                  [isSingleUser]="true"
+                  [chartColor]="behavioralBiasesColor"
+                  [showLegend]="false"
+                  [showScores]="true"
+                ></app-behaviral-biases>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="pb-16"></td>
+            </tr>
+          </table>
+          <div class="page-footer">
+            <table>
+              <tr>
+                <td>Page {{ getDisplayPageNumber(29) }}</td>
+                <td>{{ footerDate }}</td>
+                <td>{{ participantName }} - {{ uniqueStyle }}</td>
+                <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+                <td>ID#{{ accountId }}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="page-wrapper" id="30">
+          <table width="100%">
+            <tr>
+              <td class="table-head">
+                <table width="100%">
+                  <tr>
+                    <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+                    <td class="main-heading" [ngStyle]="{ color: reportColor }">
+                      {{ (5 | mainSectionNumber:isBDNA:isFDNA) }}. Your Relationship to Money as a {{ uniqueStyle }}
+                      (Continued)
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="pb-16"></td>
+            </tr>
+            <tr>
+              <td class="td-padding td-background paragraph-wrapper" valign="top" colspan="3">
+                <h5>{{ getSectionNumber(5, 1) }} Typical Financial Planning Strengths:</h5>
+                <p>
+                  {{ ('FDNAWMTypicalFinancialPlanningStrengths_Statement' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                </p>
+                <strong>Reflect:</strong>
+                <ul class="td-list">
+                  <li>
+                    {{ ('FDNAWMTypicalFinancialPlanningStrengths_Reflect1' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                  </li>
+                  <li>
+                    {{ ('FDNAWMTypicalFinancialPlanningStrengths3_Reflect2' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                  </li>
+                  @if (('FDNAWMTypicalFinancialPlanningStrengths4_Reflect3' | azureCoachingData:coachingReportAzureData:uniqueStyle)) {
+                    <li>
+                      {{ ('FDNAWMTypicalFinancialPlanningStrengths4_Reflect3' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                    </li>
+                  }
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="pb-16"></td>
+            </tr>
+          </table>
+          <div class="page-footer">
+            <table>
+              <tr>
+                <td>Page {{ getDisplayPageNumber(30) }}</td>
+                <td>{{ footerDate }}</td>
+                <td>{{ participantName }} - {{ uniqueStyle }}</td>
+                <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+                <td>ID#{{ accountId }}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="page-wrapper" id="31">
+          <table width="100%">
+            <tr>
+              <td class="table-head">
+                <table width="100%">
+                  <tr>
+                    <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+                    <td class="main-heading" [ngStyle]="{ color: reportColor }">
+                      {{ (5 | mainSectionNumber:isBDNA:isFDNA) }}. Your Relationship to Money as a {{ uniqueStyle }}
+                      (Continued)
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="pb-16"></td>
+            </tr>
+            <tr>
+              <td class="td-padding td-background paragraph-wrapper" valign="top" colspan="3">
+                <h5>{{ getSectionNumber(5, 2) }} Typical Financial Planning Struggles:</h5>
+                <p>
+                  {{ ('FDNAWMTypicalFinancialPlanningStruggles1_Statement' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                </p>
+                <strong>Reflect:</strong>
+                <ul class="td-list">
+                  <li>
+                    {{ ('FDNAWMTypicalFinancialPlanningStruggles2_Reflect1' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                  </li>
+                  <li>
+                    {{ ('FDNAWMTypicalFinancialPlanningStruggles3_Reflect2' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                  </li>
+                  @if (('FDNAWMTypicalFinancialPlanningStruggles4_Reflect3' | azureCoachingData:coachingReportAzureData:uniqueStyle)) {
+                    <li>
+                      {{ ('FDNAWMTypicalFinancialPlanningStruggles4_Reflect3' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                    </li>
+                  }
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="pb-16"></td>
+            </tr>
+            <tr>
+              <td colspan="2" class="pb-16"></td>
+            </tr>
+          </table>
+          <div class="page-footer">
+            <table>
+              <tr>
+                <td>Page {{ getDisplayPageNumber(31) }}</td>
+                <td>{{ footerDate }}</td>
+                <td>{{ participantName }} - {{ uniqueStyle }}</td>
+                <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+                <td>ID#{{ accountId }}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="page-wrapper" id="32">
+          <table width="100%">
+            <tr>
+              <td class="table-head">
+                <table width="100%">
+                  <tr>
+                    <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+                    <td class="main-heading" [ngStyle]="{ color: reportColor }">
+                      {{ (5 | mainSectionNumber:isBDNA:isFDNA) }}. Your Relationship to Money as a {{ uniqueStyle }}
+                      (Continued)
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="pb-16"></td>
+            </tr>
+            <tr>
+              <td class="td-padding td-background paragraph-wrapper" valign="top" colspan="3">
+                <h5>{{ getSectionNumber(5, 3) }} Investing Style:</h5>
+                <p>
+                  {{ ('FDNAWMInvestingStyle1_Statement' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                </p>
+                <strong>Reflect:</strong>
+                <ul class="td-list">
+                  <li>
+                    {{ ('FDNAWMInvestingStyle2_Reflect1' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                  </li>
+                  <li>
+                    {{ ('FDNAWMInvestingStyle3_Reflect2' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                  </li>
+                  @if (('FDNAWMInvestingStyle4_Reflect3' | azureCoachingData:coachingReportAzureData:uniqueStyle)) {
+                    <li>
+                      {{ ('FDNAWMInvestingStyle4_Reflect3' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                    </li>
+                  }
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="pb-16"></td>
+            </tr>
+          </table>
+          <div class="page-footer">
+            <table>
+              <tr>
+                <td>Page {{ getDisplayPageNumber(32) }}</td>
+                <td>{{ footerDate }}</td>
+                <td>{{ participantName }} - {{ uniqueStyle }}</td>
+                <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+                <td>ID#{{ accountId }}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="page-wrapper" id="33">
+          <table width="100%">
+            <tr>
+              <td class="table-head">
+                <table width="100%">
+                  <tr>
+                    <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+                    <td class="main-heading" [ngStyle]="{ color: reportColor }">
+                      {{ (5 | mainSectionNumber:isBDNA:isFDNA) }}. Your Relationship to Money as a {{ uniqueStyle }}
+                      (Continued)
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="pb-16"></td>
+            </tr>
+            <tr>
+              <td class="td-padding td-background paragraph-wrapper" valign="top" colspan="3">
+                <h5>{{ getSectionNumber(5, 4) }} Required Style of Financial Advisor:</h5>
+                <p>
+                  {{ ('FDNAWMRequiredStyleofFinancialAdvisor1_Statement' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                </p>
+                <strong>Reflect:</strong>
+                <ul class="td-list">
+                  <li>
+                    {{ ('FDNAWMRequiredStyleofFinancialAdvisor2_Reflect1' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                  </li>
+                  <li>
+                    {{ ('FDNAWMRequiredStyleofFinancialAdvisor3_Reflect2' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                  </li>
+                  @if (('FDNAWMRequiredStyleofFinancialAdvisor4_Reflect3' | azureCoachingData:coachingReportAzureData:uniqueStyle)) {
+                    <li>
+                      {{ ('FDNAWMRequiredStyleofFinancialAdvisor4_Reflect3' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                    </li>
+                  }
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="pb-16"></td>
+            </tr>
+          </table>
+          <div class="page-footer">
+            <table>
+              <tr>
+                <td>Page {{ getDisplayPageNumber(33) }}</td>
+                <td>{{ footerDate }}</td>
+                <td>{{ participantName }} - {{ uniqueStyle }}</td>
+                <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+                <td>ID#{{ accountId }}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="page-wrapper" id="34">
+          <table width="100%">
+            <tr>
+              <td class="table-head">
+                <table width="100%">
+                  <tr>
+                    <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+                    <td class="main-heading" [ngStyle]="{ color: reportColor }">
+                      {{ (5 | mainSectionNumber:isBDNA:isFDNA) }}. Your Relationship to Money as a {{ uniqueStyle }}
+                      (Continued)
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="pb-16"></td>
+            </tr>
+            <tr>
+              <td class="td-padding td-background paragraph-wrapper" valign="top" colspan="3">
+                <h5>{{ getSectionNumber(5, 5) }} Product &amp; Transaction Needs:</h5>
+                <p>
+                  {{ ('FDNAWMProduct&TransactionNeeds1_Statement' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                </p>
+                <strong>Reflect:</strong>
+                <ul class="td-list">
+                  <li>
+                    {{ ('FDNAWMProduct&TransactionNeeds2_Reflect1' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                  </li>
+                  <li>
+                    {{ ('FDNAWMProduct&TransactionNeeds3_Reflect2' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                  </li>
+                  @if (('FDNAWMProduct&TransactionNeeds4_Reflect3' | azureCoachingData:coachingReportAzureData:uniqueStyle)) {
+                    <li>
+                      {{ ('FDNAWMProduct&TransactionNeeds4_Reflect3' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                    </li>
+                  }
+                </ul>
+              </td>
+            </tr>
+          </table>
+          <div class="page-footer">
+            <table>
+              <tr>
+                <td>Page {{ getDisplayPageNumber(34) }}</td>
+                <td>{{ footerDate }}</td>
+                <td>{{ participantName }} - {{ uniqueStyle }}</td>
+                <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+                <td>ID#{{ accountId }}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="page-wrapper" id="35">
+          <table width="100%">
+            <tr>
+              <td class="table-head">
+                <table width="100%">
+                  <tr>
+                    <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+                    <td class="main-heading" [ngStyle]="{ color: reportColor }">
+                      {{ (5 | mainSectionNumber:isBDNA:isFDNA) }}. Your Relationship to Money as a {{ uniqueStyle }}
+                      (Continued)
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="pb-16"></td>
+            </tr>
+            <tr>
+              <td class="td-padding td-background paragraph-wrapper" valign="top" colspan="3">
+                <h5>{{ getSectionNumber(5, 6) }} Financial Planning Stress:</h5>
+                <p>
+                  {{ ('FDNAWMFinancialPlanningStress1_Statement' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                </p>
+                <strong>Reflect:</strong>
+                <ul class="td-list">
+                  <li>
+                    {{ ('FDNAWMFinancialPlanningStress2_Reflect1' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                  </li>
+                  <li>
+                    {{ ('FDNAWMFinancialPlanningStress3_Reflect2' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                  </li>
+                  @if (('FDNAWMFinancialPlanningStress4_Reflect3' | azureCoachingData:coachingReportAzureData:uniqueStyle)) {
+                    <li>
+                      {{ ('FDNAWMFinancialPlanningStress4_Reflect3' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                    </li>
+                  }
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="pb-16"></td>
+            </tr>
+          </table>
+          <div class="page-footer">
+            <table>
+              <tr>
+                <td>Page {{ getDisplayPageNumber(35) }}</td>
+                <td>{{ footerDate }}</td>
+                <td>{{ participantName }} - {{ uniqueStyle }}</td>
+                <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+                <td>ID#{{ accountId }}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="page-wrapper" id="36">
+          <table width="100%">
+            <tr>
+              <td class="table-head">
+                <table width="100%">
+                  <tr>
+                    <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+                    <td class="main-heading" [ngStyle]="{ color: reportColor }">
+                      {{ (5 | mainSectionNumber:isBDNA:isFDNA) }}. Your Relationship to Money as a {{ uniqueStyle }}
+                      (Continued)
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="pb-16"></td>
+            </tr>
+            <tr>
+              <td class="td-padding td-background paragraph-wrapper" valign="top" colspan="3">
+                <h5>{{ getSectionNumber(5, 7) }} Self Awareness:</h5>
+                <p>
+                  {{ ('FDNAWMSelfAwareness1_Statement' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                </p>
+                <strong>Reflect:</strong>
+                <ul class="td-list">
+                  <li>
+                    {{ ('FDNAWMSelfAwareness2_Reflect1' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                  </li>
+                  <li>
+                    {{ ('FDNAWMSelfAwareness3_Reflect2' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                  </li>
+                  @if (('FDNAWMSelfAwareness4_Reflect3' | azureCoachingData:coachingReportAzureData:uniqueStyle)) {
+                    <li>
+                      {{ ('FDNAWMSelfAwareness4_Reflect3' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                    </li>
+                  }
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="pb-16"></td>
+            </tr>
+            <tr>
+              <td class="td-padding td-background paragraph-wrapper" valign="top" colspan="3">
+                <h5>{{ getSectionNumber(5, 8) }} Money Management Style:</h5>
+                <p>
+                  {{ ('FDNAWMMoneyManagementStyle1_Statement' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                </p>
+                <strong>Reflect:</strong>
+                <ul class="td-list">
+                  <li>
+                    {{ ('FDNAWMMoneyManagementStyle2_Reflect1' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                  </li>
+                  @if (('FDNAWMMoneyManagementStyle3_Reflect2' | azureCoachingData:coachingReportAzureData:uniqueStyle)) {
+                    <li>
+                      {{ ('FDNAWMMoneyManagementStyle3_Reflect2' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                    </li>
+                  }
+                  @if (('FDNAWMMoneyManagementStyle4_Reflect3' | azureCoachingData:coachingReportAzureData:uniqueStyle)) {
+                    <li>
+                      {{ ('FDNAWMMoneyManagementStyle4_Reflect3' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                    </li>
+                  }
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="pb-16"></td>
+            </tr>
+          </table>
+          <div class="page-footer">
+            <table>
+              <tr>
+                <td>Page {{ getDisplayPageNumber(36) }}</td>
+                <td>{{ footerDate }}</td>
+                <td>{{ participantName }} - {{ uniqueStyle }}</td>
+                <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+                <td>ID#{{ accountId }}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="page-wrapper" id="37">
+          <table width="100%">
+            <tr>
+              <td class="table-head">
+                <table width="100%">
+                  <tr>
+                    <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+                    <td class="main-heading" [ngStyle]="{ color: reportColor }">
+                      {{ (5 | mainSectionNumber:isBDNA:isFDNA) }}. Your Relationship to Money as a {{ uniqueStyle }}
+                      (Continued)
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="pb-16"></td>
+            </tr>
+            <tr>
+              <td class="td-padding td-background paragraph-wrapper" valign="top" colspan="3">
+                <h5>{{ getSectionNumber(5, 9) }} Financial Fears:</h5>
+                <p>
+                  {{ ('FDNAWMFinancialFears1_Statement' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                </p>
+                <strong>Reflect:</strong>
+                <ul class="td-list">
+                  <li>
+                    {{ ('FDNAWMFinancialFears2_Reflect1' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                  </li>
+                  <li>
+                    {{ ('FDNAWMFinancialFears3_Reflect2' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                  </li>
+                  @if (('FDNAWMFinancialFears4_Reflect3' | azureCoachingData:coachingReportAzureData:uniqueStyle)) {
+                    <li>
+                      {{ ('FDNAWMFinancialFears4_Reflect3' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                    </li>
+                  }
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="pb-16"></td>
+            </tr>
+          </table>
+          <div class="page-footer">
+            <table>
+              <tr>
+                <td>Page {{ getDisplayPageNumber(37) }}</td>
+                <td>{{ footerDate }}</td>
+                <td>{{ participantName }} - {{ uniqueStyle }}</td>
+                <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+                <td>ID#{{ accountId }}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="page-wrapper" id="38">
+          <table width="100%">
+            <tr>
+              <td class="table-head">
+                <table width="100%">
+                  <tr>
+                    <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+                    <td class="main-heading" [ngStyle]="{ color: reportColor }">
+                      {{ (5 | mainSectionNumber:isBDNA:isFDNA) }}. Your Relationship to Money as a {{ uniqueStyle }}
+                      (Continued)
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="pb-16"></td>
+            </tr>
+            <tr>
+              <td class="td-padding td-background paragraph-wrapper" valign="top" colspan="3">
+                <h5>{{ getSectionNumber(5, 10) }} Communication Style:</h5>
+                <p>
+                  {{ ('FDNAWMCommunicationStyle1_Statement' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                </p>
+                <strong>Reflect:</strong>
+                <ul class="td-list">
+                  <li>
+                    {{ ('FDNAWMCommunicationStyle2_Reflect1' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                  </li>
+                  <li>
+                    {{ ('FDNAWMCommunicationStyle3_Reflect2' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                  </li>
+                  @if (('FDNAWMCommunicationStyle4_Reflect3' | azureCoachingData:coachingReportAzureData:uniqueStyle)) {
+                    <li>
+                      {{ ('FDNAWMCommunicationStyle4_Reflect3' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                    </li>
+                  }
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="pb-16"></td>
+            </tr>
+          </table>
+          <div class="page-footer">
+            <table>
+              <tr>
+                <td>Page {{ getDisplayPageNumber(38) }}</td>
+                <td>{{ footerDate }}</td>
+                <td>{{ participantName }} - {{ uniqueStyle }}</td>
+                <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+                <td>ID#{{ accountId }}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="page-wrapper" id="39">
+          <table width="100%">
+            <tr>
+              <td class="table-head">
+                <table width="100%">
+                  <tr>
+                    <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+                    <td class="main-heading" [ngStyle]="{ color: reportColor }">
+                      {{ (5 | mainSectionNumber:isBDNA:isFDNA) }}. Your Relationship to Money as a {{ uniqueStyle }}
+                      (Continued)
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="pb-16"></td>
+            </tr>
+            <tr>
+              <td class="td-padding td-background paragraph-wrapper" valign="top" colspan="3">
+                <h5>{{ getSectionNumber(5, 11) }} Measure of Success:</h5>
+                <p>
+                  {{ ('FDNAWMMeasureofSuccess1_Statement' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                </p>
+                <strong>Reflect:</strong>
+                <ul class="td-list">
+                  <li>
+                    {{ ('FDNAWMMeasureofSuccess2_Reflect1' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                  </li>
+                  <li>
+                    {{ ('FDNAWMMeasureofSuccess3_Reflect2' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                  </li>
+                  @if (('FDNAWMMeasureofSuccess4_Reflect3' | azureCoachingData:coachingReportAzureData:uniqueStyle)) {
+                    <li>
+                      {{ ('FDNAWMMeasureofSuccess4_Reflect3' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                    </li>
+                  }
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="pb-16"></td>
+            </tr>
+          </table>
+          <div class="page-footer">
+            <table>
+              <tr>
+                <td>Page {{ getDisplayPageNumber(39) }}</td>
+                <td>{{ footerDate }}</td>
+                <td>{{ participantName }} - {{ uniqueStyle }}</td>
+                <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+                <td>ID#{{ accountId }}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="page-wrapper" id="40">
+          <table width="100%">
+            <tr>
+              <td class="table-head">
+                <table width="100%">
+                  <tr>
+                    <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+                    <td class="main-heading" [ngStyle]="{ color: reportColor }">
+                      {{ (5 | mainSectionNumber:isBDNA:isFDNA) }}. Your Relationship to Money as a {{ uniqueStyle }}
+                      (Continued)
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="pb-16"></td>
+            </tr>
+            <tr>
+              <td class="td-padding td-background paragraph-wrapper" valign="top" colspan="3">
+                <h5>{{ getSectionNumber(5, 12) }} Preferred Relationship with Advisors:</h5>
+                <p>
+                  {{ ('FDNAWMPreferredRelationshipwithAdvisors1_Statement' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                </p>
+                <strong>Reflect:</strong>
+                <ul class="td-list">
+                  <li>
+                    {{ ('FDNAWMPreferredRelationshipwithAdvisors2_Reflect1' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                  </li>
+                  <li>
+                    {{ ('FDNAWMPreferredRelationshipwithAdvisors3_Reflect2' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                  </li>
+                  @if (('FDNAWMPreferredRelationshipwithAdvisors4_Reflect3' | azureCoachingData:coachingReportAzureData:uniqueStyle)) {
+                    <li>
+                      {{ ('FDNAWMPreferredRelationshipwithAdvisors4_Reflect3' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                    </li>
+                  }
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="pb-16"></td>
+            </tr>
+          </table>
+          <div class="page-footer">
+            <table>
+              <tr>
+                <td>Page {{ getDisplayPageNumber(40) }}</td>
+                <td>{{ footerDate }}</td>
+                <td>{{ participantName }} - {{ uniqueStyle }}</td>
+                <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+                <td>ID#{{ accountId }}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="page-wrapper" id="41">
+          <table width="100%">
+            <tr>
+              <td class="table-head">
+                <table width="100%">
+                  <tr>
+                    <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+                    <td class="main-heading" [ngStyle]="{ color: reportColor }">
+                      {{ (5 | mainSectionNumber:isBDNA:isFDNA) }}. Your Relationship to Money as a {{ uniqueStyle }}
+                      (Continued)
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="pb-16"></td>
+            </tr>
+            <tr>
+              <td class="td-padding td-background paragraph-wrapper" valign="top" colspan="3">
+                <h5>{{ getSectionNumber(5, 13) }} Approach to the Financial Advisory Process:</h5>
+                <p>
+                  {{ ('FDNAWMApproachtotheFinancialAdvisoryProcess1_Statement' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                </p>
+                <strong>Reflect:</strong>
+                <ul class="td-list">
+                  <li>
+                    {{ ('FDNAWMApproachtotheFinancialAdvisoryProcess2_Reflect1' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                  </li>
+                  <li>
+                    {{ ('FDNAWMApproachtotheFinancialAdvisoryProcess3_Reflect2' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                  </li>
+                  @if (('FDNAWMApproachtotheFinancialAdvisoryProcess4_Reflect3' | azureCoachingData:coachingReportAzureData:uniqueStyle)) {
+                    <li>
+                      {{ ('FDNAWMApproachtotheFinancialAdvisoryProcess4_Reflect3' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                    </li>
+                  }
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="pb-16"></td>
+            </tr>
+            <tr>
+              <td class="td-padding td-background paragraph-wrapper" valign="top" colspan="3">
+                <h5>{{ getSectionNumber(5, 14) }} Decision Making Approach:</h5>
+                <p>
+                  {{ ('FDNAWMDecisionMakingApproach1_Statement' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                </p>
+                <strong>Reflect:</strong>
+                <ul class="td-list">
+                  <li>
+                    {{ ('FDNAWMDecisionMakingApproach2_Reflect1' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                  </li>
+                  <li>
+                    {{ ('FDNAWMDecisionMakingApproach3_Reflect2' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                  </li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="pb-16"></td>
+            </tr>
+          </table>
+          <div class="page-footer">
+            <table>
+              <tr>
+                <td>Page {{ getDisplayPageNumber(41) }}</td>
+                <td>{{ footerDate }}</td>
+                <td>{{ participantName }} - {{ uniqueStyle }}</td>
+                <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+                <td>ID#{{ accountId }}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="page-wrapper" id="42">
+          <table width="100%">
+            <tr>
+              <td class="table-head">
+                <table width="100%">
+                  <tr>
+                    <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+                    <td class="main-heading" [ngStyle]="{ color: reportColor }">
+                      {{ (5 | mainSectionNumber:isBDNA:isFDNA) }}. Your Relationship to Money as a {{ uniqueStyle }}
+                      (Continued)
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="pb-16"></td>
+            </tr>
+            <tr>
+              <td class="td-padding td-background paragraph-wrapper" valign="top" colspan="3">
+                <strong>Reflect:</strong>
+                <ul class="td-list">
+                  @if (('FDNAWMDecisionMakingApproach4_Reflect3' | azureCoachingData:coachingReportAzureData:uniqueStyle)) {
+                    <li>
+                      {{ ('FDNAWMDecisionMakingApproach4_Reflect3' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                    </li>
+                  }
+                  @if (('FDNAWMDecisionMakingApproach5_Reflect4' | azureCoachingData:coachingReportAzureData:uniqueStyle)) {
+                    <li>
+                      {{ ('FDNAWMDecisionMakingApproach5_Reflect4' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                    </li>
+                  }
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="pb-16"></td>
+            </tr>
+            <tr>
+              <td class="td-padding bg-lightgreen paragraph-wrapper" valign="top" colspan="3">
+                <h5>Key Questions on Your Relationship to Money:</h5>
+                <ol class="numbered-list">
+                  <li>
+                    {{ ('FDNAWMKeyQuestions1_Statement' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                  </li>
+                  <li>
+                    {{ ('FDNAWMKeyQuestions2_Reflect1_Question' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                  </li>
+                  <li>
+                    {{ ('FDNAWMKeyQuestions3_Reflect2_Question' | azureCoachingData:coachingReportAzureData:uniqueStyle) }}
+                  </li>
+                </ol>
+              </td>
+            </tr>
+          </table>
+          <div class="page-footer">
+            <table>
+              <tr>
+                <td>Page {{ getDisplayPageNumber(42) }}</td>
+                <td>{{ footerDate }}</td>
+                <td>{{ participantName }} - {{ uniqueStyle }}</td>
+                <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+                <td>ID#{{ accountId }}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      }
+
+      <div class="page-wrapper" id="43">
+        <table width="100%">
+          <tr>
+            <td class="table-head">
+              <table width="100%">
+                <tr>
+                  <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+                  <td class="main-heading" [ngStyle]="{ color: reportColor }">{{ (6 | mainSectionNumber:isBDNA:isFDNA) }}. Review of Other Unique Styles</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2" class="pb-16"></td>
+          </tr>
+          <tr>
+            <td class="td-padding td-background" valign="top" colspan="3">
+              <p class="mb-20">
+                In the DNA Behavior framework, there are ten unique styles, which are Adapter, Community Builder, Engager, Facilitator, Influencer,
+                Initiator, Reflective Thinker, Relationship Builder, Strategist, and Stylish Thinker.
+              </p>
+
+              <p>
+                Knowing your style helps you recognize others on your team who are similar or different, making it easier to collaborate and
+                communicate effectively.
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" class="pb-16"></td>
+          </tr>
+          <tr>
+            <td class="td-padding" valign="top" colspan="3" align="center">Others</td>
+          </tr>
+          <tr>
+            <td colspan="2" class="pb-16"></td>
+          </tr>
+          <tr>
+            <td class="td-padding" valign="top" colspan="3" align="center">
+              <img src="../../../../../../assets/images/others.png" alt="others" />
+            </td>
+          </tr>
+        </table>
+
+        <div class="page-footer">
+          <table>
+            <tr>
+              <td>Page {{ getDisplayPageNumber(43) }}</td>
+              <td>{{ footerDate }}</td>
+              <td>{{ participantName }} - {{ uniqueStyle }}</td>
+              <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+              <td>ID#{{ accountId }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="page-wrapper" id="44">
+        <table width="100%">
+          <tr>
+            <td class="table-head" colspan="3">
+              <table width="100%">
+                <tr>
+                  <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+                  <td class="main-heading" [ngStyle]="{ color: reportColor }">
+                    {{ (6 | mainSectionNumber:isBDNA:isFDNA) }}. Review of Other Unique Styles (Continued)
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr style="text-align: right">
+            <td colspan="6" class="pb-16"><qr-code [value]="uniqueStyleVideo" size="105" errorCorrectionLevel="H"></qr-code></td>
+          </tr>
+          <tr>
+            <td class="td-padding" valign="top" width="20%">
+              <table cellpadding="0" cellspacing="0" width="">
+                <tbody>
+                  <tr>
+                    <td class="review-wrapper" width="200" valign="middle" align="center">
+                      <img src="../../../../../../assets/images/adapter.png" alt="adapter" class="img-block" />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+            <td class="td-padding" width="20%" valign="top">
+              <table cellpadding="0" cellspacing="0">
+                <tbody>
+                  <tr>
+                    <td class="td-padding bg-e8e3d3">
+                      <strong>Key Traits</strong>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>- Mostly</td>
+                  </tr>
+                  <tr>
+                    <td>- Mid-Range</td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+            <td class="td-padding" valign="top" width="60%">
+              <p>
+                <strong>Adapters</strong> are unique in that they have the ability to adapt to the needs of their environment and display whatever
+                behaviors are necessary for success. They are very versatile, capable of focusing on both people and tasks and they partner and team
+                well with others. They typically read situations and respond as needed to be effective. They can generally perform well with a
+                variety of tasks relating to achieving their goals and managing their performance. Adapters operate most effectively when they have
+                very clearly defined expectations and boundaries.
+              </p>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="td-padding" valign="top" width="20%">
+              <table cellpadding="0" cellspacing="0" width="">
+                <tbody>
+                  <tr>
+                    <td class="review-wrapper" width="200" valign="middle" align="center">
+                      <img src="../../../../../../assets/images/community-builder.png" alt="community-builder" class="img-block" />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+            <td class="td-padding" width="20%" valign="top">
+              <table cellpadding="0" cellspacing="0">
+                <tbody>
+                  <tr>
+                    <td class="td-padding bg-e8e3d3">
+                      <strong>Key Traits</strong>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>- Outgoing</td>
+                  </tr>
+                  <tr>
+                    <td>- Patient</td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+            <td class="td-padding" valign="top" width="60%">
+              <p>
+                <strong>Community Builders</strong> are pleasant and energetic and excel at meeting people and promoting cooperation among groups.
+                They influence others through friendliness, enthusiasm, empathy and supportiveness. They bring a very positive attitude to the
+                workplace, and in a healthy environment, they will encourage others and operate diligently and collaboratively to achieve goals.
+                They are versatile and able to engage very effectively with both people and tasks; however, they do need frequent people interaction
+                to capitalize on their natural relationship skills. They function best in supportive relationships that are appreciative and loyal.
+              </p>
+            </td>
+          </tr>
+        </table>
+
+        <div class="page-footer">
+          <table>
+            <tr>
+              <td>Page {{ getDisplayPageNumber(44) }}</td>
+              <td>{{ footerDate }}</td>
+              <td>{{ participantName }} - {{ uniqueStyle }}</td>
+              <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+              <td>ID#{{ accountId }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="page-wrapper" id="45">
+        <table width="100%">
+          <tr>
+            <td class="table-head" colspan="3">
+              <table width="100%">
+                <tr>
+                  <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+                  <td class="main-heading" [ngStyle]="{ color: reportColor }">
+                    {{ (6 | mainSectionNumber:isBDNA:isFDNA) }}. Review of Other Unique Styles (Continued)
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2" class="pb-16"></td>
+          </tr>
+          <tr>
+            <td class="td-padding" valign="top" width="20%">
+              <table cellpadding="0" cellspacing="0" width="">
+                <tbody>
+                  <tr>
+                    <td class="review-wrapper" width="200" valign="middle" align="center">
+                      <img src="../../../../../../assets/images/engager.png" alt="engager" class="img-block" />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+            <td class="td-padding" width="20%" valign="top">
+              <table cellpadding="0" cellspacing="0">
+                <tbody>
+                  <tr>
+                    <td class="td-padding bg-e8e3d3">
+                      <strong>Key Traits</strong>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>- Patient</td>
+                  </tr>
+                  <tr>
+                    <td>- Cooperative</td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+            <td class="td-padding" valign="top" width="60%">
+              <p>
+                <strong>Engagers</strong> build a wide network of friends and contacts. They naturally connect with people in a broad array of
+                situations and use their natural enthusiasm to promote ideas, products and services. They typically are high- energy and they like
+                to break the stress of work with fun and social events. They are adventurous, excited by new ideas, and motivated by variety,
+                including meeting people from other cultures. They are passionate and expressive, leaving no doubt when they are happy or sad. They
+                prefer new opportunities and starting (rather than finishing) projects and goals.
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" class="pb-16"></td>
+          </tr>
+          <tr>
+            <td class="td-padding" valign="top" width="20%">
+              <table cellpadding="0" cellspacing="0" width="">
+                <tbody>
+                  <tr>
+                    <td class="review-wrapper" width="200" valign="middle" align="center">
+                      <img src="../../../../../../assets/images/facilitator.png" alt="facilitator" class="img-block" />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+            <td class="td-padding" width="20%" valign="top">
+              <table cellpadding="0" cellspacing="0">
+                <tbody>
+                  <tr>
+                    <td class="td-padding bg-e8e3d3">
+                      <strong>Key Traits</strong>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>- Patient</td>
+                  </tr>
+                  <tr>
+                    <td>- Reserved</td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+            <td class="td-padding" valign="top" width="60%">
+              <p>
+                <strong>Facilitators</strong> are typically very focused on the issues at hand and will move quickly to bring closure. They are
+                practical and usually good at finding the simplest solution. Their natural and preferred style is to lead by example. They maintain
+                amiable relationships with a wide array of people, but they prefer privacy and productivity to social networking. As part of a team,
+                they may hold back with their input. Being more forthright in the moment will allow them to contribute needed talents and
+                perspectives to the group.
+              </p>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="td-padding" valign="top" width="20%">
+              <table cellpadding="0" cellspacing="0" width="">
+                <tbody>
+                  <tr>
+                    <td class="review-wrapper" width="200" valign="middle" align="center">
+                      <img src="../../../../../../assets/images/influencer.png" alt="influencer" class="img-block" />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+            <td class="td-padding" width="20%" valign="top">
+              <table cellpadding="0" cellspacing="0">
+                <tbody>
+                  <tr>
+                    <td class="td-padding bg-e8e3d3">
+                      <strong>Key Traits</strong>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>- Take Charge</td>
+                  </tr>
+                  <tr>
+                    <td>- Outgoing</td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+            <td class="td-padding" valign="top" width="60%">
+              <p>
+                <strong>Influencers</strong> are able to engage and motivate people into action through their strong verbal talents and passion for
+                their ideas. They need big challenges and a good team to help them achieve their goals. They prefer the limelight and want to be
+                involved in decision-making. Influencers naturally want to help others develop. They are friendly and people-oriented until they get
+                under pressure to deliver on their commitments, and then they become very task- focused. They are usually visionary but need and
+                welcome help in building the structure and systems needed to achieve their goals.
+              </p>
+            </td>
+          </tr>
+        </table>
+
+        <div class="page-footer">
+          <table>
+            <tr>
+              <td>Page {{ getDisplayPageNumber(45) }}</td>
+              <td>{{ footerDate }}</td>
+              <td>{{ participantName }} - {{ uniqueStyle }}</td>
+              <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+              <td>ID#{{ accountId }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="page-wrapper" id="46">
+        <table width="100%">
+          <tr>
+            <td class="table-head" colspan="3">
+              <table width="100%">
+                <tr>
+                  <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+                  <td class="main-heading" [ngStyle]="{ color: reportColor }">
+                    {{ (6 | mainSectionNumber:isBDNA:isFDNA) }}. Review of Other Unique Styles (Continued)
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2" class="pb-16"></td>
+          </tr>
+          <tr>
+            <td class="td-padding" valign="top" width="20%">
+              <table cellpadding="0" cellspacing="0" width="">
+                <tbody>
+                  <tr>
+                    <td class="review-wrapper" width="200" valign="middle" align="center">
+                      <img src="../../../../../../assets/images/initiator.png" alt="initiator" class="img-block" />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+            <td class="td-padding" width="20%" valign="top">
+              <table cellpadding="0" cellspacing="0">
+                <tbody>
+                  <tr>
+                    <td class="td-padding bg-e8e3d3">
+                      <strong>Key Traits</strong>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>- Take Charge</td>
+                  </tr>
+                  <tr>
+                    <td>- Reserved</td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+            <td class="td-padding" valign="top" width="60%">
+              <p>
+                <strong>Initiators</strong> like to take bold, aggressive actions to make things happen. They like to create the rules, preferring
+                to lead, make decisions, and set the agenda for others to follow while monitoring the timely completion of tasks. They are
+                results-oriented, goal-driven people who like their expectations met, while preferring not to get caught up in unnecessary details.
+                Their decision-making will typically be fast-paced and rational. They are not afraid to take on challenging assignments and they are
+                comfortable accepting risks to realize their ambitions. They typically are unaware of the feelings and needs of others.
+              </p>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="td-padding" valign="top" width="20%">
+              <table cellpadding="0" cellspacing="0" width="">
+                <tbody>
+                  <tr>
+                    <td class="review-wrapper" width="200" valign="middle" align="center">
+                      <img src="../../../../../../assets/images/reflective.png" alt="reflective thinker" class="img-block" />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+            <td class="td-padding" width="20%" valign="top">
+              <table cellpadding="0" cellspacing="0">
+                <tbody>
+                  <tr>
+                    <td class="td-padding bg-e8e3d3">
+                      <strong>Key Traits</strong>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>- Planned</td>
+                  </tr>
+                  <tr>
+                    <td>- Reserved</td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+            <td class="td-padding" valign="top" width="60%">
+              <p>
+                <strong>Reflective Thinkers</strong> are serious, focused and analytical in their approach to everything they do. They enjoy
+                thinking through problems and researching information. Their accuracy and precision are valuable in any group setting, and they
+                bring objectivity to decision-making processes. They deal in specifics and are not impressed with generalities. Typically, they will
+                prefer to follow guidelines in completing tasks and will want to "get it right the first time." They usually dislike being put on
+                the spot for a quick answer and will want to reflect before responding with their well-thought-out ideas.
+              </p>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="td-padding" valign="top" width="20%">
+              <table cellpadding="0" cellspacing="0" width="">
+                <tbody>
+                  <tr>
+                    <td class="review-wrapper" width="200" valign="middle" align="center">
+                      <img src="../../../../../../assets/images/relationship.png" alt="relationship builder" class="img-block" />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+            <td class="td-padding" width="20%" valign="top">
+              <table cellpadding="0" cellspacing="0">
+                <tbody>
+                  <tr>
+                    <td class="td-padding bg-e8e3d3">
+                      <strong>Key Traits</strong>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>- Patient</td>
+                  </tr>
+                  <tr>
+                    <td>- Cooperative</td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+            <td class="td-padding" valign="top" width="60%">
+              <p>
+                <strong>Relationship Builders</strong> thrive when given the opportunity to work with and serve others. They are friendly, kind, and
+                empathetic, and gain fulfillment by helping others develop and achieve their potential. As leaders, they are good team-builders who
+                like to choose the right people and then help them be successful. They operate best in a stable, low-stress environment where there
+                is an established vision, clear expectations, fairness, and consistent processes. Making rapid changes and taking risks are usually
+                not their strengths.
+              </p>
+            </td>
+          </tr>
+        </table>
+
+        <div class="page-footer">
+          <table>
+            <tr>
+              <td>Page {{ getDisplayPageNumber(46) }}</td>
+              <td>{{ footerDate }}</td>
+              <td>{{ participantName }} - {{ uniqueStyle }}</td>
+              <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+              <td>ID#{{ accountId }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="page-wrapper" id="47">
+        <table width="100%">
+          <tr>
+            <td class="table-head" colspan="3">
+              <table width="100%">
+                <tr>
+                  <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+                  <td class="main-heading" [ngStyle]="{ color: reportColor }">
+                    {{ (6 | mainSectionNumber:isBDNA:isFDNA) }}. Review of Other Unique Styles (Continued)
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2" class="pb-16"></td>
+          </tr>
+          <tr>
+            <td class="td-padding" valign="top" width="20%">
+              <table cellpadding="0" cellspacing="0" width="">
+                <tbody>
+                  <tr>
+                    <td class="review-wrapper" width="200" valign="middle" align="center">
+                      <img src="../../../../../../assets/images/strategist.png" alt="strategist" class="img-block" />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+            <td class="td-padding" width="20%" valign="top">
+              <table cellpadding="0" cellspacing="0">
+                <tbody>
+                  <tr>
+                    <td class="td-padding bg-e8e3d3">
+                      <strong>Key Traits</strong>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>- Planned</td>
+                  </tr>
+                  <tr>
+                    <td>- Fast-Paced</td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+            <td class="td-padding" valign="top" width="60%">
+              <p>
+                <strong>Strategists</strong> naturally blend their strong drive to reach key goals with knowledge, organized processes and high
+                standards of quality control. As a result, they are equipped to be strategic players in situations where achieving results is a
+                priority. They typically envision the systems necessary to achieve ambitious goals. They follow a matter-of-fact, rational,
+                objective approach that enhances their ability to make difficult decisions. Seeing the needs and feelings of others is not their
+                strength, and Strategists who recognize this engage those with a "feelings" radar to help them balance their approach.
+              </p>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="td-padding" valign="top" width="20%">
+              <table cellpadding="0" cellspacing="0" width="">
+                <tbody>
+                  <tr>
+                    <td class="review-wrapper" width="200" valign="middle" align="center">
+                      <img src="../../../../../../assets/images/stylish.png" alt="stylish thinker" class="img-block" />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+            <td class="td-padding" width="20%" valign="top">
+              <table cellpadding="0" cellspacing="0">
+                <tbody>
+                  <tr>
+                    <td class="td-padding bg-e8e3d3">
+                      <strong>Key Traits</strong>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>- Planned</td>
+                  </tr>
+                  <tr>
+                    <td>- Outgoing</td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+            <td class="td-padding" valign="top" width="60%">
+              <p>
+                <strong>Stylish Thinkers</strong> exhibit two traits that normally do not go together: Planned (organized) and Outgoing (social).
+                This equips them to understand systems and details and enjoy connecting with people. This unusual combination enables them to
+                understand and analyze technical subjects and then explain or teach them to non-technical audiences. They like to test ideas in
+                discussions with other people. They are usually strong in grasping the vision and following through on their goals. Typically they
+                have a gift for style and like to make things look good.
+              </p>
+            </td>
+          </tr>
+        </table>
+
+        <div class="page-footer">
+          <table>
+            <tr>
+              <td>Page {{ getDisplayPageNumber(47) }}</td>
+              <td>{{ footerDate }}</td>
+              <td>{{ participantName }} - {{ uniqueStyle }}</td>
+              <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+              <td>ID#{{ accountId }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>

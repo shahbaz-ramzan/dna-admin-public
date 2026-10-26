@@ -1,0 +1,30 @@
+<div class="user-card workTlntRlt">
+    <a class="fw-bold insights-card-headings" href="https://kb.dnabehavior.com/gene/work-talent-cards-explained#Work-talents" target="_blank"
+        ><span data-testId="title" pTooltip="Learn how to use these insights" tooltipPosition="top" tooltipEvent="hover">Work Talents</span>
+    </a>
+    <div data-testId="circle-progress-content" *ngFor="let workTalent of workTalentObject" class="khnobWrap d-flex align-items-center w-100">
+        <circle-progress
+            [title]="workTalent.value.toString()"
+            [percent]="workTalent.label === workTalent.comparison1 ? workTalent.value : 100 - workTalent.value"
+            [radius]="30"
+            [outerStrokeWidth]="8"
+            [innerStrokeWidth]="8"
+            [outerStrokeColor]="secondaryColor"
+            [innerStrokeColor]="primaryColor"
+            [animation]="false"
+            [animationDuration]="300"
+            [imageHeight]="74"
+            [imageWidth]="74"
+            [showSubtitle]="false"
+            [titleColor]="workTalent.label === workTalent.comparison1 ? secondaryColor : primaryColor"
+            [unitsColor]="workTalent.label === workTalent.comparison1 ? secondaryColor : primaryColor"
+        ></circle-progress>
+        <div class="ps-4">
+            <h4 class="fw-bold">
+                <span class="sp1">{{ workTalent.comparison1 }}</span> vs
+                <span class="sp2">{{ workTalent.comparison2 }}</span>
+            </h4>
+            <p>{{ workTalent.description }}</p>
+        </div>
+    </div>
+</div>

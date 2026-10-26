@@ -1,0 +1,115 @@
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-lg-12 col-xl-12">
+        <div class="cntBox">
+            <div class="regHead d-flex align-items-center justify-content-between">
+                <h5 class="mb-0">
+                    App Tours
+                    <em class="icon-information" pTooltip="Manage App tours and their activation status." tooltipPosition="right" tooltipEvent="hover"> </em>
+                </h5>
+                <p-button label="Add Tour" icon="pi pi-plus" styleClass="p-button-primary" (onClick)="addTour()"> </p-button>
+            </div>
+
+            <div class="pt-3 pb-3 w-100 registration-linkstable">
+                <app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
+                <p-table [value]="appcuesTours" [paginator]="appcuesTours.length >= 10 ? true : false" [rows]="10" [totalRecords]="toursTotalRecords">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th pSortableColumn="tourId" scope="col">Tour ID</th>
+                            <th pSortableColumn="tourKey" scope="col">Tour Key</th>
+                            <th pSortableColumn="version" scope="col">Version</th>
+                            <th pSortableColumn="isActive" scope="col">Status</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-tour>
+                        <tr>
+                            <td>
+                                <span class="fw-bold">{{ tour.tourId }}</span>
+                            </td>
+                            <td>
+                                <span>{{ tour.tourKey }}</span>
+                            </td>
+                            <td>
+                                <span>{{ tour.version }}</span>
+                            </td>
+                            <td>
+                                <span *ngIf="tour.isActive">Active</span>
+                                <span *ngIf="!tour.isActive">Inactive</span>
+                            </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-xs-12 col-sm-12 col-lg-12 col-xl-12">
+        <div class="cntBox">
+            <div class="regHead d-flex align-items-center justify-content-between">
+                <h5 class="mb-0">
+                    App Banners
+                    <em class="icon-information" pTooltip="Manage App banners and their activation status." tooltipPosition="right" tooltipEvent="hover"> </em>
+                </h5>
+                <p-button label="Add Banner" icon="pi pi-plus" styleClass="p-button-primary" (onClick)="addBanner()"> </p-button>
+            </div>
+
+            <div class="pt-3 pb-3 w-100 registration-linkstable">
+                <app-loading-spinner *ngIf="isLoading"></app-loading-spinner>
+                <p-table [value]="appcuesBanners" [paginator]="appcuesBanners.length >= 10 ? true : false" [rows]="10" [totalRecords]="bannersTotalRecords">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th pSortableColumn="bannerId" scope="col">Banner ID</th>
+                            <th pSortableColumn="bannerKey" scope="col">Banner Key</th>
+                            <th pSortableColumn="version" scope="col">Version</th>
+                            <th pSortableColumn="isActive" scope="col">Status</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-banner>
+                        <tr>
+                            <td>
+                                <span class="fw-bold">{{ banner.bannerId }}</span>
+                            </td>
+                            <td>
+                                <span>{{ banner.bannerKey }}</span>
+                            </td>
+                            <td>
+                                <span>{{ banner.version }}</span>
+                            </td>
+                            <td>
+                                <span *ngIf="banner.isActive">Active</span>
+                                <span *ngIf="!banner.isActive">Inactive</span>
+                            </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Tour Creation Popover -->
+<app-appcues-item-popover
+    [(visible)]="tourPopoverVisible"
+    [itemType]="'tour'"
+    [title]="'Add New Tour'"
+    [submitButtonText]="'Add Tour'"
+    [cancelButtonText]="'Cancel'"
+    [isLoading]="isCreatingTour"
+    (itemCreated)="onTourCreated($event)"
+    (cancelled)="onTourCancelled()"
+    (visibleChange)="onTourVisibleChange($event)"
+></app-appcues-item-popover>
+
+<!-- Banner Creation Popover -->
+<app-appcues-item-popover
+    [(visible)]="bannerPopoverVisible"
+    [itemType]="'banner'"
+    [title]="'Add New Banner'"
+    [submitButtonText]="'Add Banner'"
+    [cancelButtonText]="'Cancel'"
+    [isLoading]="isCreatingBanner"
+    (itemCreated)="onBannerCreated($event)"
+    (cancelled)="onBannerCancelled()"
+    (visibleChange)="onBannerVisibleChange($event)"
+></app-appcues-item-popover>

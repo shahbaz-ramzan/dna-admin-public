@@ -1,0 +1,233 @@
+<p-confirmPopup></p-confirmPopup>
+
+<div [ngClass]="users.length === 0 ? 'none-selected' : ''" class="cntBox participant-box">
+    <h5 class="mb-4">DNA Behavior Support</h5>
+    <app-loading-spinner *ngIf="isTopLevelSearchLoading || isUserSaving"></app-loading-spinner>
+    <form>
+        <div class="d-flex userRole">
+            <div class="tags-filter-wrap mw-500 w-100 mb-4">
+                <p-avatar icon="pi pi-sliders-v" severity="danger" class="filterIcon" (click)="showFilterModal()"></p-avatar>
+
+                <div class="p-input-icon-left ms-3 search-input">
+                    <i class="pi pi-search"></i>
+                    <input type="text" pInputText (keyup.enter)="searchUser(1)" (input)="usersTableSearch($event.target)" placeholder="Search" />
+                </div>
+                <button pButton type="button" class="search-btn" label="Search" (click)="searchUser(1)"></button>
+            </div>
+        </div>
+    </form>
+    <div class="w-100 d-flex justify-content-center align-items-center no-user-data" *ngIf="users.length === 0; else usersTable">
+        <img src="/assets/images/no-user-data.png" alt="" />
+        <h4>No Participant Found</h4>
+        <p class="insight-text-desktop">Search participants from the above search field.</p>
+        <p class="insight-text-mobile">Search participants from the above search field.</p>
+    </div>
+    <ng-template #usersTable>
+        <div id="dnaTable" class="userTable">
+            <p-table
+                #usersTable
+                [value]="users"
+                [paginator]="users.length >= 10 || currentPage > 1 ? true : false"
+                [rows]="10"
+                [lazy]="true"
+                [totalRecords]="totalRecords"
+                (onLazyLoad)="loadMoreUsers($event)"
+            >
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Unique Style</th>
+                        <th>Person ID</th>
+                        <th>Account Name</th>
+                        <th>Account ID</th>
+                        <th>Actions</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-data let-index>
+                    <tr>
+                        <td>
+                            <span class="img-wrap">
+                                <img
+                                    [src]="data.profilePictureUrl ? data.profilePictureUrl : '../../../../assets/images/profile.svg'"
+                                    alt="icon"
+                                    width="35"
+                                    height="35"
+                                    style="border-radius: 50%"
+                                /><span class="table-text-warp">{{ data.firstName }}</span>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="table-text-warp">{{ data.lastName }}</span>
+                        </td>
+                        <td>
+                            <span>{{ data.uniqueStyle }}</span>
+                        </td>
+                        <td>
+                            <span>{{ data.personID }}</span>
+                        </td>
+                        <td>
+                            {{ data.accountName }}
+                        </td>
+                        <td>
+                            <span>{{ data.accountId }}</span>
+                        </td>
+                        <td>
+                            <div class="d-flex actions">
+                                <!-- No unique style = Discovery not completed: disabled with the users table's tooltip
+                                     message. The tooltip sits on a wrapper because a disabled button gets no mouse events. -->
+                                <span pTooltip="Discovery not completed for this participant" [tooltipDisabled]="!!data.uniqueStyle" tooltipPosition="top">
+                                    <button
+                                        pButton
+                                        pRipple
+                                        type="button"
+                                        icon="pi pi-eye"
+                                        class="p-button-rounded p-button-text eye-icon"
+                                        [disabled]="!data.uniqueStyle"
+                                        (click)="viewUserProfile(data)"
+                                    ></button>
+                                </span>
+                                <button
+                                    pButton
+                                    pRipple
+                                    type="button"
+                                    icon="icon-edit"
+                                    class="p-button-rounded p-button-text p-button-danger"
+                                    (click)="onUserSelect(data)"
+                                ></button>
+
+                                <button
+                                    pButton
+                                    pRipple
+                                    type="button"
+                                    icon="pi pi-trash"
+                                    (click)="deleteUserConfirmation($event, data.accountId, data.personID)"
+                                    class="p-button-rounded p-button-text p-button-danger"
+                                ></button>
+                            </div>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </ng-template>
+</div>
+
+<p-sidebar [(visible)]="filterSider" [visible]="false" position="left" [baseZIndex]="10000" [showCloseIcon]="false" class="sidebarMenu">
+    <div class="filterHeader d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center">
+            <i class="pi pi-sliders-v"></i>
+            <h5 class="mb-0 ms-2 fw-bold">Filters</h5>
+        </div>
+        <button type="button" pButton pRipple (click)="filterSider = false" icon="pi pi-times" class="p-button-rounded p-button-text p-button-plain"></button>
+    </div>
+    <div class="filterBody">
+        <h5>Filters</h5>
+        <div class="p-field-radiobutton" *ngFor="let userFilter of userFilters">
+            <p-radioButton [inputId]="userFilter.name" name="userFilter" [value]="userFilter" [(ngModel)]="selectedUserFilter"></p-radioButton>
+            <label [for]="userFilter.name">{{ userFilter.name }}</label>
+        </div>
+    </div>
+    <div class="filterBarFooter d-flex justify-content-end">
+        <p-button class="applyFilter" (click)="filterSider = false" label="Apply"></p-button>
+    </div>
+</p-sidebar>
+
+<ng-container *ngIf="displayModal">
+    <p-dialog header="Manage Participant" [(visible)]="displayModal" class="dna-modal edit-profile" [modal]="true" [baseZIndex]="10000">
+        <app-loading-spinner *ngIf="isUserSaving || getParticipantAccountsLoading || resetPasswordLoading"></app-loading-spinner>
+        <form #modalForm="ngForm">
+            <div class="d-flex u-info-wrap">
+                <div class="ProfileWrap ps-0">
+                    <img
+                        id="profile-pic"
+                        class="avatar-circle p-mr-2"
+                        src="{{ selectedUser?.profilePictureUrl ? selectedUser?.profilePictureUrl : '../../../../assets/images/profile.svg' }}"
+                        alt=""
+                    />
+                </div>
+                <div class="row desc-wrap">
+                    <div class="col-xs-12 col-sm-12 col-lg-8 col-xl-8">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-lg-6 col-xl-6">
+                                <div class="cntBox">
+                                    <h5>First Name</h5>
+                                    <p class="mb-0">
+                                        {{ selectedUser?.firstName }}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-lg-6 col-xl-6">
+                                <div class="cntBox">
+                                    <h5>Last Name</h5>
+                                    <p class="mb-0">
+                                        {{ selectedUser?.lastName }}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-lg-4 col-xl-4" *ngIf="selectedUser.uniqueStyle">
+                        <div class="cntBox">
+                            <h5>Unique Style</h5>
+                            <p class="mb-0">{{ selectedUser?.uniqueStyle }}</p>
+                        </div>
+                    </div>
+                    <p-button label="Reset Password" (click)="resetPassword(selectedUser?.personID)" class="resetPasswordButton" type="submit"></p-button>
+                </div>
+            </div>
+            <div class="cntBox">
+                <!-- <h4 class="b">Shift Particitpant</h4> -->
+                <div class="shift-transfer-wrap">
+                    <div class="shift-inr-wrap">
+                        <div class="form-group">
+                            <h5>Current Account</h5>
+                            <label for="uname">Account ID</label>
+                            <input placeholder="Account id" id="accountID" name="accountID" [ngModel]="selectedUser?.accountId" pInputText [disabled]="true" />
+                        </div>
+                        <div class="form-group">
+                            <label for="accountName">Account Name</label>
+                            <input
+                                placeholder="Account Name"
+                                id="accountName"
+                                name="accountName"
+                                [ngModel]="selectedUser?.accountName"
+                                pInputText
+                                [disabled]="true"
+                            />
+                        </div>
+                    </div>
+                    <i class="icon-angle-right"></i>
+                    <div class="shift-inr-wrap">
+                        <div class="form-group">
+                            <h5>Add to Additional Account</h5>
+                            <label for="uname">Account ID</label>
+                            <p-inputNumber
+                                (onInput)="onAccountInputChange($event)"
+                                name="accountId"
+                                [(ngModel)]="additionalAccountId"
+                                [useGrouping]="false"
+                                class="selectField w-100"
+                                mode="decimal"
+                            >
+                            </p-inputNumber>
+                        </div>
+                        <div class="form-group">
+                            <label for="selectedAccountName">Account Name</label>
+                            <input name="selectedAccountName" [ngModel]="selectedAccount?.accountName" pInputText [disabled]="true" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <ng-template pTemplate="footer">
+            <button pButton type="button" label="Cancel" class="p-button-secondary p-button-text" (click)="displayModal = false"></button>
+            <p-button
+                label="Save"
+                (click)="saveUserToAccount(selectedAccount?.accountID, selectedUser?.personID, true, 'Shared by top level admin')"
+                class="nextBtn"
+                type="submit"
+            ></p-button>
+        </ng-template>
+    </p-dialog>
+</ng-container>

@@ -1,0 +1,82 @@
+.spinner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.verified-email-wrap {
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    position: relative;
+    justify-content: center;
+    flex-direction: column;
+    @media screen and (min-width: 768px) {
+        padding-top: 95px;
+    }
+    padding: 15px;
+    padding-bottom: 50px;
+    .app-logo {
+        margin-bottom: 20px;
+        img {
+            max-width: 140px;
+        }
+        max-width: 140px;
+        @media screen and (min-width: 768px) {
+            position: absolute;
+            top: 40px;
+            left: 40px;
+        }
+    }
+}
+
+.verified-email-card {
+    padding: 15px;
+    @media screen and (min-width: 768px) {
+        padding: 50px;
+    }
+    min-height: 500px;
+    max-width: 650px;
+    width: 100%;
+    background-color: #fff;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    h2 {
+        font-weight: 700;
+    }
+    p {
+        margin-bottom: 30px;
+    }
+    .verify-email-icon{
+        width: 100px;
+        height: 100px;
+        margin-bottom: 30px;
+        color: '#fff';
+    }
+    .primaryButton {
+        font-size: 1.125rem;
+        font-weight: 700;
+        height: 50px;
+        min-width: 200px;
+        color: #fff;
+    }
+}
+
+.verify-email-footer {
+    position: absolute;
+    bottom: 0.5rem;
+    width: 100%;
+    text-align: center;
+    left: 0;
+    padding: 0.5rem;
+    color: #7e858e;
+    font-size: 12px;
+    font-weight: 400;
+}

@@ -1,0 +1,16 @@
+:host ::ng-deep .user-toast .pi-info-circle {
+    font-size: 2rem;
+    color: var(--secondary-color2);
+}
+:host ::ng-deep .user-toast .p-toast-icon-close {
+    width: 4rem;
+    color: var(--secondary-color2);
+}
+:host ::ng-deep .user-toast .p-toast-message {
+    background-color: #fff;
+    border-color: var(--primary-color);
+}
+:host ::ng-deep .user-toast .p-toast-message p {
+    margin-left: 20px;
+    color: var(--title-clr);
+} /*# sourceMappingURL=app.component.css.map */

@@ -1,0 +1,37 @@
+<div class="userInfoBar">
+    <div class="uAvatar align-items-center d-flex">
+        <p-avatarGroup label="P">
+            <p-avatar image="{{ images.length && images[0] }}" size="large" shape="circle"> </p-avatar>
+            <p-avatar image="{{ images[1] }}" size="large" shape="circle"> </p-avatar>
+            <p-avatar image="{{ images[2] }}" size="large" shape="circle"> </p-avatar>
+            <ng-container *ngIf="showMultiAvatar">
+                <p-avatar size="large" shape="circle" class="plus-user"> +{{ additionalUsers }}</p-avatar>
+            </ng-container>
+        </p-avatarGroup>
+    </div>
+    <!-- <ul class="list-inline">
+    <li>
+      <span class="fw-medium">Tags</span>
+      <p class="clientBadge">{{ tag }}</p>
+    </li>
+    <li>
+      <span>Completed</span>
+      <P>{{ date }}</P>
+    </li>
+    <li>
+      <span>Unique Style</span>
+      <P
+        >{{ uniqueStyle
+        }}<i
+          class="icon-information"
+          pTooltip="There are 10 unique styles included in Business DNA Natural Behavior. Below is a video series we produced which we have a short video on each style and attached is our 'Unlocking Guide' an Unlocking Human Capital Performance guide to the 10 unique styles of Business DNA, use these resources to become familiar with the unique styles."
+          tooltipPosition="right"
+        ></i
+      ></P>
+    </li>
+    <li>
+      <span>Advisor</span>
+      <P>{{ advisor }}</P>
+    </li>
+  </ul> -->
+</div>

@@ -1,0 +1,21 @@
+.wspaceCard {
+    padding: 20px;
+    min-height: 265px;
+    border-radius: 6px;
+    position: relative;
+    border: solid 1px var(--cm-border-clr);
+    overflow: auto;
+}
+.wspaceCard .graphHeading {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--title-clr);
+}
+.wspaceCard .icon-dots {
+    font-size: 4px;
+}
+@media screen and (max-width: 767px) {
+    .wspaceCard .single-line-chart {
+        width: 700px;
+    }
+} /*# sourceMappingURL=workplace-insights.component.css.map */

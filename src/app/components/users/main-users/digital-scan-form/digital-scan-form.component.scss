@@ -1,0 +1,55 @@
+::ng-deep *::placeholder,
+::ng-deep .p-placeholder {
+    color: rgb(201, 201, 201);
+}
+
+.input-container {
+    display: flex;
+    gap: 4px;
+    width: 100%;
+}
+
+.flex-input {
+    width: 90% !important;
+}
+
+.info-link {
+    width: 10%;
+    display: flex;
+    align-items: center;
+    padding-left: 4px;
+    .pi-question-circle {
+        font-size: 14px;
+    }
+}
+
+/* Ensure the icon is properly aligned */
+.icon-information {
+    display: flex;
+    align-items: center;
+}
+
+/* Character counter red state when at or over limit */
+.char-counter-red {
+    color: #dc3545;
+    font-weight: 600;
+}
+
+/* Tour Button Styling - Clean and minimal */
+:host ::ng-deep .tour-back-btn {
+    background-color: #D9D9D9 !important;
+    border-color: #D9D9D9 !important;
+    color: white !important;
+    
+    &:hover {
+        background-color: #D9D9D9 !important;
+        border-color: #D9D9D9 !important;
+        opacity: 0.9;
+    }
+}
+
+:host ::ng-deep .tour-next-btn {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+    color: white !important;
+}

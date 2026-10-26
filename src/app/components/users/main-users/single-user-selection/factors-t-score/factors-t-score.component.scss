@@ -1,0 +1,17 @@
+.tScoresCard {
+    min-height: 265px;
+    .graphHeading {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--title-clr);
+        small {
+            font-size: 0.875rem;
+            font-weight: 400;
+        }
+    }
+    .t-score-collapsed {
+        background: var(--Whitesmoke-clr);
+        border-color: var(--Whitesmoke-clr);
+        color: #000;
+    }
+}

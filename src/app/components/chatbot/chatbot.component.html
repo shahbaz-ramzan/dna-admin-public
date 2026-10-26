@@ -1,0 +1,137 @@
+<div id="chatbot-wrapper" [class.minimized]="isMinimized" *ngIf="isDesktopView">
+    <div class="chatbot-header" [class.loading]="!isDownloadReady">
+        <div class="header-left">
+            <div class="avatar-icon" [class.loading]="!isDownloadReady">
+                <img
+                    src="https://res.cloudinary.com/diiak30kv/image/upload/c_lfill,f_auto,g_auto,q_auto,h_300,w_300,q_auto/swxwzwdvm8pmujz7lvjz.png"
+                    alt="Assistant"
+                    style="width: 32px; height: 32px; border-radius: 50%"
+                />
+            </div>
+            <div class="chatbot-title">
+                <ng-container *ngIf="isDownloadReady; else loadingTitle">Gene Facilitate</ng-container>
+                <ng-template #loadingTitle>
+                    <div class="loading-title">
+                        <span class="loading-text">Initializing Gene</span>
+                        <div class="loading-dots">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                </ng-template>
+            </div>
+        </div>
+        <div class="chatbot-controls">
+            <div class="feedback-buttons">
+                <button
+                    *ngIf="!isMinimized"
+                    class="feedback-btn"
+                    [class.active]="feedbackStatus === 'GOOD'"
+                    (click)="giveFeedback(true)"
+                    title="Thumbs up"
+                    [disabled]="feedbackStatus === 'GOOD'"
+                >
+                    <i class="pi pi-thumbs-up"></i>
+                </button>
+                <button
+                    *ngIf="!isMinimized"
+                    class="feedback-btn"
+                    [class.active]="feedbackStatus === 'BAD'"
+                    (click)="giveFeedback(false)"
+                    title="Thumbs down"
+                    [disabled]="feedbackStatus === 'BAD'"
+                >
+                    <i class="pi pi-thumbs-down"></i>
+                </button>
+                <button
+                    class="minimize-btn"
+                    (click)="toggleMinimize()"
+                    [disabled]="!isDownloadReady"
+                    [class.disabled]="!isDownloadReady"
+                    [title]="!isDownloadReady ? 'Chatbot will be available when report is ready' : ''"
+                >
+                    <i class="pi pi-sort-up" *ngIf="isMinimized"></i>
+                    <i class="pi pi-sort-down" *ngIf="!isMinimized"></i>
+                </button>
+            </div>
+            <!-- <button class="clear-btn" [class.clearing]="isClearingChat" (click)="clearChat()" title="Clear chat">
+                <i class="fas fa-sync-alt"></i>
+            </button> -->
+        </div>
+    </div>
+
+    <div class="chatbot-content" *ngIf="!isMinimized">
+        <div class="messages-container" #messagesContainer (scroll)="onMessagesScroll($event)">
+            <div
+                *ngFor="let message of messages"
+                [class.user-message]="message.role === 'user'"
+                [class.assistant-message]="message.role === 'assistant'"
+                class="message-wrapper"
+            >
+                <div class="message-avatar" *ngIf="message.role === 'assistant'">
+                    <div class="avatar-icon">
+                        <img
+                            src="https://res.cloudinary.com/diiak30kv/image/upload/c_lfill,f_auto,g_auto,q_auto,h_300,w_300,q_auto/swxwzwdvm8pmujz7lvjz.png"
+                            alt="Assistant"
+                            style="width: 32px; height: 32px; border-radius: 50%"
+                        />
+                    </div>
+                </div>
+                <div class="message">
+                    <div class="message-content">
+                        <ng-container *ngIf="message.content; else loadingTemplate">
+                            <ng-container *ngIf="message.role === 'assistant'">
+                                <markdown [data]="message.content"></markdown>
+                            </ng-container>
+                            <ng-container *ngIf="message.role === 'user'">
+                                {{ message.content }}
+                            </ng-container>
+                        </ng-container>
+                        <ng-template #loadingTemplate>
+                            <div class="typing-indicator">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </ng-template>
+                    </div>
+                </div>
+                <div class="message-footer" *ngIf="message.content">
+                    <div class="message-timestamp">
+                        {{ message.timestamp | date: 'shortTime' }}
+                    </div>
+                    <button
+                        *ngIf="message.role === 'assistant'"
+                        class="copy-btn"
+                        (click)="copyToClipboard(message.content, messages.indexOf(message))"
+                        title="Copy to clipboard"
+                    >
+                        {{ copiedMessageId === messages.indexOf(message) ? '✓' : '📋' }}
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll to bottom button -->
+        <div class="scroll-to-bottom-container" *ngIf="showScrollToBottom">
+            <button class="scroll-to-bottom-btn" (click)="forceScrollToBottom()" title="Scroll to bottom">
+                <i class="pi pi-chevron-down"></i>
+            </button>
+        </div>
+
+        <div class="input-container">
+            <textarea
+                #messageInput
+                [(ngModel)]="newMessage"
+                (keydown)="handleKeydown($event)"
+                (input)="adjustTextareaHeight()"
+                (focus)="onTextareaFocus()"
+                placeholder="Type your message..."
+                [attr.disabled]="(isLoading$ | async) ? '' : null"
+                rows="1"
+            ></textarea>
+            <button (click)="sendMessage()" [attr.disabled]="(isLoading$ | async) || !newMessage.trim() ? '' : null">Send</button>
+        </div>
+    </div>
+</div>

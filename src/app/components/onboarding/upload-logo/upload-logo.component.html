@@ -1,0 +1,44 @@
+<div ngClass="form-group mw-420">
+    <h4>Now, upload your logo.</h4>
+    <label for="inputUploadLogo">Select files to upload Or drag and drop files</label>
+    <div ngClass="custom-file" *ngIf="selectedLogo === null; else imagePreview">
+        <input
+            (change)="onLogoSelected($event)"
+            type="file"
+            ngClass="custom-file-input"
+            id="inputUploadLogo"
+            #logo="ngModel"
+            ngModel
+            accept="{{ imageFormats }}"
+        />
+        <!-- [ngStyle]="{
+      'border-color':
+        (isValidationChecked && !isLogoValid) ||
+        (logo.touched && !isLogoValid)
+          ? 'red'
+          : ''
+    }" -->
+
+        <label ngClass="custom-file-label" for="inputUploadLogo">Browse</label>
+
+        <!-- <span
+      style="color: red"
+      *ngIf="
+        (isValidationChecked && !isLogoValid) || (logo.touched && !isLogoValid)
+      "
+    >
+      Please Select Logo<br />
+    </span> -->
+    </div>
+
+    <ng-template #imagePreview>
+        <div ngClass="form-group mw-420">
+            <div ngClass="uploaded-logo">
+                <img [src]="selectedLogo" alt="logo" />
+                <button pButton ngClass="btn-del-logo" (click)="deleteLogo()">
+                    <i ngClass="pi pi-trash"></i>
+                </button>
+            </div>
+        </div>
+    </ng-template>
+</div>

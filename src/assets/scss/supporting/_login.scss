@@ -1,0 +1,13 @@
+.login-contentarea {
+    @media screen and (max-width: 767px) {
+        text-align: center;
+    }
+    .app-logo {
+        margin-bottom: 55px !important;
+    }
+    .primaryButton {
+        min-width: 200px;
+        height: 48px;
+        margin-top: 35px;
+    }
+}

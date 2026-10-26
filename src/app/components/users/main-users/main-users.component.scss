@@ -1,0 +1,759 @@
+.users-page-wrapper {
+    padding: 30px;
+    min-height: calc(100vh - 38px);
+    width: 100%;
+    display: flex;
+    position: relative;
+    padding-top: var(--page-padding-top, 96px);
+    // Safety net so nothing inside the page can add a horizontal page scroll. clip (not hidden)
+    // doesn't make this a scroll container, so the table's position: sticky keeps working.
+    overflow-x: clip;
+    @media screen and (max-width: 991px) {
+        flex-wrap: wrap;
+    }
+    @media screen and (max-width: 767px) {
+        padding: 30px 15px;
+        padding-top: var(--page-padding-top, 96px);
+    }
+    .users-table {
+        transition: all ease-in-out 0.3s;
+        // Always establish a positioning context here so the absolutely-positioned
+        // .dna-spinner overlay (used for the table's loading state) is scoped to this
+        // panel — without it, on widths where the media queries below don't set
+        // position, the spinner falls back to .users-page-wrapper and covers the
+        // whole page (table + user-details panel) instead of just the table area.
+        position: relative;
+        // .users-page-wrapper is a flex row, and flex's default align-items: stretch would
+        // otherwise force this panel to match .user-details' height (which can be very tall once
+        // a report renders). That's wrong on its own (a short table padded out with empty
+        // space), and it breaks the loading spinner above: .dna-spinner is absolutely positioned
+        // at 100% height of this panel and centers itself within whatever that stretched height
+        // turns out to be - i.e. far below the actual visible table once scrolled down. Scoped to
+        // this one panel (align-self) rather than the wrapper's align-items so .user-details'
+        // own sizing is untouched.
+        // align-self: flex-start;
+        .u-inner-row {
+            width: 100%;
+            overflow: auto;
+            height: 100%;
+            .tags-filter-wrap {
+                padding: 24px 24px 0 19px;
+            }
+        }
+        @media screen and (min-width: 992px) and (max-width: 1199px) {
+            flex: 0 0 460px;
+            height: calc(100vh - 135px);
+            position: -webkit-sticky;
+            position: sticky;
+            top: 100px;
+            // The global 90px cell cap (_commonFeatures.scss) makes the table ~530px wide, wider
+            // than this 460px panel - .u-inner-row then clips it and the delete column is cut off.
+            .table-text-warp {
+                max-width: 65px;
+            }
+        }
+        @media screen and (min-width: 1200px) {
+            flex: 0 0 538px;
+        }
+        @media screen and (max-width: 1199px) {
+            width: 50%;
+        }
+        @media screen and (max-width: 991px) {
+            width: 100%;
+            height: 530px;
+            position: relative;
+            margin-bottom: 20px;
+        }
+        background: var(--white-color);
+        tr {
+            background-color: var(--white-color);
+        }
+        &.side-bar + .user-details {
+            margin-left: 13px;
+            flex: 1;
+            @media screen and (max-width: 991px) {
+                width: 100%;
+                margin-top: 15px;
+                margin-left: 0;
+            }
+        }
+        &.full-bar {
+            overflow: hidden;
+            @media screen and (min-width: 992px) {
+                transform: translateX(-107%);
+                opacity: 0;
+            }
+        }
+    }
+    .user-details {
+        padding: 26px 20px;
+        background-color: var(--white-color);
+        box-sizing: border-box;
+        // flex: 1 (set via .side-bar + .user-details) already gives this panel exactly the space the
+        // table leaves. min-width: 0 stops its content from overriding that (flex items default to
+        // min-width: auto) and pushing the page into a horizontal scroll.
+        min-width: 0;
+        &.full-content {
+            width: 100%;
+            @media screen and (min-width: 992px) {
+                margin-left: -400px;
+            }
+            @media screen and (min-width: 1199px) {
+                margin-left: -460px;
+            }
+        }
+        &.side-content {
+            // No hardcoded max-width (was calc(100% - 473px/551px)): it assumed the table is exactly
+            // 460px/538px, but the table grows to fit its toolbar (~530px at 992-1199px), so the two
+            // panels together overflowed the page by ~70px.
+            @media screen and (max-width: 992px) {
+                max-width: initial !important;
+                width: 100% !important;
+            }
+        }
+    }
+}
+
+:host {
+    ::ng-deep .p-badge.p-badge-danger {
+        background-color: #f44336;
+        width: 23px;
+        height: 23px;
+        font-weight: 500;
+        font-family: 'Calibri', sans-serif;
+        color: var(--white-color);
+    }
+
+    ::ng-deep .inviteModal {
+        .p-dialog {
+            @media screen and (max-width: 767px) {
+                max-width: 90%;
+                width: 90%;
+            }
+            .p-dialog-header {
+                padding: 25px 28px 0;
+            }
+        }
+    }
+
+    ::ng-deep .addText {
+        margin-top: 6px;
+        p {
+            font-size: 1rem;
+            color: var(--dk-gray-clr);
+            font-weight: 400;
+        }
+        .icon-info {
+            font-size: 22px;
+            color: var(--primary-color);
+        }
+    }
+
+    ::ng-deep .invite-btn {
+        .p-button-label {
+            display: none;
+        }
+    }
+
+    ::ng-deep .calendarWrap {
+        border: solid 2px var(--primary-color);
+        height: 40px;
+        border-radius: 4px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        margin-bottom: 40px;
+        .calendarFrom {
+            width: 47%;
+            input {
+                padding-left: 31px;
+                border: none;
+                height: 100%;
+                font-size: 12px;
+                color: var(--dark-gray-shade-clr);
+                background-color: var(--white-color);
+                &::placeholder {
+                    color: var(--dk-gray-clr);
+                }
+            }
+        }
+        .calendarTo {
+            max-width: 32%;
+            .p-datepicker {
+                left: auto !important;
+                right: 0;
+            }
+            input {
+                padding-left: 10px;
+            }
+            .p-datepicker-trigger {
+                right: 0;
+                left: auto;
+            }
+        }
+        .p-calendar {
+            height: 100%;
+        }
+        .icon-range {
+            position: absolute;
+            left: 0;
+            right: 0;
+            width: 22px;
+            margin: 0 auto;
+            color: #a6a5a3;
+        }
+        .p-datepicker-trigger {
+            background-color: transparent;
+            border-color: transparent;
+            color: var(--dark-gray-shade-clr);
+            position: absolute;
+            left: 0;
+            top: 1px;
+            padding: 0;
+        }
+    }
+
+    ::ng-deep .rangeBox {
+        margin-bottom: 35px;
+        position: relative;
+        input {
+            width: 60px;
+            height: 40px;
+            color: var(--dark-black-color);
+            background-color: var(--white-color);
+            border-color: var(--cm-border-clr);
+        }
+        p {
+            font-size: 0.875rem;
+            color: var(--dk-gray-clr);
+            font-weight: 400;
+        }
+        .ranges {
+            width: 35%;
+            position: absolute;
+            right: 0;
+            left: 0;
+            margin: auto;
+            bottom: 19px;
+            .rang-val1 {
+                position: absolute;
+                left: -27px;
+                font-size: 14px;
+                top: -10px;
+                color: var(--dk-gray-clr);
+            }
+            .rang-val2 {
+                position: absolute;
+                right: -28px;
+                font-size: 14px;
+                top: -10px;
+                color: var(--dk-gray-clr);
+            }
+            .p-slider-handle {
+                border-color: #000;
+                width: 16px;
+                height: 16px;
+                &:before {
+                    content: '';
+                    width: 8px;
+                    height: 8px;
+                    background-color: #000;
+                    position: absolute;
+                    border-radius: 100%;
+                    left: 2px;
+                    top: 2px;
+                }
+                &:hover {
+                    background-color: #fff;
+                }
+                &:focus {
+                    box-shadow: none;
+                }
+            }
+            .p-slider-horizontal {
+                height: 2px;
+                .p-slider-range {
+                    background-color: #333333;
+                }
+            }
+        }
+    }
+    ::ng-deep .customizeBtn {
+        position: fixed;
+        right: 0;
+        top: 40%;
+        transition: transform 0.1s;
+        &.barBtn {
+            margin-left: -68px;
+            right: auto;
+        }
+        button {
+            width: 48px;
+            height: 48px;
+            border: none;
+            border-radius: 4px 0px 0px 4px;
+            background-color: #323332;
+            &:hover {
+                background-color: #323332;
+            }
+        }
+    }
+
+    ::ng-deep .customizeMenu {
+        .p-sidebar-content {
+            overflow: visible;
+        }
+    }
+
+    ::ng-deep .brSwitch {
+        width: 48px;
+        height: 24px;
+        .p-inputswitch-slider {
+            font-family: 'icomoon', sans-serif !important;
+            &:before {
+                content: '\e928';
+                font-size: 10px;
+                padding: 3px 5px;
+                color: #323332;
+                width: 20px;
+                height: 20px;
+            }
+        }
+    }
+
+    ::ng-deep .p-inputswitch-checked {
+        .p-inputswitch-slider {
+            background: #323332 !important;
+            &:before {
+                transform: translateX(1.45rem);
+            }
+            &:hover {
+                background: #323332 !important;
+            }
+        }
+    }
+
+    ::ng-deep #dnaTable {
+        // Keeps the paginator footer from jumping up under the header while rows are loading -
+        // an empty tbody has zero height, so the paginator sits directly below the header until
+        // rows arrive and push it down. min-height on tbody (a table-row-group) is unreliable
+        // across browsers, so it's applied to the wrapper div instead.
+        &.table-loading .p-datatable-wrapper {
+            min-height: 600px;
+        }
+
+        @media screen and (max-width: 576px) {
+            .p-datatable-wrapper {
+                width: 500px;
+                .p-datatable-tbody {
+                    tr {
+                        td {
+                            &:first-child {
+                                width: 10% !important;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    ::ng-deep .tutsModal {
+        .p-component-overlay {
+            max-width: 100%;
+        }
+        .p-dialog {
+            width: 872px;
+            background-color: #fff;
+            iframe {
+                width: 100%;
+                border-radius: 4px;
+            }
+            &:before {
+                content: '';
+                border-radius: 4px;
+                border-top: solid 12px var(--primary-color);
+                position: relative;
+                top: -5px;
+            }
+            .p-dialog-content {
+                padding: 0 100px 50px 100px;
+                border-radius: 0 4px 4px 4px;
+                @media screen and (max-width: 767px) {
+                    padding: 0 20px 20px 20px;
+                }
+                @media screen and (max-width: 576px) {
+                    video {
+                        height: auto;
+                    }
+                }
+            }
+            .p-dialog-header {
+                padding: 22px 28px 0;
+                color: #131523;
+                margin-bottom: 26px;
+                justify-content: center;
+                .p-dialog-title {
+                    font-size: 1.875rem;
+                    font-weight: 700;
+                    @media screen and (max-width: 767px) {
+                        font-size: 1.5rem;
+                    }
+                }
+                .p-dialog-header-icon {
+                    width: 12px;
+                    height: 12px;
+                    color: #7e84a3;
+                    position: absolute;
+                    top: 24px;
+                    right: 18px;
+                    font-size: 18px;
+                    font-weight: 500;
+                    &:focus {
+                        box-shadow: none;
+                    }
+                }
+            }
+            .p-button-text {
+                color: #333333;
+            }
+            .nextBtn {
+                .p-button {
+                    font-size: 20px;
+                    height: 40px;
+                    font-weight: 500;
+                    margin-right: 0;
+                    border-radius: 4px;
+                    background-color: var(--primary-color);
+                    border-color: var(--primary-color);
+                    @media screen and (min-width: 767px) {
+                        min-width: 174px;
+                    }
+                }
+            }
+        }
+        .p-dialog-footer {
+            padding: 0 100px 35px 100px;
+            @media screen and (max-width: 767px) {
+                padding: 0 20px 20px 20px;
+            }
+        }
+        .p-dialog-mask {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+    }
+
+    ::ng-deep .filterRadio {
+        .p-highlight {
+            border-color: var(--primary-color);
+            background-color: var(--primary-color) !important;
+        }
+        &:hover {
+            border-color: var(--primary-color) !important;
+        }
+        .p-radiobutton-box {
+            background-color: var(--white-color);
+            &:hover {
+                border-color: var(--primary-color) !important;
+                background-color: transparent !important;
+            }
+        }
+        .p-focus {
+            box-shadow: none !important;
+            border-color: var(--primary-color) !important;
+        }
+    }
+
+    ::ng-deep .user-tag-wrap {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        padding-left: 20px;
+        padding-right: 20px;
+        max-height: 58px;
+        overflow: auto;
+        .clientBadge {
+            width: auto;
+            min-width: 50px;
+            // Cap at ~half the row (minus half the gap) so at least 2 pills always fit per row
+            // instead of one long-named pill stretching to fill it - the child span below
+            // truncates whatever doesn't fit, rather than wrapping the pill's text onto 2 lines.
+            max-width: calc(50% - 5px);
+            margin-bottom: 0;
+            span {
+                // Global _global.scss caps this span at max-width: 55px (sized for the short
+                // fixed-width badges it was written for) - override it here so the span can use
+                // however much room this wider, dynamically-sized badge actually has.
+                max-width: 100%;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                // .clientBadge is display:flex (base _global.scss rule) - a flex item's default
+                // min-width:auto stops it shrinking below its text's natural width, which would
+                // silently defeat the ellipsis above and push the badge past its max-width cap.
+                flex: 1 1 auto;
+                min-width: 0;
+            }
+        }
+        .p-button-text {
+            width: 20px;
+            padding: 0;
+            height: auto;
+            margin-left: 5px;
+            flex-shrink: 0;
+        }
+    }
+    ::ng-deep .digital-scan-modal {
+        .p-dialog.p-component {
+            max-width: 600px;
+            width: 85%;
+        }
+    }
+    ::ng-deep .digital-scan-tag {
+        ul {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            li {
+                width: 31.6%;
+                label {
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                }
+            }
+        }
+    }
+
+    ::ng-deep .tag-text {
+        font-weight: 700;
+        margin-bottom: 16px;
+    }
+}
+
+.layoutSwitch {
+    label {
+        font-size: 12px;
+        font-weight: 400;
+        color: var(--nav-gray-txt);
+        margin-left: 10px;
+        position: relative;
+        top: -9px;
+    }
+}
+
+.icon-switch {
+    font-size: 20px;
+    color: var(--cm-gray-clr);
+    margin-right: 21px;
+    cursor: pointer;
+    &.disabled-switch {
+        pointer-events: none;
+        opacity: 0.6;
+    }
+    @media screen and (max-width: 991px) {
+        display: none;
+    }
+    &.show.side-bar {
+        display: none;
+    }
+    &.show.full-bar {
+        position: absolute;
+        top: 130px;
+        left: 40px;
+        color: var(--primary-color);
+        transform: rotate(180deg);
+    }
+}
+
+.disc-modal {
+    ::ng-deep .p-dialog-header {
+        padding: 20px 28px;
+        .p-dialog-title {
+            line-height: 1.2;
+            font-size: 24px;
+            font-weight: 700;
+            color: #333;
+        }
+    }
+    .cancel-btn {
+        height: 32px;
+        font-size: 20px;
+        font-weight: 500;
+    }
+}
+
+/* Shepherd Tour Styles - Now handled globally */
+
+::ng-deep .shepherd-button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+::ng-deep .shepherd-button:hover {
+    opacity: 0.9;
+}
+
+::ng-deep .shepherd-button.btn.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+::ng-deep .shepherd-button.btn.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+::ng-deep .shepherd-button.btn.btn-success {
+    // #28a745 only gave ~3.13:1 contrast with white text, failing WCAG AA's 4.5:1 minimum.
+    // #198754 is Bootstrap 5.3's own revised "success" green, chosen for this exact reason -
+    // ~4.53:1 contrast, same semantic meaning, minor shade shift.
+    background-color: #198754;
+    color: white;
+}
+
+::ng-deep .shepherd-button.btn.btn-outline-secondary {
+    background-color: transparent;
+    border: 1px solid #6c757d;
+    color: #6c757d;
+}
+
+::ng-deep .shepherd-button.btn.btn-outline-secondary:hover {
+    background-color: #6c757d;
+    color: white;
+}
+
+::ng-deep .shepherd-cancel-icon {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: none;
+    border: none;
+    font-size: 32px;
+    color: #999;
+    cursor: pointer;
+    padding: 4px;
+    line-height: 1;
+}
+
+::ng-deep .shepherd-cancel-icon:hover {
+    color: #666;
+}
+
+/* Tour target highlighting */
+::ng-deep .shepherd-target {
+    position: relative;
+    z-index: 9999;
+}
+
+/* Ensure tour elements are positioned correctly */
+#filter-btn,
+#search-input,
+#download-btn,
+#digital-scan-btn,
+#participants-table,
+#participant-checkbox,
+#participant-delete-btn {
+    position: relative;
+}
+
+/* Additional styling for table tour elements */
+#participants-table {
+    z-index: 1;
+}
+
+/* .dna-spinner (the table's loading overlay, main-users.component.html) ties #participants-table's
+   z-index: 1 above - since it renders earlier in the DOM, the tie is broken in the table's favor,
+   silently hiding the spinner behind the (intentionally still-visible) previous rows during a
+   search/filter refetch. Needs to outrank it explicitly. */
+::ng-deep .users-table .dna-spinner {
+    z-index: 3;
+}
+
+#participant-checkbox,
+#participant-delete-btn {
+    z-index: 2;
+}
+
+/* Modal overlay customization */
+::ng-deep .shepherd-modal-overlay-container {
+    z-index: 9998;
+}
+
+::ng-deep .shepherd-modal-overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.popover-content {
+    padding: 1rem;
+    max-width: 400px;
+
+    p {
+        margin: 0.5rem 0;
+        line-height: 1.4;
+        color: #333;
+    }
+
+    ul {
+        margin: 0.5rem 0;
+        padding-left: 1.2rem;
+
+        li {
+            margin: 0.25rem 0;
+            line-height: 1.3;
+            color: #555;
+        }
+    }
+}
+
+::ng-deep .info-dialog {
+    .p-dialog {
+        width: 500px;
+        max-width: 90vw;
+
+        .p-dialog-header {
+            background-color: var(--primary-color);
+            color: white;
+
+            .p-dialog-title {
+                font-weight: 600;
+            }
+
+            .p-dialog-header-icon {
+                color: white;
+
+                &:hover {
+                    background-color: rgba(255, 255, 255, 0.1);
+                }
+            }
+        }
+
+        .p-dialog-content {
+            padding: 1.5rem;
+        }
+
+        .p-dialog-footer {
+            padding: 1rem 1.5rem;
+            border-top: 1px solid #dee2e6;
+            background-color: #f8f9fa;
+
+            .dialog-footer-buttons {
+                display: flex;
+                justify-content: center;
+                gap: 1rem;
+                align-items: center;
+
+                .p-button {
+                    min-width: 100px;
+                }
+            }
+        }
+    }
+}

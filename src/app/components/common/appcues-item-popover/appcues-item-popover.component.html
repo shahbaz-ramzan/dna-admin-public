@@ -1,0 +1,74 @@
+<p-dialog
+    [visible]="visible"
+    (visibleChange)="onDialogVisibleChange($event)"
+    [modal]="true"
+    [draggable]="false"
+    [resizable]="false"
+    [closable]="!isLoading"
+    [style]="{ width: '500px' }"
+    [baseZIndex]="10000"
+    class="create-item-dialog"
+>
+    <ng-template pTemplate="header">
+        <div class="dialog-header">
+            <h4 class="dialog-title">{{ formTitle }}</h4>
+        </div>
+    </ng-template>
+
+    <div class="dialog-content">
+        <form [formGroup]="createItemForm" (ngSubmit)="onSubmit()">
+            <div class="form-container">
+                <!-- Banner/Tour Key Field -->
+                <div class="form-group">
+                    <label for="bannerkey" class="form-label"> {{ bannerkeyLabel }}<span class="text-danger">*</span> </label>
+                    <input
+                        id="bannerkey"
+                        type="text"
+                        pInputText
+                        [formControlName]="'bannerkey'"
+                        [placeholder]="bannerkeyPlaceholder"
+                        [class]="getFieldClass('bannerkey')"
+                        aria-describedby="bannerkey-help"
+                    />
+                    <small *ngIf="hasError('bannerkey')" class="text-danger form-error" id="bannerkey-help">
+                        {{ bannerkeyError }}
+                    </small>
+                </div>
+
+                <!-- Version Field -->
+                <div class="form-group">
+                    <label for="version" class="form-label"> Version<span class="text-danger">*</span> </label>
+                    <input
+                        id="version"
+                        type="text"
+                        pInputText
+                        formControlName="version"
+                        placeholder="Enter version"
+                        [class]="getFieldClass('version')"
+                        aria-describedby="version-help"
+                    />
+                    <small *ngIf="hasError('version')" class="text-danger form-error" id="version-help">
+                        {{ versionError }}
+                    </small>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <ng-template pTemplate="footer">
+        <div class="dialog-footer">
+            <button type="button" pButton pRipple [label]="cancelButtonText" (click)="onCancel()" class="p-button-secondary" [disabled]="isLoading"></button>
+            <button
+                type="button"
+                pButton
+                pRipple
+                [label]="submitButtonText"
+                (click)="onSubmit()"
+                class="p-button-primary"
+                [disabled]="!createItemForm.valid || isLoading"
+            >
+                <i *ngIf="isLoading" class="pi pi-spin pi-spinner" style="margin-right: 0.5rem"></i>
+            </button>
+        </div>
+    </ng-template>
+</p-dialog>

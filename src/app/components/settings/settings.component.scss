@@ -1,0 +1,95 @@
+.mainTitle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 68px;
+    padding: 15px 35px;
+    background-color: var(--white-color);
+    border-bottom: solid 1px var(--cm-border-clr);
+    h4 {
+        font-size: 20px;
+        font-weight: 400;
+        color: var(--dark-black-color);
+    }
+}
+
+.mainWrapper {
+    padding: 28px;
+    padding-top: var(--page-padding-top, 96px);
+    min-height: calc(100vh - 106px);
+    @media screen and (max-width: 767px) {
+        padding: 15px;
+        padding-top: var(--page-padding-top, 96px);
+    }
+}
+
+.settingsWrapper {
+    @media screen and (min-width: 768px) {
+        display: flex;
+        min-height: calc(100vh - 162px);
+    }
+    .sideBar {
+        min-width: 264px;
+        background-color: var(--white-color);
+        @media screen and (max-width: 767px) {
+            margin-bottom: 20px;
+        }
+    }
+    .cntWrapper {
+        @media screen and (min-width: 768px) {
+            width: calc(100% - 281px);
+        }
+    }
+    .sideBar + .cntWrapper {
+        @media screen and (min-width: 768px) {
+            margin-left: 17px;
+        }
+    }
+}
+
+:host {
+    ::ng-deep .sideBar {
+        .p-menu {
+            width: 100%;
+            border: none;
+            background-color: var(--white-color);
+            .p-menuitem-icon {
+                font-size: 18px;
+                color: var(--dark-black-color);
+                min-width: 35px;
+                margin-right: 0;
+                &.icon-envelope {
+                    font-size: 14px;
+                    color: var(--dark-black-color);
+                }
+            }
+            .p-menuitem.active {
+                .p-menuitem-link {
+                    color: #333333;
+                    font-weight: bold;
+                    background-color: transparent;
+                }
+                .p-menuitem-icon {
+                    color: var(--primary-color);
+                }
+            }
+            .p-menuitem-link {
+                font-size: 0.875rem;
+                font-weight: 400;
+                padding: 13px 18px;
+                color: #495057;
+                span.p-menuitem-text {
+                    color: var(--dk-gray-color);
+                }
+                &:hover {
+                    color: #333333;
+                    font-weight: bold;
+                    background-color: transparent;
+                    .p-menuitem-icon {
+                        color: var(--primary-color);
+                    }
+                }
+            }
+        }
+    }
+}

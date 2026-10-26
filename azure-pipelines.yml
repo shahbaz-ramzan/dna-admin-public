@@ -1,0 +1,140 @@
+# Node.js with Angular
+# Build a Node.js project that uses Angular.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+trigger:
+- main
+
+variables:
+  vmImageName: 'ubuntu-latest'
+
+stages:
+
+- stage: Sandbox_Build
+  displayName: 'Sandbox Build Stage'
+  jobs:
+  - job: Build
+    displayName: 'Sandbox_Build'
+    pool:
+      vmImage: $(vmImageName)
+
+    steps:
+    - task: NodeTool@0
+      inputs:
+        versionSpec: '20.x'
+      displayName: 'Install Node.js'
+
+    - script: |
+        npm install -g @angular/cli
+        npm install
+        npx ng build --configuration=sandbox
+      displayName: 'npm install and build'
+
+    - task: CopyFiles@2
+      inputs:
+        sourceFolder: '$(Build.SourcesDirectory)'
+        contents: 'package.json' 
+        targetFolder: $(Build.ArtifactStagingDirectory)/npmsandbox
+      displayName: 'Copy package.json'
+
+    - task: PublishPipelineArtifact@1
+      inputs:
+        targetPath: '$(System.DefaultWorkingDirectory)/dist/dna-behavior'
+        artifactName: npmsandbox
+      displayName: 'Publish npm artifact'
+
+- stage: Deploy_Sandbox
+  displayName: 'Sandbox Deployment'
+  dependsOn: Sandbox_Build
+  condition: succeeded()
+  jobs: 
+  - deployment: Deploy
+    displayName: 'Deploy'
+    environment: 'SandboxAdminSystem'
+    pool:
+      vmImage: $(vmImageName)
+    
+    strategy:
+      runOnce:
+        deploy:
+        
+          steps:
+          - task: DownloadPipelineArtifact@2
+            inputs:
+              source: 'current'
+              artifact: 'npmsandbox'
+              path: '$(Build.ArtifactStagingDirectory)\\dist'
+            displayName: 'Download artifact'
+
+          - task: AzureStaticWebApp@0
+            displayName: Sandbox Deployment
+            inputs:
+              workingDirectory: '$(Build.ArtifactStagingDirectory)\\dist'
+              app_location: ''
+              azure_static_web_apps_api_token: '$(Sandbox_Token)'
+
+- stage: Production_Build
+  displayName: 'Production Build Stage'
+  #dependsOn: Deploy_Sandbox
+  jobs:
+  - job: Build
+    displayName: 'Production_Build'
+    pool:
+      vmImage: $(vmImageName)
+
+    steps:
+    - task: NodeTool@0
+      inputs:
+        versionSpec: '20.x'
+      displayName: 'Install Node.js'
+
+    - script: |
+        npm install -g @angular/cli
+        npm install
+        npx ng build --configuration=production
+      displayName: 'npm install and build'
+
+    - task: CopyFiles@2
+      inputs:
+        sourceFolder: '$(Build.SourcesDirectory)'
+        contents: 'package.json' 
+        targetFolder: $(Build.ArtifactStagingDirectory)/distprod
+      displayName: 'Copy package.json'   
+
+    - task: PublishPipelineArtifact@1
+      inputs:
+        targetPath: '$(System.DefaultWorkingDirectory)/dist/dna-behavior'
+        artifactName: distprod
+      displayName: 'Publish npm artifact'
+
+- stage: Deploy_Production
+  displayName: 'Production Deployment'
+  dependsOn: Production_Build
+  condition: succeeded()
+
+  jobs: 
+  - deployment: Deploy
+    displayName: 'Deploy'
+    environment: 'ProductionAdminSystem'
+    pool:
+      vmImage: $(vmImageName)
+    
+    strategy:
+      runOnce:
+        deploy:
+        
+          steps:
+          - task: DownloadPipelineArtifact@2
+            inputs:
+              source: 'current'
+              artifact: 'distprod'
+              path: '$(Build.ArtifactStagingDirectory)\\dist'
+            displayName: 'Download artifact'
+
+          - task: AzureStaticWebApp@0
+            displayName: Production Deployment
+            inputs:
+              workingDirectory: '$(Build.ArtifactStagingDirectory)\\dist'
+              app_location: '/'
+              azure_static_web_apps_api_token: '$(Production_Token)'

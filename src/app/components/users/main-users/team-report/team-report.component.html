@@ -1,0 +1,1366 @@
+@if (loading) {
+    <app-report-loading-overlay></app-report-loading-overlay>
+}
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Team - 2</title>
+        <style>
+            body {
+                margin: 0;
+                font-size: 10px;
+                font-family: 'Calibri';
+                /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+      Roboto, Helvetica, Arial, sans-serif, "Calibri",
+      "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; */
+            }
+
+            table {
+                border-collapse: collapse;
+                border-spacing: 0;
+            }
+            .text-left {
+                text-align: left;
+            }
+            .text-right {
+                text-align: right;
+            }
+            .text-center {
+                text-align: center;
+            }
+            .border-none {
+                border: none !important;
+            }
+            .pb-10 {
+                padding-bottom: 10px;
+            }
+            .mt-0 {
+                margin-top: 0 !important;
+            }
+            .team-member-col {
+                width: 100px;
+            }
+            .spacer {
+                height: 30px;
+            }
+            .spacer-20 {
+                height: 20px;
+            }
+            .unique-style-heading {
+                font-size: 12px;
+                font-weight: 700;
+                color: #003366;
+            }
+            .focus-heading {
+                font-size: 12px;
+                font-weight: 700;
+                padding: 15px;
+                padding-bottom: 5px;
+                text-align: center;
+                color: #000000;
+            }
+            .padding-cell {
+                padding: 10px;
+            }
+            .page-wrapper {
+                width: 610px;
+                height: 790px;
+                padding: 20px;
+                margin: 0 auto 10px;
+                background-color: #fff;
+                position: relative;
+            }
+            .page-wrapper td.primary-color-box {
+                height: 32px;
+                width: 23px;
+                background: #003366;
+            }
+            .page-wrapper .main-heading {
+                font-size: 12px;
+                font-weight: 700;
+                color: #003366;
+                padding-left: 16px;
+            }
+            .page-wrapper p {
+                line-height: 17px;
+                color: #000;
+            }
+            .tabular-data {
+                margin-top: 20px;
+            }
+            .tabular-data th {
+                font-size: 12px;
+                font-weight: 700;
+                padding: 5px 16px;
+                background: #003366b2;
+                color: #fff;
+                text-align: left;
+                border-top: solid 2px #d8dae5;
+                border-bottom: solid 2px #d8dae5;
+            }
+            .tabular-data td {
+                letter-spacing: 0.03em;
+                padding: 10px 16px;
+                border-bottom: solid 1px#D8DAE5;
+            }
+            .tabular-data td span.bold,
+            .relation-data td span.bold {
+                font-size: 12px;
+                color: #003366;
+                font-weight: 700;
+                display: block;
+                width: 100%;
+            }
+            .relation-data {
+                width: 400px;
+                margin: 20px auto;
+            }
+            .relation-data th {
+                text-align: left;
+                font-size: 12px;
+                font-weight: 700;
+                padding-bottom: 4px;
+                color: #000;
+            }
+            .relation-data td {
+                padding: 3px 0;
+                color: #000;
+                vertical-align: top;
+            }
+            .relation-data .ff-td {
+                width: 155px;
+                border-right: 2px solid #c9c8c8;
+            }
+            .relation-data .fs-td {
+                padding-left: 48px;
+            }
+            .bar-chart-cell {
+                padding: 20px 0;
+                text-align: center;
+            }
+            .chart-cell {
+                padding: 10px;
+                border-radius: 6px;
+                border: 1px solid #e6e9f4;
+                margin: 10px auto;
+                text-align: center;
+            }
+            .tabular-cell {
+                padding-right: 10px;
+            }
+            .chart-cell img {
+                max-width: 100%;
+            }
+            th.number-th {
+                width: 20px;
+                height: 40px;
+                text-align: center;
+                color: #000000 !important;
+                background-color: transparent !important;
+            }
+            .mid-range-col {
+                width: 193px;
+            }
+            .factor-data {
+                margin-bottom: 15px;
+            }
+            .factor-data td {
+                padding: 0 16px;
+                border: solid 1px#D8DAE5;
+                border-top: none;
+                border-bottom: none;
+                vertical-align: top;
+            }
+            .factor-data td td {
+                padding: 4px 0;
+                border: none;
+            }
+            .result-table {
+                width: 400px;
+                margin: 0 auto;
+            }
+            .result-table td {
+                font-weight: 400;
+                padding: 3px 0;
+                color: #000;
+            }
+            .page-footer {
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                width: 100%;
+                padding: 0 4px;
+                text-align: center;
+                box-sizing: border-box;
+                background-color: #fff;
+                border-top: solid 2px #979797;
+            }
+            .page-footer table {
+                width: 100%;
+            }
+            .page-footer td {
+                color: #979797;
+                padding: 10px;
+            }
+            .pattren-banner {
+                height: 190px;
+                padding: 0 15px;
+                background-image: url(../../../../../assets/images/pattren-img.jpg);
+                background-repeat: repeat;
+            }
+            .pattren-banner p {
+                background-color: #fff;
+                padding: 16px;
+                border: solid 1px #000;
+            }
+            .report-card {
+                padding: 45px 50px;
+                border-top: solid 10px #003366;
+                border-bottom: solid 10px #003366;
+            }
+            .report-card img {
+                max-height: 60px;
+            }
+            .report-card h1 {
+                font-size: 28px;
+                line-height: 31px;
+                color: #000000;
+                margin: 16px 0;
+            }
+            .report-card p {
+                font-size: 18px;
+                font-weight: 400;
+                line-height: 25px;
+                color: #5f5a5a;
+            }
+            .compatible-chart .comp-inr {
+                padding: 30px 10px;
+            }
+            .compatible-chart .comp-inr img {
+                width: 450px;
+            }
+            .footer-top {
+                font-size: 12px;
+                font-weight: 700;
+                color: #fff;
+                text-align: center;
+                padding: 10px;
+                background: rgba(0, 51, 102, 0.7);
+            }
+            .footer {
+                font-size: 12px;
+                color: #808080;
+                padding: 5px 5px;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="reports-wrapper">
+            <!-- Chatbot Integration -->
+            <app-chatbot [chat_payload_data]="chat_payload_data" [isDownloadReady]="isDownloadReady" [chatbotId]="'cmc3ln5c50255115mvaifb4le'"> </app-chatbot>
+            <div class="reports-header">
+                <div class="report-title d-flex align-items-center">
+                    <i class="icon-arrow-left" (click)="backClick()"></i>
+                    <h3 class="mb-0">{{ reportName }} Report</h3>
+                </div>
+                <button
+                    pButton
+                    type="button"
+                    [label]="isDownloadReady ? 'Download' : 'Preparing... ' + progressPercentage + '%'"
+                    [disabled]="!isDownloadReady"
+                    [icon]="isDownloadReady ? 'icon-download' : ''"
+                    (click)="downloadPdf()"
+                    class="p-button-sm reports-download-btn"
+                    iconPos="right"
+                ></button>
+            </div>
+            <div class="page-wrapper p-0" id="1">
+                <table width="100%">
+                    <tr>
+                        <td colspan="2" class="pattren-banner"></td>
+                    </tr>
+                    <tr>
+                        <td
+                            class="report-card"
+                            [ngStyle]="{
+                                borderTopColor: !isColorDefault && reportColors[0],
+                                borderBottomColor: !isColorDefault && reportColors[0]
+                            }"
+                        >
+                            <img class="report-logo" [src]="logo" alt="logo" />
+                            <h1>
+                                {{ reportName }} Report:<br />
+                                {{ teamName }}
+                            </h1>
+                            <p>
+                                Providing key insights into how you can navigate the human differences in your team for building a sound working relationship
+                                together.
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="pattren-banner">
+                            @if (getIsDigitalScan()) {
+                                <p>
+                                    One or more participants selected for this report have insights based on Digital Scan. Use this data for marketing,
+                                    communication, and alignment purposes only—not for high-stakes decisions.<br />
+                                    <a style="text-decoration: underline" href="https://kb.dnabehavior.com/gene/predicted-results" target="_blank"
+                                        >Learn more in our Digital Scan Knowledge Base.</a
+                                    >
+                                </p>
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td
+                            class="footer-top"
+                            colspan="2"
+                            [ngStyle]="{
+                                backgroundColor: !isColorDefault && reportColors[1]
+                            }"
+                        >
+                            Based on your team’s completion of the DNA Natural Behavior Discovery Process
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="footer" colspan="2">Powered by DNA Behavior</td>
+                    </tr>
+                </table>
+            </div>
+            @for (style of behavioralStyles; track trackByIndex(i, style); let i = $index) {
+                <div class="page-wrapper" [id]="behavioralStylePageNumber[i]">
+                    <table width="100%">
+                        <tr>
+                            <td
+                                class="primary-color-box"
+                                [ngStyle]="{
+                                    backgroundColor: !isColorDefault && reportColors[0]
+                                }"
+                            ></td>
+                            <td
+                                class="main-heading"
+                                [ngStyle]="{
+                                    color: !isColorDefault && reportColors[0]
+                                }"
+                            >
+                                DNA Natural Behavior Unique Styles in your Team
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="spacer-20"></td>
+                        </tr>
+                        @if (i === 0) {
+                            <tr>
+                                <td colspan="2">
+                                    <p>
+                                        The {{ reportName }} Report provides key insights into how your team can navigate the human differences building a sound
+                                        working relationship together. The report reflects the different DNA Natural Behavior Styles of the team members.
+                                        Natural Behavior will generally remain consistent over time as it is the core of who your team members are. However, the
+                                        report does not reflect how your team members may from time-to-time adapt their behavior in certain situations based on
+                                        experiences, education and values.
+                                    </p>
+                                    <p>
+                                        The DNA Natural Behavior Style and two strongest behavioral traits for each member of the team are shown in the table
+                                        below.
+                                    </p>
+                                    <p>The team leader has been highlighted in bold throughout this report.</p>
+                                </td>
+                            </tr>
+                        }
+                        <tr>
+                            <td colspan="2">
+                                <table class="tabular-data" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th
+                                                [ngStyle]="{
+                                                    backgroundColor: !isColorDefault && reportColors[1]
+                                                }"
+                                            >
+                                                Team Member
+                                            </th>
+                                            <th
+                                                [ngStyle]="{
+                                                    backgroundColor: !isColorDefault && reportColors[1]
+                                                }"
+                                            >
+                                                DNA Natural Behavior Style
+                                            </th>
+                                            <th
+                                                [ngStyle]="{
+                                                    backgroundColor: !isColorDefault && reportColors[1]
+                                                }"
+                                            >
+                                                Strongest Behavioral Trait 1
+                                            </th>
+                                            <th
+                                                [ngStyle]="{
+                                                    backgroundColor: !isColorDefault && reportColors[1]
+                                                }"
+                                            >
+                                                Strongest Behavioral Trait 2
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @for (pIndex of style; track trackByIndex($index, pIndex)) {
+                                            <tr>
+                                                <td>
+                                                    <span
+                                                        [ngClass]="{
+                                                            bold: usersData[pIndex]?.isLeader
+                                                        }"
+                                                        [ngStyle]="{
+                                                            color: !isColorDefault && usersData[pIndex]?.isLeader && reportColors[0]
+                                                        }"
+                                                        >{{ usersData[pIndex]?.firstName }} {{ usersData[pIndex]?.lastName }}</span
+                                                    >
+                                                </td>
+                                                <td>
+                                                    {{ usersData[pIndex]?.uniqueStyle }}
+                                                </td>
+                                                <td>
+                                                    {{ (usersData[pIndex]?.strongestFactors)[0] }}
+                                                </td>
+                                                <td>
+                                                    {{ (usersData[pIndex]?.strongestFactors)[1] }}
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <footer class="page-footer" id="footer1">
+                        <table width="100%">
+                            <tr>
+                                <td>Page {{ behavioralStylePageNumber[i] }}</td>
+                                <td>{{ footerDate }}</td>
+                                <td>{{ teamName }} Team</td>
+                                <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+                                <td>ID#{{ accountId }}</td>
+                            </tr>
+                        </table>
+                    </footer>
+                </div>
+            }
+            <div class="page-wrapper" [id]="resultVsRelationPageNumber[0]">
+                <table width="100%">
+                    <tr>
+                        <td
+                            class="primary-color-box"
+                            [ngStyle]="{
+                                backgroundColor: !isColorDefault && reportColors[0]
+                            }"
+                        ></td>
+                        <td
+                            class="main-heading"
+                            [ngStyle]="{
+                                color: !isColorDefault && reportColors[0]
+                            }"
+                        >
+                            Team’s Natural Behavior for Building Relationships and Getting Results
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="focus-heading" colspan="2">Results Focused vs. Relationship Focused</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <p>
+                                The following graph shows the number and percentage of individuals in the team that are Results Focused and Relationship
+                                Focused. Overall, this will indicate the team's natural tendency towards building relationships and drive to getting results. A
+                                result Focused team will be more task oriented, while a Relationship Focused team will be more human engagement oriented.
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="bar-chart-cell" colspan="2">
+                            <app-single-line-horizontal
+                                [yAxisPosition]="yAxisPosition"
+                                [chartLabels]="lineChartLabels"
+                                [chartData]="lineChartData"
+                                [chartColor]="lineChartColors"
+                                [ticks]="false"
+                                [gridLines]="false"
+                                [legend]="true"
+                                [isDashboard]="false"
+                            ></app-single-line-horizontal>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <table class="result-table">
+                                <tr>
+                                    <td>Total Number of Team Members:</td>
+                                    <td style="text-align: right">
+                                        {{ selectedParticipantIds.length }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Results Focused Team Members</td>
+                                    <td style="text-align: right">
+                                        {{ resultsFocusedParticipants.length }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Relationship Focused Team Members</td>
+                                    <td style="text-align: right">
+                                        {{ relationshipFocusedParticipants.length }}
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+
+                <footer class="page-footer" id="footer2">
+                    <table width="100%">
+                        <tr>
+                            <td>Page {{ resultVsRelationPageNumber[0] }}</td>
+                            <td>{{ footerDate }}</td>
+                            <td>{{ teamName }} Team</td>
+                            <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+                            <td>ID#{{ accountId }}</td>
+                        </tr>
+                    </table>
+                </footer>
+            </div>
+            @for (resVsRel of resultsVsRelationship; track trackByIndex(i, resVsRel); let i = $index) {
+                <div class="page-wrapper" [id]="resultVsRelationPageNumber[i + 1]">
+                    <table width="100%">
+                        <tr>
+                            <td
+                                class="primary-color-box"
+                                [ngStyle]="{
+                                    backgroundColor: !isColorDefault && reportColors[0]
+                                }"
+                            ></td>
+                            <td
+                                class="main-heading"
+                                [ngStyle]="{
+                                    color: !isColorDefault && reportColors[0]
+                                }"
+                            >
+                                Results vs. Relationship Focused Summary
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <table class="relation-data">
+                                    <tr>
+                                        <td class="ff-td">
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <th>Results Focused</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @for (participant of resVsRel[0].resultsFocused; track trackByIndex($index, participant)) {
+                                                        <tr>
+                                                            <td>
+                                                                <span
+                                                                    [ngClass]="{
+                                                                        bold: usersData[participant]?.isLeader
+                                                                    }"
+                                                                    [ngStyle]="{
+                                                                        color: !isColorDefault && usersData[participant]?.isLeader && reportColors[0]
+                                                                    }"
+                                                                >
+                                                                    {{ usersData[participant]?.firstName }}
+                                                                    {{ usersData[participant]?.lastName }}</span
+                                                                >
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                        <td class="fs-td">
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <th>Relationship Focused</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @for (participant of resVsRel[0].relationshipFocused; track trackByIndex($index, participant)) {
+                                                        <tr>
+                                                            <td>
+                                                                <span
+                                                                    [ngClass]="{
+                                                                        bold: usersData[participant]?.isLeader
+                                                                    }"
+                                                                    [ngStyle]="{
+                                                                        color: !isColorDefault && usersData[participant]?.isLeader && reportColors[0]
+                                                                    }"
+                                                                    >{{ usersData[participant]?.firstName }} {{ usersData[participant]?.lastName }}</span
+                                                                >
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <footer class="page-footer" id="footer2">
+                        <table width="100%">
+                            <tr>
+                                <td>Page {{ resultVsRelationPageNumber[i + 1] }}</td>
+                                <td>{{ footerDate }}</td>
+                                <td>{{ teamName }} Team</td>
+                                <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+                                <td>ID#{{ accountId }}</td>
+                            </tr>
+                        </table>
+                    </footer>
+                </div>
+            }
+            <div class="page-wrapper" [id]="uniqueStylesPageNumber[0]">
+                <table width="100%">
+                    <tr>
+                        <td
+                            class="primary-color-box"
+                            [ngStyle]="{
+                                backgroundColor: !isColorDefault && reportColors[0]
+                            }"
+                        ></td>
+                        <td
+                            class="main-heading"
+                            [ngStyle]="{
+                                color: !isColorDefault && reportColors[0]
+                            }"
+                        >
+                            Summary of DNA Natural Behavior Styles
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="spacer-20"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <p>
+                                The graph below shows the distribution of styles for your team. Some DNA Natural Behavior Styles may not appear on the graph if
+                                they are not present on your team. Colors on the graph are for distinction purposes and not indicative of any insight.
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <table class="chart-cell" width="450">
+                                <tr>
+                                    <td class="padding-cell">
+                                        <table width="100%">
+                                            <tr>
+                                                <td
+                                                    class="unique-style-heading text-left"
+                                                    [ngStyle]="{
+                                                        color: !isColorDefault && reportColors[0]
+                                                    }"
+                                                >
+                                                    DNA Natural Behavior Style
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                @if (!loading) {
+                                                    <td>
+                                                        <app-pie-chart
+                                                            [showLegends]="true"
+                                                            [boxSize]="boxSize"
+                                                            [width]="450"
+                                                            [height]="250"
+                                                            [showPercentage]="true"
+                                                            [chartLagendsStyle]="false"
+                                                            [chartPosition]="chartPosition"
+                                                            [chartData]="chartValues"
+                                                            [chartColors]="pieChartColors"
+                                                            [chartLabels]="chartLabels"
+                                                        ></app-pie-chart>
+                                                    </td>
+                                                }
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <table class="chart-cell compatible-chart" width="450">
+                                <tr>
+                                    <td class="comp-inr">
+                                        <table width="100%">
+                                            <tr>
+                                                <td>
+                                                    <img src="../../../../../assets/images/compatibility-chart.svg" alt="" />
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+
+                <footer class="page-footer" id="footer3">
+                    <table>
+                        <tr>
+                            <td>Page {{ uniqueStylesPageNumber[0] }}</td>
+                            <td>{{ footerDate }}</td>
+                            <td>{{ teamName }} Team</td>
+                            <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+                            <td>ID#{{ accountId }}</td>
+                        </tr>
+                    </table>
+                </footer>
+            </div>
+            <!-- <ng-container *ngFor="let style of uniqueStyles; let i = index; trackBy: trackByIndex">
+            <div class="page-wrapper" [id]="uniqueStylesPageNumber[i + 1]">
+              <table width="100%">
+                <tr>
+                  <td
+                    class="primary-color-box"
+                                [ngStyle]="{
+                                    backgroundColor: !isColorDefault && reportColors[0]
+                                }"
+                  ></td>
+                  <td
+                    class="main-heading"
+                                [ngStyle]="{
+                                    color: !isColorDefault && reportColors[0]
+                                }"
+                    >
+                    Summary of DNA Natural Behavior Styles
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2" class="spacer-20"></td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                    <table width="100%">
+                      <tr>
+                        <td class="tabular-cell">
+                          <table class="tabular-data" width="100%">
+                            <thead>
+                              <tr>
+                                <th
+                                                            [ngStyle]="{
+                                                                backgroundColor: !isColorDefault && reportColors[1]
+                                                            }"
+                                  >
+                                  Team Member
+                                </th>
+                                <th
+                                                            [ngStyle]="{
+                                                                backgroundColor: !isColorDefault && reportColors[1]
+                                                            }"
+                                  >
+                                  DNA Natural Behavior Style
+                                </th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let pIndex of style; trackBy: trackByIndex">
+                                <td>
+                                  <span
+                                                                [ngClass]="{
+                                                                    bold: usersData[pIndex]?.isLeader
+                                                                }"
+                                                                [ngStyle]="{
+                                                                    color: !isColorDefault && usersData[pIndex]?.isLeader && reportColors[0]
+                                                                }"
+                                    >{{ usersData[pIndex]?.firstName }} {{ usersData[pIndex]?.lastName }}</span
+                                    >
+                                  </td>
+                                  <td>
+                                    {{ usersData[pIndex]?.uniqueStyle }}
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+
+                <footer class="page-footer" id="footer3">
+                  <table>
+                    <tr>
+                      <td>Page {{ uniqueStylesPageNumber[i + 1] }}</td>
+                      <td>{{ footerDate }}</td>
+                      <td>{{ teamName }} Team</td>
+                      <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+                      <td>ID#{{ accountId }}</td>
+                    </tr>
+                  </table>
+                </footer>
+              </div>
+            </ng-container> -->
+            @for (coreDriver of coreWorkLifeDrivers; track trackByIndex(i, coreDriver); let i = $index) {
+                <div class="page-wrapper" [id]="coreWorkLifeDriversPageNumber[i]">
+                    <table width="100%">
+                        @if (i === 0) {
+                            <tr>
+                                <td
+                                    class="primary-color-box"
+                                    [ngStyle]="{
+                                        backgroundColor: !isColorDefault && reportColors[0]
+                                    }"
+                                ></td>
+                                <td
+                                    class="main-heading"
+                                    [ngStyle]="{
+                                        color: !isColorDefault && reportColors[0]
+                                    }"
+                                >
+                                    Team Member Behavioral Factor Analysis
+                                </td>
+                            </tr>
+                        }
+                        <tr>
+                            <td colspan="2" class="spacer-20"></td>
+                        </tr>
+                        @if (i === 0) {
+                            <tr>
+                                <td colspan="2">
+                                    <p>
+                                        Shown below are individual scores for each behavioral factor in a range of 20 (left side) to 80 (right side). To the
+                                        extent your team members have strong behavioral factors over 60 and under 40, there is a higher chance the behavioral
+                                        insights in this report will be more intensively displayed when they are making life and business decisions. Scores
+                                        closer to 50 indicate a more moderate style that is typically more flexible in that behavioral factor. Factor scores for
+                                        each column have been sorted low to high based on strength.
+                                    </p>
+                                </td>
+                            </tr>
+                        }
+                        <tr>
+                            <td
+                                class="primary-color-box"
+                                [ngStyle]="{
+                                    backgroundColor: !isColorDefault && reportColors[0]
+                                }"
+                            ></td>
+                            <td
+                                class="main-heading"
+                                [ngStyle]="{
+                                    color: !isColorDefault && reportColors[0]
+                                }"
+                            >
+                                Core Work Life Drivers
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="spacer-20"></td>
+                        </tr>
+                        @if (i === 0) {
+                            <tr>
+                                <td colspan="2">
+                                    <p>
+                                        The following 5 factors representing the Core Work Life Drivers provide specific insights into a team member's natural
+                                        talents, strengths and struggles. Overall, these factors will indicate their natural desire to build relationships and
+                                        also their drive to getting results. If team members have scores which are high on Take Charge, Fast-Paced, Planned and
+                                        Skeptical they will be more Results Focused. If team members have scores which are high on Cooperative, Outgoing,
+                                        Patient and Trusting they will be more Relationship Focused.
+                                    </p>
+                                </td>
+                            </tr>
+                        }
+                        @for (factor of coreDriver; track trackByIndex($index, factor)) {
+                            <tr>
+                                <td class="text-center pb-10 unique-style-heading" colspan="2">
+                                    {{ factor.factorName }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <table class="tabular-data mt-0 factor-data" width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th class="number-th">20</th>
+                                                <th
+                                                    [ngStyle]="{
+                                                        backgroundColor: !isColorDefault && reportColors[1]
+                                                    }"
+                                                >
+                                                    {{ factor.leftLabel }}
+                                                </th>
+                                                <th
+                                                    class="mid-range-col"
+                                                    [ngStyle]="{
+                                                        backgroundColor: !isColorDefault && reportColors[1]
+                                                    }"
+                                                >
+                                                    Mid-Range
+                                                </th>
+                                                <th
+                                                    [ngStyle]="{
+                                                        backgroundColor: !isColorDefault && reportColors[1]
+                                                    }"
+                                                >
+                                                    {{ factor.rightLabel }}
+                                                </th>
+                                                <th class="number-th">80</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="border-none"></td>
+                                                <td class="border-none">
+                                                    <table width="100%">
+                                                        @for (value of factor.leftValues; track trackByIndex($index, value)) {
+                                                            <tr>
+                                                                <td>
+                                                                    <span
+                                                                        [ngClass]="{
+                                                                            bold: value.isLeader
+                                                                        }"
+                                                                        [ngStyle]="{
+                                                                            color: !isColorDefault && value.isLeader && reportColors[0]
+                                                                        }"
+                                                                        >({{ value.value }}) {{ value.name }}</span
+                                                                    >
+                                                                </td>
+                                                            </tr>
+                                                        }
+                                                    </table>
+                                                </td>
+                                                <td>
+                                                    <table width="100%">
+                                                        @for (value of factor.midValues; track trackByIndex($index, value)) {
+                                                            <tr>
+                                                                <td>
+                                                                    <span
+                                                                        [ngClass]="{
+                                                                            bold: value.isLeader
+                                                                        }"
+                                                                        [ngStyle]="{
+                                                                            color: !isColorDefault && value.isLeader && reportColors[0]
+                                                                        }"
+                                                                        >({{ value.value }}) {{ value.name }}</span
+                                                                    >
+                                                                </td>
+                                                            </tr>
+                                                        }
+                                                    </table>
+                                                </td>
+                                                <td class="border-none">
+                                                    <table width="100%">
+                                                        @for (value of factor.rightValues; track trackByIndex($index, value)) {
+                                                            <tr>
+                                                                <td>
+                                                                    <span
+                                                                        [ngClass]="{
+                                                                            bold: value.isLeader
+                                                                        }"
+                                                                        [ngStyle]="{
+                                                                            color: !isColorDefault && value.isLeader && reportColors[0]
+                                                                        }"
+                                                                        >({{ value.value }}) {{ value.name }}</span
+                                                                    >
+                                                                </td>
+                                                            </tr>
+                                                        }
+                                                    </table>
+                                                </td>
+                                                <td class="border-none"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                    <div class="page-footer" id="footer4">
+                        <table>
+                            <tr>
+                                <td>Page {{ coreWorkLifeDriversPageNumber[i] }}</td>
+                                <td>{{ footerDate }}</td>
+                                <td>{{ teamName }} Team</td>
+                                <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+                                <td>ID#{{ accountId }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            }
+
+            @for (planningDriver of workLifePlanningDrivers; track trackByIndex(i, planningDriver); let i = $index) {
+                <div class="page-wrapper" [id]="workLifePlanningDriversPageNumber[i]">
+                    <table width="100%">
+                        <tr>
+                            <td
+                                class="primary-color-box"
+                                [ngStyle]="{
+                                    backgroundColor: !isColorDefault && reportColors[0]
+                                }"
+                            ></td>
+                            <td
+                                class="main-heading"
+                                [ngStyle]="{
+                                    color: !isColorDefault && reportColors[0]
+                                }"
+                            >
+                                Work Life Planning Drivers
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="spacer-20"></td>
+                        </tr>
+                        @if (i === 0) {
+                            <tr>
+                                <td colspan="2">
+                                    <p>
+                                        Work Life Planning drivers focus on team member's motivation for generating business growth and or maintaining balance
+                                        in their life. If team members have scores high on Pioneer, Risk Taker and Creative then this will indicate desires to
+                                        maximize results, set goals, take opportunities, innovate and to expand their horizons. If team members have scores high
+                                        on Content, Cautious and Anchored then they will be more interested in work life balance as well as following tried and
+                                        tested ways.
+                                    </p>
+                                </td>
+                            </tr>
+                        }
+                        @for (factor of planningDriver; track trackByIndex($index, factor)) {
+                            <tr>
+                                <td class="text-center pb-10 unique-style-heading" colspan="2">
+                                    {{ factor.factorName }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <table class="tabular-data mt-0 factor-data" width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th class="number-th">20</th>
+                                                <th
+                                                    [ngStyle]="{
+                                                        backgroundColor: !isColorDefault && reportColors[1]
+                                                    }"
+                                                >
+                                                    {{ factor.leftLabel }}
+                                                </th>
+                                                <th
+                                                    class="mid-range-col"
+                                                    [ngStyle]="{
+                                                        backgroundColor: !isColorDefault && reportColors[1]
+                                                    }"
+                                                >
+                                                    Mid-Range
+                                                </th>
+                                                <th
+                                                    [ngStyle]="{
+                                                        backgroundColor: !isColorDefault && reportColors[1]
+                                                    }"
+                                                >
+                                                    {{ factor.rightLabel }}
+                                                </th>
+                                                <th class="number-th">80</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="border-none"></td>
+                                                <td class="border-none">
+                                                    <table width="100%">
+                                                        @for (value of factor.leftValues; track trackByIndex($index, value)) {
+                                                            <tr>
+                                                                <td>
+                                                                    <span
+                                                                        [ngClass]="{
+                                                                            bold: value.isLeader
+                                                                        }"
+                                                                        [ngStyle]="{
+                                                                            color: !isColorDefault && value.isLeader && reportColors[0]
+                                                                        }"
+                                                                        >({{ value.value }}) {{ value.name }}</span
+                                                                    >
+                                                                </td>
+                                                            </tr>
+                                                        }
+                                                    </table>
+                                                </td>
+                                                <td>
+                                                    <table width="100%">
+                                                        @for (value of factor.midValues; track trackByIndex($index, value)) {
+                                                            <tr>
+                                                                <td>
+                                                                    <span
+                                                                        [ngClass]="{
+                                                                            bold: value.isLeader
+                                                                        }"
+                                                                        [ngStyle]="{
+                                                                            color: !isColorDefault && value.isLeader && reportColors[0]
+                                                                        }"
+                                                                        >({{ value.value }}) {{ value.name }}</span
+                                                                    >
+                                                                </td>
+                                                            </tr>
+                                                        }
+                                                    </table>
+                                                </td>
+                                                <td class="border-none">
+                                                    <table width="100%">
+                                                        @for (value of factor.rightValues; track trackByIndex($index, value)) {
+                                                            <tr>
+                                                                <td>
+                                                                    <span
+                                                                        [ngClass]="{
+                                                                            bold: value.isLeader
+                                                                        }"
+                                                                        [ngStyle]="{
+                                                                            color: !isColorDefault && value.isLeader && reportColors[0]
+                                                                        }"
+                                                                        >({{ value.value }}) {{ value.name }}</span
+                                                                    >
+                                                                </td>
+                                                            </tr>
+                                                        }
+                                                    </table>
+                                                </td>
+                                                <td class="border-none"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                    <footer class="page-footer" id="footer5">
+                        <table>
+                            <tr>
+                                <td>
+                                    Page
+                                    {{ workLifePlanningDriversPageNumber[i] }}
+                                </td>
+                                <td>{{ footerDate }}</td>
+                                <td>{{ teamName }} Team</td>
+                                <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+                                <td>ID#{{ accountId }}</td>
+                            </tr>
+                        </table>
+                    </footer>
+                </div>
+            }
+            @for (pageData of appendixA; track trackByIndex(i, pageData); let i = $index) {
+                <div class="page-wrapper" [id]="appendixAPageNumber[i]">
+                    <table width="100%">
+                        <tr>
+                            <td
+                                class="primary-color-box"
+                                [ngStyle]="{
+                                    backgroundColor: !isColorDefault && reportColors[0]
+                                }"
+                            ></td>
+                            <td
+                                class="main-heading"
+                                [ngStyle]="{
+                                    color: !isColorDefault && reportColors[0]
+                                }"
+                            >
+                                Appendix A: Team Member Behavioral Strength and Struggles
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="spacer"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <table class="tabular-data mt-0" width="100%">
+                                    <thead>
+                                        <tr border-spacing="0">
+                                            <th
+                                                class="team-member-col"
+                                                [ngStyle]="{
+                                                    backgroundColor: !isColorDefault && reportColors[1]
+                                                }"
+                                            >
+                                                Team Member
+                                            </th>
+                                            <th
+                                                [ngStyle]="{
+                                                    backgroundColor: !isColorDefault && reportColors[1]
+                                                }"
+                                            >
+                                                Strongest Behavioral Traits
+                                            </th>
+                                            <th
+                                                [ngStyle]="{
+                                                    backgroundColor: !isColorDefault && reportColors[1]
+                                                }"
+                                            >
+                                                Behavioral Strengths: (Motivated to be)
+                                            </th>
+                                            <th
+                                                [ngStyle]="{
+                                                    backgroundColor: !isColorDefault && reportColors[1]
+                                                }"
+                                            >
+                                                Behavioral Struggles: (Can be too)
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @for (pIndex of pageData; track trackByIndex($index, pIndex)) {
+                                            <tr>
+                                                <td>
+                                                    <span
+                                                        [ngClass]="{
+                                                            bold: usersData[pIndex]?.isLeader
+                                                        }"
+                                                        [ngStyle]="{
+                                                            color: !isColorDefault && usersData[pIndex]?.isLeader && reportColors[0]
+                                                        }"
+                                                        >{{ usersData[pIndex]?.firstName }} {{ usersData[pIndex]?.lastName }}</span
+                                                    >
+                                                    {{ usersData[pIndex]?.uniqueStyle }}
+                                                </td>
+                                                <td>
+                                                    {{ (usersData[pIndex]?.strongestFactors)[0] }}
+                                                    <br />
+                                                    {{ (usersData[pIndex]?.strongestFactors)[1] }}
+                                                </td>
+                                                <td>
+                                                    @for (strength of usersData[pIndex]?.strengths; track trackByIndex($index, strength)) {
+                                                        <span> {{ strength?.description }}. </span>
+                                                    }
+                                                </td>
+                                                <td>
+                                                    @for (struggle of usersData[pIndex]?.struggles; track trackByIndex($index, struggle)) {
+                                                        <span> {{ struggle?.description }}. </span>
+                                                    }
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="page-footer" id="footer6">
+                        <table>
+                            <tr>
+                                <td>Page {{ appendixAPageNumber[i] }}</td>
+                                <td>{{ footerDate }}</td>
+                                <td>{{ teamName }} Team</td>
+                                <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+                                <td>ID#{{ accountId }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            }
+
+            @for (pageData of appendixB; track trackByIndex(i, pageData); let i = $index) {
+                <div class="page-wrapper" [id]="appendixBPageNumber[i]">
+                    <table width="100%">
+                        <tr>
+                            <td
+                                class="primary-color-box"
+                                [ngStyle]="{
+                                    backgroundColor: !isColorDefault && reportColors[0]
+                                }"
+                            ></td>
+                            <td
+                                class="main-heading"
+                                [ngStyle]="{
+                                    color: !isColorDefault && reportColors[0]
+                                }"
+                            >
+                                Appendix B: Team Member Behavioral Communication Keys
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="spacer"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <table class="tabular-data mt-0" width="100%">
+                                    <thead>
+                                        <tr border-spacing="0">
+                                            <th
+                                                class="team-member-col"
+                                                [ngStyle]="{
+                                                    backgroundColor: !isColorDefault && reportColors[1]
+                                                }"
+                                            >
+                                                Team Member
+                                            </th>
+                                            <th
+                                                [ngStyle]="{
+                                                    backgroundColor: !isColorDefault && reportColors[1]
+                                                }"
+                                            >
+                                                Strongest Behavioral Traits
+                                            </th>
+                                            <th
+                                                [ngStyle]="{
+                                                    backgroundColor: !isColorDefault && reportColors[1]
+                                                }"
+                                            >
+                                                Communication Keys
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @for (pIndex of pageData; track trackByIndex($index, pIndex)) {
+                                            <tr>
+                                                <td>
+                                                    <span
+                                                        [ngClass]="{
+                                                            bold: usersData[pIndex]?.isLeader
+                                                        }"
+                                                        [ngStyle]="{
+                                                            color: !isColorDefault && usersData[pIndex]?.isLeader && reportColors[0]
+                                                        }"
+                                                        >{{ usersData[pIndex]?.firstName }} {{ usersData[pIndex]?.lastName }}</span
+                                                    >
+                                                    {{ usersData[pIndex]?.uniqueStyle }}
+                                                </td>
+                                                <td>
+                                                    {{ (usersData[pIndex]?.strongestFactors)[0] }}
+                                                    <br />
+                                                    {{ (usersData[pIndex]?.strongestFactors)[1] }}
+                                                </td>
+                                                <td>
+                                                    @for (key of usersData[pIndex]?.environmentKeys; track trackByIndex($index, key)) {
+                                                        <span> {{ key?.description }}. </span>
+                                                    }
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="page-footer" id="footer7">
+                        <table>
+                            <tr>
+                                <td>Page {{ appendixBPageNumber[i] }}</td>
+                                <td>{{ footerDate }}</td>
+                                <td>{{ teamName }} Team</td>
+                                <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+                                <td>ID#{{ accountId }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            }
+        </div>
+    </body>
+</html>

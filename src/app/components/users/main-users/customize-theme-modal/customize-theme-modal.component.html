@@ -1,0 +1,35 @@
+<p-sidebar class="sidebarMenu customizeSidebar" [visible]="visible" (visibleChange)="onVisibleChange($event)" [visible]="false" position="right" [showCloseIcon]="false">
+    <div class="filterHeader d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center">
+            <i class="icon-customize"></i>
+            <h5 class="mb-0 ms-3 fw-bold">Customize</h5>
+        </div>
+        <button type="button" pButton pRipple (click)="close()" icon="pi pi-times" class="p-button-rounded p-button-text p-button-plain"></button>
+    </div>
+    <div class="filterBody">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h4 class="fw-bold mb-0">Color & Themes</h4>
+            <p-button (click)="setDefaultColors()" class="applyFilter" label="Restore to Default"> </p-button>
+        </div>
+        @if (permissionObject['Feature-customize-colors']) {
+            <div class="w-100 mb-4 p-colorpicker">
+                <input (change)="primaryColorMethod()" type="color" value="primaryColor" [(ngModel)]="primaryColor" />
+                <input (change)="secondaryColorMethod()" type="color" value="secondaryColor" [(ngModel)]="secondaryColor" />
+            </div>
+        }
+        @if (permissionObject['Feature-customize-toggle-DarkModeOff']) {
+            <h4 class="fw-bold mb-4">Layout Settings</h4>
+            <div class="layoutSwitch w-100">
+                <p-inputSwitch (onChange)="darkThemeToggle($event)" styleClass="brSwitch" [(ngModel)]="darkModeStatus"></p-inputSwitch>
+                <label>{{ darkModeText }}</label>
+            </div>
+        }
+    </div>
+    <div class="filterBarFooter d-flex justify-content-center">
+        <p-button (onClick)="close()" label="Cancel" styleClass="p-button-link"></p-button>
+        <p-button (onClick)="colorChange()" class="applyFilter" label="Apply"></p-button>
+    </div>
+</p-sidebar>
+@if (visible === false) {
+    <p-button class="customizeBtn" (click)="show()"><i class="icon-customize"></i></p-button>
+}

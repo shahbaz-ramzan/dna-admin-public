@@ -1,0 +1,139 @@
+.upload-message-txt {
+    margin-top: 20px;
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: var(--dk-gray-clr);
+}
+
+.subs-user-txt {
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--primary-color);
+}
+@media screen and (max-width: 767px) {
+    .subs-user-txt br {
+        display: none;
+    }
+}
+.subs-user-txt:hover {
+    cursor: pointer;
+}
+
+:host ::ng-deep .fileUploader {
+    position: relative;
+}
+:host ::ng-deep .fileUploader .upload-txt {
+    font-size: 0.875rem;
+    color: var(--nav-gray-txt);
+    font-weight: 400;
+    margin-bottom: 16px;
+}
+:host ::ng-deep .fileUploader .browse-btn {
+    font-size: 14px;
+    border-radius: 4px;
+    width: 100px;
+    height: 32px;
+    color: #fff;
+    padding: 5px;
+    margin: 0 auto;
+    text-align: center;
+    background-color: #333333;
+    border-color: #333333;
+}
+:host ::ng-deep .fileUploader .custom-file-input {
+    position: absolute;
+    min-height: 135px;
+    background-color: transparent;
+    text-indent: -999px;
+}
+
+.uploaded-logo,
+.custom-file-label {
+    position: relative;
+    min-height: 135px;
+    border-radius: 8px;
+    padding: 25px 20px 30px;
+    margin-top: 10px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    background-color: transparent;
+    border: dashed 2px #8d8d8d;
+}
+.uploaded-logo img,
+.custom-file-label img {
+    max-width: 214px;
+    max-height: 78px;
+    width: 100%;
+    -o-object-fit: contain;
+    object-fit: contain;
+}
+.uploaded-logo .btn-del-logo,
+.custom-file-label .btn-del-logo {
+    border: 0;
+    background-color: transparent;
+    color: #000;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    padding: 5px;
+}
+@media screen and (max-width: 767px) {
+    .uploaded-logo,
+    .custom-file-label {
+        margin-top: 20px;
+        font-size: 12px;
+    }
+}
+
+:host ::ng-deep .subsField .p-inputwrapper {
+    width: 100%;
+}
+:host ::ng-deep .subsField .p-inputwrapper .p-inputnumber {
+    width: 100%;
+}
+
+@media screen and (max-width: 1199px) {
+    .co-branding-wrap {
+        order: 3;
+        margin-top: 24px;
+    }
+}
+
+:host ::ng-deep .switcher-wrap .brSwitch {
+    line-height: initial;
+    position: relative;
+    top: 4px;
+}
+:host ::ng-deep .switcher-wrap .switch-label {
+    color: var(--dullblue-gray-txt);
+    font-size: 14px;
+}
+:host ::ng-deep .switcher-wrap .switch-label .icon-information {
+    color: var(--primary-color);
+    position: relative;
+    left: 2px;
+    top: 2px;
+}
+:host ::ng-deep .email-text-area {
+    max-height: 160px;
+    overflow: auto !important;
+}
+:host ::ng-deep .email-text-area:hover,
+:host ::ng-deep .email-text-area:focus {
+    border-color: var(--primary-color);
+}
+:host ::ng-deep .p-inputswitch-checked .p-inputswitch-slider {
+    background: var(--primary-color) !important;
+}
+:host ::ng-deep .p-inputswitch-checked .p-inputswitch-slider:hover {
+    background: var(--primary-color) !important;
+}
+:host ::ng-deep .accountTextarea {
+    height: 150px !important;
+    overflow: auto !important;
+    background-color: var(--Whitesmoke-clr);
+    border: none;
+} /*# sourceMappingURL=account.component.css.map */

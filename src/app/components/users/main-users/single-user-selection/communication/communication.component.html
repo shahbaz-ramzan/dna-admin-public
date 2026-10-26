@@ -1,0 +1,18 @@
+<div class="user-card comCard">
+    <h3>
+        <a class="fw-bold insights-card-headings" href="{{ helpUrl }}" target="_blank"
+            ><span data-testId="title" pTooltip="Learn how to use these insights" tooltipPosition="top" tooltipEvent="hover">Preferred Contact Methods</span>
+        </a>
+    </h3>
+    <app-loading-spinner *ngIf="loading"></app-loading-spinner>
+    <div data-testId="content" *ngIf="!loading" class="fs-6 fw-bold mb-4">
+        <ul>
+            <li>
+                {{ data?.preferredContactMethod }}
+            </li>
+            <li *ngIf="!isWorkTalent">
+                {{ data?.actionItemToCalmClient }}
+            </li>
+        </ul>
+    </div>
+</div>

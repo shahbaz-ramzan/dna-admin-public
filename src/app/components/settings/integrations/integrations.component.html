@@ -1,0 +1,40 @@
+<app-loading-spinner *ngIf="loading"></app-loading-spinner>
+<div class="cntBox integration-wrap">
+    <div class="mb-5">
+        <h5 data-testId="integration-heading" class="mb-2">Zapier Integrations</h5>
+        <p class="lh-sm" style="text-align: justify">
+            To use the Zapier integration, your account must possess DNA API keys and have been granted access to use Zapier. For detailed guidance on
+            initiating this process and effectively utilizing the Zapier integration,
+            <a
+                class="text-decoration-underline"
+                target="_blank"
+                href="https://kb.dnabehavior.com/gene/streamline-your-workflow-dna-behaviors-integration-with-zapier"
+            >
+                learn more here </a
+            >.
+        </p>
+    </div>
+    <div class="d-flex gap-5 web-url-copied">
+        <div class="align-self-center">
+            <h5 data-testId="sync-all-heading" class="text-center">Zapier Sync All</h5>
+            <button
+                data-testId="sync-all-btn"
+                pButton
+                class="p-button-outlined"
+                (click)="onSyncAll()"
+                [disabled]="isZapierBulkStatusInProgress"
+                [pTooltip]="isZapierBulkStatusInProgress ? 'Sync in progress.' : ''"
+                type="button"
+                label="Sync"
+            ></button>
+        </div>
+        <p>
+            Clicking this button initiates a data retrieval process through Zapier, gathering all data from your account. The time required for this process
+            depends on the volume of data in your account and can take up to several hours. Additionally, the amount of data you can synchronize and the
+            frequency of syncs are determined by your Zapier plan. If the Sync All button appears disabled, it indicates that there is a pending sync in
+            progress.
+        </p>
+    </div>
+    <div class="alert alert-warning mt-4" *ngIf="!loading && isZapierBulkStatusInProgress" role="alert">Sync is in progress.</div>
+    <div class="alert alert-warning mt-4" *ngIf="!loading && showSyncInProgressMessage" role="alert">{{ syncInProgressMessage }}</div>
+</div>

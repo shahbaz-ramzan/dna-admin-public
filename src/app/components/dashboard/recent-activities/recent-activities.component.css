@@ -1,0 +1,36 @@
+.graphHeading {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #333333;
+    margin-bottom: 15px;
+}
+
+:host ::ng-deep .p-datatable-wrapper .p-datatable-thead th {
+    background-color: transparent;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--recent-table-gray);
+    padding: 15px 8px;
+    border-bottom: solid 2px var(--cm-border-clr);
+}
+:host ::ng-deep .p-datatable-wrapper .p-datatable-thead th:hover,
+:host ::ng-deep .p-datatable-wrapper .p-datatable-thead th:focus {
+    color: var(--recent-table-gray);
+    background-color: transparent;
+    border-color: transparent;
+    border-bottom-color: var(--cm-border-clr);
+    box-shadow: none;
+}
+:host ::ng-deep .p-datatable-wrapper td {
+    font-size: 0.875rem;
+    font-weight: 400;
+    font-weight: 500;
+    padding: 15px 8px;
+    color: var(--title-clr);
+    border-bottom: solid 1px var(--cm-border-clr) !important;
+}
+@media screen and (max-width: 960px) {
+    :host ::ng-deep .p-datatable-wrapper td {
+        display: table-cell !important;
+    }
+} /*# sourceMappingURL=recent-activities.component.css.map */

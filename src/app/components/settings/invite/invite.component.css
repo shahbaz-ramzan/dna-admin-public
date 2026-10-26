@@ -1,0 +1,302 @@
+:host ::ng-deep .cntBox {
+    padding: 24px 30px;
+    border-radius: 8px;
+    width: 100%;
+}
+@media screen and (max-width: 960px) {
+    :host ::ng-deep .cntBox + .cntBox {
+        margin-top: 30px;
+    }
+}
+@media screen and (max-width: 992px) {
+    :host ::ng-deep .cntBox .userRole {
+        flex-direction: column;
+    }
+}
+:host ::ng-deep .cntBox .userInputWrap .p-dropdown {
+    height: 46px;
+}
+@media screen and (min-width: 992px) {
+    :host ::ng-deep .cntBox .userInputWrap {
+        flex: 1;
+    }
+}
+:host ::ng-deep .cntBox .inviteBtn {
+    font-size: 0.875rem;
+    font-weight: 400;
+    border-radius: 4px;
+    min-width: 147px;
+    height: 46px;
+    margin-left: 12px;
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+@media screen and (max-width: 992px) {
+    :host ::ng-deep .cntBox .inviteBtn {
+        margin-top: 15px;
+        margin-left: 0;
+    }
+}
+:host ::ng-deep .userListWrap {
+    display: flex;
+    margin-top: 24px;
+    align-items: center;
+    justify-content: space-between;
+}
+@media screen and (max-width: 1024px) {
+    :host ::ng-deep .userListWrap {
+        flex-wrap: wrap;
+    }
+    :host ::ng-deep .userListWrap > div {
+        width: 100%;
+    }
+}
+:host ::ng-deep .userListWrap h6 {
+    margin-bottom: 0;
+    font-weight: 700;
+    font-size: 0.875rem;
+    color: var(--dullblue-gray-txt);
+    padding-right: 10px;
+}
+:host ::ng-deep .userListWrap .userInviteCnt {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+@media screen and (max-width: 1024px) {
+    :host ::ng-deep .userListWrap .userInviteCnt {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        text-align: left;
+    }
+}
+:host ::ng-deep .userListWrap .userInviteCnt .icon-trash {
+    font-size: 20px;
+    color: var(--dark-black-color);
+    opacity: 0.2;
+    cursor: pointer;
+}
+:host ::ng-deep .userListWrap .userInviteCnt label {
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+@media screen and (min-width: 1024px) {
+    :host ::ng-deep .userListWrap .userInviteCnt label {
+        text-align: right;
+        margin-bottom: 0;
+    }
+}
+:host ::ng-deep .userListWrap .userInviteCnt label span {
+    width: 100%;
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    color: #bdbdbd;
+}
+:host ::ng-deep .userListWrap .userInviteCnt .p-dropdown-trigger-icon {
+    color: #000000;
+    font-weight: 700;
+    font-size: 10px;
+}
+:host ::ng-deep .userListWrap .userInviteCnt .selectField {
+    margin: 0 12px;
+    min-width: 150px;
+}
+:host ::ng-deep .userListWrap .userInviteCnt .selectField .p-dropdown {
+    min-width: 100% !important;
+    background-color: transparent;
+    height: 40px;
+    border-radius: 4px;
+    border: solid 1px var(--cm-border-clr);
+}
+:host ::ng-deep .userListWrap .userInviteCnt .selectField .p-dropdown .p-dropdown-label {
+    padding: 0.65rem 0;
+    font-size: 12px;
+}
+:host ::ng-deep .userListWrap .userInviteCnt .selectField .p-dropdown.p-focus {
+    box-shadow: none;
+}
+@media screen and (max-width: 1024px) {
+    :host ::ng-deep .userListWrap .userInviteCnt .selectField {
+        margin: 0;
+        margin-right: 10px;
+    }
+}
+:host ::ng-deep .current-sub-box {
+    padding: 30px;
+    border: 1px solid var(--cm-border-clr);
+    margin-bottom: 30px;
+    border-radius: 4px;
+    display: flex;
+}
+@media screen and (min-width: 768px) {
+    :host ::ng-deep .current-sub-box {
+        align-items: center;
+    }
+}
+@media screen and (max-width: 767px) {
+    :host ::ng-deep .current-sub-box {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+:host ::ng-deep .current-sub-box .current-seats {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--dk-gray-clr);
+}
+:host ::ng-deep .current-sub-box ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+:host ::ng-deep .current-sub-box ul li {
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+    width: 160px;
+    color: var(--nav-gray-txt);
+    margin-bottom: 5px;
+}
+:host ::ng-deep .current-sub-box ul li span {
+    font-size: 0.875rem;
+    font-weight: 400;
+}
+:host ::ng-deep .current-sub-box button {
+    font-size: 0.875rem;
+    height: 32px;
+    border-radius: 4px;
+    color: var(--cm-gray-clr) !important;
+    border: 1px solid #8d8d8d !important;
+}
+@media screen and (min-width: 768px) {
+    :host ::ng-deep .current-sub-box button {
+        margin-left: 40px;
+    }
+}
+@media screen and (max-width: 767px) {
+    :host ::ng-deep .current-sub-box button {
+        margin-top: 20px;
+    }
+}
+:host ::ng-deep .current-sub-box .p-inputnumber-input {
+    width: 66px;
+    height: 50px;
+    border-radius: 4px;
+    text-align: center;
+    color: var(--dullblue-gray-txt);
+    border-color: var(--cm-border-clr);
+    background-color: var(--gray95-clr);
+}
+:host ::ng-deep .current-sub-box .p-inputnumber-button {
+    height: 21px;
+    width: 28px;
+    border-radius: 4px !important;
+    border: none !important;
+    margin-left: 4px;
+}
+@media screen and (max-width: 767px) {
+    :host ::ng-deep .current-sub-box .p-inputnumber-button {
+        margin-top: 0;
+    }
+}
+:host ::ng-deep .current-sub-box .p-inputnumber-button.p-inputnumber-button-up {
+    margin-bottom: 2px;
+}
+:host ::ng-deep .current-sub-box .p-inputnumber-button .p-button-icon {
+    font-size: 5px;
+}
+:host ::ng-deep .current-sub-box.add-user-card {
+    padding: 12px 30px;
+    margin-bottom: 0;
+}
+@media screen and (max-width: 767px) {
+    :host ::ng-deep .current-sub-box.add-user-card {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+:host ::ng-deep .current-sub-box.add-user-card + .add-user-card {
+    margin-top: 12px;
+}
+:host ::ng-deep .current-sub-box.add-user-card .p-inputnumber {
+    margin-right: 12px;
+}
+@media screen and (max-width: 767px) {
+    :host ::ng-deep .current-sub-box.add-user-card .p-inputnumber {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+}
+:host ::ng-deep .current-sub-box.add-user-card .more-txt {
+    font-size: 13px;
+    font-weight: 400;
+    color: #525252;
+}
+:host ::ng-deep .current-sub-box.add-user-card .current-seats {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--dk-gray-clr);
+}
+:host ::ng-deep .current-sub-box.add-user-card ul {
+    margin-right: 10px;
+}
+:host ::ng-deep .current-sub-box.add-user-card ul li {
+    margin-bottom: 0;
+    width: 136px;
+}
+
+.invite-box .subs-user-txt,
+.invite-modal .subs-user-txt {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--dk-gray-clr);
+}
+@media screen and (max-width: 767px) {
+    .invite-box .subs-user-txt br,
+    .invite-modal .subs-user-txt br {
+        display: none;
+    }
+}
+.invite-box .cb-heading,
+.invite-modal .cb-heading {
+    color: #000000;
+}
+
+.invite-box {
+    max-width: 600px;
+    width: 100%;
+}
+@media screen and (min-width: 768px) {
+    .invite-box .subs-user-txt {
+        padding-right: 15%;
+    }
+}
+
+:host ::ng-deep .subscriptionAutoField {
+    display: flex;
+    align-items: center;
+    padding-left: 14px;
+    background-color: var(--Whitesmoke-clr);
+    border-radius: 4px;
+}
+:host ::ng-deep .subscriptionAutoField .p-inputwrapper {
+    flex: 1;
+}
+:host ::ng-deep .subscriptionAutoField .p-autocomplete {
+    width: 100%;
+}
+:host ::ng-deep .subscriptionAutoField .p-autocomplete-loader {
+    display: none;
+}
+:host ::ng-deep .subscriptionAutoField .icon-search {
+    font-size: 24px;
+    color: #7e84a3;
+}
+:host ::ng-deep .searchUser-spinner .p-progress-spinner {
+    position: relative;
+    top: 5px;
+    right: 5px;
+    width: 30px;
+    height: 30px;
+} /*# sourceMappingURL=invite.component.css.map */

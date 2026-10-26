@@ -1,0 +1,155 @@
+# Node.js with Angular
+# Build a Node.js project that uses Angular.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+trigger:
+  - development
+
+variables:
+  vmImageName: 'ubuntu-latest'
+
+stages:
+- stage: Dev_Build
+  displayName: 'Dev Build Stage'
+
+  jobs:
+  - job: Build
+    displayName: 'Dev_Build'
+    pool:
+      vmImage: $(vmImageName)
+
+    steps:
+    - task: NodeTool@0
+      inputs:
+        versionSpec: '20.x'
+      displayName: 'Install Node.js'
+
+    - script: |
+        cd '$(System.DefaultWorkingDirectory)/dist/dna-behavior'
+        npm install -g @angular/cli
+        npm install
+        npx ng build --configuration=dev
+      displayName: 'npm install and build'
+
+    - task: CopyFiles@2
+      inputs:
+        sourceFolder: '$(Build.SourcesDirectory)'
+        contents: 'package.json' 
+        targetFolder: $(Build.ArtifactStagingDirectory)/distdev
+      displayName: 'Copy package.json'   
+
+    - task: PublishPipelineArtifact@1
+      inputs:
+        targetPath: '$(System.DefaultWorkingDirectory)/dist/dna-behavior'
+        artifactName: distdev
+      displayName: 'Publish distdev artifact'
+
+- stage: Dev_Deployment
+  displayName: 'Dev Deployment'
+  dependsOn: Dev_Build
+  condition: succeeded()
+
+  jobs: 
+  - deployment: Deploy
+    displayName: 'Deploy'
+    environment: 'DevAdminSystem'
+    pool:
+      vmImage: $(vmImageName)
+    
+    strategy:
+      runOnce:
+        deploy:
+
+          steps:
+          - task: DownloadPipelineArtifact@2
+            inputs:
+              source: 'current'
+              artifact: 'distdev'
+              path: '$(Build.ArtifactStagingDirectory)\\dist'
+            displayName: 'Download artifact'
+
+          - task: AzureStaticWebApp@0
+            displayName: Dev Deployment
+            inputs:
+              workingDirectory: '$(Build.ArtifactStagingDirectory)\\dist'
+              app_location: '/'
+              azure_static_web_apps_api_token: '$(Dev_Token)'
+              
+- stage: QA_Build
+  displayName: 'QA Build Stage'
+  dependsOn: Dev_Deployment
+
+  jobs:
+  - job: Build
+    displayName: 'QA_Build'
+    pool:
+      vmImage: $(vmImageName)
+
+    steps:
+    - task: NodeTool@0
+      inputs:
+        versionSpec: '20.x'
+      displayName: 'Install Node.js'
+
+    - script: |
+        npm install -g @angular/cli
+        npm install
+        npx ng build --configuration=qa
+      displayName: 'npm install and build'
+
+    - task: CopyFiles@2
+      inputs:
+        sourceFolder: '$(Build.SourcesDirectory)'
+        contents: 'package.json' 
+        targetFolder: $(Build.ArtifactStagingDirectory)/distqa
+      displayName: 'Copy package.json'   
+
+    - task: PublishPipelineArtifact@1
+      inputs:
+        targetPath: '$(System.DefaultWorkingDirectory)/dist/dna-behavior'
+        artifactName: distqa
+      displayName: 'Publish npm artifact'
+
+    - task: ArchiveFiles@2
+      inputs:
+        rootFolderOrFile: '$(System.DefaultWorkingDirectory)/dist/dna-behavior'
+        includeRootFolder: false
+
+    - task: DownloadPipelineArtifact@2
+      inputs:
+        source: 'current'
+        artifact: 'distqa'
+        path: '$(Pipeline.Workspace)'
+      displayName: 'Download artifact'
+
+- stage: QA_Deployment
+  displayName: 'QA Deployment'
+  dependsOn: QA_Build
+  condition: succeeded()
+
+  jobs: 
+  - deployment: Deploy
+    displayName: 'Deploy'
+    environment: 'QAAdminSystem'
+    pool:
+      vmImage: $(vmImageName)
+    
+    strategy:
+      runOnce:
+        deploy:
+        
+          steps:
+          - task: DownloadPipelineArtifact@2
+            inputs:
+              source: 'current'
+              artifact: 'distqa'
+              path: '$(Build.ArtifactStagingDirectory)\\dist'
+            displayName: 'Download artifact'
+
+          - task: AzureStaticWebApp@0
+            displayName: QA Deployment
+            inputs:
+              workingDirectory: '$(Build.ArtifactStagingDirectory)\\dist'
+              app_location: '/'
+              azure_static_web_apps_api_token: '$(QA_Token)'

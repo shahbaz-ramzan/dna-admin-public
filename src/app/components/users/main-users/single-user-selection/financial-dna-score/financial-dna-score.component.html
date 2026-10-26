@@ -1,0 +1,36 @@
+<div class="user-card workTlntRlt">
+    <h3 class="mb-0">
+        <a class="fw-bold insights-card-headings" href="https://kb.dnabehavior.com/gene/financial-behavior-cards-explained#FDNA-5-scores" target="_blank"
+            ><span data-testId="score-title" pTooltip="Learn how to use these insights" tooltipPosition="top" tooltipEvent="hover">Financial DNA 5-scores</span>
+        </a>
+    </h3>
+    <p class="fw-normal f-dnaTxt">Population Percentage (0-100%)</p>
+    <app-loading-spinner *ngIf="loading"></app-loading-spinner>
+    <ng-container *ngIf="!loading">
+        <div *ngFor="let financialBehaviour of financialBehaviours; let i = index" class="khnobWrap d-flex align-items-center w-100">
+            <circle-progress
+                data-testId="circle-progress"
+                [percent]="financialBehaviour.value"
+                [radius]="30"
+                [outerStrokeWidth]="8"
+                [innerStrokeWidth]="8"
+                [outerStrokeColor]="secondaryColor2"
+                [innerStrokeColor]="primaryColor"
+                [animation]="false"
+                [animationDuration]="300"
+                [imageHeight]="74"
+                [imageWidth]="74"
+                [showSubtitle]="false"
+                [titleColor]="secondaryColor2"
+            ></circle-progress>
+            <div class="ps-4">
+                <h4 class="fw-bold" [ngStyle]="{ color: secondaryColor2 }">
+                    {{ financialBehaviour.title }}
+                </h4>
+                <p>
+                    {{ financialBehaviour.description }}
+                </p>
+            </div>
+        </div>
+    </ng-container>
+</div>

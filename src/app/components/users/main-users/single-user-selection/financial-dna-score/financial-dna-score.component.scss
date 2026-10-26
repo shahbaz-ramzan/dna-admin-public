@@ -1,0 +1,35 @@
+:host {
+    ::ng-deep .workTlntRlt {
+        h3 {
+            font-size: 1rem;
+            line-height: 1;
+            color: var(--title-clr);
+        }
+        .f-dnaTxt {
+            font-size: 12px;
+        }
+        .khnobWrap {
+            h4 {
+                font-size: 1.125rem;
+                margin-bottom: 2px;
+                color: var(--dark-blue-txt);
+            }
+            p {
+                font-size: 0.875rem;
+                font-weight: 400;
+                margin-bottom: 0;
+                color: var(--dk-gray-clr);
+            }
+            & + .khnobWrap {
+                margin-top: 8px;
+            }
+            @media screen and (max-width: 1199px) {
+                flex-direction: column;
+                text-align: center;
+                .ps-4 {
+                    padding-left: 0 !important;
+                }
+            }
+        }
+    }
+}

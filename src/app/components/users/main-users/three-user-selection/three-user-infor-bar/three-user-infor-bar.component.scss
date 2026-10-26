@@ -1,0 +1,105 @@
+.userInfoBar {
+    display: flex;
+    width: 100%;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    border-bottom: solid 1px var(--cm-border-clr);
+    @media screen and (max-width: 767px) {
+        flex-wrap: wrap;
+    }
+    .uAvatar {
+        h5 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #212121;
+            margin-bottom: 0;
+            margin-left: 15px;
+        }
+        @media screen and (max-width: 1199px) {
+            align-items: start !important;
+        }
+        @media screen and (max-width: 992px) {
+            align-items: center !important;
+        }
+    }
+    ul {
+        margin-left: 53px;
+        @media screen and (max-width: 1199px) {
+            margin-left: 20px;
+        }
+        @media screen and (max-width: 767px) {
+            width: 100%;
+            margin-top: 10px;
+            margin-bottom: 0;
+            margin-left: 0 !important;
+        }
+        li {
+            display: inline-block;
+            @media screen and (max-width: 767px) {
+                width: 50%;
+                margin-bottom: 10px;
+            }
+            @media screen and (max-width: 1199px) {
+                &:last-child {
+                    margin-top: 10px;
+                    margin-left: 0 !important;
+                }
+            }
+            @media screen and (max-width: 992px) {
+                &:last-child {
+                    margin-top: 0;
+                    margin-left: 45px !important;
+                }
+            }
+            span {
+                font-size: 12px;
+                font-weight: 400;
+                color: #909090;
+            }
+            & + li {
+                margin-left: 45px;
+                @media screen and (max-width: 767px) {
+                    margin-left: 0 !important;
+                }
+            }
+            p {
+                font-size: 0.875rem;
+                color: #434343;
+                font-weight: 700;
+                margin-bottom: 0;
+                margin-top: 3px;
+                .icon-information {
+                    position: relative;
+                    left: 8px;
+                    top: 1px;
+                    color: var(--primary-color);
+                }
+            }
+            .clientBadge {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                line-height: 1;
+                width: 49px;
+                height: 24px;
+                font-weight: 400;
+                border-radius: 24px;
+                text-align: center;
+                color: #fff;
+                background-color: #a6a5a3;
+            }
+            &:last-child {
+                display: none;
+            }
+        }
+    }
+}
+
+:host {
+    ::ng-deep .plus-user {
+        .p-avatar-circle {
+            color: #fff;
+            background-color: var(--primary-color);
+        }
+    }
+}

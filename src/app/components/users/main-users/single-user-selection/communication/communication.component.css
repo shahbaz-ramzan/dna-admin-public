@@ -1,0 +1,45 @@
+.comCard {
+    min-height: 100%;
+}
+.comCard h3 {
+    font-size: 1.125rem;
+    line-height: 1;
+    color: var(--title-clr);
+}
+.comCard p {
+    color: var(--cm-gray-clr);
+}
+.comCard ul {
+    padding-left: 20px;
+}
+.comCard ul li {
+    color: var(--cm-gray-clr);
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+:host ::ng-deep .comMedium li {
+    margin-bottom: 10px;
+}
+:host ::ng-deep .comMedium li button {
+    padding: 0;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--cm-gray-clr);
+    background-color: transparent;
+    border-color: transparent;
+}
+:host ::ng-deep .comMedium li button:hover {
+    color: var(--cm-gray-clr);
+    border-color: transparent;
+    background-color: transparent;
+}
+:host ::ng-deep .comMedium li button .icon-envelope,
+:host ::ng-deep .comMedium li button .icon-video {
+    font-size: 16px;
+    color: var(--dark-black-color);
+    margin-right: 15px;
+}
+:host ::ng-deep .comMedium li button .icon-video {
+    font-size: 12px;
+} /*# sourceMappingURL=communication.component.css.map */

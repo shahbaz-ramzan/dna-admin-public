@@ -1,0 +1,27 @@
+<div class="wspaceCard w-100 position-relative">
+    <div class="d-flex justify-content-between w-100 align-items-center">
+        <a
+            data-testId="title"
+            class="fw-bold insights-card-headings"
+            href="https://kb.dnabehavior.com/gene/work-talent-cards-explained#Workplace-Insights"
+            target="_blank"
+            pTooltip="Learn how to use these insights"
+            tooltipPosition="top"
+            tooltipEvent="hover"
+            ><span>Workplace Insights</span>
+        </a>
+        <i class="icon-dots"></i>
+    </div>
+    <app-loading-spinner *ngIf="loading"></app-loading-spinner>
+    <div class="single-line-chart">
+        <app-single-line-horizontal
+            data-testId="single-line-chart"
+            *ngIf="!loading"
+            [yAxisPosition]="'left'"
+            [chartData]="singleUserWorkPlaceData"
+            [chartColor]="chartColor"
+            [chartLabels]="workPlaceObject && workPlaceObject.labels"
+            [isDashboard]="false"
+        ></app-single-line-horizontal>
+    </div>
+</div>

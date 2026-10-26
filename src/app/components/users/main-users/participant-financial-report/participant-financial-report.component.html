@@ -1,0 +1,1793 @@
+<style>
+  body {
+  margin: 0;
+  font-size: 10px;
+  font-family: 'Calibri';
+  background: #f5f6fa;
+  box-sizing: border-box;
+}
+
+table {
+border-collapse: collapse;
+border-spacing: 0;
+width: 100%;
+border-radius: 0;
+width: 100%;
+font-size: 14px;
+}
+
+@media print {
+.page-break {
+display: block;
+page-break-before: always;
+}
+}
+
+td {
+font-weight: 500;
+}
+
+.text-center {
+text-align: center;
+}
+
+.text-left {
+text-align: left;
+}
+
+.text-right {
+text-align: right;
+}
+
+.uppercase {
+text-transform: uppercase;
+}
+
+.insight-table {
+margin-bottom: 1.5rem;
+}
+
+.insight-table th {
+/* background-color: pri; */
+color: white;
+font-size: 16px;
+padding: 8px;
+}
+
+.insight-table td {
+font-weight: 500;
+}
+
+.bg-semidark {
+background-color: #d0d8e8;
+color: black;
+}
+
+.bg-semilight {
+background-color: #e9edf4;
+color: black;
+}
+
+.bg-medium-dark {
+background-color: #376092;
+color: white;
+}
+
+.font-semibold {
+font-weight: 600;
+}
+
+.bg-darkish {
+background-color: #1a3462;
+color: white;
+}
+
+.insight-table td {
+padding: 6px;
+font-size: 14px;
+}
+
+.portfolio-table {
+margin-bottom: 1rem;
+}
+
+.portfolio-table th {
+padding: 6px;
+vertical-align: top;
+}
+
+.portfolio-table td {
+text-align: center;
+}
+
+.vertical-align-top {
+vertical-align: top;
+}
+
+.portfolio-anylasis-table th {
+color: white;
+padding: 6px;
+font-size: 10px;
+vertical-align: top;
+}
+
+.portfolio-anylasis-table td {
+padding: 6px;
+vertical-align: top;
+font-size: 12px;
+font-weight: 500;
+}
+
+.potential-table th {
+color: white;
+padding: 6px;
+font-size: 10px;
+text-align: center;
+}
+
+.potential-table td {
+padding: 6px;
+font-size: 11px;
+}
+
+.p-r-0 {
+padding-right: 0 !important;
+}
+
+.ps-0 {
+padding-left: 0 !important;
+}
+
+.ps-40 {
+padding-left: 40px;
+}
+
+.spacer-20 {
+height: 16px;
+}
+
+.spacer-40 {
+height: 40px;
+}
+
+.spacer {
+height: 30px;
+}
+
+.spacer-50 {
+height: 50px;
+}
+
+.block {
+display: block;
+}
+
+.mb-35 {
+margin-bottom: 35px;
+}
+
+.m-0 {
+margin: 0;
+}
+
+.p-0 {
+padding: 0;
+}
+
+.fs-14 {
+font-size: 14px;
+}
+
+.reports-wrapper {
+padding-bottom: 24px;
+}
+
+.reports-wrapper > :last-child {
+margin-bottom: 0;
+}
+
+.reports-header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 30px 20px;
+background: white;
+margin-bottom: 40px;
+}
+
+.report-title .icon-arrow-left {
+font-size: 16px;
+color: #7e84a3;
+}
+
+.reports-header button {
+background: var(--primary-color);
+border-color: var(--primary-color);
+}
+
+.page-wrapper {
+width: 610px;
+min-height: 790px;
+padding: 20px;
+margin: 0 auto 24px;
+background-color: #fff;
+position: relative;
+}
+
+.page-wrapper td.primary-color-box {
+height: 24px;
+width: 23px;
+background: #003366;
+}
+
+.page-wrapper .main-heading {
+font-size: 16px;
+font-weight: 700;
+color: #003366;
+padding-left: 16px;
+}
+
+.page-wrapper p {
+line-height: 17px;
+color: #000;
+}
+
+.page-wrapper p,
+.page-wrapper ul li,
+.labled-list ul li {
+line-height: 17px;
+color: #000;
+font-size: 14px;
+}
+
+.page-wrapper a {
+color: #000000;
+}
+
+.page-wrapper ul {
+margin-top: 0;
+padding-left: 25px;
+margin-bottom: 5px;
+}
+
+h5 {
+font-size: 1.25rem;
+margin: 0 0 8px 0;
+}
+
+h6 {
+font-size: 1rem;
+margin: 0;
+font-weight: 600;
+}
+
+.page-wrapper h5 {
+font-weight: 700;
+font-size: 14px;
+color: #000000;
+}
+
+.page-wrapper ul li {
+margin-bottom: 3px;
+}
+
+.page-footer {
+position: absolute;
+left: 0;
+right: 0;
+bottom: 0;
+width: 100%;
+padding: 0 4px;
+text-align: center;
+box-sizing: border-box;
+background-color: #fff;
+border-top: solid 2px #979797;
+}
+
+.page-footer table {
+width: 100%;
+font-size: 10px;
+}
+
+.page-footer td {
+color: #979797;
+padding: 10px;
+}
+
+.pattren-banner {
+height: 222px;
+padding: 0 15px;
+background-image: url(../../../../../assets/images/pattren-img.jpg);
+background-repeat: repeat;
+}
+
+.pattren-banner p {
+background-color: #fff;
+padding: 16px;
+border: solid 1px #000;
+}
+
+.report-card {
+padding: 45px 38px;
+border-top: solid 10px #003366;
+border-bottom: solid 10px #003366;
+}
+
+.report-card img {
+max-height: 60px;
+}
+
+.report-card h1 {
+font-size: 28px;
+line-height: 31px;
+color: #000000;
+margin: 16px 0;
+margin-bottom: 15px;
+font-weight: 700;
+}
+
+.report-card p {
+font-size: 18px;
+font-weight: 400;
+line-height: 25px;
+color: #5f5a5a;
+margin-top: 0;
+margin-bottom: 5px;
+}
+
+.footer-top {
+font-size: 12px;
+font-weight: 700;
+color: #fff;
+text-align: center;
+padding: 10px;
+background: #003366;
+}
+
+.footer {
+font-size: 12px;
+color: #808080;
+padding: 5px 5px;
+text-align: center;
+}
+
+.heading-bdna {
+font-weight: 700;
+font-size: 14px;
+color: #000000;
+}
+
+.p-bdna {
+font-weight: 400;
+font-size: 14px;
+color: #000000;
+}
+
+.facilitator-head {
+font-weight: 700 !important;
+font-size: 32px !important;
+}
+
+.span-color {
+color: #003366;
+}
+
+.exuberant-list li {
+line-height: 22px !important;
+}
+
+.financial-insight-wrap {
+display: flex;
+gap: 20px;
+align-items: center;
+}
+
+.mb-4 {
+margin-bottom: 1rem;
+}
+
+.mt-0 {
+margin-top: 0;
+}
+
+p {
+font-size: 13px;
+}
+
+.financial-insight-wrap h6 {
+font-size: 1.125rem;
+color: #000;
+font-weight: 700;
+margin-bottom: 5px;
+}
+
+.financial-insight-wrap + .financial-insight-wrap {
+margin-top: 10px;
+}
+
+.financial-insight-wrap p {
+font-size: 14px;
+font-weight: 400;
+color: #000;
+margin-bottom: 0;
+}
+
+.financial-span-green {
+color: var(--green-color);
+}
+
+.financial-span-gold {
+color: var(--gold-color);
+}
+
+
+.exuGreen {
+font-size: 20px;
+color: #2e9b66;
+}
+
+.exuGray {
+font-size: 20px;
+color: #bebebe;
+}
+
+.exuYellow {
+font-size: 20px;
+color: #eead32;
+}
+
+.exuRed {
+font-size: 20px;
+color: #e05534;
+}
+
+.badge-lock {
+height: 40px;
+width: 40px;
+display: flex;
+justify-content: center;
+align-items: center;
+background-color: var(--primary-color);
+border-radius: 50%;
+margin: auto;
+}
+
+.icon-lock {
+font-size: 18px;
+}
+
+.lock-heading h5 {
+font-weight: 700;
+font-size: 14px;
+color: var(--primary-color);
+margin-bottom: 0;
+}
+
+.lock-heading p {
+font-size: 14px;
+color: var(--primary-color);
+}
+
+.market-condition h6 {
+font-weight: normal;
+float: left;
+}
+
+.market-condition i {
+float: left;
+margin-left: 10px;
+}
+
+.mw-700 {
+max-width: 700px;
+width: 100%;
+}
+
+.table-border tr td,
+.table-border thead th {
+border-right: 1px solid #fff;
+}
+
+.border-top {
+border-top: 1px solid #fff;
+}
+
+.border-bottom {
+border-bottom: 1px solid #fff;
+}
+
+.slider-container {
+width: 100%;
+height: 6px;
+background-color: #ddd;
+position: relative;
+border-radius: 2px;
+}
+
+.slider-track {
+height: 100%;
+width: 100%;
+border: 1px solid #000;
+background-color: #bbb;
+border-radius: 2px;
+}
+
+.slider-thumb {
+width: 6px;
+height: 20px;
+position: absolute;
+top: 50%;
+/* left: 0%; */
+transform: translate(-50%, -50%);
+cursor: pointer;
+}
+.td-background {
+background-color: #ededed;
+}
+.td-padding {
+padding: 10px;
+}
+</style>
+
+<body>
+  <app-discovery-incomplete-modal [visible]="discoveryIncomplete"></app-discovery-incomplete-modal>
+  <div class="reports-wrapper">
+    <app-chatbot [chat_payload_data]="chat_payload_data" [isDownloadReady]="isDownloadReady"></app-chatbot>
+    <div class="reports-header">
+      <div class="report-title d-flex align-items-center">
+        <i class="icon-arrow-left" (click)="onBack()"></i>
+        <h3 class="mb-0">{{ reportName }} Report</h3>
+      </div>
+      <button
+        pButton
+        type="button"
+        [label]="getProgressText()"
+        [disabled]="!isDownloadReady"
+        [icon]="isDownloadReady ? 'icon-download' : ''"
+        (click)="downloadPdf()"
+        class="reports-download-btn p-button-sm"
+        iconPos="right"
+      ></button>
+    </div>
+    @if (isLoading) {
+      <app-report-loading-overlay></app-report-loading-overlay>
+    }
+    @if (tScoreLoading) {
+      <app-report-loading-overlay></app-report-loading-overlay>
+    }
+    <div class="page-wrapper p-0" id="1">
+      <table width="100%">
+        <tr>
+          <td colspan="2" class="pattren-banner"></td>
+        </tr>
+        <tr>
+          <td
+            class="report-card"
+                        [ngStyle]="{
+                            borderTopColor: reportColor,
+                            borderBottomColor: reportColor
+                        }"
+            >
+            <img [src]="logo" alt />
+            <h1>
+              {{ reportName }} Report:<br />
+              {{ participantName }}
+            </h1>
+            <p class="mb-0">Providing key insights into your unique financial behaviors.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" class="pattren-banner">
+            @if (isDigitalScan) {
+              <p>
+                This client's insights are based on a Digital Scan. Use this data for marketing, communication, and alignment purposes only—not for
+                high-stakes decisions.<br />
+                <a style="text-decoration: underline" href="https://kb.dnabehavior.com/gene/predicted-results" target="_blank"
+                  >Learn more in our Digital Scan Knowledge Base.</a
+                  >
+                </p>
+              }
+            </td>
+          </tr>
+          <tr>
+            <td class="footer-top" colspan="2" [ngStyle]="{ backgroundColor: reportColor }">
+              Based on your completion of the Natural Behavior Discovery Process
+            </td>
+          </tr>
+          <tr>
+            <td class="footer" colspan="2">Powered by DNA Behavior</td>
+          </tr>
+        </table>
+      </div>
+      <div class="page-wrapper" id="2">
+        <table width="100%">
+          <tr>
+            <td colspan="2" class="heading-bdna text-center">Your DNA Result is</td>
+          </tr>
+          <tr>
+            <td colspan="2" class="text-center">
+              <h1 class="mb-15 facilitator-head">
+                You Are {{ word }}
+                {{ uniqueStyleAndDescription?.behaviorTypeName }}
+              </h1>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2" class="spacer-20"></td>
+          </tr>
+          <tr>
+            <td class="td-background td-padding" valign="top" colspan="3" [ngStyle]="{ borderTop: '10px solid ' + reportColor }">
+              <h5>What is a {{ uniqueStyleAndDescription?.behaviorTypeName }}?</h5>
+              <p>
+                {{ uniqueStyleAndDescription?.behaviorTypeDescription }}
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" class="spacer-20"></td>
+          </tr>
+          <td width="49%" class="td-padding td-dna-behavior p-0" align="center">
+            <img [src]="getCurrentUniqueStyleImage()" alt="fast-paced" width="100%" />
+          </td>
+          <tr>
+            <td colspan="2" class="spacer-20"></td>
+          </tr>
+        </table>
+
+        <div class="page-footer">
+          <table>
+            <tr>
+              <td>Page 2</td>
+              <td>{{ footerDate }}</td>
+              <td>
+                {{ participantName }}
+              </td>
+              <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+              <td>ID#{{ accountId }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="page-wrapper" id="3">
+        <table width="100%">
+          <tr>
+            <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+            <td class="main-heading" [ngStyle]="{ color: reportColor }">5 Key Financial Behavior Insights</td>
+          </tr>
+          <tr>
+            <td colspan="2" class="spacer-20"></td>
+          </tr>
+          @if (showCard['fbInsights']) {
+            <tr>
+              <td colspan="2">
+                <p>
+                  The shaded circles and scores below indicate your strength level as a percentage of the population with the corresponding
+                  descriptor in the same color.
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="spacer-20"></td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                @for (insight of scoreFDNA5; track trackByIndex($index, insight)) {
+                  <tr class="financial-insight-wrap">
+                    <td>
+                      <circle-progress
+                        [percent]="insight?.value"
+                        [radius]="30"
+                        [outerStrokeWidth]="8"
+                        [innerStrokeWidth]="8"
+                        [outerStrokeColor]="secondaryColor2"
+                        [innerStrokeColor]="primaryColor"
+                        [animation]="false"
+                        [animationDuration]="300"
+                        [imageHeight]="74"
+                        [imageWidth]="74"
+                        [showSubtitle]="false"
+                        titleColor="#000000"
+                        unitsColor="#000000"
+                        >
+                      </circle-progress>
+                    </td>
+                    <td>
+                      <h6>{{ insight?.title }}</h6>
+                      <p>{{ insight?.description }}</p>
+                    </td>
+                  </tr>
+                }
+              </td>
+            </tr>
+          }
+          @if (!showCard['fbInsights']) {
+            <tr>
+              <td colspan="2" class="spacer-50"></td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <span class="badge badge-lock"><i class="icon-lock"></i></span>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="spacer-20"></td>
+            </tr>
+            <tr>
+              <td class="text-center lock-heading" colspan="2">
+                <h5>This report has been customized for you by your administrator.</h5>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-center lock-heading" colspan="2">
+                <p>Contact your administrator to unlock this insight.</p>
+              </td>
+            </tr>
+          }
+        </table>
+
+        <div class="page-footer">
+          <table>
+            <tr>
+              <td>Page 3</td>
+              <td>{{ footerDate }}</td>
+              <td>
+                {{ participantName }}
+              </td>
+              <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+              <td>ID#{{ accountId }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="page-wrapper" id="4">
+        <table width="100%">
+          <tr>
+            <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+            <td class="main-heading" [ngStyle]="{ color: reportColor }">Ultimate Performance Guide</td>
+          </tr>
+          <tr>
+            <td colspan="2" class="spacer-20"></td>
+          </tr>
+          @if (showCard['performanceKeys']) {
+            <tr>
+              <td colspan="2">
+                <p>
+                  This section provides a concise summary of your report for quick review. More indepth results and information are provided in
+                  the remaining sections.
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="spacer-20"></td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <h5 class="mb-0">Knowing your strengths, you can increase your performance potential</h5>
+              </td>
+            </tr>
+            <tr>
+              <td class="td-background td-padding" valign="top" colspan="3" [ngStyle]="{ borderTop: '10px solid ' + reportColor }">
+                @for (strength of strengthsData; track trackByIndex(index, strength); let index = $index) {
+                  <ul class="pl-20">
+                    <li>{{ strength?.description }}</li>
+                  </ul>
+                }
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="spacer-20"></td>
+            </tr>
+            <tr>
+              <td colspan="2" class="spacer-20"></td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <h5 class="mb-0">Knowing your struggles, you can reduce your performance impediments</h5>
+              </td>
+            </tr>
+            <tr>
+              <td class="td-background td-padding" valign="top" colspan="3" [ngStyle]="{ borderTop: '10px solid ' + reportColor }">
+                @for (struggle of strugglesData; track trackByIndex(index, struggle); let index = $index) {
+                  <ul class="pl-20">
+                    <li>{{ struggle?.description }}</li>
+                  </ul>
+                }
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="spacer-20"></td>
+            </tr>
+            <tr>
+              <td colspan="2" class="spacer-20"></td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <h5 class="mb-0">How to communicate effectively for building a relationship</h5>
+              </td>
+            </tr>
+            <tr>
+              <td class="td-background td-padding" valign="top" colspan="3" [ngStyle]="{ borderTop: '10px solid ' + reportColor }">
+                @for (key of environmentKeysData; track trackByIndex(index, key); let index = $index) {
+                  <ul class="pl-20">
+                    <li>{{ key?.description }}</li>
+                  </ul>
+                }
+              </td>
+            </tr>
+          }
+          @if (!showCard['performanceKeys']) {
+            <tr>
+              <td colspan="2" class="spacer-50"></td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <span class="badge badge-lock"><i class="icon-lock"></i></span>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="spacer-20"></td>
+            </tr>
+            <tr>
+              <td class="text-center lock-heading" colspan="2">
+                <h5>This report has been customized for you by your administrator.</h5>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-center lock-heading" colspan="2">
+                <p>Contact your administrator to unlock this insight.</p>
+              </td>
+            </tr>
+          }
+        </table>
+
+        <div class="page-footer">
+          <table>
+            <tr>
+              <td>Page 4</td>
+              <td>{{ footerDate }}</td>
+              <td>
+                {{ participantName }}
+              </td>
+              <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+              <td>ID#{{ accountId }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="page-wrapper" id="5">
+        <table width="100%">
+          <tr>
+            <td class="table-head" colspan="3">
+              <table width="100%">
+                <tr>
+                  <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+                  <td class="main-heading" [ngStyle]="{ color: reportColor }">Your Top Two Factors</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          @if (showCard['topTraits']) {
+            <tr>
+              <td colspan="2" class="pb-16"></td>
+            </tr>
+            <tr>
+              <td colspan="2" class="spacer-40"></td>
+            </tr>
+            <tr>
+              <td>
+                <table width="100%">
+                  <tr>
+                    <td width="49%" class="td-background td-padding" valign="top" [ngStyle]="{ borderTop: '10px solid ' + reportColor }">
+                      <h5>{{ firstTraitKeyHeading }}</h5>
+                      <p>
+                        {{ coachingReportTraits[firstTraitKey] }}
+                      </p>
+                    </td>
+                    <td width="1%"></td>
+                    <td width="49%" class="td-background td-padding" valign="top" [ngStyle]="{ borderTop: '10px solid ' + reportColor }">
+                      <h5>{{ secondTraitKeyHeading }}</h5>
+                      <p>
+                        {{ coachingReportTraits[secondTraitKey] }}
+                      </p>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="pb-16"></td>
+            </tr>
+            <tr>
+              <td colspan="2" class="spacer-40"></td>
+            </tr>
+            <tr>
+              <td class="td-background td-padding" valign="top" align="center" colspan="3" [ngStyle]="{ borderTop: '10px solid ' + reportColor }">
+                <h5>Factor Relationship</h5>
+                <p>The above combination of these two traits indicates that you {{ factorRelationShipName?.Description }}.</p>
+              </td>
+            </tr>
+          }
+          @if (!showCard['topTraits']) {
+            <tr>
+              <td colspan="2" class="spacer-50"></td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <span class="badge badge-lock"><i class="icon-lock"></i></span>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="spacer-20"></td>
+            </tr>
+            <tr>
+              <td class="text-center lock-heading" colspan="2">
+                <h5>This report has been customized for you by your administrator.</h5>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-center lock-heading" colspan="2">
+                <p>Contact your administrator to unlock this insight.</p>
+              </td>
+            </tr>
+          }
+        </table>
+
+        <div class="page-footer">
+          <table>
+            <tr>
+              <td>Page 5</td>
+              <td>{{ footerDate }}</td>
+              <td>{{ participantName }} - {{ uniqueStyleAndDescription?.behaviorTypeName }}</td>
+              <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+              <td>ID#{{ accountId }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="page-wrapper" id="6">
+        <table class="mw-700" cellspacing="0" cellpadding="0">
+          <tr>
+            <td>
+              <table width="100%">
+                <tr>
+                  <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+                  <td class="main-heading" [ngStyle]="{ color: reportColor }">Financial Planning Insights</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          @if (showCard['financialPlanningInsights']) {
+            <tr>
+              <td style="padding: 1.25rem 0 1rem 0">
+                Based on combinations of your behavioral factors, your natural approaches to financial planning are set out below.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <table class="insight-table table-border">
+                  <thead [ngStyle]="{ backgroundColor: reportColor }">
+                    <th class="text-left">Insight</th>
+                    <th class="text-center" style="width: 20%">L/M/H</th>
+                    <th class="text-center">Population % (0-100%)</th>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td style="padding: 0"></td>
+                    </tr>
+                    @for (insight of financialPlanningInsights; track trackByIndex(i, insight); let i = $index) {
+                      <tr>
+                        <td [ngClass]="i % 2 === 0 ? 'bg-semidark' : 'bg-semilight'">
+                          {{ insight?.insightName }}
+                        </td>
+                        <td class="uppercase text-center" [ngClass]="i % 2 === 0 ? 'bg-semidark' : 'bg-semilight'">
+                          {{ insight?.hml }}
+                        </td>
+                        <td class="text-center" [ngClass]="i % 2 === 0 ? 'bg-semidark' : 'bg-semilight'">{{ insight?.population }}%</td>
+                      </tr>
+                    }
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+          }
+          @if (!showCard['financialPlanningInsights']) {
+            <tr>
+              <td colspan="2" class="spacer-50"></td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <span class="badge badge-lock"><i class="icon-lock"></i></span>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="spacer-20"></td>
+            </tr>
+            <tr>
+              <td class="text-center lock-heading" colspan="2">
+                <h5>This report has been customized for you by your administrator.</h5>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-center lock-heading" colspan="2">
+                <p>Contact your administrator to unlock this insight.</p>
+              </td>
+            </tr>
+          }
+        </table>
+        <div class="page-footer">
+          <table>
+            <tr>
+              <td>Page 6</td>
+              <td>{{ footerDate }}</td>
+              <td>
+                {{ participantName }}
+              </td>
+              <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+              <td>ID#{{ accountId }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="page-wrapper" id="7">
+        <table class="mw-700" cellspacing="0" cellpadding="0">
+          <tr>
+            <td>
+              <tr>
+                <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+                <td class="main-heading" [ngStyle]="{ color: reportColor }">Natural Behavior Portfolio Risk Group</td>
+              </tr>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" class="spacer-20"></td>
+          </tr>
+          @if (showCard['riskPortfolioGroup']) {
+            <tr>
+              <td style="padding-bottom: 1rem">
+                <p class="m-0">
+                  The Natural Behavior Portfolio Risk Group that should be considered as a starting point in determining the structure of your
+                  investment portfolio is indicated below. The Portfolio Risk Group shown below has been determined based on the blend of your
+                  Natural Behavior Risk Propensity and Risk Tolerance Scores as summarized in the table above.
+                </p>
+                <p class="m-0">
+                  Based only on your Natural Behavior Risk Score, your Portfolio Risk Group is <strong>Group {{ riskGroup }}.</strong>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <table>
+                  <tr>
+                    <td swidth="22%" class="font-semibold">Portfolio Risk Group</td>
+                    <td width="75%">
+                      <div class="slider-container">
+                        <div class="slider-track"></div>
+                        <div
+                          class="slider-thumb"
+                          [ngStyle]="{ backgroundColor: reportColor, left: getThumbPosition(riskGroup) + '%' }"
+                          draggable="true"
+                        ></div>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="spacer-20"></td>
+            </tr>
+            <tr>
+              <td>
+                <table class="portfolio-table" style="font-size: 11px">
+                  <thead>
+                    <th class="text-center" style="width: 25%"></th>
+                    <th class="text-center" [ngClass]="{ 'border-bottom': riskGroup === 1 }" [ngStyle]="getPrimaryColor(riskGroup === 1)">1</th>
+                    <th class="text-center" [ngClass]="{ 'border-bottom': riskGroup === 2 }" [ngStyle]="getPrimaryColor(riskGroup === 2)">2</th>
+                    <th class="text-center" [ngClass]="{ 'border-bottom': riskGroup === 3 }" [ngStyle]="getPrimaryColor(riskGroup === 3)">3</th>
+                    <th class="text-center" [ngClass]="{ 'border-bottom': riskGroup === 4 }" [ngStyle]="getPrimaryColor(riskGroup === 4)">4</th>
+                    <th
+                      class="text-center"
+                      style="padding-bottom: 1rem"
+                      [ngClass]="{ 'border-bottom': riskGroup === 5 }"
+                      [ngStyle]="getPrimaryColor(riskGroup === 5)"
+                      >
+                      5
+                    </th>
+                    <th class="text-center" [ngClass]="{ 'border-bottom': riskGroup === 6 }" [ngStyle]="getPrimaryColor(riskGroup === 6)">6</th>
+                    <th class="text-center" [ngClass]="{ 'border-bottom': riskGroup === 7 }" [ngStyle]="getPrimaryColor(riskGroup === 7)">7</th>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td style="padding: 0"></td>
+                    </tr>
+                    <tr>
+                      <td style="text-align: left">Percentage of the population with a risk taking level less than you</td>
+                      <td [ngStyle]="getPrimaryColor(riskGroup === 1)">< 2%</td>
+                      <td [ngStyle]="getPrimaryColor(riskGroup === 2)">2-16%</td>
+                      <td [ngStyle]="getPrimaryColor(riskGroup === 3)">17-30%</td>
+                      <td [ngStyle]="getPrimaryColor(riskGroup === 4)">31-69%</td>
+                      <td [ngStyle]="getPrimaryColor(riskGroup === 5)" class="text-center">70-83%</td>
+                      <td [ngStyle]="getPrimaryColor(riskGroup === 6)">84-98%</td>
+                      <td [ngStyle]="getPrimaryColor(riskGroup === 7)">98%></td>
+                    </tr>
+                    <tr>
+                      <td class="vertical-align-top" style="text-align: left">Portfolio Structure</td>
+                      <td
+                        class="vertical-align-top"
+                        [ngClass]="{ 'border-top': riskGroup === 1 }"
+                        [ngStyle]="getPrimaryColor(riskGroup === 1)"
+                        >
+                        Capital <br />
+                        Protection
+                      </td>
+                      <td
+                        class="vertical-align-top"
+                        [ngClass]="{ 'border-top': riskGroup === 2 }"
+                        [ngStyle]="getPrimaryColor(riskGroup === 2)"
+                        >
+                        Ultra-<br />
+                        Conservative
+                      </td>
+                      <td
+                        class="vertical-align-top"
+                        [ngClass]="{ 'border-top': riskGroup === 3 }"
+                        [ngStyle]="getPrimaryColor(riskGroup === 3)"
+                        >
+                        Conservative
+                      </td>
+                      <td
+                        class="vertical-align-top"
+                        [ngClass]="{ 'border-top': riskGroup === 4 }"
+                        [ngStyle]="getPrimaryColor(riskGroup === 4)"
+                        >
+                        Balanced
+                      </td>
+                      <td
+                        class="text-center"
+                        style="padding-bottom: 1rem"
+                        [ngClass]="{ 'border-top': riskGroup === 5 }"
+                        [ngStyle]="getPrimaryColor(riskGroup === 5)"
+                        >
+                        Accumulation
+                      </td>
+                      <td
+                        class="vertical-align-top"
+                        [ngClass]="{ 'border-top': riskGroup === 6 }"
+                        [ngStyle]="getPrimaryColor(riskGroup === 6)"
+                        >
+                        Growth
+                      </td>
+                      <td
+                        class="vertical-align-top"
+                        [ngClass]="{ 'border-top': riskGroup === 7 }"
+                        [ngStyle]="getPrimaryColor(riskGroup === 7)"
+                        >
+                        Aggressive
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p class="mt-0 mb-2">
+                  Your Overall Portfolio Risk Group that is ultimately used in the Financial Plan and Investment Policy Statement will also be
+                  influenced by other factors. Prior to determining your final Portfolio Risk Group, please review the following with your advisor
+                  to determine the portfolio that is most suitable for you.
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <ul>
+                  <li>
+                    Your goals and current financial capacity as shown in the Investment Portfolio Risk Reward Analysis table in Appendix
+                    Section 1.
+                  </li>
+                  <li>
+                    Learned risk behavior motivations that have evolved from circumstances, experiences, and education as shown in the Potential
+                    Learned Behavior Risk Motivations Table in Appendix Section 2.
+                  </li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="page-break"></div>
+              </td>
+            </tr>
+          }
+          @if (!showCard['riskPortfolioGroup']) {
+            <tr>
+              <td colspan="2" class="spacer-50"></td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <span class="badge badge-lock"><i class="icon-lock"></i></span>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="spacer-20"></td>
+            </tr>
+            <tr>
+              <td class="text-center lock-heading" colspan="2">
+                <h5>This report has been customized for you by your administrator.</h5>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-center lock-heading" colspan="2">
+                <p>Contact your administrator to unlock this insight.</p>
+              </td>
+            </tr>
+          }
+        </table>
+        <div class="page-footer">
+          <table>
+            <tr>
+              <td>Page 7</td>
+              <td>{{ footerDate }}</td>
+              <td>
+                {{ participantName }}
+              </td>
+              <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+              <td>ID#{{ accountId }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="page-wrapper" id="8">
+        <table>
+          <tr>
+            <td>
+              <table width="100%">
+                <tr>
+                  <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+                  <td class="main-heading" [ngStyle]="{ color: reportColor }">
+                    Appendix: Consideration Factors for Final Portfolio Risk Group Determination
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" class="spacer-20"></td>
+          </tr>
+          @if (showCard['riskPortfolioGroup']) {
+            <tr>
+              <td>
+                <h5>1. Review The Investment Portfolio Risk Reward Analysis</h5>
+                <p class="mb-1">
+                  We recommend that you review with your advisor the Investment Portfolio Risk Reward Analysis table that is provided below to
+                  assess the appropriate Overall Portfolio Risk Group. The Overall Portfolio Risk Group that is used in the Financial Plan and
+                  Investment Policy Statement should be selected based on understanding the investment portfolio returns needed to achieve your
+                  goals (item 1 in the table below) and with respect to your current financial capacity (items 2 to 4 in the table below).
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <table class="portfolio-anylasis-table table-border">
+                  <thead [ngStyle]="{ backgroundColor: reportColor }">
+                    <th style="text-align: left">Portfolio Risk Group</th>
+                    <th>
+                      1 <br />
+                      Capital Protection
+                    </th>
+                    <th>
+                      2<br />
+                      Ultra-Conservative
+                    </th>
+                    <th>
+                      3 <br />
+                      Conservative
+                    </th>
+                    <th>
+                      4 <br />
+                      Balanced
+                    </th>
+                    <th>
+                      5<br />
+                      Accumulation
+                    </th>
+                    <th>
+                      6<br />
+                      Growth
+                    </th>
+                    <th>
+                      7 <br />
+                      Aggressive
+                    </th>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td style="padding: 0"></td>
+                    </tr>
+                    <tr>
+                      <td class="bg-semidark">1.Investment Portfolio Return Aim (Without Borrowing)</td>
+                      <td class="bg-semidark">In Line with Cash Deposits</td>
+                      <td class="bg-semidark">In Line with or slightly better than cash deposits</td>
+                      <td class="bg-semidark">Excess of deposits and possibly beats inflation</td>
+                      <td class="bg-semidark">Average returns higher than deposit rates and inflation</td>
+                      <td class="bg-semidark">Above average returns and higher than deposits or inflation</td>
+                      <td class="bg-semidark">
+                        Significantly higher than deposits and inflation with high return potential over the long term
+                      </td>
+                      <td class="bg-semidark">The highest return potential over the long term</td>
+                    </tr>
+                    <tr>
+                      <td class="bg-semilight">2. Average Portfolio Fluctuation Based on 5 Year Data of Monthly Pricing</td>
+                      <td class="bg-semilight">0% to ±0.5%</td>
+                      <td class="bg-semilight">±0.5% to ±2%</td>
+                      <td class="bg-semilight">±2% to ±5%</td>
+                      <td class="bg-semilight">±5% to ±10%</td>
+                      <td class="bg-semilight">±10% to ±15%</td>
+                      <td class="bg-semilight">±15% to ±25%</td>
+                      <td class="bg-semilight">±25% or greater</td>
+                    </tr>
+                    <tr>
+                      <td class="bg-semidark">3. Potential Short Term Portfolio Loss (Based on Outer Limits)</td>
+                      <td class="bg-semidark">-1%</td>
+                      <td class="bg-semidark">-4%</td>
+                      <td class="bg-semidark">-10%</td>
+                      <td class="bg-semidark">-20%</td>
+                      <td class="bg-semidark">-30%</td>
+                      <td class="bg-semidark">-50%</td>
+                      <td class="bg-semidark">Far greater than -50%</td>
+                    </tr>
+                    <tr>
+                      <td class="bg-semilight">4. Risk of Expected Loss</td>
+                      <td class="bg-semilight">Very Low Risk</td>
+                      <td class="bg-semilight">Low Risk</td>
+                      <td class="bg-semilight">Low to Medium Risk</td>
+                      <td class="bg-semilight">Medium Risk</td>
+                      <td class="bg-semilight">Medium to High Risk</td>
+                      <td class="bg-semilight">High Risk</td>
+                      <td class="bg-semilight">Very High Risk</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span style="font-size: 10px">
+                  The guidelines provided in this table are based on research from a range of relevant international investment body sources.
+                </span>
+              </td>
+            </tr>
+          }
+          @if (!showCard['riskPortfolioGroup']) {
+            <tr>
+              <td colspan="2" class="spacer-50"></td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <span class="badge badge-lock"><i class="icon-lock"></i></span>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="spacer-20"></td>
+            </tr>
+            <tr>
+              <td class="text-center lock-heading" colspan="2">
+                <h5>This report has been customized for you by your administrator.</h5>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-center lock-heading" colspan="2">
+                <p>Contact your administrator to unlock this insight.</p>
+              </td>
+            </tr>
+          }
+        </table>
+        <div class="page-footer">
+          <table>
+            <tr>
+              <td>Page 8</td>
+              <td>{{ footerDate }}</td>
+              <td>
+                {{ participantName }}
+              </td>
+              <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+              <td>ID#{{ accountId }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="page-wrapper" id="9">
+        <table class="mw-700" cellspacing="0" cellpadding="0">
+          <tr>
+            <td>
+              <table width="100%">
+                <tr>
+                  <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+                  <td class="main-heading" [ngStyle]="{ color: reportColor }">
+                    Appendix: Consideration Factors for Final Portfolio Risk Group Determination
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" class="spacer-20"></td>
+          </tr>
+          @if (showCard['riskPortfolioGroup']) {
+            <tr>
+              <td>
+                <h5>2. Review Your Potential Learned Risk Behavior Motivations</h5>
+                <p class="m-0">
+                  The Overall Portfolio Risk Group that is used in the Financial Plan and Investment Policy Statement should also be selected
+                  based on understanding the potential motivations that influence your Learned Risk Behavior. The Learned Risk Behavior reflects
+                  how the Natural Risk Behavior identified in this report may be currently adapted in your complete financial personality by
+                  circumstances, experiences and education. We recommend that you review with your advisor the Potential Learned Risk Behavior
+                  Motivations table that is provided below to assess the appropriate Overall Portfolio Group.
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="spacer-20"></td>
+            </tr>
+            <tr>
+              <td>
+                <table class="potential-table table-border">
+                  <thead [ngStyle]="{ backgroundColor: reportColor }">
+                    <th>Potential Motivations</th>
+                    <th>
+                      May Invest Higher Than Natural Risk <br />
+                      Behavior
+                    </th>
+                    <th>
+                      May Invest Lower Than Natural Risk <br />
+                      Behavior
+                    </th>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td style="padding: 0"></td>
+                    </tr>
+                    <tr>
+                      <td class="bg-semidark">1. Market Perception</td>
+                      <td class="bg-semidark">Bullish</td>
+                      <td class="bg-semidark">Bearish</td>
+                    </tr>
+                    <tr>
+                      <td class="bg-semilight">2. Goal Setting Attitude</td>
+                      <td class="bg-semilight">Ambitious</td>
+                      <td class="bg-semilight">Conservative</td>
+                    </tr>
+                    <tr>
+                      <td class="bg-semidark">3. Financial Decision-Making Confidence</td>
+                      <td class="bg-semidark">High</td>
+                      <td class="bg-semidark">Low</td>
+                    </tr>
+                    <tr>
+                      <td class="bg-semilight">4. Age</td>
+                      <td class="bg-semilight">Retirement in 10+ Years</td>
+                      <td class="bg-semilight">Close to Retirement</td>
+                    </tr>
+                    <tr>
+                      <td class="bg-semidark">5. Financial Experiences</td>
+                      <td class="bg-semidark">Good-"Rags to Riches"</td>
+                      <td class="bg-semidark">Poor-"Riches to Rags"</td>
+                    </tr>
+                    <tr>
+                      <td class="bg-semilight">6. Life Experiences</td>
+                      <td class="bg-semilight">Positive Feeling</td>
+                      <td class="bg-semilight">Negative Mood</td>
+                    </tr>
+                    <tr>
+                      <td class="bg-semidark">7. Values and Beliefs</td>
+                      <td class="bg-semidark">Belief in taking risk builds wealth</td>
+                      <td class="bg-semidark">Belief that investments are for life security</td>
+                    </tr>
+                    <tr>
+                      <td class="bg-semilight">8. Financial Education</td>
+                      <td class="bg-semilight">High Investment Knowledge</td>
+                      <td class="bg-semilight">Low Investment Knowledge</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="spacer-40"></td>
+            </tr>
+          }
+          @if (!showCard['riskPortfolioGroup']) {
+            <tr>
+              <td colspan="2" class="spacer-50"></td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <span class="badge badge-lock"><i class="icon-lock"></i></span>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="spacer-20"></td>
+            </tr>
+            <tr>
+              <td class="text-center lock-heading" colspan="2">
+                <h5>This report has been customized for you by your administrator.</h5>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-center lock-heading" colspan="2">
+                <p>Contact your administrator to unlock this insight.</p>
+              </td>
+            </tr>
+          }
+        </table>
+
+        <div class="page-footer">
+          <table>
+            <tr>
+              <td>Page 9</td>
+              <td>{{ footerDate }}</td>
+              <td>
+                {{ participantName }}
+              </td>
+              <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+              <td>ID#{{ accountId }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="page-wrapper" id="10">
+        <table width="100%">
+          <tr>
+            <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+            <td class="main-heading" [ngStyle]="{ color: reportColor }">Unique Style Overview</td>
+          </tr>
+          @if (showCard['interactiveInsights']) {
+            <tr>
+              <td colspan="2">
+                <table width="100%">
+                  <tr>
+                    <td width="70%">
+                      <table>
+                        <tr>
+                          <td class="p-bdna ps-0">
+                            This section provides a concise description of your unique behavioral style as it relates to financial
+                            decision-making. Scan the QR code to access a video that offers further insights into your style, helping
+                            you understand its impact on your financial behaviors and strategies.
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                    <td width="25%">
+                      <table>
+                        <tr>
+                          <td class="text-center">
+                            <qr-code [value]="uniqueStyleVideo" size="105" errorCorrectionLevel="H"></qr-code>
+                            <p class="mb-0">Scan to watch video</p>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          }
+          @if (!showCard['interactiveInsights']) {
+            <tr>
+              <td colspan="2">
+                <span class="badge badge-lock"><i class="icon-lock"></i></span>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="spacer-20"></td>
+            </tr>
+            <tr>
+              <td class="text-center lock-heading" colspan="2">
+                <h5>This report has been customized for you by your administrator.</h5>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-center lock-heading" colspan="2">
+                <p>Contact your administrator to unlock this insight.</p>
+              </td>
+            </tr>
+          }
+          <tr>
+            <td colspan="2" class="spacer-20"></td>
+          </tr>
+
+          <tr>
+            <td class="table-head" colspan="3">
+              <table width="100%">
+                <tr>
+                  <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+                  <td class="main-heading" [ngStyle]="{ color: reportColor }">Behavioral Biases</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          @if (showCard['interactiveInsights']) {
+            <tr>
+              <td colspan="2" class="spacer-20"></td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <table width="100%">
+                  <tr>
+                    <td colspan="2">
+                      <p>Your two strongest Behavioral Biases in making decisions are:</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">
+                      <table width="100%">
+                        <tr>
+                          <td width="60%">
+                            <table class="m-auto">
+                              <tr>
+                                <td class="text-center">
+                                  <h6 class="mb-0 fw-bold fs-14">
+                                    {{ firstBiaseName }}
+                                  </h6>
+                                  <qr-code [value]="biasesVideo?.firstBiase" size="95" errorCorrectionLevel="H"></qr-code>
+                                  <p class="mb-0">Scan to watch video</p>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                          <td width="40%">
+                            <table>
+                              <tr>
+                                <td class="text-center">
+                                  <h6 class="mb-0 fw-bold fs-14">
+                                    {{ secondBiaseName }}
+                                  </h6>
+                                  <qr-code [value]="biasesVideo?.secondBiase" size="95" errorCorrectionLevel="H"></qr-code>
+                                  <p class="mb-0">Scan to watch video</p>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p class="mb-0 mt-2">
+                        These are the behavioral biases that influence how you make decisions which may get in the way of rational
+                        decision-making. Discuss with your advisor strategies to help you manage your instincts in your financial plan.
+                      </p>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          }
+          @if (!showCard['interactiveInsights']) {
+            <tr>
+              <td colspan="2">
+                <span class="badge badge-lock"><i class="icon-lock"></i></span>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="spacer-20"></td>
+            </tr>
+            <tr>
+              <td class="text-center lock-heading" colspan="2">
+                <h5>This report has been customized for you by your administrator.</h5>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-center lock-heading" colspan="2">
+                <p>Contact your administrator to unlock this insight.</p>
+              </td>
+            </tr>
+          }
+          <tr>
+            <td colspan="2" class="spacer-40"></td>
+          </tr>
+          <tr>
+            <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+            <td class="main-heading" [ngStyle]="{ color: reportColor }">Market Mood</td>
+          </tr>
+          <tr>
+            <td colspan="2" class="spacer-20"></td>
+          </tr>
+          @if (showCard['interactiveInsights']) {
+            <tr>
+              <td colspan="2">
+                <table width="100%">
+                  <tr>
+                    <td width="25%">
+                      <table>
+                        <tr>
+                          <td class="text-center">
+                            <qr-code [value]="marketMoodVideo" size="105" errorCorrectionLevel="H"></qr-code>
+                            <p class="mb-0">Scan to watch video</p>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                    <td width="70%">
+                      <table>
+                        <tr>
+                          <td class="p-bdna ps-0">
+                            Market Mood helps identify your natural style to make financial decisions. It helps advisors manage your
+                            market fear so that you can achieve your goals. Use Market Mood to open up discussions with your advisors to
+                            share your feelings (such as fear, caution or excitement) about the market movements and the effects they
+                            might have on your financial performance.
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="spacer-20"></td>
+            </tr>
+            <tr>
+              <td colspan="2" class="market-condition">
+                <h6>
+                  People like you are
+                  <span class="span-color" [ngStyle]="{ color: reportColor }"
+                    ><b>{{ marketMood?.mood }}</b></span
+                    >
+                    with the current market conditions.
+                  </h6>
+                  <i
+                                [ngClass]="{
+                                    exuYellow: marketMood?.color === 'Amber',
+                                    exuRed: marketMood?.color === 'Red',
+                                    exuGreen: marketMood?.color === 'Green',
+                                    exuGray: marketMood?.color === 'Neutral',
+
+                                    'icon-smile': marketMood?.mood === 'Exuberant' || marketMood?.mood === 'Opportunistic',
+                                    'icon-sad-smile': marketMood?.mood === 'Comfortable',
+                                    'icon-tired': marketMood?.mood === 'Watchful' || marketMood?.mood === 'Concerned',
+                                    'icon-angry': marketMood?.mood === 'Fearful' || marketMood?.mood === 'Apprehensive'
+                                }"
+                  ></i>
+                </td>
+              </tr>
+            }
+            @if (!showCard['interactiveInsights']) {
+              <tr>
+                <td colspan="2">
+                  <span class="badge badge-lock"><i class="icon-lock"></i></span>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" class="spacer-20"></td>
+              </tr>
+              <tr>
+                <td class="text-center lock-heading" colspan="2">
+                  <h5>This report has been customized for you by your administrator.</h5>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-center lock-heading" colspan="2">
+                  <p>Contact your administrator to unlock this insight.</p>
+                </td>
+              </tr>
+            }
+          </table>
+
+          <div class="page-footer">
+            <table>
+              <tr>
+                <td>Page 10</td>
+                <td>{{ footerDate }}</td>
+                <td>{{ participantName }} - {{ uniqueStyleAndDescription?.behaviorTypeName }}</td>
+                <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+                <td>ID#{{ accountId }}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </body>

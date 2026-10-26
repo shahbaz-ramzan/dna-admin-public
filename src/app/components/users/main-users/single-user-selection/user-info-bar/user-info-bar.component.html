@@ -1,0 +1,426 @@
+<div class="userInfoBar row mx-0 gy-3 position-relative">
+    <app-loading-spinner *ngIf="isUserDetailLoading || loading"></app-loading-spinner>
+    <div class="d-flex user-p-wrap col-12 px-0" [ngClass]="{ 'col-xxl-7 single-layout': singleUser }">
+        <div class="uAvatar align-items-center d-flex" [ngClass]="{ 'col-12 col-md-4 px-0': singleUser }">
+            <span class="img-wrap">
+                <p-avatar
+                    image="{{ selectedUser?.profileImage ? selectedUser?.profileImage : '../../../../assets/images/profile.svg' }}"
+                    size="large"
+                    shape="circle"
+                >
+                </p-avatar>
+                <i
+                    *ngIf="selectedUser?.isDigitalScanV1_5Imported"
+                    pTooltip="Results Predicted with Digital Scan"
+                    tooltipPosition="right"
+                    class="icon-stars"
+                ></i>
+            </span>
+
+            <div class="uAvatar-cnt">
+                <h5>
+                    {{ selectedUser?.firstName ?? '-----' }}
+                    {{ selectedUser?.lastName ?? '-----' }}
+                </h5>
+                <a>{{ selectedUser?.email ?? '-----' }}</a>
+            </div>
+        </div>
+        <ul class="user-info-list list-inline" [ngClass]="{ 'col-12 col-md-8 px-0': singleUser }">
+            <li *ngIf="selectedUser?.tags?.length > 0">
+                <span class="fw-medium">Tags</span>
+                <div class="d-flex align-items-center">
+                    <p
+                        [ngClass]="{
+                            clientBadge: selectedUser?.tags?.length > 0
+                        }"
+                    >
+                        <span>{{ (selectedUser?.tags)[0]?.tag }}</span>
+                    </p>
+                    <p-tag
+                        *ngIf="selectedUser.tags.length - 1 > 0"
+                        class="ms-1 clientTag cursor-pointer"
+                        severity="+3"
+                        value="+{{ selectedUser.tags.length - 1 }}"
+                        [rounded]="true"
+                        pTooltip="{{ tagsToolTip() }}"
+                        tooltipStyleClass="tagsToolTip"
+                    ></p-tag>
+                </div>
+            </li>
+            <li>
+                <span>Completed</span>
+                <P>{{ selectedUser?.completionDate ?? '-----' }}</P>
+            </li>
+            <li>
+                <span>Unique Style</span>
+                <P class="text-nowrap"
+                    >{{ selectedUser?.uniqueStyle ?? '-----' }}
+                    <a style="text-decoration: none; color: #677eff" href="https://kb.dnabehavior.com/gene/dna-natural-behavior-unique-styles" target="_blank"
+                        ><i
+                            class="icon-information"
+                            pTooltip="There are 10 DNA Natural Behavior Unique Styles. Click on icon to explore."
+                            tooltipPosition="right"
+                        >
+                        </i
+                    ></a>
+                </P>
+            </li>
+            <li *ngIf="selectedUser?.facilitator">
+                <span>{{ systemLabels.namedUserLabel }}</span>
+                <P>{{ selectedUser?.facilitator?.facilitatorName }}</P>
+            </li>
+        </ul>
+    </div>
+    <div *ngIf="singleUser" class="user-btn-wrapper col-12 col-xxl-5 px-0 justify-content-center justify-content-md-start justify-content-xxl-end">
+        <button
+            *ngIf="selectedUser?.isDigitalScanV1_5Imported"
+            pButton
+            class="user-edit-btn"
+            (click)="showDigitalScanHelp()"
+            [disabled]="hasShownDigitalScanHelp"
+        >
+            <i class="icon-feedback"></i>
+        </button>
+        <button *ngIf="canEditParticipant" pButton class="user-edit-btn" (click)="showMaximizableDialog()">
+            <i class="icon-edit-o"></i>
+        </button>
+        <button pButton class="user-edit-btn" (click)="copyMethod()">
+            <i class="pi pi-share-alt"></i>
+        </button>
+
+        <div class="report-actions flex flex-column justify-content-center align-items-center">
+            <!-- <p-dropdown
+                *ngIf="selectedUser?.uniqueStyle"
+                [options]="reportDp"
+                [(ngModel)]="selectedReport"
+                optionLabel="name"
+                class="selectField hideView"
+                placeholder="View Reports"
+                (onChange)="reportSelection()"
+            ></p-dropdown> -->
+            <p-treeSelect
+                *ngIf="selectedUser?.uniqueStyle"
+                (onNodeSelect)="reportSelection($event)"
+                class="selectField hideView select-field-wrap"
+                [(ngModel)]="selectedReport"
+                containerStyleClass="w-100"
+                [options]="reportDp"
+                placeholder="View Reports"
+            />
+            <button
+                *ngIf="showSalesReportBtn && !showCoachingReportBtn && selectedUser?.uniqueStyle"
+                pButton
+                class="mt-2 w-100 sales-report-btn"
+                severity="secondary"
+                (click)="onCustomReportClick('sales-report')"
+            >
+                Sales Talent DNA Report
+            </button>
+            <button
+                *ngIf="showCoachingReportBtn && !showSalesReportBtn"
+                pButton
+                class="mt-2 w-100 sales-report-btn"
+                severity="secondary"
+                (click)="onCoachingReportClick()"
+            >
+                Coaching Report
+            </button>
+        </div>
+
+        <!-- <i
+            class="icon-information hideView"
+            tooltipEvent="hover"
+            [escape]="false"
+            pTooltip="These reports have been tailored based on the insights customized in your Self Registration settings. To build more customized reports, visit the Self Registration page and create additional links with unique insight selections."
+        ></i> -->
+    </div>
+</div>
+
+<ng-container *ngIf="displayModal === true">
+    <p-dialog header="Edit" [(visible)]="displayModal" class="dna-modal edit-profile" [modal]="true" [baseZIndex]="10000">
+        <app-loading-spinner *ngIf="isProfileUpdateLoading"></app-loading-spinner>
+        <form #modalForm="ngForm">
+            <div class="ProfileWrap">
+                <img
+                    id="profile-pic"
+                    class="avatar-circle p-mr-2"
+                    src="{{ selectedUser?.profileImage ? selectedUser?.profileImage : '../../../../assets/images/profile.svg' }}"
+                    alt=""
+                />
+                <div>
+                    <label for="browse-btn" class="browse-btn">Browse files</label>
+                    <input (change)="onImageSelect()" ngModel type="file" id="browse-btn" name="image" [accept]="imageFormats" />
+                    <p class="fileupload-content">Drop files here to upload...</p>
+                </div>
+            </div>
+            <div class="cntBox">
+                <h5>Your Account</h5>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-lg-12 col-xl-6">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-lg-12 col-xl-6">
+                                <div class="form-group">
+                                    <label for="uname">First Name</label>
+                                    <input
+                                        ngModel
+                                        required
+                                        #firstName
+                                        [ngModel]="selectedUser?.firstName"
+                                        placeholder="First Name"
+                                        id="uname"
+                                        name="firstName"
+                                        type="username"
+                                        value="label"
+                                        pInputText
+                                    />
+                                    <span *ngIf="!firstName.validity.valid" style="color: red"> Please enter first name </span>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-lg-12 col-xl-6">
+                                <div class="form-group">
+                                    <label for="uname">Last Name</label>
+                                    <input
+                                        ngModel
+                                        required
+                                        #lastName
+                                        [ngModel]="selectedUser?.lastName"
+                                        placeholder="Last Name"
+                                        id="uname"
+                                        name="lastName"
+                                        type="username"
+                                        value="lastName"
+                                        pInputText
+                                    />
+                                    <span *ngIf="!lastName.validity.valid" style="color: red"> Please enter last name </span>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-lg-12 col-xl-6">
+                                <div class="form-group">
+                                    <label for="uname"
+                                        >Email
+                                        <i
+                                            class="pi pi-exclamation-triangle ms-1"
+                                            pTooltip="Changing email address will impact user's ability to login to the system."
+                                            tooltipPosition="right"
+                                        ></i
+                                    ></label>
+                                    <input
+                                        ngModel
+                                        required
+                                        #email
+                                        [ngModel]="selectedUser?.email"
+                                        placeholder="Enter Email"
+                                        id="uname"
+                                        name="email"
+                                        [pattern]="emailRegex"
+                                        type="username"
+                                        value="email"
+                                        pInputText
+                                    />
+                                    <span *ngIf="!email.validity.valid || !isValidEmail(email)" style="color: red"> Please enter valid email </span>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-lg-12 col-xl-6">
+                                <div class="form-group">
+                                    <label for="id">{{ systemLabels.namedUserLabel }}</label>
+                                    <span class="subsField p-input-icon-right w-100">
+                                        <p-dropdown
+                                            ngModel
+                                            inputId="dropdown"
+                                            [ngClass]="'selectField'"
+                                            [autoDisplayFirst]="false"
+                                            placeholder="Select {{ systemLabels.namedUserLabel }}"
+                                            [options]="advisors"
+                                            optionLabel="facilitatorName"
+                                            ngClass="p-dropdown"
+                                            name="advisor"
+                                            appendTo="body"
+                                            [ngModel]="selectedUser?.facilitator"
+                                        >
+                                        </p-dropdown>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-lg-12 col-xl-6">
+                        <label>Tag</label>
+                        <span *ngIf="!tagIsSelected" style="color: red"> Please select at least one tag </span>
+                        <div class="tagsWrap">
+                            <ul class="list-unstyled">
+                                <li *ngFor="let tag of tags">
+                                    <div class="p-field-checkbox">
+                                        <p-checkbox
+                                            [(ngModel)]="tag.value"
+                                            name="{{ tag.name }}"
+                                            [value]="tag.value"
+                                            [binary]="true"
+                                            inputId="{{ tag.name }}"
+                                            (onChange)="CheckBoxChange()"
+                                        >
+                                        </p-checkbox>
+                                        <label for="ny">{{ tag.name }}</label>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <ng-template pTemplate="footer">
+            <button pButton (click)="resetForm()" type="button" label="Cancel" class="p-button-secondary p-button-text"></button>
+            <p-button
+                label="Save"
+                class="nextBtn"
+                type="submit"
+                [disabled]="!modalForm.valid || !modalForm.dirty || false || !checkFormValidity()"
+                (onClick)="onSubmit()"
+            ></p-button>
+        </ng-template>
+    </p-dialog>
+</ng-container>
+
+<ng-container *ngIf="participantReportModal === true">
+    <p-dialog
+        header="Choose which report you wish to view for {{ selectedUser?.firstName }}"
+        [(visible)]="participantReportModal"
+        class="sorter-modal dna-modal"
+        [modal]="true"
+        [baseZIndex]="10000"
+    >
+        <app-loading-spinner *ngIf="isProfileUpdateLoading"></app-loading-spinner>
+        <p class="mb-3 subs-user-txt">
+            Generate participant reports by selecting relevant insights. Check the boxes next to the available options and let our app build a customized PDF
+            report for this participant.
+            <a href="https://kb.dnabehavior.com/gene/customizing-reports" target="_blank">Learn more about customizing reports.</a>
+        </p>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-lg-4 col-xl-4">
+                <div class="p-field-radiobutton" *ngFor="let discoverySetting of discoverySettings; let i = index">
+                    <p-radioButton
+                        [inputId]="discoverySetting.name"
+                        name="discoverySetting"
+                        [value]="discoverySetting"
+                        [(ngModel)]="selectedCategory"
+                        (onClick)="selectedSettings = discoverySetting.settings"
+                    ></p-radioButton>
+                    <label [for]="discoverySetting.name">{{ discoverySetting.name }}</label>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-lg-8 col-xl-8">
+                <p-listbox
+                    [options]="selectedCategory === discoverySettings[0] ? discoverySettings[0].settings : discoverySettings[1].settings"
+                    class="discListing"
+                    [(ngModel)]="selectedSettings"
+                    name="displaySettings"
+                    [metaKeySelection]="false"
+                    [checkbox]="true"
+                    [filter]="true"
+                    [multiple]="true"
+                    optionLabel="name"
+                >
+                </p-listbox>
+            </div>
+        </div>
+        <!-- <div
+            class="p-field-radiobutton"
+            *ngFor="let registrationLink of updatedSelfRegistrationLinks"
+        >
+            <p-radioButton
+                name="registrationLink"
+                [value]="registrationLink"
+                [(ngModel)]="selectedLink"
+                [inputId]="registrationLink.selfRegistrationlink"
+            ></p-radioButton>
+            <label
+                for="registrationLink.selfRegistrationlink"
+                wdxsazdx
+                tooltipEvent="hover"
+                [escape]="false"
+                pTooltip="{{registrationLink?.discoverySettings?.toString()}}"
+                tooltipPosition="top"
+                ><b>{{registrationLink.discoveryType + ':'}} </b> {{registrationLink?.discoverySettings?.toString()}}</label
+            >
+        </div> -->
+        <ng-template pTemplate="footer">
+            <p-button label="View Report" class="nextBtn viewReportbtn" type="submit" (onClick)="viewParticipantReport()"></p-button>
+        </ng-template>
+    </p-dialog>
+</ng-container>
+
+<ng-container *ngIf="coachingReportModal === true">
+    <p-dialog
+        header="Choose which report you wish to view for {{ selectedUser?.firstName }}"
+        [(visible)]="coachingReportModal"
+        class="sorter-modal dna-modal"
+        [modal]="true"
+        [baseZIndex]="10000"
+    >
+        <app-loading-spinner *ngIf="isProfileUpdateLoading"></app-loading-spinner>
+        <p class="mb-3 subs-user-txt">
+            Generate coaching report by selecting relevant insights. Check the boxes next to the available options and let our app build a customized PDF report
+            for this participant.
+            <a href="https://kb.dnabehavior.com/gene/customizing-reports" target="_blank">Learn more about customizing reports.</a>
+        </p>
+        <div class="row">
+            <!-- <div class="col-xs-12 col-sm-12 col-lg-4 col-xl-4">
+                <div class="p-field-radiobutton" *ngFor="let discoverySetting of discoverySettings; let i = index">
+                    <p-radioButton
+                        [inputId]="discoverySetting.name"
+                        name="discoverySetting"
+                        [value]="discoverySetting"
+                        [(ngModel)]="selectedCategory"
+                        (onClick)="selectedSettings = discoverySetting.settings"
+                    ></p-radioButton>
+                    <label [for]="discoverySetting.name">{{ discoverySetting.name }}</label>
+                </div>
+            </div> -->
+
+            <div class="col-xs-12 col-sm-12 col-lg-8 col-xl-8">
+                <p-listbox
+                    [options]="coachingReportOptions"
+                    class="discListing"
+                    [(ngModel)]="selectedCoachingOptions"
+                    name="displaySettings"
+                    [metaKeySelection]="false"
+                    [checkbox]="true"
+                    [filter]="true"
+                    [multiple]="true"
+                    optionLabel="name"
+                >
+                </p-listbox>
+            </div>
+        </div>
+        <!-- <div
+            class="p-field-radiobutton"
+            *ngFor="let registrationLink of updatedSelfRegistrationLinks"
+        >
+            <p-radioButton
+                name="registrationLink"
+                [value]="registrationLink"
+                [(ngModel)]="selectedLink"
+                [inputId]="registrationLink.selfRegistrationlink"
+            ></p-radioButton>
+            <label
+                for="registrationLink.selfRegistrationlink"
+                wdxsazdx
+                tooltipEvent="hover"
+                [escape]="false"
+                pTooltip="{{registrationLink?.discoverySettings?.toString()}}"
+                tooltipPosition="top"
+                ><b>{{registrationLink.discoveryType + ':'}} </b> {{registrationLink?.discoverySettings?.toString()}}</label
+            >
+        </div> -->
+        <ng-template pTemplate="footer">
+            <p-button
+                label="View Report"
+                [disabled]="selectedCoachingOptions.length === 0"
+                class="nextBtn viewReportbtn"
+                type="submit"
+                (onClick)="viewCoachingReport()"
+            ></p-button>
+        </ng-template>
+    </p-dialog>
+</ng-container>

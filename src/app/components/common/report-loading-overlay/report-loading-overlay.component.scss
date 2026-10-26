@@ -1,0 +1,16 @@
+.team-spinner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.team-spinner p {
+    font-size: 18px;
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 0;
+}

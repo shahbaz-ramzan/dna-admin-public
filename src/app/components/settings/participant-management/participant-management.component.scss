@@ -1,0 +1,151 @@
+.participant-box {
+    .no-user-data {
+        min-height: calc(100vh - 315px);
+    }
+    // Empty state (before a search / no results): a narrower card, like the Profile and Subscriptions
+    // tabs. A fixed max-width rather than the previous 50%, so as the window narrows the empty space
+    // beside the card shrinks first and the card only narrows once there's no space left. With
+    // results the card uses the full width for the table.
+    &.none-selected {
+        max-width: 640px;
+    }
+}
+
+.userRole {
+    @media screen and (max-width: 991px) {
+        flex-direction: column;
+    }
+}
+.eye-icon {
+    color: gray !important;
+}
+.resetPasswordButton {
+    &.viewReportbtn {
+        button {
+            margin-right: 0;
+        }
+    }
+    .p-button {
+        font-size: 0.875rem;
+        height: 40px;
+        font-weight: 400;
+        margin-right: 0;
+        border-radius: 4px;
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+        &:hover {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        @media screen and (min-width: 767px) {
+            min-width: 174px;
+        }
+    }
+}
+:host {
+    ::ng-deep .userInputWrap {
+        .p-autocomplete {
+            width: 100%;
+            input {
+                height: 46px;
+            }
+        }
+        @media screen and (min-width: 992px) {
+            flex: 1;
+        }
+    }
+    .inviteBtn {
+        font-size: 0.875rem;
+        font-weight: 400;
+        border-radius: 4px;
+        min-width: 147px;
+        height: 46px;
+        margin-left: 12px;
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+        @media screen and (max-width: 992px) {
+            margin-top: 15px;
+            margin-left: 0;
+        }
+    }
+}
+
+:host {
+    ::ng-deep .p-field-radiobutton {
+        display: flex;
+        align-items: center;
+        label {
+            margin-bottom: 0;
+            margin-left: 10px;
+            font-size: 12px !important;
+        }
+        & + .p-field-radiobutton {
+            margin-top: 18px;
+        }
+        .p-radiobutton-icon {
+            width: 8px;
+            height: 8px;
+            background-color: var(--dark-black-color);
+        }
+        .p-radiobutton-box {
+            border-color: var(--dark-black-color) !important;
+            &.p-highlight {
+                border-color: var(--dark-black-color);
+                background-color: transparent;
+                box-shadow: none;
+                &:hover {
+                    background-color: transparent;
+                }
+            }
+        }
+    }
+    ::ng-deep .icon-edit {
+        color: var(--dark-gray-shade-clr);
+        opacity: 0.5;
+        cursor: pointer;
+        font-size: 1rem;
+    }
+}
+
+.u-info-wrap {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    .desc-wrap {
+        flex: 1;
+        @media screen and (min-width: 992px) {
+            padding-right: 110px;
+        }
+        h5 {
+            margin-bottom: 1rem;
+        }
+    }
+}
+
+.shift-transfer-wrap {
+    display: flex;
+    @media screen and (min-width: 576px) {
+        gap: 50px;
+    }
+    @media screen and (max-width: 575px) {
+        flex-direction: column;
+    }
+    .shift-inr-wrap {
+        flex: 1;
+    }
+    .icon-angle-right {
+        align-self: center;
+        font-size: 2.5rem;
+        @media screen and (max-width: 575px) {
+            transform: rotate(90deg);
+        }
+    }
+}
+
+:host {
+    ::ng-deep .shift-inr-wrap {
+        .p-inputnumber {
+            width: 100%;
+        }
+    }
+}

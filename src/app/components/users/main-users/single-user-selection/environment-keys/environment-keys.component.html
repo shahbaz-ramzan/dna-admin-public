@@ -1,0 +1,13 @@
+<div class="user-card enCard">
+    <a class="fw-bold insights-card-headings" href="{{ helpUrl }}" target="_blank"
+        ><span data-testId="title" pTooltip="Learn how to use these insights" tooltipPosition="top" tooltipEvent="hover"
+            >{{ name }}’s {{ performanceType }}</span
+        >
+    </a>
+    <app-loading-spinner *ngIf="loading"></app-loading-spinner>
+    <div data-testId="content" *ngIf="!loading">
+        <ul *ngFor="let current of data">
+            <li>{{ current?.description }}</li>
+        </ul>
+    </div>
+</div>

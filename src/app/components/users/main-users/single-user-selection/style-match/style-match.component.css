@@ -1,0 +1,44 @@
+.smCard h3 {
+    color: var(--title-clr);
+    font-size: 1.125rem;
+    line-height: 1;
+}
+.smCard .smCnt {
+    margin-top: 55px;
+    padding-left: 22px;
+    padding-right: 15px;
+}
+@media screen and (max-width: 1199px) {
+    .smCard .smCnt {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+.smCard .smCnt h5 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--dark-gray-shade-clr);
+    margin-bottom: 0;
+}
+.smCard .smCnt .pText {
+    font-size: 3.125rem;
+    color: var(--secondary-color);
+    font-weight: 700;
+    min-width: 120px;
+    margin-bottom: 0;
+}
+@media screen and (max-width: 960px) {
+    .smCard .smCnt .pText {
+        font-size: 2.5rem;
+    }
+}
+.smCard .smCnt .pText small {
+    font-size: 1.5rem;
+    font-weight: 400;
+    display: block;
+}
+@media screen and (max-width: 960px) {
+    .smCard .smCnt .pText small {
+        font-size: 1rem;
+    }
+} /*# sourceMappingURL=style-match.component.css.map */

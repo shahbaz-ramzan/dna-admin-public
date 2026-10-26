@@ -1,0 +1,204 @@
+<!-- <app-loading-spinner *ngIf="isLoading"></app-loading-spinner> -->
+
+<form [formGroup]="form" class="" (ngSubmit)="form.valid && onSubmit()">
+    <div id="client-scan-form">
+        <div class="row">
+            <div class="col col-md-6 col-lg-6 d-flex flex-column mb-2">
+                <label for="first-name">First Name<span class="text-danger">*</span></label>
+                <input
+                    [ngClass]="{
+                        'border border-danger': firstname?.touched && firstname?.invalid
+                    }"
+                    pInputText
+                    id="first-name"
+                    formControlName="firstname"
+                    aria-describedby="first-name-help"
+                    placeholder="John"
+                />
+                <small
+                    [ngStyle]="{
+                        visibility: firstname?.touched && firstname?.invalid ? 'visible' : 'hidden'
+                    }"
+                    class="text-danger text-right"
+                    id="first-name-help"
+                >
+                    First name is required.
+                </small>
+            </div>
+
+            <!-- <div class="col-4 d-flex flex-column mb-2">
+            <label for="middle-name">Middle Name</label>
+            <input
+                [ngClass]="{
+                    'border-red-400': middlename?.touched && middlename?.invalid
+                }"
+                pInputText
+                id="middle-name"
+                formControlName="middlename"
+                aria-describedby="middle-name-help"
+                placeholder="A"
+            />
+        </div>ok -->
+            <div class="col col-md-6 col-lg-6 d-flex flex-column mb-2">
+                <label for="last-name">Last Name<span class="text-danger">*</span></label>
+                <input
+                    pInputText
+                    id="last-name"
+                    formControlName="lastname"
+                    placeholder="Rodriguez"
+                    aria-describedby="last-name-help"
+                    [ngClass]="{
+                        'border border-danger': lastname?.touched && lastname?.invalid
+                    }"
+                />
+                <small
+                    [ngStyle]="{
+                        visibility: lastname?.touched && lastname?.invalid ? 'visible' : 'hidden'
+                    }"
+                    class="text-danger text-right"
+                    id="last-name-help"
+                >
+                    Last name is required.
+                </small>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-md-6 col-lg-6 d-flex flex-column mb-2">
+                <label for="company">Company (or Most Recent Company)<span class="text-danger">*</span></label>
+                <div class="d-flex justify-between align-items-center input-container">
+                    <input
+                        pInputText
+                        id="company"
+                        name="company"
+                        formControlName="company"
+                        placeholder="e.g., ACME Industries LLC"
+                        aria-describedby="company-help company-count"
+                        [maxlength]="companyMaxLength"
+                        class="flex-input"
+                        [ngClass]="{
+                            'border border-danger': company?.touched && company?.invalid
+                        }"
+                    />
+                    <a
+                        class="info-link"
+                        [ngStyle]="{ 'text-decoration': 'none', color: primaryColor }"
+                        href="https://kb.dnabehavior.com/gene/company-and-job-title-fields-digital-scan#:~:text=Company%20(or%20Most%20Recent%20Company)%3A"
+                        target="_blank"
+                    >
+                        <i
+                            class="pi pi-question-circle"
+                            pTooltip="Enter the most recent workplace. If they are a student, list their part-time or first job. If they have never worked (e.g., Stay-at-Home Parent), enter 'Home'. Otherwise, list their preferred community environment."
+                            tooltipPosition="right"
+                        >
+                        </i>
+                    </a>
+                </div>
+                <div class="d-flex justify-content-between align-items-start mt-1">
+                    <small id="company-help" class="form-helper-text"> Please use the company's full legal name. </small>
+                    <small id="company-count" class="char-counter" [ngClass]="{ 'char-counter-red': isCompanyCountRed() }" aria-live="polite">
+                        {{ companyCharCount }}/{{ 255 }}
+                    </small>
+                </div>
+                <small *ngIf="company?.touched && company?.invalid" class="text-danger d-block mt-1" role="alert">
+                    <span *ngIf="company?.hasError('required')">Company is required.</span>
+                    <span *ngIf="!company?.hasError('required')">{{ getCompanyError() }}</span>
+                </small>
+            </div>
+            <div class="col col-md-6 col-lg-6 d-flex flex-column mb-2">
+                <label for="job-title">Job Title (or Most Recent Job Title)<span class="text-danger">*</span></label>
+                <div class="d-flex justify-between align-items-center input-container">
+                    <input
+                        pInputText
+                        id="job-title"
+                        name="job_title"
+                        formControlName="jobTitle"
+                        placeholder="e.g., Operations Director"
+                        aria-describedby="job-title-help job-title-count"
+                        [maxlength]="jobTitleMaxLength"
+                        class="flex-input"
+                        [ngClass]="{
+                            'border border-danger': jobTitle?.touched && jobTitle?.invalid
+                        }"
+                    />
+                    <a
+                        class="info-link"
+                        [ngStyle]="{ 'text-decoration': 'none', color: primaryColor }"
+                        href="https://kb.dnabehavior.com/gene/company-and-job-title-fields-digital-scan#:~:text=Job%20Title%20(or%20Most%20Recent%20Job%20Title)%3A"
+                        target="_blank"
+                    >
+                        <i
+                            class="pi pi-question-circle"
+                            pTooltip="Enter the current or most recent job title. If they are a student, describe any part-time jobs or volunteering. If they have never worked, enter a home role (e.g., 'Stay-at-Home Parent', 'Homemaker'). Otherwise, list a regular activity."
+                            tooltipPosition="right"
+                        >
+                        </i>
+                    </a>
+                </div>
+                <div class="d-flex justify-content-between align-items-start mt-1">
+                    <small id="job-title-help" class="form-helper-text"> Please enter your single, primary job title. </small>
+                    <small id="job-title-count" class="char-counter" [ngClass]="{ 'char-counter-red': isJobTitleCountRed() }" aria-live="polite">
+                        {{ jobTitleCharCount }}/{{ 100 }}
+                    </small>
+                </div>
+                <small *ngIf="jobTitle?.touched && jobTitle?.invalid" class="text-danger d-block mt-1" role="alert">
+                    <span *ngIf="jobTitle?.hasError('required')">Job title is required.</span>
+                    <span *ngIf="!jobTitle?.hasError('required')">{{ getJobTitleError() }}</span>
+                </small>
+            </div>
+        </div>
+        <!-- Email field hidden - auto-generated on submit -->
+        <input type="hidden" id="email" name="email" formControlName="email" />
+
+        <div class="row">
+            <div class="col col-md-12 d-flex flex-column mb-2">
+                <div class="form-group" id="dropdown">
+                    <!-- <label for="id">{{ systemLabels.namedUserLabel }}</label> -->
+                    <label for="id">Advisor<span class="text-danger">*</span></label>
+                    <span class="subsField p-input-icon-right w-100">
+                        <p-dropdown
+                            ngModel
+                            formControlName="advisor"
+                            [ngClass]="'selectField'"
+                            [autoDisplayFirst]="false"
+                            placeholder="Select {{ systemLabels.namedUserLabel }}"
+                            [options]="advisors"
+                            optionLabel="facilitatorName"
+                            ngClass="p-dropdown"
+                            name="advisor"
+                            appendTo="body"
+                        >
+                        </p-dropdown>
+                        <small
+                            [ngStyle]="{
+                                visibility: advisor?.touched && advisor?.invalid ? 'visible' : 'hidden'
+                            }"
+                            class="text-danger text-right"
+                            id="advisor-error"
+                        >
+                            Advisor is required.
+                        </small>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" id="tags-selection">
+        <div class="col-xs-12">
+            <label class="tag-text">Tag<span class="text-danger">*</span></label>
+            <span *ngIf="!tagIsSelected" style="color: red"> Please select at least one tag </span>
+            <div class="digital-scan-tag">
+                <ul class="list-unstyled">
+                    <li *ngFor="let tag of tags; let i = index">
+                        <div class="p-field-checkbox">
+                            <p-checkbox formControlName="tags" name="tags" [value]="tag.value" [binary]="true" (onChange)="CheckBoxChange(i)"> </p-checkbox>
+                            <label for="ny">{{ tag.name }}</label>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex justify-content-end">
+        <button [disabled]="form.invalid" pButton label="Submit" type="submit" class="search-btn download-btn" iconPos="right"></button>
+    </div>
+</form>

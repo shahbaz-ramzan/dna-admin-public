@@ -1,0 +1,16 @@
+<div class="uniqueCard w-100 mt-0 position-relative">
+    <h3 data-testId="title" class="fs-6 fw-bold mb-4">Unique Style</h3>
+    <app-loading-spinner *ngIf="loading"></app-loading-spinner>
+    <ng-container *ngIf="!loading">
+        <app-pie-chart
+            data-testId="pie-chart"
+            [showLegends]="false"
+            [boxSize]="boxSize"
+            [chartLagendsStyle]="chartLagendsStyle"
+            [chartPosition]="chartPosition"
+            [chartData]="chartValues"
+            [chartColors]="pieChartColors"
+            [chartLabels]="chartLabels"
+        ></app-pie-chart>
+    </ng-container>
+</div>

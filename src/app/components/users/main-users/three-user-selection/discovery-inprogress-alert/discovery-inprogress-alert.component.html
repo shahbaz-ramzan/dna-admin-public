@@ -1,0 +1,14 @@
+<div class="uniqueCard w-100 mt-0 position-relative" data-testId="warning">
+    <div class="dna-spinner mt-5" *ngIf="loading">
+        <p-progressSpinner></p-progressSpinner>
+    </div>
+    <div *ngIf="!loading" class="alert alert-warning" role="alert">
+        <p *ngIf="numberOfDiscoveryInprogressUsers == 1">
+            <strong>{{ discoveryInprogressMessage }}</strong> has not yet completed the discovery process. Only completed participants can appear on a report.
+        </p>
+        <ng-container *ngIf="numberOfDiscoveryInprogressUsers > 1">
+            <p>Following participants have not yet completed the discovery process. Only completed participants can appear on a report.</p>
+            <strong>{{ discoveryInprogressMessage }}</strong>
+        </ng-container>
+    </div>
+</div>

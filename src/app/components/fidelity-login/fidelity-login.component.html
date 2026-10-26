@@ -1,0 +1,9 @@
+<div class="dna-spinner" *ngIf="isRedirecting">
+    <div class="spinner">
+        <p-progressSpinner *ngIf="!showTryAgainBtn"></p-progressSpinner>
+        <p>{{ redirectingMessage }}</p>
+        <button *ngIf="showTryAgainBtn" (click)="reloadWindow()" class="btn btn-orange primaryButton">Try Again!</button>
+    </div>
+</div>
+
+<!-- <button *ngIf="!isRedirecting" (click)="loginToB2c()" class="btn btn-orange primaryButton">Link My Account!</button> -->

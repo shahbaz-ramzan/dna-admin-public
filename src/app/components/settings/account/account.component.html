@@ -1,0 +1,488 @@
+<app-loading-spinner data-testId="spinner" *ngIf="isLoading || grantingAdminAccess"></app-loading-spinner>
+<form #form="ngForm" (submit)="saveForm()">
+    <div class="d-flex justify-content-end mb-4" *ngIf="permissionObject['Settings-YourAccount'] || permissionObject['Settings-SystemLabels']">
+        <div class="save-btn">
+            <button pButton data-testId="submit-button" type="submit" label="Save" [disabled]="!form.valid || !form.dirty"></button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-lg-12 col-xl-6" *ngIf="permissionObject['Settings-YourAccount']">
+            <div class="cntBox">
+                <h5>Your Account</h5>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-lg-12 col-xl-6">
+                        <div class="form-group">
+                            <label data-testId="label-name" for="uname">Name</label>
+                            <input
+                                data-testId="input-name"
+                                [required]="true"
+                                #name="ngModel"
+                                [(ngModel)]="accountForm.accountName"
+                                placeholder="Enter Name"
+                                id="uname"
+                                name="name"
+                                type="username"
+                                pInputText
+                                pattern="^[a-zA-Z0-9-]*$"
+                                required
+                                aria-describedby="username1-help"
+                            />
+                            <span *ngIf="name.touched && !name.valid" style="color: red">
+                                <span *ngIf="!name.value; else invalidName"> Enter Name Please </span>
+                                <ng-template #invalidName>
+                                    <span> Only alpha-numeric and hyphens special characters are allowed </span>
+                                </ng-template>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-lg-12 col-xl-6">
+                        <div class="form-group">
+                            <label data-testId="label-id" for="id">ID</label>
+                            <span class="subsField p-input-icon-right w-100">
+                                <input
+                                    data-testId="input-id"
+                                    id="id"
+                                    type="id"
+                                    [value]="accountForm.accountId"
+                                    pInputText
+                                    readonly
+                                    aria-describedby="username1-help"
+                                />
+
+                                <em class="icon icon-lock"></em>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12">
+                        <div class="form-group mb-0">
+                            <label data-testId="label-default-language">Default Language</label>
+
+                            <p-dropdown
+                                data-testId="dropdown-default-language"
+                                [required]="true"
+                                inputId="dropdown"
+                                [ngClass]="'selectField'"
+                                [options]="languages"
+                                [autoDisplayFirst]="false"
+                                #language="ngModel"
+                                name="language"
+                                placeholder="Select Language"
+                                optionLabel="name"
+                                [disabled]="true"
+                                [(ngModel)]="accountForm.defaultLanguage"
+                                ngClass="p-dropdown"
+                            >
+                            </p-dropdown>
+                            <span *ngIf="language.touched && !language.valid" style="color: red"> Enter Language Please </span>
+                        </div>
+                        <div class="p-field-checkbox mt-4">
+                            <p-checkbox
+                                data-testId="checkbox-default-account"
+                                name="default"
+                                inputId="ny"
+                                [(ngModel)]="accountForm.isDefault"
+                                [binary]="true"
+                                [disabled]="isDefaultAccount"
+                            >
+                            </p-checkbox>
+                            <label data-testId="label-default-account" for="ny">Default Account</label>
+                        </div>
+                        <div class="p-field-checkbox mt-4" *ngIf="!accessGranted">
+                            <p class="mb-0">
+                                <a class="subs-user-txt" (click)="grantAccess()">Grant DNA Behavior Support Login Access to your Account</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="co-branding-wrap col-xs-12 col-sm-12 col-lg-12 col-xl-6" *ngIf="permissionObject['Settings-Co-Branding']">
+            <div class="cntBox">
+                <h5>Co-Branding</h5>
+                <p class="upload-message-txt">Upload your logo and we'll apply it to the webscreens and dashboards your team and participants see.</p>
+                <div class="fileUploader" *ngIf="selectedLogo === null; else imagePreview">
+                    <input
+                        data-testId="logo-input"
+                        (change)="onLogoSelected($event)"
+                        type="file"
+                        class="custom-file-input"
+                        id="inputUploadLogo"
+                        #logo="ngModel"
+                        [ngModelOptions]="{ standalone: true }"
+                        ngModel
+                        accept="{{ imageFormats }}"
+                        [ngStyle]="{
+                            'border-color': (isValidationChecked && !isLogoValid) || (logo.touched && !isLogoValid) ? 'red' : ''
+                        }"
+                    />
+
+                    <label class="custom-file-label" for="inputUploadLogo">
+                        <div class="upload-txt">Drop files here to upload...</div>
+                        <div class="browse-btn">Browse File</div>
+                        <!-- <button>abc</button> -->
+                    </label>
+
+                    <span style="color: red" *ngIf="(isValidationChecked && !isLogoValid) || (logo.touched && !isLogoValid)"> Please Select Logo<br /> </span>
+                </div>
+                <ng-template #imagePreview>
+                    <div ngClass="form-group">
+                        <div ngClass="uploaded-logo">
+                            <app-loading-spinner *ngIf="isLogoLoading"></app-loading-spinner>
+                            <img [src]="selectedLogo" alt="logo" />
+                            <button data-testId="logo-delete-btn" pButton ngClass="btn-del-logo" (click)="deleteLogo()">
+                                <i ngClass="pi pi-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                </ng-template>
+                <!-- <p-fileUpload
+          [ngClass]="'fileUploader'"
+          name="myfile[]"
+          url="./upload.php"
+          chooseIcon="d-none"
+          chooseLabel="Browse files"
+          accept="image/*"
+          [auto]="true"
+        >
+          <ng-template pTemplate="content" let-files>
+            <div>Drop files here to upload...</div>
+          </ng-template>
+        </p-fileUpload> -->
+            </div>
+        </div>
+        <!-- <div
+            class="mt-4 col-xs-12 col-sm-12 col-lg-12 col-xl-6"
+            *ngIf="permissionObject['Settings-SystemLabels']"
+        >
+            <div class="cntBox">
+                <h5>Account Settings</h5>
+                <div class="row">
+                    <div class="col-xs-12">
+                         <div class="switcher-wrap d-flex align-items-center">
+                            <p-inputSwitch
+                                styleClass="brSwitch"
+                                [(ngModel)]="checked"
+                                [ngModelOptions]="{ standalone: true }"
+                                (onChange)="
+                                    completionEmailSettingsChange($event)
+                                "
+                            ></p-inputSwitch>
+                            <div class="switch-label ms-2">
+                                Completion Emails
+                                <i
+                                    class="icon-information"
+                                    (click)="onTooltipInfoClick()"
+                                    tooltipEvent="focus"
+                                    [escape]="false"
+                                    pTooltip="Enable to activate automated reminder emails to <b>{{
+                                        accountForm?.participantLabel
+                                            ?.participantLabelName
+                                    }}s. <a style='text-decoration: none;color: #677eff;' href='https://kb.dnabehavior.com/gene/reminder-emails' target='_blank'>Learn more</a>"
+                                    tooltipPosition="top"
+                                ></i>
+                            </div>
+                        </div> 
+                        <div class="p-field-checkbox mt-4">
+                            <p-checkbox
+                                name="default"
+                                inputId="ny"
+                                [(ngModel)]="accountForm.isDefault"
+                                [binary]="true"
+                                [disabled]="accountForm.isDefault"
+                            >
+                            </p-checkbox>
+                            <label for="ny">Default Account</label>
+                        </div>
+                        <div
+                            class="p-field-checkbox mt-4"
+                            *ngIf="!accessGranted"
+                        >
+                            <p class="mb-0">
+                                <a class="subs-user-txt" (click)="grantAccess()"
+                                    >Grant DNA Behavior Support Login Access to
+                                    your Account</a
+                                >
+                            </p>
+                        </div>
+                         <div class="form-group">
+                            <label>Who you are getting to know?</label>
+
+                            <p-dropdown
+                                [required]="true"
+                                #label="ngModel"
+                                [(ngModel)]="accountForm.participantLabel"
+                                inputId="dropdown"
+                                [ngClass]="'selectField'"
+                                [options]="participantLabels"
+                                [autoDisplayFirst]="false"
+                                name="label"
+                                placeholder="Select Label"
+                                optionLabel="participantLabelName"
+                                ngClass="p-dropdown"
+                            >
+                            </p-dropdown>
+
+                            <span
+                                *ngIf="label.touched && !label.valid"
+                                style="color: red"
+                            >
+                                Select label please
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <label>Who reviews the results?</label>
+
+                            <p-dropdown
+                                [required]="true"
+                                #reviews="ngModel"
+                                name="reviews"
+                                [(ngModel)]="accountForm.namedUserLabel"
+                                inputId="dropdown"
+                                [options]="userLabels"
+                                [autoDisplayFirst]="false"
+                                placeholder="Select"
+                                optionLabel="namedUserLabelName"
+                                class="selectField"
+                            ></p-dropdown>
+                            <span
+                                *ngIf="reviews.touched && !reviews.valid"
+                                style="color: red"
+                            >
+                                Select label please
+                            </span>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <div class="mt-4 col-xs-12 col-sm-12 col-lg-12 col-xl-6" *ngIf="permissionObject['Settings-SystemLabels']">
+            <div class="cntBox">
+                <h5>System Defaults</h5>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label>Default toggle</label>
+                            <p-dropdown
+                                data-testId="dropdown-default-toggle"
+                                [required]="true"
+                                #toggle="ngModel"
+                                [(ngModel)]="accountForm.defaultToggleOption"
+                                inputId="dropdown"
+                                [ngClass]="'selectField'"
+                                [options]="defaultToggleOptions"
+                                [autoDisplayFirst]="true"
+                                name="toggle"
+                                placeholder="Select Option"
+                                optionLabel="defaultToggleOptionName"
+                                ngClass="p-dropdown"
+                            >
+                            </p-dropdown>
+
+                            <span *ngIf="label.touched && !label.valid" style="color: red"> Select label please </span>
+                        </div>
+                        <div class="form-group">
+                            <label>Who you are getting to know?</label>
+                            <p-dropdown
+                                data-testId="dropdown-label"
+                                [required]="true"
+                                #label="ngModel"
+                                [(ngModel)]="accountForm.participantLabel"
+                                inputId="dropdown"
+                                [ngClass]="'selectField'"
+                                [options]="participantLabels"
+                                [autoDisplayFirst]="false"
+                                name="label"
+                                placeholder="Select Label"
+                                optionLabel="participantLabelName"
+                                ngClass="p-dropdown"
+                            >
+                            </p-dropdown>
+
+                            <span *ngIf="label.touched && !label.valid" style="color: red"> Select label please </span>
+                        </div>
+                        <div class="form-group">
+                            <label>Who reviews the results?</label>
+
+                            <p-dropdown
+                                data-testId="dropdown-review"
+                                [required]="true"
+                                #reviews="ngModel"
+                                name="reviews"
+                                [(ngModel)]="accountForm.namedUserLabel"
+                                inputId="dropdown"
+                                [options]="userLabels"
+                                [autoDisplayFirst]="false"
+                                placeholder="Select"
+                                optionLabel="namedUserLabelName"
+                                class="selectField"
+                            ></p-dropdown>
+                            <span *ngIf="reviews.touched && !reviews.valid" style="color: red"> Select label please </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="mt-4 col-xs-12 col-sm-12 col-lg-12 col-xl-6">
+            <div class="cntBox position-relative">
+                <h5 class="particitpant-heading">
+                    Participant Discovery Customizations
+                </h5>
+
+                <p-tabView class="sUserTab">
+                    <p-tabPanel header="Financial Behavior">
+                        <div class="row mt-2">
+                            <div
+                                class="col-xs-12 col-sm-12 col-lg-12 col-xl-12"
+                            >
+                                <div class="form-group">
+                                    <label for="uname">Welcome Message</label>
+                                    <input
+                                        [required]="true"
+                                        #name="ngModel"
+                                        [(ngModel)]="welcomeMessage"
+                                        placeholder="Enter Welcome"
+                                        id="wellcomeField"
+                                        name="wellcomeField"
+                                        type="wellcomeField"
+                                        pInputText
+                                        required
+                                    />
+                                    <span
+                                        *ngIf="name.touched && !name.valid"
+                                        style="color: red"
+                                    >
+                                        <span
+                                            *ngIf="
+                                                !name.value;
+                                                else invalidName
+                                            "
+                                        >
+                                            Welcome Message
+                                        </span>
+                                        <ng-template #invalidName>
+                                            <span>
+                                                Only alpha-numeric and hyphens
+                                                special characters are allowed
+                                            </span>
+                                        </ng-template>
+                                    </span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="uname">Text</label>
+                                    <textarea
+                                        class="accountTextarea w-100"
+                                        [(ngModel)]="welcomeTextarea"
+                                        id="welcomeTextarea"
+                                        name="welcomeTextarea"
+                                        placeholder=""
+                                        pInputTextarea
+                                        [autoResize]="true"
+                                    ></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="uname">
+                                        Video URL on Youtube</label
+                                    >
+                                    <input
+                                        [required]="true"
+                                        #name="ngModel"
+                                        [(ngModel)]="videUrl"
+                                        placeholder="Enter Youtube Link"
+                                        id="videoUrl"
+                                        name="videoUrl"
+                                        type="videoUrl"
+                                    />
+                                </div>
+                                <div
+                                    class="save-btn mt-3 d-flex justify-content-end"
+                                >
+                                    <button
+                                        pButton
+                                        type="submit"
+                                        label="Save"
+                                    ></button>
+                                </div>
+                            </div>
+                        </div>
+                    </p-tabPanel>
+                    <p-tabPanel header="Work Talents">
+                        <div class="row mt-2">
+                            <div
+                                class="col-xs-12 col-sm-12 col-lg-12 col-xl-12"
+                            >
+                                <div class="form-group">
+                                    <label for="uname">Welcome Message1</label>
+                                    <input
+                                        [required]="true"
+                                        #name="ngModel"
+                                        [(ngModel)]="welcomeMessage"
+                                        placeholder="Enter Welcome"
+                                        id="wellcomeField"
+                                        name="wellcomeField"
+                                        type="wellcomeField"
+                                        pInputText
+                                        required
+                                    />
+                                    <span
+                                        *ngIf="name.touched && !name.valid"
+                                        style="color: red"
+                                    >
+                                        <span
+                                            *ngIf="
+                                                !name.value;
+                                                else invalidName
+                                            "
+                                        >
+                                            Enter Name Please
+                                        </span>
+                                        <ng-template #invalidName>
+                                            <span>
+                                                Only alpha-numeric and hyphens
+                                                special characters are allowed
+                                            </span>
+                                        </ng-template>
+                                    </span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="uname">Text</label>
+                                    <textarea
+                                        class="accountTextarea w-100"
+                                        [(ngModel)]="welcomeTextarea"
+                                        id="welcomeTextarea"
+                                        name="welcomeTextarea"
+                                        pInputTextarea
+                                        [autoResize]="true"
+                                    ></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="uname">
+                                        Video URL on Youtube</label
+                                    >
+                                    <input
+                                        [required]="true"
+                                        #name="ngModel"
+                                        [(ngModel)]="videUrl"
+                                        placeholder="Enter Youtube Link"
+                                        id="videoUrl"
+                                        name="videoUrl"
+                                        type="videoUrl"
+                                    />
+                                </div>
+                                <div
+                                    class="save-btn mt-3 d-flex justify-content-end"
+                                >
+                                    <button
+                                        pButton
+                                        type="submit"
+                                        label="Save"
+                                    ></button>
+                                </div>
+                            </div>
+                        </div>
+                    </p-tabPanel>
+                </p-tabView>
+            </div>
+        </div> -->
+    </div>
+</form>

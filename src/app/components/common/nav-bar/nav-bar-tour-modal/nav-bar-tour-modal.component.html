@@ -1,0 +1,80 @@
+<p-dialog
+    [(visible)]="displayTutorialModal"
+    [modal]="true"
+    class="tutsModal"
+    [ngClass]="{ 'single-footer': !showStartTourBtn }"
+    [baseZIndex]="10000"
+    [draggable]="false"
+    [resizable]="false"
+    (onHide)="onDismissTour()"
+>
+    <h1 class="modal-title" *ngIf="modalMode === 'start'">Welcome to the DNA Behavior!</h1>
+    <h1 class="modal-title" *ngIf="modalMode === 'finish'">You're All Set!</h1>
+    <video width="100%" height="350" poster="../../../../../assets/images/dna-web-app-tour-thumbnail.png" controls>
+        <source src="https://21551507.fs1.hubspotusercontent-na1.net/hubfs/21551507/Videos/DNA%20Web%20App%20Tour%20V.2.3.mp4" type="video/mp4" />
+    </video>
+
+    <p>
+        <span class="modal-content" *ngIf="modalMode === 'start'">Take a quick tour of the App to get started, or skip for now.</span>
+        <span class="modal-content" *ngIf="modalMode === 'finish'">
+            You've completed the tour.<br /><br />
+            Ready to get started? Explore, try things out, and remember Gene and our support team are always here if you need help.
+        </span>
+    </p>
+
+    <ng-template pTemplate="footer">
+        <p-button *ngIf="showStartTourBtn" (onClick)="onStartHomeTour()" label="Take the Tour" class="nextBtn"> </p-button>
+        <button
+            *ngIf="showStartTourBtn"
+            pButton
+            pRipple
+            type="button"
+            label="Skip for now"
+            class="p-button-secondary p-button-text skip-btn"
+            (click)="onSkipTour()"
+        ></button>
+        <button
+            *ngIf="!showStartTourBtn"
+            pButton
+            pRipple
+            type="button"
+            label="Get Started"
+            class="p-button p-component get-started-btn"
+            (click)="onGetStarted()"
+        ></button>
+    </ng-template>
+</p-dialog>
+
+<p-dialog
+    [(visible)]="displayAppWalkthroughModal"
+    [modal]="true"
+    class="app-walkthrough-modal"
+    [baseZIndex]="10000"
+    [draggable]="false"
+    [resizable]="false"
+    [style]="{ width: '500px' }"
+    (onHide)="onCloseAppWalkthroughModal()"
+>
+    <ng-template pTemplate="header">
+        <h4 class="mb-0 fw-bold">Take the Tour Again</h4>
+    </ng-template>
+
+    <div class="modal-content">
+        <div class="tour-selection">
+            <div class="radio-group">
+                <div class="radio-item">
+                    <p-radioButton name="tourType" value="onboarding" [(ngModel)]="selectedTourType" inputId="onboarding-tour"></p-radioButton>
+                    <label for="onboarding-tour" class="radio-label">Dashboard Tour</label>
+                </div>
+                <div class="radio-item">
+                    <p-radioButton name="tourType" value="digitalScan" [(ngModel)]="selectedTourType" inputId="digital-scan-tour"></p-radioButton>
+                    <label for="digital-scan-tour" class="radio-label">Digital Scan Tour</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple type="button" label="Open" class="save-btn" (click)="onSaveAppWalkthrough()"></button>
+    </ng-template>
+</p-dialog>

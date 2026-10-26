@@ -1,0 +1,8 @@
+<div class="d-flex justify-content-between">
+    <span data-testId="heading" class="graphHeading">Recent Activity</span>
+    <!-- <i *ngIf="!toogle" (click)="expand()" class="icon-expand"></i> -->
+    <!-- <i *ngIf="toogle" (click)="collapse()" class="icon-collape-arrow"></i> -->
+</div>
+<div id="dnaTable">
+    <app-table data-testId="table" [header]="header" [dataKeys]="dataKeys" [data]="data" [showPagination]="false"></app-table>
+</div>

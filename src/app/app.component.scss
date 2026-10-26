@@ -1,0 +1,189 @@
+:host ::ng-deep .user-toast {
+    .pi-info-circle {
+        font-size: 2rem;
+        color: var(--secondary-color2);
+    }
+
+    .p-toast-icon-close {
+        width: 4rem;
+        color: var(--secondary-color2);
+    }
+
+    .p-toast-message {
+        background-color: #fff;
+        border-color: var(--primary-color);
+
+        p {
+            margin-left: 20px;
+            color: var(--title-clr);
+        }
+    }
+}
+
+:host ::ng-deep .digital-scan-user {
+    background-color: #ffcc00;
+
+    .p-toast-icon-close {
+        display: none;
+    }
+
+    .p-toast-message-content {
+        .pi-info-circle {
+            display: none;
+        }
+
+        p {
+            color: #fff;
+            margin-left: 0;
+
+            &.warning-msg {
+                display: flex;
+                margin-bottom: 0;
+                align-items: center;
+                gap: 10px;
+
+                .pi-exclamation-triangle {
+                    color: #ffcc00;
+                }
+            }
+        }
+    }
+
+    .p-toast-message {
+        background-color: #4472c4;
+        border-radius: 16px;
+        border-left: none;
+
+        &-content {
+            flex-direction: column;
+        }
+
+        a {
+            color: #fff;
+        }
+    }
+}
+
+:host ::ng-deep .questonair-toast {
+
+    .p-toast-message {
+        background-color: #ffecb3;
+        border-color: #daa300;
+    }
+
+    .p-toast-icon-close {
+    width:2rem;
+    color: var(--secondary-color2);
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    padding: 0;
+    }
+
+    .p-toast-message-content {
+        display: flex;
+        flex-direction: column;
+
+        p {
+            margin-left: 0;
+            color: #000000;
+
+            a {
+                color: #000000;
+                text-decoration: underline;
+            }
+
+            &.warning-msg {
+                display: flex;
+                align-items: center;
+                margin-bottom: 0;
+                gap: 10px;
+
+                .pi-exclamation-triangle {
+                    color: #daa300;
+                }
+            }
+        }
+        .help-us-improve-text{
+            display: flex;
+            flex-direction: column;
+            .heading{
+                font-weight: bold;
+            }
+        }
+
+        .pi-info-circle {
+            display: none;
+        }
+    }
+}
+
+:host ::ng-deep .help-us-improve-toast {
+
+    .p-toast-message {
+        background-color: #ffecb3;
+        border-color: #daa300;
+    }
+
+    .p-toast-icon-close {
+    display: none;
+    }
+
+    .p-toast-message-content {
+        display: flex;
+        flex-direction: column;
+
+        p {
+            margin-left: 0;
+            color: #000000;
+
+            a {
+                color: #000000;
+                text-decoration: underline;
+            }
+
+            &.warning-msg {
+                display: flex;
+                align-items: center;
+                margin-bottom: 0;
+                gap: 10px;
+
+                .pi-exclamation-triangle {
+                    color: #daa300;
+                }
+            }
+        }
+        .help-us-improve-text{
+            display: flex;
+            flex-direction: column;
+            .heading{
+                font-weight: bold;
+            }
+        }
+
+        .pi-info-circle {
+            display: none;
+        }
+    }
+}
+
+.btn-response {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    .user-edit-btn {
+        background-color: transparent;
+        border-color: transparent;
+        color: var(--dark-black-color);
+        padding: 0.5rem 10px;
+        &:hover {
+            border-color: var(--primary-color) !important;
+            background-color: var(--primary-color) !important;
+        }
+    }
+
+    i {
+        font-size: 1.5rem;
+        color: #000;
+    }
+}

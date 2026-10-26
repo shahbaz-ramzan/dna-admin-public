@@ -1,0 +1,223 @@
+<app-loading-spinner *ngIf="isUsersLoading || isUserRolesLoading || isUpdateRoleLoading || isDeleteUserLoading || isAccountSubscriptionLoading || savingSubscriptionComponent" [fixed]="true"></app-loading-spinner>
+<div class="cntBox invite-box">
+    <form>
+        <h5 data-testId="heading" class="mb-2">Add Subscription Admins</h5>
+        <p class="mb-3 subs-user-txt">
+            The number of seats available are based on your current subscription. New users will receive an email invite to access the account.
+        </p>
+        <h5 data-testId="current-subscription" class="mb-2">Current Subscription:</h5>
+        <div class="current-sub-box">
+            <ul>
+                <li class="current-seats">
+                    {{ systemLabels.namedUserLabel }} Seats:<span
+                        >Using {{ currentSubscriptions['advisor']['using'] }} of {{ currentSubscriptions['advisor']['total'] }}</span
+                    >
+                </li>
+                <li class="current-seats">
+                    Staff Seats:<span>Using {{ currentSubscriptions['staff']['using'] }} of {{ currentSubscriptions['staff']['total'] }}</span>
+                </li>
+            </ul>
+            <button
+                data-testId="add-more-btn"
+                pButton
+                pRipple
+                class="p-button-secondary p-button-outlined"
+                type="button"
+                label="Add more"
+                (click)="showModalDialog()"
+            ></button>
+        </div>
+        <form [formGroup]="userForm" *ngIf="permissionObject['Settings-AddSubscriptionUsers']">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <div class="subscriptionAutoField">
+                            <em class="icon-search"></em>
+                            <p-autoComplete
+                                data-testId="search-field"
+                                formControlName="user"
+                                [suggestions]="filteredUsers"
+                                (completeMethod)="filterUsersForInvitation($event)"
+                                [delay]="1000"
+                                field="fullName"
+                                [minLength]="1"
+                                placeholder="Search by First Name"
+                            ></p-autoComplete>
+                            <div *ngIf="isUsersForInvitationLoading">
+                                <p-progressSpinner class="searchUser-spinner"></p-progressSpinner>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <div class="d-md-flex webhook-wrap">
+                        <div class="userInputWrap flex-md-fill">
+                            <p-dropdown
+                                data-testId="dropdown"
+                                inputId="dropdown"
+                                [ngClass]="'selectField'"
+                                [options]="displayedRoles"
+                                [autoDisplayFirst]="false"
+                                placeholder="Select Role"
+                                optionLabel="name"
+                                ngClass="p-dropdown"
+                                formControlName="role"
+                            ></p-dropdown>
+                        </div>
+                        <button
+                            data-testId="add-user-btn"
+                            (click)="addUser(userForm.value)"
+                            [disabled]="!isFormValid()"
+                            pButton
+                            type="button"
+                            class="inviteBtn mt-md-0 ms-md-2"
+                            label="Add User"
+                        ></button>
+                    </div>
+                </div>
+            </div>
+            <span>
+                <p class="mt-2 subs-user-txt">
+                    Are you at your limit? Click here to
+                    <a [ngStyle]="{ color: primaryColor }" (click)="showModalDialog()" href="javascript: void(0)">add more users to your subscriptions</a>
+                </p>
+            </span>
+        </form>
+        <ul class="list-unstyled" *ngFor="let user of users; let userIndex = index">
+            <li>
+                <div class="userListWrap">
+                    <div class="userName">
+                        <h6 [pTooltip]="user.firstName + ' ' + user.lastName" tooltipPosition="top">{{ user.firstName }} {{ user.lastName }}</h6>
+                    </div>
+                    <div class="userInviteCnt">
+                        <label>
+                            <span class="userEmail" [pTooltip]="user.email" tooltipPosition="top">{{ user.email }}</span>
+                            <span *ngIf="user.inviteStatus === 0">( Invitation Awaiting Response )</span>
+                        </label>
+                        <p-dropdown
+                            data-testId="user-dropdown"
+                            name="user.role"
+                            inputId="dropdown"
+                            [ngClass]="'selectField'"
+                            [options]="roles"
+                            placeholder="Select"
+                            optionLabel="name"
+                            ngClass="p-dropdown"
+                            (onChange)="onRoleChange(user)"
+                            [(ngModel)]="user.role"
+                            [ngModelOptions]="{ standalone: true }"
+                            *ngIf="user.role.name !== 'Admin'"
+                        ></p-dropdown>
+                        <p-dropdown
+                            name="user.role"
+                            inputId="dropdown"
+                            [ngClass]="'selectField'"
+                            [options]="[user.role]"
+                            placeholder="Select"
+                            optionLabel="name"
+                            ngClass="p-dropdown"
+                            [(ngModel)]="user.role"
+                            [ngModelOptions]="{ standalone: true }"
+                            [disabled]="true"
+                            *ngIf="user.role.name === 'Admin'"
+                        ></p-dropdown>
+                        <i
+                            *ngIf="user.personId !== loggedInPersonId && user.role.name !== 'Admin' && !isLoggedInPersonStaff"
+                            class="icon-trash"
+                            (click)="confirm(user.personId)"
+                        ></i>
+                        <em
+                            *ngIf="user.personId === loggedInPersonId && !isLoggedInPersonStaff"
+                            class="icon-trash"
+                            pTooltip="Contact support to remove access for your account."
+                            tooltipPosition="right"
+                        ></em>
+                        <em
+                            *ngIf="isLoggedInPersonStaff"
+                            class="icon-trash"
+                            pTooltip="You are logged in as a Read-only user. Upgrade to manage users."
+                            tooltipPosition="right"
+                        ></em>
+                        <em
+                            *ngIf="user.role.name === 'Admin' && user.personId !== loggedInPersonId"
+                            class="icon-trash"
+                            pTooltip="Contact support to remove access from your account."
+                            tooltipPosition="right"
+                        ></em>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </form>
+</div>
+<p-confirmDialog header="Confirmation" class="confirm-popup" icon="pi pi-exclamation-triangle" acceptIcon="" rejectIcon=""></p-confirmDialog>
+<ng-container *ngIf="displayModal">
+    <p-dialog
+        (visibleChange)="validate = false"
+        header="Add Subscription Users"
+        [(visible)]="displayModal"
+        [modal]="true"
+        [baseZIndex]="10000"
+        [draggable]="false"
+        [resizable]="false"
+        class="dna-modal invite-modal"
+    >
+        <p class="p-m-0 subs-user-txt">Additional seats you add to your account will be added to your subscription charges.</p>
+        <form #inputForm="ngForm">
+            <div class="add-user-card current-sub-box">
+                <ul>
+                    <li class="current-seats">
+                        Current {{ systemLabels.namedUserLabel }} Seats:
+                        <span> 5 +</span>
+                    </li>
+                </ul>
+                <p-inputNumber
+                    (onInput)="checkValidate(inputForm)"
+                    name="advisorSeats"
+                    value="advisorSeats"
+                    ngModel
+                    mode="decimal"
+                    [showButtons]="true"
+                    inputId="minmax-buttons"
+                    incrementButtonIcon="icon-chevron-up"
+                    decrementButtonIcon="icon-chevron-down"
+                    [min]="0"
+                    [max]="100"
+                >
+                </p-inputNumber>
+                <span class="more-txt">More {{ systemLabels.namedUserLabel }}</span>
+            </div>
+            <div class="add-user-card current-sub-box">
+                <ul>
+                    <li class="current-seats">Current Staff Seats: <span> 5 +</span></li>
+                </ul>
+                <p-inputNumber
+                    (onInput)="checkValidate(inputForm)"
+                    value="staffSeats"
+                    name="staffSeats"
+                    ngModel
+                    mode="decimal"
+                    [showButtons]="true"
+                    inputId="minmax-buttons"
+                    incrementButtonIcon="icon-chevron-up"
+                    decrementButtonIcon="icon-chevron-down"
+                    [min]="0"
+                    [max]="100"
+                >
+                </p-inputNumber>
+                <span class="more-txt">More Staff</span>
+            </div>
+        </form>
+
+        <ng-template pTemplate="footer">
+            <button pButton pRipple (click)="displayModal = false; validate = false" label="Cancel" class="p-button-secondary p-button-text"></button>
+            <p-button
+                [disabled]="!validate"
+                class="nextBtn"
+                (click)="displayModal = false; validate = false"
+                label="Save"
+                (onClick)="updateSeats(inputForm)"
+            ></p-button>
+        </ng-template>
+    </p-dialog>
+</ng-container>

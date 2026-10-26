@@ -1,0 +1,38 @@
+:host {
+    ::ng-deep .p-datatable-wrapper {
+        .p-datatable-thead {
+            th {
+                background-color: transparent;
+                font-size: 1rem;
+                font-weight: 400;
+                color: var(--recent-table-gray);
+                padding: 15px 8px !important;
+                border-bottom: solid 2px var(--cm-border-clr);
+                &:hover,
+                &:focus {
+                    color: var(--recent-table-gray);
+                    background-color: transparent;
+                    border-color: transparent;
+                    border-bottom-color: var(--cm-border-clr);
+                    box-shadow: none;
+                }
+            }
+        }
+        tr {
+            background-color: var(--white-color);
+        }
+        td {
+            font-size: 0.875rem;
+            font-weight: 400;
+            padding: 15px 8px !important;
+            color: var(--dk-gray-clr);
+            border-bottom: solid 1px var(--cm-border-clr) !important;
+            @media screen and (max-width: 960px) {
+                display: table-cell !important;
+            }
+            img {
+                margin-right: 10px;
+            }
+        }
+    }
+}

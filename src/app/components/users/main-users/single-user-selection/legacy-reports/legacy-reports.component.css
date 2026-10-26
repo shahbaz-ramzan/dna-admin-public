@@ -1,0 +1,29 @@
+.legacyCard {
+    padding: 20px;
+    border-radius: 6px;
+    border: solid 1px var(--cm-border-clr);
+    min-height: 100%;
+}
+.legacyCard h3 {
+    font-size: 1.125rem;
+    line-height: 1;
+    color: var(--title-clr);
+}
+.legacyCard p {
+    color: var(--dk-gray-clr);
+}
+.legacyCard p.click-text {
+    font-size: 12px;
+    line-height: 16px;
+}
+.legacyCard p.click-text a {
+    color: var(--primary-color);
+}
+
+:host ::ng-deep .legacy-list {
+    margin-bottom: 25px;
+}
+:host ::ng-deep .legacy-list a {
+    padding: 0;
+    color: var(--primary-color) !important;
+} /*# sourceMappingURL=legacy-reports.component.css.map */

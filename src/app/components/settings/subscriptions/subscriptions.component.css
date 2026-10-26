@@ -1,0 +1,43 @@
+:host ::ng-deep .p-inputwrapper {
+    width: 100%;
+}
+:host ::ng-deep .p-inputwrapper .p-inputnumber {
+    width: 100%;
+}
+:host ::ng-deep .p-inputwrapper .p-inputtext {
+    width: 100%;
+    border: none;
+    height: 40px;
+    font-size: 0.875rem;
+    padding-left: 16px;
+    padding-right: 40px;
+    border-radius: 4px;
+    background-color: var(--gray95-clr);
+}
+:host ::ng-deep .p-inputwrapper .p-inputtext:focus {
+    box-shadow: none;
+}
+
+.regFieldWrap {
+    padding-top: 30px;
+    padding-bottom: 20px;
+}
+.regFieldWrap:first-child {
+    padding-top: 0;
+}
+.regFieldWrap + .regFieldWrap {
+    border-top: solid 1px var(--cm-border-clr);
+}
+.regFieldWrap .langWrap {
+    margin-top: 36px;
+}
+@media screen and (max-width: 767px) {
+    .regFieldWrap {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+}
+
+.subStatus {
+    text-transform: capitalize;
+} /*# sourceMappingURL=subscriptions.component.css.map */

@@ -1,0 +1,490 @@
+.users-page-wrapper {
+    padding: 30px;
+    min-height: calc(100vh - 38px);
+    width: 100%;
+    display: flex;
+    position: relative;
+    padding-top: var(--page-padding-top, 96px);
+}
+@media screen and (max-width: 991px) {
+    .users-page-wrapper {
+        flex-wrap: wrap;
+    }
+}
+@media screen and (max-width: 767px) {
+    .users-page-wrapper {
+        padding: 30px 15px;
+        padding-top: var(--page-padding-top, 96px);
+    }
+}
+.users-page-wrapper .users-table {
+    transition: all ease-in-out 0.3s;
+    background: var(--white-color);
+}
+.users-page-wrapper .users-table .u-inner-row {
+    width: 100%;
+    overflow: auto;
+    height: 100%;
+}
+.users-page-wrapper .users-table .u-inner-row .tags-filter-wrap {
+    padding: 24px 24px 0 19px;
+}
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+    .users-page-wrapper .users-table {
+        flex: 0 0 460px;
+        height: calc(100vh - 135px);
+        position: sticky;
+        top: 100px;
+    }
+}
+@media screen and (min-width: 1200px) {
+    .users-page-wrapper .users-table {
+        flex: 0 0 538px;
+    }
+}
+@media screen and (max-width: 1199px) {
+    .users-page-wrapper .users-table {
+        width: 50%;
+    }
+}
+@media screen and (max-width: 991px) {
+    .users-page-wrapper .users-table {
+        width: 100%;
+        height: 530px;
+        position: relative;
+        margin-bottom: 20px;
+    }
+}
+.users-page-wrapper .users-table tr {
+    background-color: var(--white-color);
+}
+.users-page-wrapper .users-table.side-bar + .user-details {
+    margin-left: 13px;
+    flex: 1;
+}
+@media screen and (max-width: 991px) {
+    .users-page-wrapper .users-table.side-bar + .user-details {
+        width: 100%;
+        margin-top: 15px;
+        margin-left: 0;
+    }
+}
+.users-page-wrapper .users-table.full-bar {
+    overflow: hidden;
+}
+@media screen and (min-width: 992px) {
+    .users-page-wrapper .users-table.full-bar {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+}
+.users-page-wrapper .user-details {
+    padding: 26px 20px;
+    background-color: var(--white-color);
+    box-sizing: border-box;
+}
+.users-page-wrapper .user-details.full-content {
+    width: 100%;
+}
+@media screen and (min-width: 992px) {
+    .users-page-wrapper .user-details.full-content {
+        margin-left: -400px;
+    }
+}
+@media screen and (min-width: 1199px) {
+    .users-page-wrapper .user-details.full-content {
+        margin-left: -460px;
+    }
+}
+@media screen and (min-width: 992px) {
+    .users-page-wrapper .user-details.side-content {
+        max-width: calc(100% - 473px);
+    }
+}
+@media screen and (min-width: 1200px) {
+    .users-page-wrapper .user-details.side-content {
+        max-width: calc(100% - 551px);
+    }
+}
+@media screen and (max-width: 992px) {
+    .users-page-wrapper .user-details.side-content {
+        max-width: initial !important;
+        width: 100% !important;
+    }
+}
+
+:host ::ng-deep .p-badge.p-badge-danger {
+    background-color: #f44336;
+    width: 23px;
+    height: 23px;
+    font-weight: 500;
+    font-family: 'Calibri';
+    color: var(--white-color);
+}
+@media screen and (max-width: 767px) {
+    :host ::ng-deep .inviteModal .p-dialog {
+        max-width: 90%;
+        width: 90%;
+    }
+}
+:host ::ng-deep .inviteModal .p-dialog .p-dialog-header {
+    padding: 25px 28px 0;
+}
+:host ::ng-deep .addText {
+    margin-top: 6px;
+}
+:host ::ng-deep .addText p {
+    font-size: 1rem;
+    color: var(--dk-gray-clr);
+    font-weight: 400;
+}
+:host ::ng-deep .addText .icon-info {
+    font-size: 22px;
+    color: var(--primary-color);
+}
+:host ::ng-deep .invite-btn .p-button-label {
+    display: none;
+}
+:host ::ng-deep .calendarWrap {
+    border: solid 2px var(--primary-color);
+    height: 40px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    margin-bottom: 40px;
+}
+:host ::ng-deep .calendarWrap .calendarFrom {
+    width: 47%;
+}
+:host ::ng-deep .calendarWrap .calendarFrom input {
+    padding-left: 31px;
+    border: none;
+    height: 100%;
+    font-size: 12px;
+    color: var(--dark-gray-shade-clr);
+    background-color: var(--white-color);
+}
+:host ::ng-deep .calendarWrap .calendarFrom input::-moz-placeholder {
+    color: var(--dk-gray-clr);
+}
+:host ::ng-deep .calendarWrap .calendarFrom input::placeholder {
+    color: var(--dk-gray-clr);
+}
+:host ::ng-deep .calendarWrap .calendarTo {
+    max-width: 32%;
+}
+:host ::ng-deep .calendarWrap .calendarTo .p-datepicker {
+    left: auto !important;
+    right: 0;
+}
+:host ::ng-deep .calendarWrap .calendarTo input {
+    padding-left: 10px;
+}
+:host ::ng-deep .calendarWrap .calendarTo .p-datepicker-trigger {
+    right: 0;
+    left: auto;
+}
+:host ::ng-deep .calendarWrap .p-calendar {
+    height: 100%;
+}
+:host ::ng-deep .calendarWrap .icon-range {
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 22px;
+    margin: 0 auto;
+    color: #a6a5a3;
+}
+:host ::ng-deep .calendarWrap .p-datepicker-trigger {
+    background-color: transparent;
+    border-color: transparent;
+    color: var(--dark-gray-shade-clr);
+    position: absolute;
+    left: 0;
+    top: 1px;
+    padding: 0;
+}
+:host ::ng-deep .rangeBox {
+    margin-bottom: 35px;
+    position: relative;
+}
+:host ::ng-deep .rangeBox input {
+    width: 60px;
+    height: 40px;
+    color: var(--dark-black-color);
+    background-color: var(--white-color);
+    border-color: var(--cm-border-clr);
+}
+:host ::ng-deep .rangeBox p {
+    font-size: 0.875rem;
+    color: var(--dk-gray-clr);
+    font-weight: 400;
+}
+:host ::ng-deep .rangeBox .ranges {
+    width: 35%;
+    position: absolute;
+    right: 0;
+    left: 0;
+    margin: auto;
+    bottom: 19px;
+}
+:host ::ng-deep .rangeBox .ranges .rang-val1 {
+    position: absolute;
+    left: -27px;
+    font-size: 14px;
+    top: -10px;
+    color: var(--dk-gray-clr);
+}
+:host ::ng-deep .rangeBox .ranges .rang-val2 {
+    position: absolute;
+    right: -28px;
+    font-size: 14px;
+    top: -10px;
+    color: var(--dk-gray-clr);
+}
+:host ::ng-deep .rangeBox .ranges .p-slider-handle {
+    border-color: #000;
+    width: 16px;
+    height: 16px;
+}
+:host ::ng-deep .rangeBox .ranges .p-slider-handle:before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background-color: #000;
+    position: absolute;
+    border-radius: 100%;
+    left: 2px;
+    top: 2px;
+}
+:host ::ng-deep .rangeBox .ranges .p-slider-handle:hover {
+    background-color: #fff;
+}
+:host ::ng-deep .rangeBox .ranges .p-slider-handle:focus {
+    box-shadow: none;
+}
+:host ::ng-deep .rangeBox .ranges .p-slider-horizontal {
+    height: 2px;
+}
+:host ::ng-deep .rangeBox .ranges .p-slider-horizontal .p-slider-range {
+    background-color: #333333;
+}
+:host ::ng-deep .customizeBtn {
+    position: fixed;
+    right: 0;
+    top: 40%;
+    transition: transform 0.1s;
+}
+:host ::ng-deep .customizeBtn.barBtn {
+    margin-left: -68px;
+    right: auto;
+}
+:host ::ng-deep .customizeBtn button {
+    width: 48px;
+    height: 48px;
+    border: none;
+    border-radius: 4px 0px 0px 4px;
+    background-color: #323332;
+}
+:host ::ng-deep .customizeBtn button:hover {
+    background-color: #323332;
+}
+:host ::ng-deep .customizeMenu .p-sidebar-content {
+    overflow: visible;
+}
+:host ::ng-deep .brSwitch {
+    width: 48px;
+    height: 24px;
+}
+:host ::ng-deep .brSwitch .p-inputswitch-slider {
+    font-family: 'icomoon' !important;
+}
+:host ::ng-deep .brSwitch .p-inputswitch-slider:before {
+    content: '\e928';
+    padding: 1px 3px;
+    font-size: 10px;
+    padding: 3px 5px;
+    color: #323332;
+    width: 20px;
+    height: 20px;
+}
+:host ::ng-deep .p-inputswitch-checked .p-inputswitch-slider {
+    background: #323332;
+}
+:host ::ng-deep .p-inputswitch-checked .p-inputswitch-slider:before {
+    transform: translateX(1.45rem);
+}
+:host ::ng-deep .p-inputswitch-checked .p-inputswitch-slider:hover {
+    background: #323332 !important;
+}
+
+.layoutSwitch label {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--nav-gray-txt);
+    margin-left: 10px;
+    position: relative;
+    top: -9px;
+}
+
+@media screen and (max-width: 576px) {
+    :host ::ng-deep #dnaTable .p-datatable-wrapper {
+        width: 500px;
+    }
+    :host ::ng-deep #dnaTable .p-datatable-wrapper .p-datatable-tbody tr td:first-child {
+        width: 10% !important;
+    }
+}
+
+:host ::ng-deep .tutsModal .p-dialog {
+    width: 872px;
+    background-color: #fff;
+}
+:host ::ng-deep .tutsModal .p-dialog iframe {
+    width: 100%;
+    border-radius: 4px;
+}
+:host ::ng-deep .tutsModal .p-dialog:before {
+    content: '';
+    border-radius: 4px;
+    border-top: solid 12px var(--primary-color);
+    position: relative;
+    top: -5px;
+}
+:host ::ng-deep .tutsModal .p-dialog .p-dialog-content {
+    padding: 0 100px 50px 100px;
+    border-radius: 0 4px 4px 4px;
+}
+@media screen and (max-width: 767px) {
+    :host ::ng-deep .tutsModal .p-dialog .p-dialog-content {
+        padding: 0 20px 20px 20px;
+    }
+}
+@media screen and (max-width: 576px) {
+    :host ::ng-deep .tutsModal .p-dialog .p-dialog-content video {
+        height: auto;
+    }
+}
+:host ::ng-deep .tutsModal .p-dialog .p-dialog-header {
+    padding: 22px 28px 0;
+    color: #131523;
+    margin-bottom: 26px;
+    justify-content: center;
+}
+:host ::ng-deep .tutsModal .p-dialog .p-dialog-header .p-dialog-title {
+    font-size: 1.875rem;
+    font-weight: 700;
+}
+@media screen and (max-width: 767px) {
+    :host ::ng-deep .tutsModal .p-dialog .p-dialog-header .p-dialog-title {
+        font-size: 1.5rem;
+    }
+}
+:host ::ng-deep .tutsModal .p-dialog .p-dialog-header .p-dialog-header-icon {
+    width: 12px;
+    height: 12px;
+    color: #7e84a3;
+    position: absolute;
+    top: 24px;
+    right: 18px;
+}
+:host ::ng-deep .tutsModal .p-dialog .p-dialog-header .p-dialog-header-icon:focus {
+    box-shadow: none;
+}
+:host ::ng-deep .tutsModal .p-dialog .p-button-text {
+    color: #333333;
+}
+:host ::ng-deep .tutsModal .p-dialog .nextBtn .p-button {
+    font-size: 0.875rem;
+    height: 40px;
+    font-weight: 400;
+    margin-right: 0;
+    border-radius: 4px;
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+@media screen and (min-width: 767px) {
+    :host ::ng-deep .tutsModal .p-dialog .nextBtn .p-button {
+        min-width: 174px;
+    }
+}
+:host ::ng-deep .tutsModal .p-dialog-footer {
+    padding: 0 100px 35px 100px;
+}
+@media screen and (max-width: 767px) {
+    :host ::ng-deep .tutsModal .p-dialog-footer {
+        padding: 0 20px 20px 20px;
+    }
+}
+:host ::ng-deep .tutsModal .p-dialog-mask {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.icon-switch {
+    font-size: 20px;
+    color: var(--cm-gray-clr);
+    margin-right: 21px;
+    cursor: pointer;
+}
+.icon-switch.disabled-switch {
+    pointer-events: none;
+    opacity: 0.6;
+}
+@media screen and (max-width: 991px) {
+    .icon-switch {
+        display: none;
+    }
+}
+.icon-switch.show.side-bar {
+    display: none;
+}
+.icon-switch.show.full-bar {
+    position: absolute;
+    top: 130px;
+    left: 40px;
+    color: var(--primary-color);
+    transform: rotate(180deg);
+}
+
+:host ::ng-deep .filterRadio .p-highlight {
+    border-color: var(--primary-color);
+    background-color: var(--primary-color);
+}
+:host ::ng-deep .filterRadio:hover {
+    border-color: var(--primary-color) !important;
+}
+:host ::ng-deep .filterRadio .p-radiobutton-box {
+    background-color: var(--white-color);
+}
+:host ::ng-deep .filterRadio .p-radiobutton-box:hover {
+    border-color: var(--primary-color) !important;
+    background-color: transparent !important;
+}
+:host ::ng-deep .filterRadio .p-focus {
+    box-shadow: none !important;
+    border-color: var(--primary-color) !important;
+}
+
+:host ::ng-deep .user-tag-wrap {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding-left: 20px;
+    padding-right: 20px;
+    max-height: 58px;
+    overflow: auto;
+}
+:host ::ng-deep .user-tag-wrap .clientBadge {
+    width: auto;
+    min-width: 50px;
+    margin-bottom: 0;
+}
+:host ::ng-deep .user-tag-wrap .p-button-text {
+    width: 20px;
+    padding: 0;
+    height: auto;
+    margin-left: 5px;
+} /*# sourceMappingURL=main-users.component.css.map */

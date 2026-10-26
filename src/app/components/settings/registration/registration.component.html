@@ -1,0 +1,391 @@
+<div class="addReg d-flex justify-content-end">
+    <div class="d-flex">
+        <button
+            data-testId="manage-tag-btn"
+            (click)="showModalDialog()"
+            pButton
+            pRipple
+            [ngClass]="'manageBtn'"
+            type="button"
+            label="Manage Tags"
+            class="p-button-outlined"
+            *ngIf="permissionObject['Settings-ManageTags']"
+        ></button>
+        <p-button
+            data-testId="add-btn"
+            (onClick)="addRegistrationLink()"
+            [disabled]="selfRegistrationForm"
+            [ngClass]="'adBtn'"
+            label="Add"
+            icon="pi pi-plus"
+            *ngIf="permissionObject['Settings-Add-New-Self-Registration-Link']"
+        ></p-button>
+    </div>
+</div>
+<app-loading-spinner *ngIf="isRegistrationLoading" [fixed]="true"></app-loading-spinner>
+<form #registrationForm="ngForm" *ngIf="selfRegistrationForm">
+    <div class="cntBox mt-4 w-100">
+        <div class="regHead d-flex align-items-center justify-content-between">
+            <h5 class="mb-0" data-testId="registration-heading">
+                Registration for Natural Behavior
+                <em class="icon-information"></em>
+            </h5>
+            <div class="d-flex">
+                <div class="save-btn">
+                    <p-button
+                        data-testId="save-btn"
+                        (onClick)="saveForm()"
+                        label="Save"
+                        [disabled]="!checkFormValidity() || (!registrationForm.dirty && !isAnyTagChanged)"
+                    ></p-button>
+                </div>
+                <div>
+                    <button
+                        data-testId="cancel-btn"
+                        pButton
+                        (click)="resetRegistrationForm()"
+                        type="button"
+                        label="Cancel"
+                        class="cancel-btn p-button-text ms-3"
+                    ></button>
+                </div>
+            </div>
+        </div>
+        <div class="regFieldWrap">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-lg-12 col-xl-6">
+                    <h5 data-testId="account-field">Account</h5>
+                    <!-- <span class="disabledField p-input-icon-right w-100">
+            <input
+              readonly
+              id="disabled-input"
+              type="text"
+              pInputText
+              name="link"
+              [(ngModel)]="selfRegistrationForm.link"
+            />
+            <em class="icon-clipboard"></em>
+          </span> -->
+                    <div class="p-field-checkbox mt-4">
+                        <p-checkbox
+                            data-testId="account-link-checkbox"
+                            inputId="ny"
+                            [binary]="true"
+                            name="defaultLinkForAccount"
+                            [(ngModel)]="selfRegistrationForm.defaultLinkForAccount"
+                        >
+                        </p-checkbox>
+                        <label data-testId="account-link-label" for="ny">Default link for account</label>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-lg-12 col-xl-1"></div>
+                <div class="col-xs-12 col-sm-12 col-lg-12 col-xl-5 regResMargin tagOt">
+                    <h5 data-testId="tags-heading">Tags</h5>
+                    <div class="tagsWrap">
+                        <div class="tagsWrapinr">
+                            <ul class="row list-unstyled">
+                                <li *ngFor="let tag of selfRegistrationForm.tags; let i = index">
+                                    <div class="p-field-checkbox">
+                                        <p-checkbox
+                                            data-testId="tag-checkboxes"
+                                            name="{{ tag.tagId }}"
+                                            value="{{ tag.value }}"
+                                            [(ngModel)]="tag.value"
+                                            [ngModelOptions]="{ standalone: true }"
+                                            [binary]="true"
+                                            inputId="{{ tag.tagId }}"
+                                            (onChange)="CheckBoxChange()"
+                                        >
+                                        </p-checkbox>
+                                        <label [for]="tag.tagId">{{ tag.name }}</label>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="regFieldWrap">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-lg-12 col-xl-6">
+                    <div class="form-group">
+                        <label data-testId="named-user-label" class="fw-bold">{{ systemLabels['namedUserLabel'] }}</label>
+                        <p-dropdown
+                            data-testId="named-user-dropdown"
+                            [required]="true"
+                            #advisor="ngModel"
+                            name="advisor"
+                            inputId="dropdown"
+                            [ngClass]="'selectField'"
+                            [options]="advisors"
+                            [autoDisplayFirst]="false"
+                            placeholder="Select {{ systemLabels.namedUserLabel }}"
+                            optionLabel="facilitatorName"
+                            ngClass="p-dropdown"
+                            [(ngModel)]="selfRegistrationForm.advisor"
+                        >
+                        </p-dropdown>
+                        <span *ngIf="advisor.touched && !advisor.valid" style="color: red"> {{ systemLabels.namedUserLabel }} Selection Required </span>
+                    </div>
+                    <!-- <div class="form-group langWrap">
+            <label class="fw-bold">Default Language</label>
+            <p-dropdown
+              [required]="true"
+              #language="ngModel"
+              name="defaultLanguage"
+              inputId="dropdown"
+              [ngClass]="'selectField'"
+              [options]="languages"
+              [autoDisplayFirst]="false"
+              placeholder="English"
+              optionLabel="name"
+              ngClass="p-dropdown"
+              [disabled]="true"
+              [(ngModel)]="selfRegistrationForm.defaultLanguage"
+            >
+            </p-dropdown>
+            <span
+              *ngIf="language.touched && !language.valid"
+              style="color: red"
+            >
+              Enter Language Please
+            </span>
+          </div> -->
+                    <!-- <div class="form-group langWrap mb-0"> -->
+                    <!-- <label class="fw-bold">Reports Available</label>
+            <p-dropdown
+              [required]="true"
+              [disabled]="true"
+              placeholder="Financial"
+              #report="ngModel"
+              name="reportsAvailable"
+              inputId="dropdown"
+              [ngClass]="'selectField'"
+              [options]="reports"
+              [autoDisplayFirst]="false"
+              optionLabel="name"
+              ngClass="p-dropdown"
+              [(ngModel)]="selfRegistrationForm.reportsAvailable"
+            >
+            </p-dropdown>
+            <span *ngIf="report.touched && !report.valid" style="color: red">
+              Enter reports Please
+            </span>
+          </div> -->
+                </div>
+                <div class="col-xs-12 col-sm-12 col-lg-12 col-xl-1"></div>
+                <div class="col-xs-12 col-sm-12 col-lg-12 col-xl-5 disc-Setting">
+                    <h5 data-testId="discovery-settings" class="mb-3">Discovery Settings</h5>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-lg-4 col-xl-4">
+                            <div class="p-field-radiobutton" *ngFor="let discoverySetting of discoverySettings">
+                                <p-radioButton
+                                    data-testId="discovery-settings-radio-btn"
+                                    [inputId]="discoverySetting.name"
+                                    name="discoverySetting"
+                                    [value]="discoverySetting"
+                                    [(ngModel)]="selfRegistrationForm.selectedCategory"
+                                    (onClick)="selfRegistrationForm.selectedSettings = []"
+                                ></p-radioButton>
+                                <label [for]="discoverySetting.name">{{ discoverySetting.name }}</label>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-lg-8 col-xl-8">
+                            <p-listbox
+                                data-testId="discovery-settings-list"
+                                (onChange)="onListBoxChange()"
+                                [options]="
+                                    selfRegistrationForm.selectedCategory === discoverySettings[0]
+                                        ? discoverySettings[0].settings
+                                        : discoverySettings[1].settings
+                                "
+                                class="discListing"
+                                [(ngModel)]="selfRegistrationForm.selectedSettings"
+                                name="displaySettings"
+                                [metaKeySelection]="false"
+                                [checkbox]="true"
+                                [filter]="true"
+                                [multiple]="true"
+                                optionLabel="name"
+                            >
+                            </p-listbox>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<ng-container *ngIf="displayModal === true">
+    <p-dialog
+        header="Manage Tags"
+        [(visible)]="displayModal"
+        [modal]="true"
+        class="dna-modal manageTagModal"
+        [baseZIndex]="10000"
+        [draggable]="false"
+        [resizable]="false"
+    >
+        <app-loading-spinner *ngIf="isTagLoading" [fixed]="true"></app-loading-spinner>
+        <h4>
+            Create New Tag
+            <em>
+                <a style="text-decoration: none; color: #677eff" href="https://kb.dnabehavior.com/gene/creating-managing-and-assigning-tags" target="_blank"
+                    ><i
+                        class="icon-info"
+                        pTooltip="Tags are used to categorize and organize records. Click on the ? icon to learn more."
+                        tooltipPosition="right"
+                    >
+                    </i
+                ></a>
+            </em>
+            <!-- <em
+                class="icon-info"
+                (click)="navigateToTagsHelp()"
+                tooltipEvent="focus"
+                [escape]="false"
+                pTooltip="Tags way to categorize and organize records. <a style='text-decoration: none;color: #677eff;' href='https://kb.dnabehavior.com/gene/creating-managing-and-assigning-tags' target='_blank'>click here</a> to learn more."
+                tooltipPosition="right"
+            ></em> -->
+        </h4>
+        <div class="d-flex">
+            <input [(ngModel)]="newTag" placeholder="Enter tag name" pattern="^[a-zA-Z0-9_]*$" maxlength="65" #newTagRef />
+            <p-button [disabled]="!newTag" (onClick)="addNewTag()" class="nextBtn addBtn" label="Create"> </p-button>
+        </div>
+        <sub *ngIf="!newTagRef.validity.valid" style="color: red">Tags cannot have spaces or special characters.</sub>
+        <div class="d-flex justify-content-between">
+            <h6>Tags</h6>
+
+            <div class="p-field-checkbox">
+                <p-checkbox name="check7" [binary]="true" inputId="ny" [(ngModel)]="isDefault"> </p-checkbox>
+                <label>Default</label>
+            </div>
+        </div>
+        <div *ngFor="let item of tagsList">
+            <div class="tagItem">
+                <span>{{ item.name }}</span>
+                <i class="icon-trash" (click)="deleteTag(item)"></i>
+            </div>
+        </div>
+    </p-dialog>
+</ng-container>
+<div class="cntBox reg-links-box mt-4 w-100" *ngIf="!selfRegistrationForm && permissionObject['Settings-Self-RegistrationLinks']">
+    <div class="regHead d-flex align-items-center justify-content-between">
+        <h5 class="mb-0">
+            Self Registration Links
+            <em
+                class="icon-information"
+                pTooltip="Self-registration links are custom links for your company that you can share with others or install on your website so participants can complete DNA Discoveries."
+                tooltipPosition="right"
+                tooltipEvent="hover"
+            >
+            </em>
+        </h5>
+    </div>
+    <div class="pt-3 pb-3 w-100 registration-linkstable">
+        <p-table [value]="[1]">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pSortableColumn="name">Account Link</th>
+                    <th pSortableColumn="lastName">Tags</th>
+                    <th pSortableColumn="uniqueStyle">
+                        {{ systemLabels['namedUserLabel'] }}
+                    </th>
+                    <th pSortableCoAccountlumn="account">Default</th>
+                    <th pSortableCoAccountlumn="account">Actions</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-data>
+                <tr *ngFor="let selfRegistrationLink of selfRegistrationLinks; let i = index">
+                    <td>
+                        <span class="d-flex justify-content-start align-items-center">
+                            <span class="disabledField p-input-icon-right me-2">
+                                <input readonly id="disabled-input" type="text" pInputText name="link" [(ngModel)]="selfRegistrationLink.link" />
+                            </span>
+                            <em (click)="copyMethod(selfRegistrationLink.link)" class="icon-clipboard" role="button"></em>
+                        </span>
+                    </td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <p
+                                [ngClass]="{
+                                    clientBadge: selfRegistrationLink?.tags?.length > 0,
+                                    'mb-0': true
+                                }"
+                                style="width: 100px"
+                            >
+                                <span style="max-width: 65px">{{ (selfRegistrationLink?.tags)[0]?.tag }}</span>
+                            </p>
+                            <em
+                                *ngIf="selfRegistrationLink.tags.length > 1 || selfRegistrationLink?.tags[0]?.tag.length > 11"
+                                class="icon-information ms-2"
+                                [pTooltip]="tagsToolTip(selfRegistrationLink.tags)"
+                                tooltipPosition="right"
+                                tooltipEvent="hover"
+                            >
+                            </em>
+                        </div>
+                    </td>
+                    <td class="leaders">
+                        {{ selfRegistrationLink.advisor.name }}
+                    </td>
+                    <td>
+                        <span *ngIf="selfRegistrationLink.defaultLinkForAccount"> Yes </span>
+                        <span *ngIf="selfRegistrationLink.defaultLinkForAccount === false"> No </span>
+                    </td>
+                    <td>
+                        <div class="d-flex actions">
+                            <em (click)="editLinks(i)" class="icon-edit"></em>
+                            <em class="icon-trash" (click)="confirm(selfRegistrationLink.id, selfRegistrationLink.accountId)"></em>
+                            <!-- <em class="icon-trash" (click)="deleteRegistrationLink(i)"></em> -->
+                        </div>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>
+<div class="cntBox legalText mt-4 w-100 position-relative">
+    <app-loading-spinner *ngIf="textLoading"></app-loading-spinner>
+    <div class="regHead d-flex align-items-center justify-content-between">
+        <h5 data-testId="legal-text-heading">
+            Legal Text
+            <em
+                class="icon-information"
+                pTooltip="For business requirement to add legal text or disclosures in your questionnaire experience, you will be able to add legal text that will appear on the page where investors create an account by providing their name, email address and setting a password."
+                tooltipPosition="right"
+            ></em>
+        </h5>
+        <div class="d-flex">
+            <div class="save-btn">
+                <p-button (onClick)="upsertLegalText()" label="Update" *ngIf="legalTextUpdating"></p-button>
+            </div>
+            <button pButton (click)="resetLegalText()" type="button" *ngIf="legalTextUpdating" label="Cancel" class="cancel-btn p-button-text ms-3"></button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-10">
+            <textarea
+                type="text"
+                pInputTextarea
+                [(ngModel)]="updatedLegalText"
+                *ngIf="legalTextUpdating"
+                class="w-100"
+                [rows]="1"
+                [autoResize]="true"
+            ></textarea>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="d-flex align-items-center justify-content-between">
+            <p *ngIf="!legalTextUpdating">
+                {{ legalText }}
+            </p>
+            <em (click)="updateLegalText()" class="icon-edit" *ngIf="!legalTextUpdating" style="margin-top: 0; margin-bottom: 1rem"></em>
+        </div>
+    </div>
+</div>
+<p-confirmDialog header="Confirmation" class="confirm-popup" icon="pi pi-exclamation-triangle" acceptIcon="" rejectIcon=""></p-confirmDialog>

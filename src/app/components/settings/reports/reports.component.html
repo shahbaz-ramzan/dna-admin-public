@@ -1,0 +1,163 @@
+<!-- Access Restriction Message -->
+<div *ngIf="!permissionObject['Settings-Reports']" class="access-restriction-container">
+    <div class="cntBox">
+        <div class="text-content">
+            <h5 class="access-restriction-heading">This feature isn't available in your current package</h5>
+            <p class="access-restriction-text">Upgrade your package to unlock this feature and access more tools.</p>
+        </div>
+        <div class="upgrade-button-container">
+            <button class="upgrade-btn" (click)="goToSubscription()" data-testId="upgrade-btn">Upgrade</button>
+        </div>
+    </div>
+</div>
+
+<!-- Reports and Customization Content -->
+<div *ngIf="permissionObject['Settings-Reports']">
+    <app-loading-spinner *ngIf="getReportsLoading || updateReportLoading || dynamicWelcomeLoading || updateDynamicWelcomeLoading" [fixed]="true"></app-loading-spinner>
+    <div class="w-100 reports-table">
+        <div class="settingsreports-head d-flex justify-content-between mb-2 align-items-center">
+            <div>
+                <h5 class="mb-2" data-testId="reports-heading">Customize Reports</h5>
+                <p class="subs-user-txt">
+                    To customize the front page of your PDF reports, simply click on the edit button and type in your desired title in the designated field. The
+                    word "Report" will appear after the word you enter below. Keep in mind that the maximum character length is 50 characters, and no special
+                    characters are allowed. If no title is entered, the default name will appear on the cover page. For example: if you wish to have a report
+                    named "Acme Co Report", you would enter "Acme Co" below. The word "Report" will be automatically added to the end for you.
+                </p>
+            </div>
+        </div>
+        <p-table [value]="[1]">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pSortableColumn="name">Reports</th>
+                    <th pSortableColumn="uniqueStyle">Custom Names</th>
+                    <th pSortableCoAccountlumn="account">Action</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-data>
+                <tr *ngFor="let report of reports; let i = index">
+                    <td>
+                        {{ report.name }}
+                    </td>
+
+                    <td>{{ report.customReportName }}</td>
+                    <td>
+                        <div class="d-flex actions">
+                            <em (click)="showDialog(i)" class="icon-edit"></em>
+                        </div>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+
+    <!-- Dynamic Welcome Screen Form -->
+    <div class="cntBox mt-4">
+        <div class="settingsreports-head d-flex justify-content-between mb-2 align-items-center">
+            <div>
+                <div class="row">
+                    <h5 data-testId="Discovery-heading" class="col-12 col-lg-6 my-auto">Customize Discovery</h5>
+                    <div class="col-12 col-lg-6 w-auto mt-3 w-lg-full ms-lg-auto">
+                        <p-tabView data-testId="tab-view" class="sUserTab" [(activeIndex)]="activeTabIndex" (onChange)="onChangeTab($event)">
+                            <p-tabPanel data-testId="financial-tab" class="financialTab" header="Financial Behavior"></p-tabPanel>
+                            <p-tabPanel data-testId="talent-tab" class="financialTab" header="Work Talent"></p-tabPanel>
+                        </p-tabView>
+                    </div>
+                </div>
+                <p class="subs-user-txt">
+                    To customize the welcome screen of the DNA Discovery Process, simply enter the in information below. The text you enter in the title field
+                    will be prominently displayed as the main heading (H1) of the welcome page. Replace the default introductory video by providing a new video
+                    URL (this video will be the first visual element participants engage with). The content you input in the Message field will serve as the
+                    primary body text on the page, offering a customized narrative or instructions to the participants. To learn more about these
+                    customizations, <a href="https://kb.dnabehavior.com/gene/customizing-welcome-screen" target="_blank">click here</a>.
+                </p>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <form data-testId="form" [formGroup]="dynamicWelcomeForm" (ngSubmit)="onSubmit()">
+                <div class="row g-3 needs-validation">
+                    <div class="form-group col-12 col-lg-6">
+                        <label data-testId="title-label" for="title">Title</label>
+                        <input
+                            data-testId="title-input"
+                            type="text"
+                            class="form-control"
+                            [ngClass]="{ 'border border-danger': welcomeTitle?.touched && welcomeTitle?.invalid }"
+                            id="title"
+                            placeholder="Enter title"
+                            formControlName="welcomeTitle"
+                            placeholder="Welcome title"
+                        />
+                        <small class="form-text text-danger" *ngIf="welcomeTitle?.touched && welcomeTitle?.invalid">Title is required.</small>
+                    </div>
+                    <div class="form-group col-12 col-lg-6">
+                        <label data-testId="url-label" for="url">Video Url</label>
+                        <input
+                            data-testId="url-input"
+                            type="text"
+                            class="form-control"
+                            [ngClass]="{ 'border border-danger': url?.touched && url?.invalid }"
+                            id="url"
+                            placeholder="Enter video url"
+                            formControlName="url"
+                            placeholder="https://www.youtube.com/embed/...."
+                        />
+                        <div *ngIf="url?.touched && url?.invalid">
+                            <small class="form-text text-danger" *ngIf="url?.errors?.hasOwnProperty('required')">Video url is required.</small>
+                            <small class="form-text text-danger" *ngIf="url?.errors?.hasOwnProperty('pattern')">Video url must be a youtube embed link.</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label data-testId="message-label" for="message">Message</label>
+                        <textarea
+                            data-testId="message-input"
+                            class="form-control bg-light"
+                            style="border: none"
+                            id="message"
+                            [ngClass]="{ 'border border-danger': message?.touched && message?.invalid }"
+                            rows="3"
+                            formControlName="message"
+                            placeholder="Welcome message"
+                        ></textarea>
+                        <small class="form-text text-danger" *ngIf="message?.touched && message?.invalid">Message is required.</small>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-end">
+                    <button
+                        data-testId="save-btn"
+                        type="submit"
+                        style="background-color: var(--primary-color); border: none"
+                        class="btn btn-primary mt-4"
+                        [disabled]="dynamicWelcomeForm.invalid"
+                    >
+                        Submit
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Form end -->
+</div>
+<p-dialog header="Customize Report Name" [(visible)]="visible" [modal]="true" [draggable]="false" [resizable]="false" class="dna-modal">
+    <div class="customName-filed">
+        <input
+            pInputText
+            id="customname"
+            value="selectedReport.customReportName"
+            placeholder="Enter Report Name"
+            [(ngModel)]="selectedReport.customReportName"
+            pattern="^[a-zA-Z0-9 ]*$"
+            #customNameRef
+        />
+        <div class="save-btn">
+            <button pButton type="submit" (click)="saveReport()" label="Save"></button>
+        </div>
+    </div>
+    <sub *ngIf="!customNameRef.validity.valid" style="color: red">Report name cannot have special characters.</sub>
+    <sub *ngIf="selectedReport.customReportName.length > 50" style="color: red">Maximum input size exceeded.</sub>
+    <sub *ngIf="!selectedReport.customReportName" style="color: red">Please enter report name.</sub>
+</p-dialog>

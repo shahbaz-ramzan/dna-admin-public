@@ -1,0 +1,63 @@
+:host {
+    ::ng-deep .userInfoBar {
+        margin-bottom: 0 !important;
+        border-bottom: none !important;
+        border: solid 1px var(--cm-border-clr);
+        border-radius: 6px 6px 0px 0px;
+        box-sizing: border-box;
+        padding: 12px 15px 8px !important;
+        ul {
+            margin-bottom: 0;
+            justify-content: space-between;
+        }
+        .uAvatar {
+            flex-direction: column;
+            .uAvatar-cnt {
+                padding-left: 0;
+            }
+            h5 {
+                margin-left: 0 !important;
+                margin-top: 2px;
+                font-size: 0.875rem !important;
+            }
+            .p-avatar {
+                height: 36px;
+                width: 36px;
+            }
+        }
+        .user-edit-btn {
+            display: none;
+        }
+        .hideView {
+            display: none;
+        }
+    }
+
+    ::ng-deep .smCard {
+        .smCnt {
+            flex-direction: column;
+            h5 {
+                // In a column flex the single-user `flex: 1 1 auto; min-width: 0` truncation acts
+                // vertically, so the nowrap line grew to its full text width and spilled out of
+                // both sides of the card (align-items: center). Cap it to the card width instead.
+                width: 100%;
+                max-width: 100%;
+                text-align: center;
+                margin-bottom: 20px !important;
+            }
+        }
+    }
+    ::ng-deep .doble-user-box {
+        .rbCard:first-child,
+        .border-radius-none .workTlntRlt {
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+        .user-p-wrap {
+            @media screen and (max-width: 1366px) {
+                flex-direction: column;
+                gap: 15px !important;
+            }
+        }
+    }
+}

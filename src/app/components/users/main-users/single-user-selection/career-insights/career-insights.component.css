@@ -1,0 +1,19 @@
+.crCard {
+    padding: 20px;
+    border-radius: 6px;
+    border: solid 1px var(--cm-border-clr);
+    min-height: 273px;
+}
+.crCard h3 {
+    font-size: 1.125rem;
+    line-height: 1;
+    color: var(--title-clr);
+}
+.crCard ol {
+    padding-left: 20px;
+}
+.crCard ol li {
+    color: var(--cm-gray-clr);
+    font-weight: 700;
+    margin-bottom: 10px;
+} /*# sourceMappingURL=career-insights.component.css.map */

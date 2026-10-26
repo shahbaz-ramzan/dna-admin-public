@@ -1,0 +1,20 @@
+.uniqueCard {
+    margin-top: 16px;
+    padding: 20px;
+    border-radius: 6px;
+    border: solid 1px var(--cm-border-clr);
+    min-height: 273px;
+    h3 {
+        font-size: 1.125rem;
+        line-height: 1;
+        color: var(--title-clr);
+    }
+    ol {
+        padding-left: 20px;
+        li {
+            color: #a6a5a3;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+    }
+}

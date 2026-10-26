@@ -1,0 +1,195 @@
+//Google Font: Source Sans Pro
+// @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback');
+
+body {
+    font-family: 'Calibri', sans-serif;
+}
+@import '../fonts/stylesheet.css';
+@import '../font-icon/style.css';
+@import 'supporting/commonFeatures';
+@import 'supporting/userSelection';
+@import 'supporting/global';
+@import 'supporting/on-boarding';
+@import 'supporting/login';
+@import 'supporting/dark-mode.css';
+
+// Set by disableWonderchat() (util/utils.ts) - hides the site-wide Wonderchat widget on pages
+// that have their own chat (reports) or none (login).
+body.hide-wonderchat #wonderchat-wrapper {
+    display: none !important;
+}
+
+/* Global Tour Button Styling - Clean and essential */
+.shepherd-footer {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+}
+
+/* Handle single button case (no back button) */
+.shepherd-footer:has(.shepherd-button:only-child) {
+    justify-content: flex-end !important;
+}
+
+.shepherd-footer:has(.shepherd-button:only-child) .shepherd-button {
+    margin-left: auto !important;
+}
+
+/* Alternative approach for browsers that don't support :has() */
+.shepherd-footer .shepherd-button:only-child {
+    margin-left: auto !important;
+}
+
+/* Force next button to right side when no back button */
+.shepherd-footer .shepherd-button[type='next']:only-child,
+.shepherd-footer .shepherd-button.tour-next-btn:only-child {
+    margin-left: auto !important;
+}
+
+/* Ensure proper button positioning for different configurations */
+.shepherd-footer .shepherd-button:first-child:last-child {
+    margin-left: auto !important;
+}
+
+/* Handle specific button types */
+.shepherd-footer .shepherd-button[type='next'] {
+    margin-left: auto !important;
+}
+
+.shepherd-footer .shepherd-button.tour-next-btn {
+    margin-left: auto !important;
+}
+
+/* Override for back button positioning */
+.shepherd-footer .shepherd-button[type='back'],
+.shepherd-footer .shepherd-button.tour-back-btn {
+    margin-right: auto !important;
+    margin-left: 0 !important;
+}
+
+/* Standardize tour button sizes and appearance */
+.shepherd-button {
+    min-width: 80px !important;
+    height: 36px !important;
+    padding: 8px 16px !important;
+    font-size: 20px !important;
+    font-weight: 500 !important;
+    border-radius: 4px !important;
+    border: 1px solid !important;
+    cursor: pointer !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-decoration: none !important;
+    transition: all 0.2s ease-in-out !important;
+    box-sizing: border-box !important;
+}
+
+/* Prevent glitch by hiding button until styles are applied */
+.shepherd-button.tour-back-btn {
+    opacity: 0;
+    transition: opacity 0.1s ease-in-out;
+}
+
+.shepherd-button.tour-back-btn.styled {
+    opacity: 1;
+}
+
+/* Ensure back buttons are always styled correctly */
+.shepherd-button[type='back'].tour-back-btn,
+.shepherd-button.back-btn.tour-back-btn {
+    background-color: #6c757d !important;
+    border-color: #6c757d !important;
+    color: white !important;
+    opacity: 1 !important;
+}
+/* Tour target highlighting with padding for better visibility */
+.shepherd-target {
+    z-index: 9999 !important;
+    padding: 0px 12px !important;
+}
+
+/* Specific padding for navigation menu items */
+.shepherd-target.p-menubar .p-menuitem,
+
+
+/* Global Shepherd button theming (applies across all tours) */
+.shepherd-button.btn.btn-primary {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+    color: #fff !important;
+}
+
+.shepherd-button.btn.btn-primary:hover {
+    filter: brightness(0.95);
+}
+
+.shepherd-button.btn.btn-secondary {
+    background-color: #dadada !important;
+    border: 1px solid #dadada !important;
+    color: #000 !important;
+}
+
+.shepherd-button.btn.btn-secondary:hover {
+    background-color: #dadada !important;
+    color: #000 !important;
+    opacity: 0.9;
+}
+
+/* Back button icon styling */
+.shepherd-button.btn.btn-secondary i.pi-chevron-left {
+    font-size: 12px;
+    margin-right: 6px;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+/* Make tour headings bold like digital scan form tour */
+.shepherd-title {
+    font-weight: 700 !important;
+    font-size: 24px !important;
+    color: #333 !important;
+    padding-top: 8px !important;
+    margin-top: 0 !important;
+}
+
+/* Consistent tour styling for both home tour and digital scan form tour */
+.shepherd-element {
+    background: white !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+    max-width: 400px !important;
+    min-width: 350px !important;
+    z-index: 10000 !important;
+}
+
+.shepherd-header {
+    background: white !important;
+    border-bottom: none !important;
+    border-radius: 8px 8px 0 0 !important;
+    padding: 12px 16px !important;
+}
+
+.shepherd-text {
+    padding: 8px 20px 8px 20px !important;
+    color: #666 !important;
+    line-height: 1.6 !important;
+    font-size: 16px !important;
+}
+
+.shepherd-footer {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 8px !important;
+    padding: 12px 16px !important;
+    border-top: none !important;
+    background: white !important;
+    border-radius: 0 0 8px 8px !important;
+}
+
+.truncate {
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}

@@ -1,0 +1,85 @@
+.rbCard {
+    h3 a {
+        font-size: 1.5rem;
+        line-height: 1;
+        color: var(--title-clr);
+        margin-bottom: 26px;
+        @media screen and (max-width: 1199px) {
+            font-size: 1.25rem;
+        }
+    }
+    ul {
+        list-style: none;
+        padding-left: 0;
+        margin-bottom: 0;
+        li {
+            font-size: 1.2rem;
+            color: var(--cm-gray-clr);
+            font-weight: 700;
+            font-family: 'Calibri';
+            @media screen and (max-width: 1440px) {
+                font-size: 1rem;
+            }
+            span {
+                color: var(--title-clr);
+            }
+        }
+    }
+}
+
+:host {
+    ::ng-deep .gauge-chart {
+        width: 100% !important;
+    }
+
+    ::ng-deep .dialMeter {
+        text-align: center;
+        height: 103px;
+        // @media screen and (min-width: 992px) and (max-width: 1199px) {
+        //   height: 83px !important;
+        // }
+        .ngx-gauge-meter {
+            @media screen and (max-width: 1199px) {
+                max-width: 100%;
+                canvas {
+                    width: 100% !important;
+                    @media screen and (max-width: 1199px) {
+                        height: 175px !important;
+                    }
+                    @media screen and (max-width: 992px) {
+                        width: auto !important;
+                    }
+                }
+            }
+        }
+        .reading-label {
+            transform: initial !important;
+            margin-top: 40px;
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: #696c80;
+            @media screen and (max-width: 992px) {
+                left: 0;
+            }
+        }
+        .reading-block {
+            transform: initial !important;
+            margin-top: 58px;
+            font-size: 24px !important;
+            font-weight: 700;
+            color: var(--title-clr);
+            @media screen and (max-width: 1199px) {
+                font-size: 18px !important;
+            }
+        }
+    }
+
+    ::ng-deep .riskDivider {
+        .p-divider {
+            margin: 0 0 17px;
+            &::before {
+                border-top: solid 1px var(--cm-border-clr);
+            }
+        }
+    }
+}

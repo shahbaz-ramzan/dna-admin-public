@@ -1,0 +1,55 @@
+:host {
+    ::ng-deep .p-inputwrapper {
+        width: 100%;
+        .p-inputnumber {
+            width: 100%;
+        }
+        .p-inputtext {
+            width: 100%;
+            border: none;
+            height: 40px;
+            font-size: 0.875rem;
+            padding-left: 16px;
+            padding-right: 40px;
+            border-radius: 4px;
+            background-color: var(--gray95-clr);
+            &:focus {
+                box-shadow: none;
+            }
+        }
+    }
+}
+
+.regFieldWrap {
+    padding-top: 30px;
+    padding-bottom: 20px;
+    &:first-child {
+        padding-top: 0;
+    }
+    & + .regFieldWrap {
+        border-top: solid 1px var(--cm-border-clr);
+    }
+    .langWrap {
+        margin-top: 36px;
+    }
+    @media screen and (max-width: 767px) {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+}
+
+.subStatus {
+    text-transform: capitalize;
+}
+
+// Same approach as the Profile tab: a single read-only card keeps a fixed width instead of taking a
+// share of the row (it was col-lg-6 = always 50%). As the window narrows, the empty space beside it
+// shrinks first, and the card only narrows once there's no space left. The field pairs inside stay
+// side by side down to phone width (col-sm-6), so they don't jump at a viewport breakpoint while the
+// card's own width hasn't changed.
+$subscriptions-card-max-width: 640px;
+
+// The column's max-width includes its gutter padding, so the card itself is exactly 640px.
+.subscriptions-col {
+    max-width: calc(#{$subscriptions-card-max-width} + var(--bs-gutter-x, 1.5rem));
+}

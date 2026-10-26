@@ -1,0 +1,46 @@
+<div class="cntBox email-setting" *ngIf="permissionObject['Email-Setting']">
+    <app-loading-spinner *ngIf="loading"></app-loading-spinner>
+    <a data-testId="heading" class="fw-bold insights-card-headings" href="https://kb.dnabehavior.com/gene/email-settings" target="_blank">
+        <h5>Email Settings</h5>
+    </a>
+    <div class="switcher-wrap mb-3 d-flex align-items-center">
+        <p-inputSwitch
+            data-testId="email-reminder-switch"
+            styleClass="brSwitch"
+            [(ngModel)]="checked"
+            [ngModelOptions]="{ standalone: true }"
+            (onChange)="completionEmailSettingsChange($event)"
+        ></p-inputSwitch>
+        <div class="switch-label ms-2" data-testId="email-reminder-label">
+            Automated Reminder Emails
+            <i
+                data-testId="icon-information"
+                class="icon-information"
+                tooltipEvent="focus"
+                (click)="onTooltipInfoClick()"
+                [escape]="false"
+                pTooltip="Enable to activate automated reminder emails to participants <b> <a style='text-decoration: none;color: #677eff;' href='https://kb.dnabehavior.com/gene/reminder-emails' target='_blank'>Learn more</a>"
+                tooltipPosition="top"
+            ></i>
+        </div>
+    </div>
+    <div class="form-group mb-0">
+        <label data-testId="customize-label" class="fw-bold">Customize the reminder email text </label>
+        <p class="email-setting-label">
+            Enter up to 1,000 characters to customize the reminder text that is sent to participants via emails.
+            <a style="text-decoration: none; color: #677eff" href="https://kb.dnabehavior.com/gene/reminder-emails" target="_blank">Learn more</a>
+        </p>
+        <textarea
+            data-testId="customize-textarea"
+            rows="8"
+            class="email-text-area w-100"
+            pInputTextarea
+            [autoResize]="true"
+            maxlength="1000"
+            [(ngModel)]="customEmailText"
+        ></textarea>
+        <div class="save-btn mt-3 d-flex justify-content-end">
+            <button data-testId="save-btn" pButton type="submit" [disabled]="!customEmailText" (click)="saveCustomizeEmailText()" label="Save"></button>
+        </div>
+    </div>
+</div>

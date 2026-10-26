@@ -1,0 +1,41 @@
+:host {
+    ::ng-deep .workTlntRlt {
+        h3 {
+            color: var(--title-clr);
+        }
+        .p-knob-text {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #12131a;
+        }
+        .khnobWrap {
+            @media screen and (max-width: 1199px) {
+                flex-direction: column;
+                text-align: center;
+                .ps-4 {
+                    padding-left: 0 !important;
+                }
+            }
+            h4 {
+                font-size: 1.125rem;
+                margin-bottom: 2px;
+                color: var(--title-clr);
+                .sp1 {
+                    color: var(--secondary-color);
+                }
+                .sp2 {
+                    color: var(--primary-color);
+                }
+            }
+            p {
+                font-size: 0.875rem;
+                font-weight: 400;
+                margin-bottom: 0;
+                color: var(--cm-gray-clr);
+            }
+            & + .khnobWrap {
+                margin-top: 22px;
+            }
+        }
+    }
+}

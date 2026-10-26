@@ -1,0 +1,16 @@
+<div *ngIf="temp">
+    <ng-container>
+        <canvas
+            baseChart
+            data-chartId="single-line-horizontal-chart"
+            [datasets]="chartData"
+            [labels]="chartLabels"
+            width="100%"
+            height="400"
+            [options]="options"
+            [legend]="barChartLegend"
+            [type]="'bar'"
+        >
+        </canvas>
+    </ng-container>
+</div>

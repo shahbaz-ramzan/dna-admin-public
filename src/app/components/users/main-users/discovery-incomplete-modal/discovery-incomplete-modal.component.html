@@ -1,0 +1,20 @@
+<p-dialog
+    header="Discovery not completed"
+    [visible]="visible"
+    [modal]="true"
+    [closable]="false"
+    [closeOnEscape]="false"
+    [dismissableMask]="false"
+    class="dna-modal discovery-incomplete-modal"
+    [baseZIndex]="10000"
+    [draggable]="false"
+    [resizable]="false"
+>
+    <p class="discovery-incomplete-text">
+        {{ multiple ? "These participants haven't" : "This participant hasn't" }} completed their DNA Discovery yet, so there are no results or reports to show.
+        Their insights will appear here once they finish.
+    </p>
+    <ng-template pTemplate="footer">
+        <p-button class="save-btn" (onClick)="goToList()" [label]="'Go to ' + listLabel"></p-button>
+    </ng-template>
+</p-dialog>

@@ -1,0 +1,44 @@
+<div ngClass="ob-wrap">
+    <app-loading-spinner *ngIf="loading && !redirecting"></app-loading-spinner>
+
+    <div class="dna-spinner" *ngIf="redirecting">
+        <div class="team-spinner">
+            <p-progressSpinner id="progress-spinner"></p-progressSpinner>
+            <p>Fetching Account Information...</p>
+        </div>
+    </div>
+
+    <div ngClass="ob-banner" *ngIf="!redirecting">
+        <img src="assets/images/wellcome-banner.png" alt="" />
+    </div>
+    <div ngClass="ob-contentarea login-contentarea" *ngIf="!redirecting">
+        <div ngClass="ob-contentarea-inner">
+            <div class="app-logo">
+                <img src="assets/images/logo.svg" alt="" />
+            </div>
+            <h4>Welcome!</h4>
+            <p>
+                What will you learn today? Explore the app that unlocks how people work, live, and make decisions. Leverage actionable insights to energize your
+                life to improve every relationship you have.
+            </p>
+
+            <button (click)="login()" class="btn btn-orange primaryButton">Login</button>
+        </div>
+        <footer ngClass="ob-footer">&copy; 2001-{{ currentYear }} All Rights Reserved. DNA Behavior&reg;.</footer>
+    </div>
+</div>
+<p-dialog
+    header="Error"
+    [(visible)]="errorMessage"
+    (onHide)="logout()"
+    [modal]="true"
+    class="dna-modal manageTagModal"
+    [baseZIndex]="10000"
+    [draggable]="false"
+    [resizable]="false"
+>
+    <div [innerHTML]="errorMessage"></div>
+    <ng-template pTemplate="footer">
+        <button pButton (click)="errorMessage = null" label="Okay" class="primary-btn"></button>
+    </ng-template>
+</p-dialog>

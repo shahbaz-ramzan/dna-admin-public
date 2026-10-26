@@ -1,0 +1,97 @@
+<div class="logout-dropdown">
+    <!-- <button pButton pRipple type="button" icon="pi pi-times" (click)="menu.toggle($event)" class="p-button-rounded onboarding-close-btn"></button> -->
+    <button type="button" class="head-dropdown" pButton pRipple icon="pi pi-angle-down" (click)="menu.toggle($event)"><i class="icon-user"></i></button>
+    <p-menu #menu [popup]="true" [appendTo]="'logout-dropdown'" [model]="items"></p-menu>
+</div>
+<!-- (click)="onCloseClick()" -->
+<div ngClass="ob-wrap">
+    <div ngClass="ob-banner">
+        <ng-container [ngSwitch]="screenNo">
+            <ng-container *ngSwitchCase="0">
+                <img src="assets/images/wellcome-banner.png" alt="" />
+            </ng-container>
+            <ng-container *ngSwitchCase="1">
+                <img src="assets/images/setup-business-banner.png" alt="" />
+            </ng-container>
+            <ng-container *ngSwitchCase="2">
+                <img src="assets/images/branding-banner.png" alt="" />
+            </ng-container>
+            <ng-container *ngSwitchCase="3">
+                <img src="assets/images/label-banner.png" alt="" />
+            </ng-container>
+            <ng-container *ngSwitchCase="4">
+                <img src="assets/images/review-banner.png" alt="" />
+            </ng-container>
+        </ng-container>
+    </div>
+    <div ngClass="ob-contentarea">
+        <div ngClass="ob-contentarea-inner">
+            <div class="app-logo">
+                <img src="assets/images/logo.svg" alt="" />
+            </div>
+            <ng-container [ngSwitch]="screenNo">
+                <ng-container *ngSwitchCase="0">
+                    <h4>Welcome!</h4>
+                    <p>You will need a couple more things</p>
+                    <ul class="welcome-list">
+                        <li><em class="icon icon-arrow-right"></em> Choose your Account Name</li>
+                        <li><em class="icon icon-arrow-right"></em> Upload your Logo</li>
+                        <li><em class="icon icon-arrow-right"></em> Personalize your account</li>
+                    </ul>
+
+                    <!-- <div ngClass="agree-to-privacy">
+            <p-checkbox value="" inputId="agreeToPrivacy"></p-checkbox>
+            <label><a href="">Agree to Privacy, Terms and Conditions</a></label>
+          </div> -->
+                </ng-container>
+
+                <ng-container *ngSwitchCase="1">
+                    <app-onboarding-setup-account
+                        [businessName]="accountName"
+                        [isValidationChecked]="isValidationChecked"
+                        [isAccountValid]="isAccountValid"
+                        [errorMessage]="errorMessage"
+                        (businessNameEvent)="getBusinessName($event)"
+                    >
+                    </app-onboarding-setup-account>
+                </ng-container>
+                <ng-container *ngSwitchCase="2">
+                    <!-- [isValidationChecked]="isValidationChecked"
+            [isLogoValid]="isLogoValid" -->
+                    <app-upload-logo [selectedLogo]="logo" (setLogoEvent)="setLogo($event)"></app-upload-logo>
+                </ng-container>
+                <ng-container *ngSwitchCase="3">
+                    <app-get-labels-component
+                        [selectedLabel]="participantLabel"
+                        [isValidationChecked]="isValidationChecked"
+                        [isLabelValid]="isLabelValid"
+                        (getLabelEvent)="getParticipantLabel($event)"
+                    ></app-get-labels-component>
+                </ng-container>
+                <ng-container *ngSwitchCase="4">
+                    <app-reviews-labels
+                        [selectedReviewsLabel]="userLabel"
+                        [isValidationChecked]="isValidationChecked"
+                        [isReviewsLabelValid]="isReviewsLabelValid"
+                        [selectedParticipantLabel]="participantLabel"
+                        (getReviewsLabelEvent)="getUserLabel($event)"
+                    ></app-reviews-labels>
+                    <!-- <app-onboarding-setup-team
+            [isTeamSetupFormValidated]="isValidationChecked"
+            (getUsersEvent)="getUsers($event)"
+          ></app-onboarding-setup-team> -->
+                </ng-container>
+            </ng-container>
+            <button *ngIf="screenNo === 0; else navigatingButtons" (click)="onNextClick()" class="btn btn-orange btn-lets-started">Let's Get Started</button>
+            <ng-template #navigatingButtons>
+                <div class="ob-btns-bar">
+                    <button (click)="onBackClick()" class="btn btn-outline-secondary simpleButton">Back</button>
+                    <button (click)="onNextClick()" class="btn btn-orange primaryButton">Next</button>
+                    <button *ngIf="screenNo === 2" (click)="onNextClick()" class="btn btn-outline-secondary simpleButton">Skip</button>
+                </div>
+            </ng-template>
+        </div>
+        <footer ngClass="ob-footer">&copy; 2001-{{ currentYear }} All Rights Reserved. DNA Behavior&reg;.</footer>
+    </div>
+</div>
+<app-loading-spinner *ngIf="updateAccountLoading || isLogoLoading || getUserLabelsLoading || getParticipantLabelsLoading || redirecting"></app-loading-spinner>

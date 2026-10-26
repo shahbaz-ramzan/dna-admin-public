@@ -1,0 +1,17 @@
+<div class="dashboardGraphContainer" style="margin-left: 5px">
+    <div style="display: flex; flex-direction: column">
+        <span class="graphHeading">Your team & Clients</span>
+        <span class="graphTitle">Consider creating a balance of styles in your team to cater to your diverse clients.</span>
+    </div>
+    <canvas
+        baseChart
+        data-chartId="vertical-bar-chart"
+        [datasets]="barChartData"
+        [labels]="barChartLabels"
+        [options]="options"
+        [legend]="barChartLegend"
+        [type]="'bar'"
+    >
+    </canvas>
+    <!-- [colors]="barChartColors" -->
+</div>

@@ -1,0 +1,16 @@
+.sfCard {
+    min-height: 265px;
+}
+.sfCard h3 {
+    font-size: 1.125rem;
+    line-height: 1;
+    color: var(--title-clr);
+}
+.sfCard ul {
+    padding-left: 20px;
+}
+.sfCard ul li {
+    color: var(--cm-gray-clr);
+    font-weight: 700;
+    margin-bottom: 15px;
+} /*# sourceMappingURL=strongest-factors.component.css.map */

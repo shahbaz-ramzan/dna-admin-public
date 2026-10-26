@@ -1,0 +1,89 @@
+<div class="d-flex justify-content-end mb-4 profile-actions" *ngIf="permissionObject['Settings-Profile']">
+    <div class="save-btn">
+        <button
+            data-testId="save-btn"
+            (click)="saveUser()"
+            [disabled]="!myProfileForm.valid || !myProfileForm.dirty"
+            pButton
+            type="button"
+            label="Save"
+        ></button>
+    </div>
+</div>
+<div class="row" *ngIf="permissionObject['Settings-Profile']">
+    <div class="col-12 profile-col">
+        <app-loading-spinner *ngIf="isProfileLoading" [fixed]="true"></app-loading-spinner>
+        <div class="cntBox">
+            <h5 data-testId="heading">Profile</h5>
+            <div>
+                <div class="ProfileWrap">
+                    <img id="profile-pic" class="avatar-circle p-mr-2" [src]="image" alt="" />
+                    <div>
+                        <form action="">
+                            <label for="browse-btn" class="browse-btn">Browse files</label>
+                            <input value="image" (change)="onImageSelect()" type="file" id="browse-btn" name="browse-btn" accept="image/*" />
+                        </form>
+                        <p class="fileupload-content">Drop files here to upload...</p>
+                    </div>
+                </div>
+                <h5 class="mb-3">Account Information</h5>
+                <form [formGroup]="myProfileForm">
+                    <div class="row">
+                        <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                                <label data-testId="firstname-label" class="fw-normal" for="firstName">First Name</label>
+                                <input
+                                    data-testId="firstname-input"
+                                    value="firstName"
+                                    formControlName="firstName"
+                                    id="firstName"
+                                    class="form-control"
+                                    type="text"
+                                    placeholder="First Name"
+                                />
+                                <span *ngIf="!myProfileForm.get('firstName')?.valid && myProfileForm.get('firstName')?.touched" style="color: red"
+                                    >Please Enter Name</span
+                                >
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                                <label data-testId="lastname-label" class="fw-normal" for="lastName">Last Name</label>
+                                <input
+                                    data-testId="lastname-input"
+                                    value="lastName"
+                                    formControlName="lastName"
+                                    id="lasNname"
+                                    class="form-control"
+                                    type="text"
+                                    placeholder="Last Name"
+                                />
+                                <span *ngIf="!myProfileForm.get('lastName')?.valid && myProfileForm.get('lastName')?.touched" style="color: red"
+                                    >Please Enter Name</span
+                                >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="form-group">
+                            <label data-testId="email-address-label" class="fw-normal" for="email">Email Address</label>
+                            <input
+                                data-testId="email-address-input"
+                                value="email"
+                                formControlName="email"
+                                id="email"
+                                class="form-control"
+                                type="email"
+                                placeholder="Email"
+                                readonly
+                            />
+                            <span *ngIf="!myProfileForm.get('email')?.valid && myProfileForm.get('email')?.touched" style="color: red"
+                                >Please Enter Valid Email</span
+                            >
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

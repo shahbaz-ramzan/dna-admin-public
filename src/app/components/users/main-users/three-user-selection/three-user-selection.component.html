@@ -1,0 +1,38 @@
+<div class="theeUserSelection w-100">
+    <!-- <app-three-user-infor-bar
+    [selectedUsers]="selectedUsers"
+  ></app-three-user-infor-bar> -->
+    <div class="row">
+        <ng-container *ngIf="!isSomeDiscoveryInProgress">
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 mt-3">
+                <app-unique-style
+                    data-testId="app-unique-style"
+                    [chartLabels]="chartLabels"
+                    [chartValues]="chartValues"
+                    [chartColors]="chartColors"
+                    [loading]="isUserDetailLoading || isColorLoading"
+                    ngClass="h-100"
+                ></app-unique-style>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 mt-3">
+                <ng-container *ngIf="permissionObject['Feature-User-Card-Reports']">
+                    <app-financial-reports
+                        data-testId="app-financial-report"
+                        ngClass="h-100"
+                        pageType="three-user"
+                        [selectedParticipants]="usersData"
+                        [loading]="isUserDetailLoading || isColorLoading"
+                    ></app-financial-reports>
+                </ng-container>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="isSomeDiscoveryInProgress">
+            <app-discovery-inprogress-alert
+                data-testId="discovery-inprogress-alert"
+                [loading]="isUserDetailLoading || isColorLoading"
+                [numberOfDiscoveryInprogressUsers]="numberOfDiscoveryInprogressUsers"
+                [discoveryInprogressMessage]="discoveryInprogressMessage"
+            ></app-discovery-inprogress-alert>
+        </ng-container>
+    </div>
+</div>

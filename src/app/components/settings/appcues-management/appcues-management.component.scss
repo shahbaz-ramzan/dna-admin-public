@@ -1,0 +1,48 @@
+.cntBox {
+    background: #fff;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    
+    h5 {
+        margin-bottom: 1rem;
+        color: #333;
+        font-weight: 600;
+    }
+}
+
+// Table specific styles
+.regHead {
+    margin-bottom: 1rem;
+    
+    h5 {
+        margin-bottom: 0;
+        color: #333;
+        font-weight: 600;
+        
+        .icon-information {
+            margin-left: 8px;
+            color: #677eff;
+            cursor: help;
+        }
+    }
+}
+
+// Primary button styling to use custom primary color
+:host ::ng-deep {
+    .p-button.p-button-primary {
+        background-color: var(--primary-color) !important;
+        border-color: var(--primary-color) !important;
+        
+        &:hover {
+            background-color: var(--primary-color) !important;
+            border-color: var(--primary-color) !important;
+            opacity: 0.9;
+        }
+        
+        &:focus {
+            box-shadow: 0 0 0 2px rgba(238, 173, 50, 0.2) !important;
+        }
+    }
+}
+

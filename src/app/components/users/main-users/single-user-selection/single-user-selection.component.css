@@ -1,0 +1,105 @@
+.singleUserSelection {
+    width: 100%;
+}
+
+.signle-user-sortable-container {
+    margin: 8px -8px;
+}
+
+.w50 {
+    padding: 8px;
+}
+@media screen and (min-width: 768px) {
+    .w50 {
+        width: 50%;
+    }
+}
+@media screen and (max-width: 767px) {
+    .w50 {
+        width: 100%;
+    }
+}
+
+.w50:nth-child(odd) {
+    float: left;
+}
+
+.w50:nth-child(even) {
+    float: right;
+}
+
+.w100 {
+    float: left;
+    width: 100%;
+    padding: 8px;
+}
+
+.list-sortable-selection {
+    max-height: 150px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow-x: auto;
+    border: var(--cm-border-color) 1px solid;
+}
+.list-sortable-selection li {
+    padding: 6px 10px;
+    margin: 4px;
+    background-color: var(--gray95-clr);
+}
+
+:host ::ng-deep .sorter-btn button {
+    width: 30px;
+    height: 30px;
+    color: var(--white-color);
+    border-color: var(--primary-color);
+    background-color: var(--primary-color);
+}
+:host ::ng-deep .sorter-btn button:hover {
+    border-color: var(--primary-color);
+    background-color: var(--primary-color);
+}
+:host ::ng-deep .p-tabview-panel {
+    position: relative;
+}
+:host ::ng-deep .p-tabview-panel .sorter-btn {
+    position: absolute;
+    left: 0;
+    top: -38px;
+}
+:host ::ng-deep .sorter-modal .p-dialog {
+    max-width: 600px;
+    width: 100%;
+}
+:host ::ng-deep .sorter-modal .p-dialog .p-dialog-header {
+    padding: 1.5rem 1.5rem 12px;
+}
+:host ::ng-deep .sorter-modal .p-dialog .p-dialog-title {
+    font-size: 1rem;
+}
+:host ::ng-deep .sorter-modal .p-dialog .sort-list-head {
+    margin-bottom: 10px;
+}
+:host ::ng-deep .sorter-modal .p-dialog .sort-list-head h5 {
+    font-size: 0.875rem;
+    color: var(--dk-gray-clr);
+}
+:host ::ng-deep .sorter-modal .p-dialog .refresh-btn button {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    border-radius: 3px;
+    width: 20px;
+    height: 20px;
+}
+:host ::ng-deep .sorter-modal .p-dialog .refresh-btn button .pi-refresh {
+    font-size: 10px;
+    transform: rotate(180deg);
+} /*# sourceMappingURL=single-user-selection.component.css.map */
+
+.money-insights {
+    padding: 20px;
+    border-radius: 6px;
+    border: solid 1px var(--cm-border-clr);
+    min-height: 300px;
+    max-width: 100%;
+}

@@ -1,0 +1,220 @@
+<p-sidebar data-testId="sidebar" [visible]="visible" (visibleChange)="onVisibleChange($event)" [visible]="false" position="left" [baseZIndex]="10000" [showCloseIcon]="false" class="sidebarMenu">
+    <div class="filterHeader d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center">
+            <i class="pi pi-sliders-v"></i>
+            <h5 data-testId="filters" class="mb-0 ms-2 fw-bold">Filters</h5>
+        </div>
+        <button type="button" pButton pRipple (click)="close()" icon="pi pi-times" class="p-button-rounded p-button-text p-button-plain"></button>
+    </div>
+    <div class="filterBody">
+        @if (permissionObject['Feature-User-Filter-Tags']) {
+            <h5>Tags</h5>
+            <ul class="list-unstyled tagsWrap">
+                @for (tag of tags; track trackTag(tag); let i = $index) {
+                    <li>
+                        <div class="p-field-checkbox">
+                            <p-checkbox [(ngModel)]="tag.value" value="tag.value" [binary]="true" inputId="ny" (onChange)="onFilterChange('tags', i, tags)">
+                            </p-checkbox>
+                            <label> {{ tag.name }}</label>
+                        </div>
+                    </li>
+                }
+                <!-- [queryParams]="{tags: tag.name}" -->
+            </ul>
+        }
+        @if (permissionObject['Feature-User-Filter-UniqueStyle']) {
+            <h5>Unique Style</h5>
+            <ul class="list-unstyled tagsWrap">
+                @for (uniqueStyle of uniqueStyles; track uniqueStyle.name; let i = $index) {
+                    <li>
+                        <div class="p-field-checkbox">
+                            <p-checkbox
+                                [(ngModel)]="uniqueStyle.value"
+                                value="uniqueStyle.value"
+                                [binary]="true"
+                                inputId="ny"
+                                (onChange)="onFilterChange('uniqueStyle', i, uniqueStyles)"
+                            >
+                            </p-checkbox>
+                            <label>{{ uniqueStyle.name }}</label>
+                        </div>
+                    </li>
+                }
+            </ul>
+        }
+        <h5>Status</h5>
+        <ul class="list-unstyled tagsWrap">
+            @for (status of statuses; track status.name; let i = $index) {
+                <li>
+                    <div class="p-field-checkbox">
+                        <p-checkbox
+                            [(ngModel)]="status.value"
+                            value="status.value"
+                            [binary]="true"
+                            inputId="ny"
+                            (onChange)="onFilterChange('status', i, statuses)"
+                        >
+                        </p-checkbox>
+                        <label>{{ status.name }}</label>
+                    </div>
+                </li>
+            }
+        </ul>
+        <h5>Completion Dates</h5>
+        <ul class="list-unstyled tagsWrap">
+            @for (completion of completetionDate; track completion.name; let i = $index) {
+                <li>
+                    <div class="p-field-checkbox">
+                        <p-radioButton
+                            [inputId]="completion.inputId"
+                            class="filterRadio"
+                            name="completion"
+                            [value]="completion.name"
+                            (onClick)="changeRadio()"
+                            [(ngModel)]="selectedCompletionDate"
+                        ></p-radioButton>
+
+                        <label>{{ completion.name }}</label>
+                    </div>
+                </li>
+            }
+        </ul>
+        @if (showCustomRangeFilter) {
+            <div class="calendarWrap">
+                <p-calendar
+                    [(ngModel)]="startDate"
+                    [maxDate]="toDate"
+                    inputId="basic"
+                    (onSelect)="onDateSelected('From', $event)"
+                    icon="icon-calendar"
+                    [showIcon]="true"
+                    placeholder="From"
+                    class="calendarFrom"
+                >
+                </p-calendar>
+                <i class="icon-range"></i>
+                <p-calendar
+                    [(ngModel)]="toDate"
+                    [minDate]="startDate"
+                    inputId="basic"
+                    icon="icon-calendar"
+                    [disabled]="startDate ? false : true"
+                    (onSelect)="onDateSelected('To', $event)"
+                    [showIcon]="true"
+                    placeholder="To"
+                    class="calendarFrom calendarTo"
+                ></p-calendar>
+            </div>
+        }
+
+        @if (permissionObject['Feature-filter-factor']) {
+            <h5 class="mb-4">By Factor</h5>
+            @for (byFactor of byFactors; track byFactor.name1; let i = $index) {
+                <div class="d-flex rangeBox justify-content-between align-items-center w-100">
+                    <div class="d-flex flex-column">
+                        <p class="mb-1">{{ byFactor.name1 }}</p>
+                        <input
+                            [ngStyle]="{
+                                'border-color': byFactor.rangeValues[0] < 20 || byFactor.rangeValues[0] > byFactor.rangeValues[1] ? 'red' : ''
+                            }"
+                            type="text"
+                            (blur)="onFactorsAndSubFactorsInputChange(i, byFactor.rangeValues[0], byFactor.rangeValues[1], byFactor)"
+                            (change)="validateFactorsAndSubFactorsInput(byFactor, i, 0)"
+                            (input)="onFactorsAndSubFactorsInputDebounced(i, byFactor.rangeValues[0], byFactor.rangeValues[1], byFactor)"
+                            (keypress)="numbersOnlyValidation($event, byFactor, 0)"
+                            [(ngModel)]="byFactor.rangeValues[0]"
+                            value="byFactor.rangeValues[0]"
+                            pInputText
+                        />
+                    </div>
+
+                    <div class="ranges">
+                        <span class="rang-val1">{{ byFactor.rangeValues[0] }}</span>
+                        <p-slider
+                            [max]="80"
+                            [min]="20"
+                            (onSlideEnd)="onFactorsAndSubFactorsInputChange(i, byFactor.rangeValues[0], byFactor.rangeValues[1], byFactor)"
+                            [(ngModel)]="byFactor.rangeValues"
+                            [range]="true"
+                        ></p-slider>
+                        <span class="rang-val2">{{ byFactor.rangeValues[1] }}</span>
+                    </div>
+
+                    <div class="d-flex flex-column align-items-end">
+                        <p class="mb-1">{{ byFactor.name2 }}</p>
+                        <input
+                            [ngStyle]="{
+                                'border-color': byFactor.rangeValues[1] > 80 || byFactor.rangeValues[1] < byFactor.rangeValues[0] ? 'red' : ''
+                            }"
+                            type="text"
+                            (blur)="onFactorsAndSubFactorsInputChange(i, byFactor.rangeValues[0], byFactor.rangeValues[1], byFactor)"
+                            (change)="validateFactorsAndSubFactorsInput(byFactor, i, 1)"
+                            (keypress)="numbersOnlyValidation($event, byFactor, 1)"
+                            (input)="onFactorsAndSubFactorsInputDebounced(i, byFactor.rangeValues[0], byFactor.rangeValues[1], byFactor)"
+                            [(ngModel)]="byFactor.rangeValues[1]"
+                            value="{{ byFactor.rangeValues[1] }}"
+                            pInputText
+                        />
+                    </div>
+                </div>
+            }
+        }
+
+        @if (permissionObject['Feature-filter-subfactor']) {
+            <h5 class="mb-4">By Sub-Factor</h5>
+            @for (bySubFactor of bySubFactors; track bySubFactor.name1; let i = $index) {
+                <div class="d-flex rangeBox justify-content-between align-items-center w-100">
+                    <div class="d-flex flex-column">
+                        <p class="mb-1">{{ bySubFactor.name1 }}</p>
+                        <input
+                            [ngStyle]="{
+                                'border-color': bySubFactor.rangeValues[0] < 20 || bySubFactor.rangeValues[0] > bySubFactor.rangeValues[1] ? 'red' : ''
+                            }"
+                            type="text"
+                            (change)="validateFactorsAndSubFactorsInput(bySubFactor, i, 0)"
+                            (blur)="onFactorsAndSubFactorsInputChange(i, bySubFactor.rangeValues[0], bySubFactor.rangeValues[1], bySubFactor)"
+                            (keypress)="numbersOnlyValidation($event, bySubFactor, 0)"
+                            (input)="onFactorsAndSubFactorsInputDebounced(i, bySubFactor.rangeValues[0], bySubFactor.rangeValues[1], bySubFactor)"
+                            [(ngModel)]="bySubFactor.rangeValues[0]"
+                            value="bySubFactor.rangeValues[0]"
+                            pInputText
+                        />
+                    </div>
+                    <div class="ranges">
+                        <span class="rang-val1">{{ bySubFactor.rangeValues[0] }}</span>
+
+                        <p-slider
+                            [max]="80"
+                            [min]="20"
+                            (onSlideEnd)="onFactorsAndSubFactorsInputChange(i, bySubFactor.rangeValues[0], bySubFactor.rangeValues[1], bySubFactor)"
+                            [(ngModel)]="bySubFactor.rangeValues"
+                            [range]="true"
+                        ></p-slider>
+                        <span class="rang-val2">{{ bySubFactor.rangeValues[1] }}</span>
+                    </div>
+
+                    <div class="d-flex flex-column align-items-end">
+                        <p class="mb-1">{{ bySubFactor.name2 }}</p>
+                        <input
+                            [ngStyle]="{
+                                'border-color': bySubFactor.rangeValues[1] > 80 || bySubFactor.rangeValues[1] < bySubFactor.rangeValues[0] ? 'red' : ''
+                            }"
+                            type="text"
+                            (blur)="onFactorsAndSubFactorsInputChange(i, bySubFactor.rangeValues[0], bySubFactor.rangeValues[1], bySubFactor)"
+                            (change)="validateFactorsAndSubFactorsInput(bySubFactor, i, 1)"
+                            (keypress)="numbersOnlyValidation($event, bySubFactor, 1)"
+                            (input)="onFactorsAndSubFactorsInputDebounced(i, bySubFactor.rangeValues[0], bySubFactor.rangeValues[1], bySubFactor)"
+                            [(ngModel)]="bySubFactor.rangeValues[1]"
+                            value="{{ bySubFactor.rangeValues[1] }}"
+                            pInputText
+                        />
+                    </div>
+                </div>
+            }
+        }
+    </div>
+    <div class="filterBarFooter d-flex justify-content-center">
+        <p-button label="Reset" styleClass="p-button-link" (onClick)="resetFilters()"></p-button>
+        <p-button class="applyFilter" (click)="applyFilters()" label="Apply Filters"></p-button>
+    </div>
+</p-sidebar>

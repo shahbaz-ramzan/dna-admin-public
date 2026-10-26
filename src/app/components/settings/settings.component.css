@@ -1,0 +1,92 @@
+.mainTitle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 68px;
+    padding: 15px 35px;
+    background-color: var(--white-color);
+    border-bottom: solid 1px var(--cm-border-clr);
+}
+.mainTitle h4 {
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--dark-black-color);
+}
+
+.mainWrapper {
+    padding: 28px;
+    padding-top: var(--page-padding-top, 96px);
+    min-height: calc(100vh - 106px);
+}
+@media screen and (max-width: 767px) {
+    .mainWrapper {
+        padding: 15px;
+        padding-top: var(--page-padding-top, 96px);
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .settingsWrapper {
+        display: flex;
+        min-height: calc(100vh - 162px);
+    }
+}
+.settingsWrapper .sideBar {
+    min-width: 264px;
+    background-color: var(--white-color);
+}
+@media screen and (max-width: 767px) {
+    .settingsWrapper .sideBar {
+        margin-bottom: 20px;
+    }
+}
+@media screen and (min-width: 768px) {
+    .settingsWrapper .cntWrapper {
+        width: calc(100% - 281px);
+    }
+}
+@media screen and (min-width: 768px) {
+    .settingsWrapper .sideBar + .cntWrapper {
+        margin-left: 17px;
+    }
+}
+
+:host ::ng-deep .sideBar .p-menu {
+    width: 100%;
+    border: none;
+    background-color: var(--white-color);
+}
+:host ::ng-deep .sideBar .p-menu .p-menuitem-icon {
+    font-size: 18px;
+    color: var(--dark-black-color);
+    min-width: 35px;
+    margin-right: 0;
+}
+:host ::ng-deep .sideBar .p-menu .p-menuitem-icon.icon-envelope {
+    font-size: 14px;
+    color: var(--dark-black-color);
+}
+:host ::ng-deep .sideBar .p-menu .p-menuitem.active .p-menuitem-link {
+    color: #333333;
+    font-weight: bold;
+    background-color: transparent;
+}
+:host ::ng-deep .sideBar .p-menu .p-menuitem.active .p-menuitem-icon {
+    color: var(--primary-color);
+}
+:host ::ng-deep .sideBar .p-menu .p-menuitem-link {
+    font-size: 0.875rem;
+    font-weight: 400;
+    padding: 13px 18px;
+}
+:host ::ng-deep .sideBar .p-menu .p-menuitem-link span.p-menuitem-text {
+    color: var(--dk-gray-color);
+}
+:host ::ng-deep .sideBar .p-menu .p-menuitem-link:hover {
+    color: #333333;
+    font-weight: bold;
+    background-color: transparent;
+}
+:host ::ng-deep .sideBar .p-menu .p-menuitem-link:hover .p-menuitem-icon {
+    color: var(--primary-color);
+} /*# sourceMappingURL=settings.component.css.map */

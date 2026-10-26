@@ -1,0 +1,24 @@
+<h4>Lets setup your account.</h4>
+<div ngClass="form-group business-name-field mw-420">
+    <label for="businessName">For Starter, What is your business name?</label>
+    <input
+        [ngStyle]="{
+            'border-color': (isValidationChecked && !isAccountValid) || (name.touched && !isAccountValid) ? 'red' : ''
+        }"
+        [(ngModel)]="businessName"
+        (change)="getBusinessName()"
+        id="businessName"
+        type="text"
+        aria-describedby="businessNameHelp"
+        ngClass="form-control form-control-lg"
+        pInputText
+        placeholder="Business Name"
+        #name="ngModel"
+        required
+    />
+
+    <span style="color: red; border-color: red" *ngIf="(isValidationChecked && !isAccountValid) || (name.touched && !isAccountValid)">
+        {{ errorMessage }}<br />
+    </span>
+    <small ngClass="form-group-helper" id="businessNameHelp">Please choose wisely, this is difficult to change later.</small>
+</div>

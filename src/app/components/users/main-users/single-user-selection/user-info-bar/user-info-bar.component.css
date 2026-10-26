@@ -1,0 +1,169 @@
+:host .icon-information {
+    color: var(--primary-color);
+}
+:host ::ng-deep .userInfoBar {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    border-bottom: solid 1px var(--cm-border-clr);
+}
+@media screen and (min-width: 577px) {
+    :host ::ng-deep .userInfoBar .user-p-wrap {
+        gap: 20px;
+    }
+}
+@media screen and (min-width: 1199px) {
+    :host ::ng-deep .userInfoBar .user-p-wrap {
+        gap: 53px;
+    }
+}
+@media screen and (max-width: 991px) {
+    :host ::ng-deep .userInfoBar .user-p-wrap {
+        flex-wrap: wrap;
+        row-gap: 15px;
+    }
+}
+@media screen and (max-width: 767px) {
+    :host ::ng-deep .userInfoBar .user-p-wrap {
+        justify-content: center;
+    }
+}
+@media screen and (max-width: 767px) {
+    :host ::ng-deep .userInfoBar {
+        flex-wrap: wrap;
+        row-gap: 10px;
+    }
+}
+:host ::ng-deep .userInfoBar .uAvatar {
+    flex-direction: column;
+    text-align: center;
+}
+:host ::ng-deep .userInfoBar .uAvatar .uAvatar-cnt h5 {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--title-clr);
+    margin-bottom: 0;
+}
+:host ::ng-deep .userInfoBar .uAvatar .uAvatar-cnt a {
+    display: block;
+    color: var(--cm-gray-clr);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 8px;
+}
+:host ::ng-deep .userInfoBar ul.user-info-list {
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    -moz-column-gap: 45px;
+    column-gap: 45px;
+    row-gap: 15px;
+    justify-content: space-between;
+}
+:host ::ng-deep .userInfoBar ul.user-info-list li span {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--cm-gray-clr);
+}
+:host ::ng-deep .userInfoBar ul.user-info-list li p {
+    font-size: 0.875rem;
+    color: var(--dk-gray-clr);
+    font-weight: 700;
+    margin-bottom: 0;
+    margin-top: 3px;
+}
+:host ::ng-deep .userInfoBar ul.user-info-list li p .icon-information {
+    margin-left: 8px;
+    color: var(--primary-color);
+}
+:host ::ng-deep .p-field-radiobutton {
+    display: flex;
+    align-items: center;
+}
+:host ::ng-deep .p-field-radiobutton label {
+    margin-bottom: 0;
+    margin-left: 10px;
+    font-size: 14px !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+:host ::ng-deep .p-field-radiobutton + .p-field-radiobutton {
+    margin-top: 18px;
+}
+:host ::ng-deep .p-field-radiobutton .p-radiobutton-icon {
+    width: 8px;
+    height: 8px;
+    background-color: var(--dark-black-color);
+}
+:host ::ng-deep .p-field-radiobutton .p-radiobutton-box {
+    border-color: var(--dark-black-color) !important;
+}
+:host ::ng-deep .p-field-radiobutton .p-radiobutton-box.p-highlight {
+    border-color: var(--dark-black-color);
+    background-color: transparent;
+    box-shadow: none;
+}
+:host ::ng-deep .p-field-radiobutton .p-radiobutton-box.p-highlight:hover {
+    background-color: transparent;
+}
+@media screen and (min-width: 768px) {
+    :host ::ng-deep .selectField {
+        min-width: 200px;
+    }
+}
+:host ::ng-deep .selectField .p-dropdown {
+    gap: 5px;
+}
+:host ::ng-deep .selectField .p-dropdown-label {
+    text-align: left;
+}
+:host ::ng-deep .selectField ul {
+    text-align: left;
+}
+:host ::ng-deep .user-toast .pi-info-circle {
+    font-size: 2rem;
+    color: var(--secondary-color2);
+}
+:host ::ng-deep .user-toast .p-toast-icon-close {
+    width: 4rem;
+    color: var(--secondary-color2);
+}
+:host ::ng-deep .user-toast .p-toast-message {
+    background-color: #fff;
+    border-color: var(--primary-color);
+}
+:host ::ng-deep .user-toast .p-toast-message p {
+    margin-left: 20px;
+    color: var(--title-clr);
+}
+
+@media screen and (max-width: 767px) {
+    .user-btn-wrapper {
+        gap: 5px;
+    }
+}
+
+.subs-user-txt {
+    font-size: 13px;
+    font-weight: 400;
+    margin-top: -3px;
+    color: var(--dk-gray-clr);
+}
+@media screen and (max-width: 767px) {
+    .subs-user-txt br {
+        display: none;
+    }
+}
+
+.cb-heading {
+    color: #000000;
+} /*# sourceMappingURL=user-info-bar.component.css.map */
+
+:host ::ng-deep .select-field-wrap .p-tree .p-tree-container .p-treenode .p-treenode-content {
+    box-shadow: none !important;
+}

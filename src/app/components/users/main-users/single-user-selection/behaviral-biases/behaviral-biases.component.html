@@ -1,0 +1,17 @@
+<div class="user-card bsCard">
+    <a class="fw-bold insights-card-headings" href="https://kb.dnabehavior.com/gene/financial-behavior-cards-explained#Behavioral-Biases" target="_blank"
+        ><span data-testId="title" pTooltip="Learn how to use these insights" tooltipPosition="top" tooltipEvent="hover">Behavioral Biases</span>
+    </a>
+    <app-loading-spinner *ngIf="loading"></app-loading-spinner>
+    <div class="horizontal-graph">
+        <app-graph-horizontal-bar
+            data-testId="bar-chart"
+            *ngIf="!loading"
+            [chartData]="behaviralBiasesObject"
+            [chartColor]="chartColor"
+            [isSingleUser]="isSingleUser"
+            [showLegend]="showLegend"
+            [showScores]="showScores"
+        ></app-graph-horizontal-bar>
+    </div>
+</div>

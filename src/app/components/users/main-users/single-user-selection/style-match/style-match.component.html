@@ -1,0 +1,29 @@
+<div class="user-card smCard">
+    <h3>
+        <a class="fw-bold insights-card-headings" href="{{ helpUrl }}" target="_blank"
+            ><span data-testId="title" pTooltip="Learn how to use these insights" tooltipPosition="top" tooltipEvent="hover">Style Match</span>
+        </a>
+    </h3>
+    <div data-testId="content" class="d-flex smCnt justify-content-center align-items-center">
+        <h5 *ngIf="singleUser" pTooltip="You and {{ firstName }} have a" tooltipPosition="top">You and {{ firstName }} have a</h5>
+        <h5 *ngIf="!singleUser" pTooltip="{{ firstName }} and {{ secondName }} have a" tooltipPosition="top">{{ firstName }} and {{ secondName }} have a</h5>
+
+        <app-loading-spinner *ngIf="loading"></app-loading-spinner>
+
+        <!-- <ng-container *ngIf="!styleMatchObject.loading"> -->
+
+        <div *ngIf="!loading && isFinancial">
+            <h2 [ngStyle]="{ color: secondaryColor2 }" class="text-center pText">
+                {{ styleMatchObject && styleMatchObject.percentage }}%
+                <small>Style Match</small>
+            </h2>
+        </div>
+        <div *ngIf="!loading && !isFinancial">
+            <h2 [ngStyle]="{ color: primaryColor }" class="text-center pText">
+                {{ styleMatchObject && styleMatchObject.percentage }}%
+                <small>Style Match</small>
+            </h2>
+        </div>
+        <!-- </ng-container> -->
+    </div>
+</div>

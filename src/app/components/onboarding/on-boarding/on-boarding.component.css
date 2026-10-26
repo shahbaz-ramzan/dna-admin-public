@@ -1,0 +1,22 @@
+:host ::ng-deep .p-checkbox,
+:host ::ng-deep .p-checkbox .p-checkbox-box {
+    width: 16px;
+    height: 16px;
+}
+:host ::ng-deep .p-checkbox .p-checkbox-icon,
+:host ::ng-deep .p-checkbox .p-checkbox-box .p-checkbox-icon {
+    font-size: 10px;
+}
+:host ::ng-deep .onboarding-close-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1;
+    color: #495057;
+    border-color: transparent;
+    background: #e9ecef;
+}
+:host ::ng-deep .onboarding-close-btn:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+} /*# sourceMappingURL=on-boarding.component.css.map */

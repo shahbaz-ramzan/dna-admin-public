@@ -1,0 +1,55 @@
+<p-toast></p-toast>
+<p-toast class="report-toaster" key="reports"></p-toast>
+<p-toast key="custom" class="user-toast" position="top-right" [baseZIndex]="5000">
+    <ng-template let-message pTemplate="message">
+        <i class="pi pi-info-circle"></i>
+        <p>
+            The results for
+            <b>
+                {{ message.detail }}
+            </b>
+            are predicted results based on this person’s Communication DNA imported data. For more accurate insights, have this person complete Natural
+            Behavior.
+            <a href="https://kb.dnabehavior.com/gene/predicted-results" target="_blank">Click here</a>
+            to learn more about predicted results.
+        </p>
+    </ng-template>
+</p-toast>
+<p-toast key="digitalScan" class="user-toast questonair-toast" position="top-right" [baseZIndex]="5000">
+    <ng-template let-message pTemplate="message">
+        <i class="pi pi-info-circle"></i>
+        <p class="help-us-improve-text">
+            <span class="heading">Digital Scan User:</span>
+            <span>
+                The results for
+                <b>
+                    {{ message.detail }}
+                </b>
+                are based on a Digital Scan and provide predictive behavioral data. Use this information for marketing, communication, and alignment purposes
+                only.
+            </span>
+        </p>
+        <p class="warning-msg">
+            <i class="pi pi-exclamation-triangle"></i>
+            Do not use for high-stakes decisions.
+        </p>
+    </ng-template>
+</p-toast>
+<p-toast key="digitalScanHelp" class="user-toast help-us-improve-toast" position="top-right" [baseZIndex]="5000">
+    <ng-template let-message pTemplate="message">
+        <div class="btn-response">
+            <button pButton class="user-edit-btn" (click)="logMixpanelEvent('Like', message.detail)">
+                <i class="icon-like"></i>
+            </button>
+            <button pButton class="user-edit-btn" (click)="logMixpanelEvent('Dislike', message.detail)">
+                <i class="icon-dislike"></i>
+            </button>
+        </div>
+        <p class="help-us-improve-text">
+            <span class="heading">Help us improve Digital Scan!</span>
+            <span>How accurate do you find these insights?</span>
+        </p>
+    </ng-template>
+</p-toast>
+<app-loading-spinner *ngIf="isAccountSubscriptionLoading"></app-loading-spinner>
+<router-outlet></router-outlet>

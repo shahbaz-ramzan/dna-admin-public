@@ -1,0 +1,3 @@
+/* Styles for .sidebarMenu, .customizeSidebar, .filterHeader, .filterBody, .customizeBtn, etc.
+   live in main-users.component.scss as ::ng-deep rules and still apply here because this
+   component renders as a DOM descendant of app-main-users. */

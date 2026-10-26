@@ -1,0 +1,447 @@
+<div class="singleUserSelection">
+    <app-discovery-incomplete-modal [visible]="discoveryIncomplete"></app-discovery-incomplete-modal>
+    <app-loading-spinner *ngIf="getSortingOrderLoading || updateSortingOrderLoading"></app-loading-spinner>
+    <app-user-info-bar
+        data-testId="user-info-bar"
+        [selectedUser]="userData"
+        [isUserDetailLoading]="isUserDetailLoading"
+        [label]="navLabel"
+        [discoveryType]="discoveryType"
+    ></app-user-info-bar>
+    <p-tabView data-testId="tabview" [(activeIndex)]="index" (onChange)="handleChange($event)" class="sUserTab">
+        <!--------------------------------------------------------------------------------------------------->
+        <p-tabPanel data-testId="financial-tab" class="financialTab" header="Financial Behavior">
+            <p-button
+                data-testId="sorter-btn"
+                (click)="sortDialog()"
+                icon="icon-sorter"
+                class="sorter-btn"
+                *ngIf="permissionObject['Feature-User-Sort-SortUserCards']"
+            ></p-button>
+            <div data-testId="financial-sec" *ngIf="id === 'single0'" class="signle-user-sortable-container clearfix">
+                <ng-container *ngIf="displaySortingModal === false">
+                    <ng-container *ngFor="let item of financialBehaviorTabSorter; let i = index">
+                        <ng-container [ngSwitch]="item.cardName">
+                            <div class="w50" *ngSwitchCase="'Risk Behavior'">
+                                <app-risk-behavior
+                                    data-testId="risk-behavior"
+                                    [loading]="riskBehaviorLoading"
+                                    [riskBehaviorObject]="riskBehaviorObject"
+                                    *ngIf="permissionObject['Financial-User-Card-RiskBehavior']"
+                                ></app-risk-behavior>
+                            </div>
+
+                            <div class="w50" *ngSwitchCase="'Financial DNA Score'">
+                                <app-financial-dna-score
+                                    data-testId="dna-score"
+                                    [financialBehaviours]="fdnaScoresObject"
+                                    [loading]="fdnaLoading"
+                                    *ngIf="permissionObject['Financial-User-Card-FinancialDNA5scores']"
+                                ></app-financial-dna-score>
+                            </div>
+                            <div class="w50" *ngSwitchCase="'Style Match'">
+                                <app-style-match
+                                    data-testId="style-match"
+                                    [firstName]="userData?.firstName"
+                                    [secondName]="logedInPersonName"
+                                    [styleMatchObject]="financialStyleMatchObject"
+                                    [index]="id"
+                                    [loading]="financialStyleMatchLoading"
+                                    [isFinancial]="true"
+                                    [singleUser]="true"
+                                    *ngIf="permissionObject['Financial-User-Card-StyleMatch']"
+                                ></app-style-match>
+                            </div>
+                            <div class="w100" *ngSwitchCase="'Market Mood'">
+                                <app-financial-behavior
+                                    data-testId="financial-behavior"
+                                    [marketData]="marketData"
+                                    [marketMoodArray]="marketMoodArray"
+                                    [mood]="mood"
+                                    [smileyColor]="smileyColor"
+                                    [loading]="getMarketDataLoading"
+                                    [descriptionLoading]="isMarketMoodArrayLoading"
+                                    *ngIf="permissionObject['Financial-User-Card-MarketMood']"
+                                ></app-financial-behavior>
+                            </div>
+
+                            <div class="w100" *ngSwitchCase="'Behavioral Biases'">
+                                <app-behaviral-biases
+                                    data-testId="financial-biases"
+                                    [loading]="behaviralBiasesLoading"
+                                    [behaviralBiasesObject]="behaviralBiasesObject"
+                                    [isSingleUser]="true"
+                                    [chartColor]="behavioralBiasesColor"
+                                    *ngIf="permissionObject['Financial-User-Card-BehavioralBiases']"
+                                ></app-behaviral-biases>
+                            </div>
+                            <ng-container *ngSwitchCase="'T-Scores'">
+                                <div class="w100">
+                                    <app-t-scores
+                                        data-testId="t-scores"
+                                        [showLabel]="false"
+                                        [chartData]="singleUserFinancialDoubleBarChartData"
+                                        [index]="id"
+                                        [isChanged]="i"
+                                        [loading]="tScoreLoading"
+                                        [isFullView]="isFullView"
+                                        *ngIf="permissionObject['Financial-User-Card-T-Scores']"
+                                    ></app-t-scores>
+                                </div>
+                            </ng-container>
+                            <div class="w50" *ngSwitchCase="'Communication Keys'">
+                                <ng-container>
+                                    <app-environment-keys
+                                        data-testId="environment-keys"
+                                        [loading]="performanceGuideLoading"
+                                        [name]="singleName"
+                                        performanceType="Communication Keys"
+                                        [data]="performanceGuide?.environmentKeys"
+                                        [index]="id"
+                                        *ngIf="permissionObject['Financial-User-Card-EnvironmentKeys']"
+                                    ></app-environment-keys>
+                                </ng-container>
+                            </div>
+                            <div class="w50" *ngSwitchCase="'Preferred Contact Methods'">
+                                <ng-container>
+                                    <app-communication
+                                        data-testId="communication"
+                                        [loading]="communicationInsightsLoading"
+                                        [data]="communicationInsightsData"
+                                        [isWorkTalent]="false"
+                                        *ngIf="permissionObject['Financial-User-Card-Communication']"
+                                    ></app-communication>
+                                </ng-container>
+                            </div>
+                            <div class="w50" *ngSwitchCase="'Struggles'">
+                                <ng-container>
+                                    <app-environment-keys
+                                        data-testId="environment-keys-struggles"
+                                        [loading]="performanceGuideLoading"
+                                        [name]="singleName"
+                                        performanceType="Struggles"
+                                        [index]="id"
+                                        [data]="performanceGuide?.struggles"
+                                    ></app-environment-keys>
+                                </ng-container>
+                            </div>
+                            <div class="w50" *ngSwitchCase="'Strengths'">
+                                <ng-container>
+                                    <app-environment-keys
+                                        data-testId="environment-keys-strengths"
+                                        [loading]="performanceGuideLoading"
+                                        [name]="singleName"
+                                        [index]="id"
+                                        performanceType="Strengths"
+                                        [data]="performanceGuide?.strengths"
+                                    ></app-environment-keys>
+                                </ng-container>
+                            </div>
+
+                            <!-- <div class="w50" *ngSwitchCase="'Growth Chart'">
+                <app-growth-chart
+                  [pieChartColors]="financialPieChartColors"
+                ></app-growth-chart>
+              </div> -->
+                            <!-- <div class="w50" *ngSwitchCase="'Communication'">
+                <app-communication></app-communication>
+              </div> -->
+                            <!-- <div class="w50" *ngSwitchCase="'Financial Reports'">
+                <app-financial-reports></app-financial-reports>
+              </div> -->
+                            <!-- </div> -->
+                            <div class="w50" *ngSwitchCase="'Legacy Reports'">
+                                <app-legacy-reports
+                                    data-testId="legacy-reports"
+                                    [loading]="legacyReportsLoading"
+                                    [reportsList]="fdnaLegacyReportsList"
+                                    *ngIf="showLegacyReports"
+                                >
+                                </app-legacy-reports>
+                            </div>
+                            <!-- <div
+                                class="w50"
+                                *ngSwitchCase="'Report'"
+                                class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 pt-3 float-start"
+                            >
+                                <app-financial-reports
+                                    pageType="single-user"
+                                ></app-financial-reports>
+                            </div> -->
+                        </ng-container>
+                    </ng-container>
+                </ng-container>
+
+                <!-- Wonder Chat -->
+
+                <!--<div class="w50">
+                    <div
+                        style="padding: 20px; border-radius: 6px; border: solid 1px var(&#45;&#45;cm-border-clr); min-height: 300px; max-width: 100%">
+                        <h3>
+                            <a class="fw-bold insights-card-headings"
+                            ><span pTooltip="Work related money insights" tooltipEvent="hover" tooltipPosition="top">Money Insights</span>
+                            </a>
+                        </h3>
+                        &lt;!&ndash; Money Insight Markdown &ndash;&gt;
+                        <markdown [data]="workRelatedMoneyInsights"></markdown>
+                    </div>
+                </div>-->
+
+                <!-- Wonder Chat ends -->
+
+                <div class="w100">
+                    <app-radar-chart
+                        data-testId="radar-chart"
+                        [data]="singleUserRadarChartData"
+                        [labels]="uniqueStyle"
+                        [customLegends]="singleUserRadarChartLegend"
+                        [chartColors]="singleUserRadarChartColors"
+                        [showRadarChart]="showRadarChart"
+                        [loading]="radarChartLoading"
+                        [isWorkTalent]="false"
+                        [extraContent]="behaviorType"
+                    ></app-radar-chart>
+                </div>
+            </div>
+        </p-tabPanel>
+        <!-- ---------------------------------------------------------------------------- -->
+
+        <p-tabPanel data-testId="work-talent-panel" header="Work Talents">
+            <p-button
+                data-testId="work-talent-sort-btn"
+                (click)="sortDialog()"
+                icon="icon-sorter"
+                class="sorter-btn"
+                *ngIf="permissionObject['Feature-User-Sort-SortUserCards']"
+            ></p-button>
+            <div *ngIf="id === 'single1'" class="signle-user-sortable-container clearfix">
+                <ng-container *ngIf="displaySortingModal === false">
+                    <ng-container *ngFor="let item of workTalentsTabSorter; let i = index">
+                        <ng-container [ngSwitch]="item.cardName">
+                            <div class="w50" *ngSwitchCase="'Work Talents'">
+                                <ng-container *ngIf="workTalentLoading">
+                                    <app-work-talent
+                                        [workTalentObject]="workTalentsObject"
+                                        [loading]="workTalentLoading"
+                                        *ngIf="permissionObject['Business-User-Card-BusinessDNA5Scores']"
+                                    ></app-work-talent>
+                                </ng-container>
+                                <ng-container *ngIf="!workTalentLoading">
+                                    <app-work-talent
+                                        data-testId="app-work-talent"
+                                        [workTalentObject]="workTalentsObject"
+                                        [loading]="workTalentLoading"
+                                        *ngIf="permissionObject['Business-User-Card-BusinessDNA5Scores']"
+                                    ></app-work-talent>
+                                </ng-container>
+                            </div>
+
+                            <div class="w50" *ngSwitchCase="'Strongest Traits'">
+                                <app-strongest-factors
+                                    data-testId="app-strongest-factors"
+                                    [loading]="strongestFactorsLoading"
+                                    [strongestFactorsObject]="strongestFactorObject"
+                                    *ngIf="permissionObject['Business-User-Card-TheStrongestFactors']"
+                                ></app-strongest-factors>
+                            </div>
+
+                            <div class="w50" *ngSwitchCase="'Style Match'">
+                                <app-style-match
+                                    data-testId="app-style-match"
+                                    [firstName]="userData?.firstName"
+                                    [secondName]="logedInPersonName"
+                                    [styleMatchObject]="financialStyleMatchObject"
+                                    [index]="id"
+                                    [loading]="workStyleMatchLoading"
+                                    [isFinancial]="false"
+                                    [singleUser]="true"
+                                    *ngIf="permissionObject['Business-User-Card-StyleMatch']"
+                                ></app-style-match>
+                            </div>
+
+                            <div class="w100" *ngSwitchCase="'T-Scores'">
+                                <app-t-scores
+                                    data-testId="app-t-scores"
+                                    [showLabel]="false"
+                                    [chartData]="singleUserWorkDoubleBarChartData"
+                                    [index]="id"
+                                    [isChanged]="i"
+                                    [loading]="tScoreLoading"
+                                    [isFullView]="isFullView"
+                                ></app-t-scores>
+                            </div>
+                            <div class="w100" *ngSwitchCase="'Workplace Insights'">
+                                <app-workplace-insights
+                                    data-testId="app-workplace-insights"
+                                    [loading]="workPlaceInsightsLoading"
+                                    [workPlaceObject]="workPlaceObject"
+                                    [chartColor]="singleUserWorkPlaceColor"
+                                    *ngIf="permissionObject['Business-User-Card-WorkplaceInsights']"
+                                ></app-workplace-insights>
+                            </div>
+                            <div class="w50" *ngSwitchCase="'Career Insights'">
+                                <ng-container>
+                                    <app-career-insights
+                                        data-testId="app-career-insights"
+                                        [loading]="careersInsightLoading"
+                                        [careerInsightsObject]="careersInsightsObject"
+                                        *ngIf="permissionObject['Business-User-CareerInsights']"
+                                    ></app-career-insights>
+                                </ng-container>
+                            </div>
+                            <div class="w50" *ngSwitchCase="'Communication Keys'">
+                                <ng-container>
+                                    <app-environment-keys
+                                        data-testId="app-environment-keys"
+                                        [loading]="performanceGuideLoading"
+                                        [name]="singleName"
+                                        performanceType="Communication Keys"
+                                        [data]="performanceGuide?.environmentKeys"
+                                        [index]="id"
+                                        *ngIf="permissionObject['Business-User-Card-EnvironmentKeys']"
+                                    ></app-environment-keys>
+                                </ng-container>
+                            </div>
+                            <div class="w50" *ngSwitchCase="'Preferred Contact Methods'">
+                                <ng-container>
+                                    <app-communication
+                                        data-testId="app-communication"
+                                        [loading]="communicationInsightsLoading"
+                                        [data]="communicationInsightsData"
+                                        [isWorkTalent]="true"
+                                        *ngIf="permissionObject['Financial-User-Card-Communication']"
+                                    ></app-communication>
+                                </ng-container>
+                            </div>
+                            <div class="w50" *ngSwitchCase="'Struggles'">
+                                <ng-container>
+                                    <app-environment-keys
+                                        data-testId="app-environment-keys-struggles"
+                                        [loading]="performanceGuideLoading"
+                                        [name]="singleName"
+                                        [index]="id"
+                                        performanceType="Struggles"
+                                        [data]="performanceGuide?.struggles"
+                                    ></app-environment-keys>
+                                </ng-container>
+                            </div>
+                            <div class="w50" *ngSwitchCase="'Strengths'">
+                                <ng-container>
+                                    <app-environment-keys
+                                        data-testId="app-environment-keys-strengths"
+                                        [loading]="performanceGuideLoading"
+                                        [name]="singleName"
+                                        [index]="id"
+                                        performanceType="Strengths"
+                                        [data]="performanceGuide?.strengths"
+                                    ></app-environment-keys>
+                                </ng-container>
+                            </div>
+                            <div class="w50" *ngSwitchCase="'Legacy Reports'">
+                                <app-legacy-reports
+                                    data-testId="app-legacy-reports"
+                                    [loading]="legacyReportsLoading"
+                                    [reportsList]="bdnaLegacyReportsList"
+                                    *ngIf="showLegacyReports"
+                                >
+                                </app-legacy-reports>
+                            </div>
+
+                            <!-- <div
+                                *ngSwitchCase="'Report'"
+                                class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 pt-3 float-start"
+                            >
+                                <app-financial-reports
+                                    pageType="single-user"
+                                ></app-financial-reports>
+                            </div> -->
+                            <!-- <div class="w100" *ngSwitchCase="'Growth vs Sustain'">
+                <app-growth-chart
+                  [pieChartColors]="workTalentPieChartColors"
+                ></app-growth-chart>
+              </div> -->
+                        </ng-container>
+                    </ng-container>
+                </ng-container>
+
+                <div class="w100">
+                    <app-radar-chart
+                        data-testId="radar-chart"
+                        [data]="singleUserRadarChartData"
+                        [labels]="uniqueStyle"
+                        [customLegends]="singleUserRadarChartLegend"
+                        [chartColors]="singleUserRadarChartColors"
+                        [showRadarChart]="showRadarChart"
+                        [loading]="radarChartLoading"
+                        [isWorkTalent]="false"
+                        [extraContent]="behaviorType"
+                    ></app-radar-chart>
+                </div>
+            </div>
+        </p-tabPanel>
+    </p-tabView>
+
+    <!-- <div class="w100">
+        <app-radar-chart
+            data-testId="radar-chart"
+            [data]="singleUserRadarChartData"
+            [labels]="uniqueStyle"
+            [customLegends]="singleUserRadarChartLegend"
+            [chartColors]="singleUserRadarChartColors"
+            [showRadarChart]="showRadarChart"
+            [loading]="radarChartLoading"
+            [isWorkTalent]="false"
+            [extraContent]="behaviorType"
+            [height]="375"
+        ></app-radar-chart>
+    </div> -->
+</div>
+
+<p-dialog
+    data-testId="sorting-dialog"
+    [header]="id === 'single0' ? 'Sort Financial Behavior Cards' : 'Sort Work Talent Cards'"
+    [(visible)]="displaySortingModal"
+    [modal]="true"
+    class="sorter-modal dna-modal"
+    [baseZIndex]="10000"
+    [draggable]="false"
+    [resizable]="false"
+>
+    <div class="sort-list-head d-flex align-items-center justify-content-between">
+        <h5 class="mb-0">Drag and Drop to sort</h5>
+        <p-button class="refresh-btn" (onClick)="resetSorting(id)" icon="pi pi-refresh"></p-button>
+    </div>
+    <!-- <ng-container *ngIf="id=='single0'">
+  <ul class="list-sortable-selection" [sortablejs]="financialBehaviorTabSorter">
+    <ng-container *ngFor="let item of financialBehaviorTabSorter">
+      <li>{{ item.name }}</li>
+    </ng-container>
+  </ul>
+</ng-container> -->
+
+    <!-- <ng-container *ngIf="id=='single1'"> -->
+    <ul class="list-sortable-selection"
+        [sortablejs]="id === 'single0' ? financialBehaviorTabSorter : workTalentsTabSorter">
+        <ng-container *ngFor="let item of id === 'single0' ? financialBehaviorTabSorter : workTalentsTabSorter">
+            <li *ngIf="item.showStatus">{{ item.cardName }}</li>
+        </ng-container>
+    </ul>
+    <!-- </ng-container> -->
+
+    <!-- <ul class="list-sortable-selection" [sortablejs]="workTalentsTabSorter">
+    <ng-container *ngFor="let item of workTalentsTabSorter">
+      <li>{{ item.name }}</li>
+    </ng-container>
+  </ul> -->
+    <ng-template pTemplate="footer">
+        <!-- <button
+      pButton
+      class="p-button-secondary p-button-text"
+      (click)="displaySortingModal = false"
+      label="Cancel"
+    ></button> -->
+        <p-button (click)="updateSorting()" label="Done" class="nextBtn"></p-button>
+    </ng-template>
+</p-dialog>
+
+<!-- <app-radar-chart></app-radar-chart> -->

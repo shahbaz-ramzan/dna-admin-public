@@ -1,0 +1,49 @@
+.comCard {
+    min-height: 100%;
+    h3 {
+        font-size: 1.125rem;
+        line-height: 1;
+        color: var(--title-clr);
+    }
+    p {
+        color: var(--cm-gray-clr);
+    }
+    ul {
+        padding-left: 20px;
+        li {
+            color: var(--cm-gray-clr);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+    }
+}
+
+:host {
+    ::ng-deep .comMedium {
+        li {
+            margin-bottom: 10px;
+            button {
+                padding: 0;
+                font-size: 14px;
+                font-weight: 700;
+                color: var(--cm-gray-clr);
+                background-color: transparent;
+                border-color: transparent;
+                &:hover {
+                    color: var(--cm-gray-clr);
+                    border-color: transparent;
+                    background-color: transparent;
+                }
+                .icon-envelope,
+                .icon-video {
+                    font-size: 16px;
+                    color: var(--dark-black-color);
+                    margin-right: 15px;
+                }
+                .icon-video {
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+}

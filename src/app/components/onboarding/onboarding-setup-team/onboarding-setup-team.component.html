@@ -1,0 +1,88 @@
+<h4>Now setup your team</h4>
+<div ngClass="add-team-members-wrap">
+    <form [formGroup]="form">
+        <ng-container formArrayName="teamMembers">
+            <ul class="list-unstyled" *ngFor="let teamMember of teamMembers.controls; let teamIndex = index">
+                <li [formGroupName]="teamIndex">
+                    <div ngClass="add-team-member-row onboarding-fields">
+                        <input
+                            formControlName="firstName"
+                            id="firstName"
+                            type="text"
+                            ngClass="form-control input-name"
+                            name="firstName"
+                            pInputText
+                            placeholder="First Name"
+                            [ngStyle]="{
+                                'border-color': isTeamSetupFormValidated && !teamMember.get('firstName')?.valid ? 'red' : ''
+                            }"
+                        />
+
+                        <input
+                            formControlName="lastName"
+                            id="lastName"
+                            type="text"
+                            ngClass="form-control input-name"
+                            name="lastName"
+                            pInputText
+                            placeholder="Last Name"
+                            [ngStyle]="{
+                                'border-color': isTeamSetupFormValidated && !teamMember.get('lastName')?.valid ? 'red' : ''
+                            }"
+                        />
+
+                        <input
+                            formControlName="email"
+                            id="emailAddress"
+                            type="text"
+                            ngClass="form-control input-email"
+                            name="email"
+                            pInputText
+                            placeholder="Email Address"
+                            [ngStyle]="{
+                                'border-color': isTeamSetupFormValidated && !teamMember.get('email')?.valid ? 'red' : ''
+                            }"
+                        />
+
+                        <div
+                            [ngStyle]="{
+                                'border-color': isTeamSetupFormValidated && !teamMember.get('role')?.valid ? 'red' : ''
+                            }"
+                            ngClass="roleDropdown"
+                        >
+                            <p-dropdown
+                                formControlName="role"
+                                [options]="roles"
+                                placeholder="Select role"
+                                name="role"
+                                inputId="dropdown"
+                                [autoDisplayFirst]="false"
+                                optionLabel="name"
+                                dropdownIcon="icon-dropdown"
+                            >
+                            </p-dropdown>
+                        </div>
+                        <button
+                            *ngIf="teamMembers.length > 1 && teamIndex < teamMembers.length - 1; else addButton"
+                            (click)="deleteTeamMember(teamIndex)"
+                            pButton
+                            ngClass="btn-add-del p-button-outlined"
+                        >
+                            <em ngClass="icon-trash"></em>
+                        </button>
+                        <ng-template #addButton>
+                            <button (click)="addTeamMember()" pButton ngClass="btn-add-del p-button-outlined">
+                                <em ngClass="icon-plus"></em>
+                            </button>
+                        </ng-template>
+                    </div>
+                </li>
+            </ul>
+            <span *ngIf="isTeamSetupFormValidated && !teamMembers.valid" style="color: red">Please fill all fields</span>
+        </ng-container>
+    </form>
+
+    <small ngClass="form-group-helper d-block pb-4"
+        >New users will receive an email with account access instructions.<br />Based on your subscription, you may be charged for additional user seats.</small
+    >
+</div>

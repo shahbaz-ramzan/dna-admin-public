@@ -1,0 +1,116 @@
+<div class="row" *ngIf="permissionObject['Settings-Subscriptions']">
+    <div class="col-12 subscriptions-col">
+        <div class="cntBox w-100">
+            <h5 data-testId="subscription-heading">Subscriptions</h5>
+            <app-loading-spinner *ngIf="detailsLoading || accountLoading" [fixed]="true"></app-loading-spinner>
+            <div class="position-relative">
+                <div class="regFieldWrap">
+                    <div class="form-group">
+                        <label data-testId="name-label" class="fw-bold">Subscription Name</label>
+                        <span class="subsField p-input-icon-right w-100">
+                            <input
+                                data-testId="name-input"
+                                readonly
+                                id="Subscriptions"
+                                type="text"
+                                name="manage"
+                                placeholder="Subscription Name"
+                                pInputText
+                                value="{{ subsName }}"
+                            />
+                            <em class="icon icon-lock"></em>
+                        </span>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                                <label data-testId="status-label">Subscription Status</label>
+                                <span class="subsField p-input-icon-right w-100">
+                                    <input data-testId="status-input" [readonly]="true" id="seatsNumber" value="{{ subsStatus }}" ngClass="subStatus" />
+                                    <em class="icon icon-lock"></em>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                                <label data-testId="until-label">Subscribed Until</label>
+                                <span class="subsField p-input-icon-right w-100">
+                                    <input data-testId="until-input" value="{{ subscriptionExpiryDate }}" />
+                                    <em class="icon icon-lock"></em>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                                <label data-testId="id-label" class="fw-bold">Subscription ID</label>
+                                <span class="subsField p-input-icon-right w-100">
+                                    <p-inputNumber data-testId="id-input" [readonly]="true" id="seatsNumber" [(ngModel)]="subsID" [useGrouping]="false">
+                                    </p-inputNumber>
+
+                                    <em class="icon icon-lock"></em>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="regFieldWrap">
+                    <!-- <div class="form-group">
+          <label class="fw-bold">Account Link</label>
+          <span class="subsField p-input-icon-right w-100">
+            <input
+              id="Subscriptions"
+              type="text"
+              readonly
+              placeholder="Manage Subscription"
+              name="manage"
+              pInputText
+              value="{{ accountLink }}"
+            />
+            <em class="icon icon-external-link"></em>
+          </span>
+        </div> -->
+                    <div class="row">
+                        <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                                <!-- <label>Number of Seats</label>
+              <span class="subsField p-input-icon-right w-100">
+                <p-inputNumber
+                  [readonly]="true"
+                  id="seatsNumber"
+                  [(ngModel)]="seatNumber"
+                ></p-inputNumber>
+                <em class="icon icon-lock"></em>
+              </span> -->
+                                <label data-testId="manage-label">Manage Subscription</label>
+                                <span class="subsField p-input-icon-right w-100">
+                                    <input
+                                        data-testId="manage-input"
+                                        id="Referral"
+                                        type="text"
+                                        name="seats"
+                                        readonly
+                                        placeholder="Add Seats"
+                                        pInputText
+                                        value="{{ linkData }}"
+                                    />
+                                    <a href="{{ link }}" target="_blank"> <em class="icon icon-external-link"></em></a>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                                <label data-testId="code-label">Referral Code</label>
+                                <span class="subsField p-input-icon-right w-100">
+                                    <input data-testId="code-input" readonly id="Referral" type="text" name="seats" pInputText value="{{ refferalCode }}" />
+                                    <em class="icon icon-lock"></em>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

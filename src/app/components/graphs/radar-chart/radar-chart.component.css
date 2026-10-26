@@ -1,0 +1,7 @@
+.radar-chart {
+    padding: 20px;
+    border-radius: 6px;
+    border: solid 1px var(--cm-border-clr);
+    min-height: 300px;
+    max-width: 100%;
+}

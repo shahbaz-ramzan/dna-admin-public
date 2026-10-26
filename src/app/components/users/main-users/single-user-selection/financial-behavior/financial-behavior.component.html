@@ -1,0 +1,42 @@
+<div class="user-card mtCard">
+    <app-loading-spinner *ngIf="loading || descriptionLoading"></app-loading-spinner>
+
+    <div class="smileExuberant d-flex align-items-center">
+        <i
+            [ngClass]="{
+                exuYellow: smileyColor === 'Amber',
+                exuRed: smileyColor === 'Red',
+                exuGreen: smileyColor === 'Green',
+                exuGray: smileyColor === 'Neutral',
+
+                'icon-smile': mood === 'Exuberant' || mood === 'Opportunistic',
+                'icon-squint': mood === 'Comfortable',
+                'icon-squint-yellow': mood === 'Watchful' || mood === 'Concerned',
+                'icon-sad-squint': mood === 'Fearful' || mood === 'Apprehensive'
+            }"
+        ></i>
+        <h5>{{ mood }}</h5>
+    </div>
+
+    <h3 class="fw-bold">
+        <a class="fw-bold insights-card-headings" href="https://kb.dnabehavior.com/gene/financial-behavior-cards-explained#Market-Mood" target="_blank"
+            ><span data-testId="title" pTooltip="Learn how to use these insights" tooltipPosition="top" tooltipEvent="hover">Market Mood</span>
+        </a>
+    </h3>
+    <h4 class="bg-red-400">
+        United States Index:
+        <span>{{ marketData?.marketMoodData[marketData.marketMoodData.length - 1] }}</span>
+    </h4>
+    <h5>Trailing 15 day S&P 500 performance</h5>
+    <app-line-chart data-testId="chart" [chartData]="marketData?.marketMoodData" [chartLabels]="marketData?.marketMoodLabels"></app-line-chart>
+    <div class="behAccordian">
+        <p-accordion data-testId="accordion" *ngFor="let marketMood of marketMoodArray">
+            <p-accordionTab>
+                <ng-template pTemplate="header">{{ marketMood.heading }}</ng-template>
+                <ul *ngFor="let description of marketMood.description">
+                    <li>{{ description }}</li>
+                </ul>
+            </p-accordionTab>
+        </p-accordion>
+    </div>
+</div>

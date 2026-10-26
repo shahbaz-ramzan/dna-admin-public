@@ -1,0 +1,27 @@
+.saveButton {
+    margin-top: 10px;
+}
+
+// Profile is a single form card, so it keeps a fixed width instead of taking a share of the row (it
+// was col-xl-6 = always 50%): as the window narrows, the empty space beside it shrinks first, and the
+// card only narrows once there's no space left. Everything below is sized off the card, not the
+// viewport, so its layout doesn't jump at a breakpoint while the card's own width hasn't changed.
+$profile-card-max-width: 640px;
+
+// The column's max-width includes its gutter padding, so the card itself is exactly 640px.
+.profile-col {
+    max-width: calc(#{$profile-card-max-width} + var(--bs-gutter-x, 1.5rem));
+}
+
+// Save sits on the card's right edge rather than the far side of the empty content area.
+.profile-actions {
+    max-width: $profile-card-max-width;
+}
+
+// Photo + upload controls wrap onto two lines when the card is too narrow for them side by side,
+// instead of squeezing or overflowing (the shared .ProfileWrap styles in _global.scss only wrap
+// below 576px, based on the viewport). Scoped to this page - .ProfileWrap is also used elsewhere.
+.ProfileWrap {
+    flex-wrap: wrap;
+    row-gap: 16px;
+}

@@ -1,0 +1,140 @@
+.reportsCard {
+    padding: 20px;
+    border-radius: 6px;
+    border: solid 1px var(--cm-border-clr);
+    min-height: 273px;
+}
+.reportsCard h3 {
+    font-size: 1.125rem;
+    line-height: 1;
+    color: var(--title-clr);
+    margin-bottom: 35px;
+}
+.reportsCard p {
+    color: #a6a5a3;
+}
+
+:host ::ng-deep .reportsdButtons li {
+    display: flex;
+    justify-content: center;
+}
+:host ::ng-deep .reportsdButtons li + li {
+    margin-top: 15px;
+}
+
+:host ::ng-deep .shoMoreBtn button {
+    font-size: 0.875rem;
+    font-weight: normal;
+    color: var(--dark-gray-shade-clr);
+    border-radius: 2px;
+    background-color: var(--gray95-clr);
+    border-color: transparent;
+    min-width: 190px;
+}
+:host ::ng-deep .shoMoreBtn button:hover {
+    background-color: var(--gray95-clr);
+    border-color: transparent;
+    color: var(--dark-gray-shade-clr);
+}
+
+:host ::ng-deep .reportModal .p-dialog-mask {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+:host ::ng-deep .reportModal .p-dialog {
+    width: 540px;
+    border-radius: 6px;
+    overflow: hidden;
+}
+:host ::ng-deep .reportModal .p-dialog .p-dialog-content {
+    padding: 0 1.5rem 80px 1.5rem;
+}
+
+.reportsMListng {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 0;
+    -moz-column-gap: 25px;
+    column-gap: 25px;
+}
+.reportsMListng li {
+    margin: 0;
+    margin-bottom: 15px;
+    width: calc(53% - 25px);
+}
+@media screen and (max-width: 576px) {
+    .reportsMListng li {
+        width: 100%;
+    }
+}
+
+:host ::ng-deep .p-field-radiobutton {
+    display: flex;
+    align-items: center;
+}
+:host ::ng-deep .p-field-radiobutton label {
+    margin-bottom: 0;
+    margin-left: 10px;
+    font-size: 12px !important;
+}
+:host ::ng-deep .p-field-radiobutton + .p-field-radiobutton {
+    margin-top: 18px;
+}
+:host ::ng-deep .p-field-radiobutton .p-radiobutton-icon {
+    width: 6px;
+    height: 6px;
+    background-color: var(--dark-black-color);
+}
+:host ::ng-deep .p-field-radiobutton .p-radiobutton-box {
+    width: 16px;
+    height: 16px;
+    margin-top: 2px;
+    border-color: var(--dark-black-color) !important;
+    background-color: transparent;
+}
+:host ::ng-deep .p-field-radiobutton .p-radiobutton-box.p-highlight {
+    border-color: var(--dark-black-color);
+    background-color: transparent;
+    box-shadow: none;
+}
+:host ::ng-deep .p-field-radiobutton .p-radiobutton-box.p-highlight:hover {
+    background-color: transparent;
+}
+
+.leaderListing li .reportsBtn {
+    justify-content: flex-start;
+    gap: 16px;
+}
+
+.disabled-link {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.exportBtn {
+    font-size: 14px;
+    font-weight: 700;
+    min-width: 200px;
+    height: 48px;
+    margin-top: 10px;
+    border-color: var(--primary-color);
+    background-color: var(--primary-color);
+}
+.exportBtn:hover {
+    border-color: var(--primary-color);
+    background-color: var(--primary-color);
+}
+
+:host ::ng-deep .leaderModal .p-dialog-content {
+    padding-bottom: 28px !important;
+}
+:host ::ng-deep .leaderModal .headLabel {
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+:host ::ng-deep .leaderModal .leader-field-warp {
+    max-width: 400px;
+    width: 100%;
+    margin: 0 auto;
+} /*# sourceMappingURL=financial-reports.component.css.map */

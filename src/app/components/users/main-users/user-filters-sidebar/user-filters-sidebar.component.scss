@@ -1,0 +1,8 @@
+/*
+ * Filter-sidebar-specific styles (.sidebarMenu, .filterHeader, .filterBody, .filterBarFooter,
+ * .tagsWrap, .calendarWrap, .rangeBox, .filterRadio, #filter-btn, etc.) currently live in
+ * ../main-users.component.scss as ::ng-deep rules scoped under the app-main-users host.
+ * Because this component is always rendered as a descendant of app-main-users in the DOM,
+ * those ::ng-deep rules still apply here unchanged, so they were intentionally left in place
+ * rather than duplicated/moved, to avoid any risk of visual regressions in this mechanical pass.
+ */

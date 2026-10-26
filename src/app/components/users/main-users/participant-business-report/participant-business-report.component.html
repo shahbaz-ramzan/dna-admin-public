@@ -1,0 +1,1010 @@
+<!doctype html>
+<html>
+  <head>
+    <title></title>
+    <style>
+      body {
+      margin: 0;
+      font-size: 10px;
+      font-family: 'Calibri';
+      background: #f5f6fa;
+      box-sizing: border-box;
+    }
+
+    table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
+  .text-left {
+  text-align: left;
+}
+
+.text-right {
+text-align: right;
+}
+
+.text-center {
+text-align: center;
+}
+
+.p-r-0 {
+padding-right: 0 !important;
+}
+
+.ps-0 {
+padding-left: 0 !important;
+}
+
+.ps-40 {
+padding-left: 40px;
+}
+
+.spacer-20 {
+height: 16px;
+}
+
+.spacer-40 {
+height: 40px;
+}
+
+.spacer {
+height: 30px;
+}
+
+.spacer-50 {
+height: 50px;
+}
+
+.block {
+display: block;
+}
+
+.mb-35 {
+margin-bottom: 35px;
+}
+
+.p-0 {
+padding: 0;
+}
+
+.reports-wrapper {
+padding-bottom: 24px;
+}
+
+.reports-wrapper > :last-child {
+margin-bottom: 0;
+}
+
+.reports-header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 30px 20px;
+background: white;
+margin-bottom: 40px;
+}
+
+.report-title .icon-arrow-left {
+font-size: 16px;
+color: #7e84a3;
+}
+
+.reports-header button {
+background: var(--primary-color);
+border-color: var(--primary-color);
+}
+
+.page-wrapper {
+width: 610px;
+height: 790px;
+padding: 20px;
+margin: 0 auto 24px;
+background-color: #fff;
+position: relative;
+}
+
+.page-wrapper td.primary-color-box {
+height: 32px;
+width: 23px;
+background: #339966;
+}
+
+.page-wrapper .main-heading {
+font-size: 16px;
+font-weight: 700;
+color: #339966;
+padding-left: 16px;
+}
+
+.page-wrapper p {
+line-height: 17px;
+color: #000;
+}
+
+.page-wrapper p,
+.page-wrapper ul li,
+.labled-list ul li {
+line-height: 17px;
+color: #000;
+font-size: 14px;
+}
+
+.page-wrapper a {
+color: #000000;
+}
+
+.page-wrapper ul {
+margin-top: 0;
+padding-left: 25px;
+margin-bottom: 5px;
+}
+
+.page-wrapper h5 {
+font-weight: 700;
+font-size: 14px;
+color: #000000;
+}
+
+.page-wrapper ul li {
+margin-bottom: 3px;
+}
+
+.page-footer {
+position: absolute;
+left: 0;
+right: 0;
+bottom: 0;
+width: 100%;
+padding: 0 4px;
+text-align: center;
+box-sizing: border-box;
+background-color: #fff;
+border-top: solid 2px #979797;
+}
+
+.page-footer table {
+width: 100%;
+}
+
+.page-footer td {
+color: #979797;
+padding: 10px;
+}
+
+.pattren-banner {
+height: 222px;
+padding: 0 15px;
+background-image: url(../../../../../assets/images/pattren-img.jpg);
+background-repeat: repeat;
+}
+
+.pattren-banner p {
+background-color: #fff;
+padding: 16px;
+border: solid 1px #000;
+}
+
+.report-card {
+padding: 45px 38px;
+border-top: solid 10px #339966;
+border-bottom: solid 10px #339966;
+}
+
+.report-card img {
+max-height: 60px;
+}
+
+.report-card h1 {
+font-size: 28px;
+line-height: 31px;
+color: #000000;
+margin: 16px 0;
+margin-bottom: 15px;
+font-weight: 700;
+}
+
+.report-card p {
+font-size: 18px;
+font-weight: 400;
+line-height: 25px;
+color: #5f5a5a;
+margin-top: 0;
+margin-bottom: 5px;
+}
+
+.footer-top {
+font-size: 12px;
+font-weight: 700;
+color: #fff;
+text-align: center;
+padding: 10px;
+background: #339966;
+}
+
+.footer {
+font-size: 12px;
+color: #808080;
+padding: 5px 5px;
+text-align: center;
+}
+
+.heading-bdna {
+font-weight: 700;
+font-size: 14px;
+color: #000000;
+}
+
+.p-bdna {
+font-weight: 400;
+font-size: 14px;
+color: #000000;
+}
+
+.facilitator-head {
+font-weight: 700 !important;
+font-size: 32px !important;
+}
+
+.financial-insight-wrap {
+display: flex;
+gap: 20px;
+align-items: center;
+}
+
+.financial-insight-wrap h6 {
+font-size: 1.125rem;
+color: #000;
+font-weight: 700;
+margin-bottom: 5px;
+}
+
+.financial-insight-wrap + .financial-insight-wrap {
+margin-top: 10px;
+}
+
+.financial-insight-wrap p {
+font-size: 14px;
+font-weight: 400;
+color: #000;
+margin-bottom: 0;
+}
+
+.financial-span-green {
+color: var(--green-color);
+}
+
+.financial-span-gold {
+color: var(--gold-color);
+}
+
+
+.badge-lock {
+height: 40px;
+width: 40px;
+display: flex;
+justify-content: center;
+align-items: center;
+background-color: var(--primary-color);
+border-radius: 50%;
+margin: auto;
+}
+
+.icon-lock {
+font-size: 18px;
+}
+
+.lock-heading h5 {
+font-weight: 700;
+font-size: 14px;
+color: var(--primary-color);
+margin-bottom: 0;
+}
+
+.lock-heading p {
+font-size: 14px;
+color: var(--primary-color);
+}
+.td-background {
+background-color: #ededed;
+}
+.td-padding {
+padding: 10px;
+}
+.pb-16 {
+padding-bottom: 16px;
+}
+.qr-code-container {
+display: flex;
+justify-content: center;
+align-items: center;
+width: 100%;
+}
+.qr-code-container qr-code {
+display: inline-block;
+}
+</style>
+</head>
+
+<body>
+  <app-discovery-incomplete-modal [visible]="discoveryIncomplete"></app-discovery-incomplete-modal>
+  <div class="reports-wrapper">
+    <app-chatbot [chat_payload_data]="chat_payload_data" [isDownloadReady]="isDownloadReady"></app-chatbot>
+    <div class="reports-header">
+      <div class="report-title d-flex align-items-center">
+        <i class="icon-arrow-left" (click)="onBack()"></i>
+        <h3 class="mb-0">{{ reportName }} Report</h3>
+      </div>
+      <button
+        pButton
+        type="button"
+        [label]="isDownloadReady ? 'Download' : 'Preparing... ' + progressPercentage + '%'"
+        [disabled]="!isDownloadReady"
+        [icon]="isDownloadReady ? 'icon-download' : ''"
+        (click)="downloadPdf()"
+        class="reports-download-btn p-button-sm"
+        iconPos="right"
+      ></button>
+    </div>
+    @if (isLoading) {
+      <app-report-loading-overlay></app-report-loading-overlay>
+    }
+    @if (tScoreLoading) {
+      <app-report-loading-overlay></app-report-loading-overlay>
+    }
+
+    <div class="page-wrapper p-0" id="1">
+      <table width="100%">
+        <tr>
+          <td colspan="2" class="pattren-banner"></td>
+        </tr>
+        <tr>
+          <td class="report-card" [ngStyle]="{ borderTopColor: reportColor, borderBottomColor: reportColor }">
+            <img [src]="logo" alt />
+            <h1>
+              {{ reportName }} Report:<br />
+              {{ participantName }}
+            </h1>
+            <p class="mb-0">Providing key insights into your unique work talents.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" class="pattren-banner">
+            @if (isDigitalScan) {
+              <p>
+                This client's insights are based on a Digital Scan. Use this data for marketing, communication, and alignment purposes only—not
+                for high-stakes decisions.<br />
+                <a style="text-decoration: underline" href="https://kb.dnabehavior.com/gene/predicted-results" target="_blank"
+                  >Learn more in our Digital Scan Knowledge Base.</a
+                  >
+                </p>
+              }
+            </td>
+          </tr>
+          <tr>
+            <td class="footer-top" colspan="2" [ngStyle]="{ backgroundColor: reportColor }">
+              Based on your completion of the Natural Behavior Discovery Process
+            </td>
+          </tr>
+          <tr>
+            <td class="footer" colspan="2">Powered by DNA Behavior</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="page-wrapper" id="2">
+        <table width="100%">
+          <tr>
+            <td colspan="2" class="heading-bdna text-center">Your DNA Result is</td>
+          </tr>
+          <tr>
+            <td colspan="2" class="text-center">
+              <h1 class="mb-35 facilitator-head">
+                You Are {{ word }}
+                {{ uniqueStyleAndDescription?.behaviorTypeName }}
+              </h1>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2" class="spacer-20"></td>
+          </tr>
+          <tr>
+            <td class="td-background td-padding" valign="top" colspan="3" [ngStyle]="{ borderTop: '10px solid ' + reportColor }">
+              <p>
+                {{ uniqueStyleAndDescription?.behaviorTypeDescription }}
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" class="spacer-20"></td>
+          </tr>
+          <td width="49%" class="td-padding td-dna-behavior p-0" align="center">
+            <img [src]="getCurrentUniqueStyleImage()" alt="fast-paced" width="100%" />
+          </td>
+          <tr>
+            <td colspan="2" class="spacer-20"></td>
+          </tr>
+        </table>
+
+        <div class="page-footer">
+          <table>
+            <tr>
+              <td>Page 2</td>
+              <td>{{ footerDate }}</td>
+              <td>
+                {{ participantName }}
+              </td>
+              <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+              <td>ID#{{ accountId }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="page-wrapper" id="3">
+        <table width="100%">
+          <tr>
+            <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+            <td class="main-heading" [ngStyle]="{ color: reportColor }">Your Contrasting Work Talents</td>
+          </tr>
+          <tr>
+            <td colspan="2" class="spacer-20"></td>
+          </tr>
+          @if (showCard['workTalents']) {
+            <tr>
+              <td colspan="2">
+                <p>
+                  The shaded circles and scores below indicate your strength level as a percentage of the population with the corresponding
+                  descriptor in the same color.
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="spacer-20"></td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                @for (talent of scoreBDNA5; track trackByIndex($index, talent)) {
+                  <tr class="financial-insight-wrap">
+                    <td>
+                      <circle-progress
+                        [title]="talent.value.toString()"
+                        [percent]="talent.label === (talent?.titleSparsed)[0] ? talent.value : 100 - talent.value"
+                        [radius]="40"
+                        [outerStrokeWidth]="8"
+                        [innerStrokeWidth]="8"
+                        [outerStrokeColor]="secondaryColor"
+                        [innerStrokeColor]="primaryColor"
+                        [animation]="false"
+                        [animationDuration]="300"
+                        [imageHeight]="74"
+                        [imageWidth]="74"
+                        [showSubtitle]="false"
+                        [titleColor]="talent.label === (talent?.titleSparsed)[0] ? secondaryColor : primaryColor"
+                        [unitsColor]="talent.label === (talent?.titleSparsed)[0] ? secondaryColor : primaryColor"
+                      ></circle-progress>
+                    </td>
+                    <td>
+                      <h6>
+                        <span class="financial-span-green" [style]="{ color: secondaryColor }">{{ (talent?.titleSparsed)[0] }}</span>
+                        vs
+                        <span class="financial-span-gold" [style]="{ color: primaryColor }">{{
+                          (talent?.titleSparsed)[talent.titleSparsed.length - 1]
+                        }}</span>
+                      </h6>
+                      <p>{{ talent?.description }}</p>
+                    </td>
+                  </tr>
+                }
+              </td>
+            </tr>
+          }
+          @if (!showCard['workTalents']) {
+            <tr>
+              <td colspan="2" class="spacer-50"></td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <span class="badge badge-lock"><i class="icon-lock"></i></span>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="spacer-20"></td>
+            </tr>
+            <tr>
+              <td class="text-center lock-heading" colspan="2">
+                <h5>This report has been customized for you by your administrator.</h5>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-center lock-heading" colspan="2">
+                <p>Contact your administrator to unlock this insight.</p>
+              </td>
+            </tr>
+          }
+        </table>
+
+        <div class="page-footer">
+          <table>
+            <tr>
+              <td>Page 3</td>
+              <td>{{ footerDate }}</td>
+              <td>
+                {{ participantName }}
+              </td>
+              <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+              <td>ID#{{ accountId }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="page-wrapper" id="4">
+        <table width="100%">
+          <tr>
+            <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+            <td class="main-heading" [ngStyle]="{ color: reportColor }">Ultimate Performance Guide</td>
+          </tr>
+          <tr>
+            <td colspan="2" class="spacer-20"></td>
+          </tr>
+          @if (showCard['performanceKeys']) {
+            <tr>
+              <td colspan="2">
+                <p>
+                  This section provides a concise summary of your report for quick review. More indepth results and information are provided
+                  in the remaining sections.
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="spacer-20"></td>
+            </tr>
+            <tr>
+              <td colspan="2" class="spacer-20"></td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <h5 class="mb-0">Knowing your strengths, you can increase your performance potential</h5>
+              </td>
+            </tr>
+            <tr>
+              <td class="td-background td-padding" valign="top" colspan="3" [ngStyle]="{ borderTop: '10px solid ' + reportColor }">
+                @for (strength of strengthsData; track trackByIndex(index, strength); let index = $index) {
+                  <ul class="pl-20">
+                    <li>{{ strength?.description }}</li>
+                  </ul>
+                }
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="spacer-20"></td>
+            </tr>
+            <tr>
+              <td colspan="2" class="spacer-20"></td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <h5 class="mb-0">Knowing your struggles, you can reduce your performance impediments</h5>
+              </td>
+            </tr>
+            <tr>
+              <td class="td-background td-padding" valign="top" colspan="3" [ngStyle]="{ borderTop: '10px solid ' + reportColor }">
+                @for (struggle of strugglesData; track trackByIndex(index, struggle); let index = $index) {
+                  <ul class="pl-20">
+                    <li>{{ struggle?.description }}</li>
+                  </ul>
+                }
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="spacer-20"></td>
+            </tr>
+            <tr>
+              <td colspan="2" class="spacer-20"></td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <h5 class="mb-0">How to communicate effectively for building a relationship</h5>
+              </td>
+            </tr>
+            <tr>
+              <td class="td-background td-padding" valign="top" colspan="3" [ngStyle]="{ borderTop: '10px solid ' + reportColor }">
+                @for (key of environmentKeysData; track trackByIndex(index, key); let index = $index) {
+                  <ul class="pl-20">
+                    <li>{{ key?.description }}</li>
+                  </ul>
+                }
+              </td>
+            </tr>
+          }
+          @if (!showCard['performanceKeys']) {
+            <tr>
+              <td colspan="2" class="spacer-50"></td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <span class="badge badge-lock"><i class="icon-lock"></i></span>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="spacer-20"></td>
+            </tr>
+            <tr>
+              <td class="text-center lock-heading" colspan="2">
+                <h5>This report has been customized for you by your administrator.</h5>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-center lock-heading" colspan="2">
+                <p>Contact your administrator to unlock this insight.</p>
+              </td>
+            </tr>
+          }
+        </table>
+
+        <div class="page-footer">
+          <table>
+            <tr>
+              <td>Page 4</td>
+              <td>{{ footerDate }}</td>
+              <td>
+                {{ participantName }}
+              </td>
+              <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+              <td>ID#{{ accountId }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="page-wrapper" id="5">
+        <table width="100%">
+          <tr>
+            <td class="table-head" colspan="3">
+              <table width="100%">
+                <tr>
+                  <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+                  <td class="main-heading" [ngStyle]="{ color: reportColor }">Your Top Two Factors</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2" class="pb-16"></td>
+          </tr>
+          @if (showCard['topTraits']) {
+            <tr>
+              <td>
+                <table width="100%">
+                  <tr>
+                    <td width="49%" class="td-background td-padding" valign="top" [ngStyle]="{ borderTop: '10px solid ' + reportColor }">
+                      <h5>{{ firstTraitKeyHeading }}</h5>
+                      <p>
+                        {{ coachingReportTraits[firstTraitKey] }}
+                      </p>
+                    </td>
+                    <td width="1%"></td>
+                    <td width="49%" class="td-background td-padding" valign="top" [ngStyle]="{ borderTop: '10px solid ' + reportColor }">
+                      <h5>{{ secondTraitKeyHeading }}</h5>
+                      <p>
+                        {{ coachingReportTraits[secondTraitKey] }}
+                      </p>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="pb-16"></td>
+            </tr>
+            <tr>
+              <td class="td-background td-padding" valign="top" align="center" colspan="3" [ngStyle]="{ borderTop: '10px solid ' + reportColor }">
+                <h5>Factor Relationship</h5>
+                <p>The above combination of these two traits indicates that you {{ factorRelationShipName?.Description }}.</p>
+              </td>
+            </tr>
+          }
+          @if (!showCard['topTraits']) {
+            <tr>
+              <td colspan="2" class="spacer-50"></td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <span class="badge badge-lock"><i class="icon-lock"></i></span>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="spacer-20"></td>
+            </tr>
+            <tr>
+              <td class="text-center lock-heading" colspan="2">
+                <h5>This report has been customized for you by your administrator.</h5>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-center lock-heading" colspan="2">
+                <p>Contact your administrator to unlock this insight.</p>
+              </td>
+            </tr>
+          }
+        </table>
+
+        <div class="page-footer">
+          <table>
+            <tr>
+              <td>Page 5</td>
+              <td>{{ footerDate }}</td>
+              <td>{{ participantName }} - {{ uniqueStyleAndDescription?.behaviorTypeName }}</td>
+              <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+              <td>ID#{{ accountId }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="page-wrapper" id="6">
+        <table width="100%">
+          <tr>
+            <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+            <td class="main-heading" [ngStyle]="{ color: reportColor }">Your Desired Tasks Based on Talents</td>
+          </tr>
+          <tr>
+            <td colspan="2" class="spacer-20"></td>
+          </tr>
+          @if (showCard['careerInsights']) {
+            <tr>
+              <td colspan="2">
+                <p>Below is a summary of the work tasks, roles, and environments you’re most naturally motivated by.</p>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="spacer-40"></td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <h5 class="mb-0">Desired Tasks based on Talents</h5>
+              </td>
+            </tr>
+            <tr>
+              <td class="td-background td-padding" valign="top" colspan="3" [ngStyle]="{ borderTop: '10px solid ' + reportColor }">
+                <ul>
+                  @for (insight of careerInsightsData; track trackByIndex($index, insight)) {
+                    <li class="pl-20">
+                      {{ insight?.name }}
+                    </li>
+                  }
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="spacer-20"></td>
+            </tr>
+            <tr>
+              <td colspan="2" class="spacer-20"></td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <h5 class="mb-0">Desired Team Roles</h5>
+              </td>
+            </tr>
+            <tr>
+              <td class="td-background td-padding" valign="top" colspan="3" [ngStyle]="{ borderTop: '10px solid ' + reportColor }">
+                @for (role of desiredTeamRoles; track trackByIndex(index, role); let index = $index) {
+                  <ul class="pl-20">
+                    <li>{{ role?.name }}</li>
+                  </ul>
+                }
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="spacer-20"></td>
+            </tr>
+          }
+          @if (!showCard['careerInsights']) {
+            <tr>
+              <td colspan="2" class="spacer-50"></td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <span class="badge badge-lock"><i class="icon-lock"></i></span>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="spacer-20"></td>
+            </tr>
+            <tr>
+              <td class="text-center lock-heading" colspan="2">
+                <h5>This report has been customized for you by your administrator.</h5>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-center lock-heading" colspan="2">
+                <p>Contact your administrator to unlock this insight.</p>
+              </td>
+            </tr>
+          }
+        </table>
+
+        <div class="page-footer">
+          <table>
+            <tr>
+              <td>Page 6</td>
+              <td>{{ footerDate }}</td>
+              <td>
+                {{ participantName }}
+              </td>
+              <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+              <td>ID#{{ accountId }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="page-wrapper" id="7">
+        <table width="100%">
+          <tr>
+            <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+            <td class="main-heading" [ngStyle]="{ color: reportColor }">Your Desired Tasks Based on Talents (Continued)</td>
+          </tr>
+          <tr>
+            <td colspan="2" class="spacer-20"></td>
+          </tr>
+          @if (showCard['careerInsights']) {
+            <tr>
+              <td colspan="2">
+                <h5 class="mb-0">Desired Work Environment</h5>
+              </td>
+            </tr>
+            <tr>
+              <td class="td-background td-padding" valign="top" colspan="3" [ngStyle]="{ borderTop: '10px solid ' + reportColor }">
+                @for (environment of desiredWorkEnvironment; track trackByIndex(index, environment); let index = $index) {
+                  <ul class="pl-20">
+                    <li>{{ environment?.name }}</li>
+                  </ul>
+                }
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="spacer-20"></td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <h5 class="mb-0">Desired Work Rewards</h5>
+              </td>
+            </tr>
+            <tr>
+              <td class="td-background td-padding" valign="top" colspan="3" [ngStyle]="{ borderTop: '10px solid ' + reportColor }">
+                @for (reward of desiredWorkRewards; track trackByIndex(index, reward); let index = $index) {
+                  <ul class="pl-20">
+                    <li>{{ reward?.name }}</li>
+                  </ul>
+                }
+              </td>
+            </tr>
+          }
+          @if (!showCard['careerInsights']) {
+            <tr>
+              <td colspan="2" class="spacer-50"></td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <span class="badge badge-lock"><i class="icon-lock"></i></span>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="spacer-20"></td>
+            </tr>
+            <tr>
+              <td class="text-center lock-heading" colspan="2">
+                <h5>This report has been customized for you by your administrator.</h5>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-center lock-heading" colspan="2">
+                <p>Contact your administrator to unlock this insight.</p>
+              </td>
+            </tr>
+          }
+          <tr>
+            <td colspan="2" class="spacer-40"></td>
+          </tr>
+          <tr>
+            <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+            <td class="main-heading" [ngStyle]="{ color: reportColor }">Unique Style Overview</td>
+          </tr>
+          @if (showCard['video']) {
+            <tr>
+              <td colspan="2">
+                <table width="100%">
+                  <tr>
+                    <td width="70%">
+                      <table>
+                        <tr>
+                          <td class="p-bdna ps-0">
+                            This section provides a concise description of your unique behavioral style as it relates to work talent
+                            Scan the QR code to access a video that offers further insights into your style, helping you understand
+                            its impact on your work talent behaviors and strategies.
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                    <td width="25%">
+                      <table>
+                        <tr>
+                          <td class="text-center">
+                            <qr-code [value]="uniqueStyleVideo" size="105" errorCorrectionLevel="H"></qr-code>
+                            <p class="mb-0">Scan to watch video</p>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          }
+          @if (!showCard['video']) {
+            <tr>
+              <td colspan="2" class="spacer-50"></td>
+            </tr>
+          }
+          @if (!showCard['video']) {
+            <tr>
+              <td colspan="2">
+                <span class="badge badge-lock"><i class="icon-lock"></i></span>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="spacer-20"></td>
+            </tr>
+            <tr>
+              <td class="text-center lock-heading" colspan="2">
+                <h5>This report has been customized for you by your administrator.</h5>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-center lock-heading" colspan="2">
+                <p>Contact your administrator to unlock this insight.</p>
+              </td>
+            </tr>
+          }
+          <!-- <ng-container *ngIf="showCard['video']">
+          <tr>
+            <td colspan="2" class="text-center">
+              <qr-code [value]="uniqueStyleVideo" size="105" errorCorrectionLevel="H"></qr-code>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" class="text-center">
+              <a href="{{ uniqueStyleVideo }}" target="_blank" class="text-black">{{ uniqueStyleVideo }}</a>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" class="spacer-20"></td>
+          </tr>
+          <tr>
+            <td colspan="2" class="text-center">
+              <h5 class="mb-0">Scan to Dive Deeper into Your Unique Style</h5>
+            </td>
+          </tr>
+        </ng-container> -->
+      </table>
+
+      <div class="page-footer">
+        <table>
+          <tr>
+            <td>Page 7</td>
+            <td>{{ footerDate }}</td>
+            <td>
+              {{ participantName }}
+            </td>
+            <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+            <td>ID#{{ accountId }}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<div class="position-relative use-style-card">
+    <div *ngIf="loading" class="radar-chart">
+        <h3>
+            <a class="fw-bold insights-card-headings" href="{{ helpUrl }}" target="_blank"
+                ><span pTooltip="Learn how to use these insights" tooltipEvent="hover" tooltipPosition="top">Unique Style</span>
+            </a>
+        </h3>
+        <app-loading-spinner></app-loading-spinner>
+    </div>
+    <div *ngIf="!loading && showRadarChart" class="radar-chart">
+        <h3>
+            <a class="fw-bold insights-card-headings" href="{{ helpUrl }}" target="_blank"
+                ><span pTooltip="Learn how to use these insights" tooltipEvent="hover" tooltipPosition="top">Unique Style</span>
+            </a>
+        </h3>
+        <div *ngIf="!loading" class="row">
+            <div *ngIf="content.length" class="col-12 col-xl-4 mt-4 vstack gap-4 mb-5 mb-xl-0">
+                <div *ngFor="let item of content; let i = index">
+                    <div class="fw-bolder hstack gap-3">
+                        <div
+                            [ngStyle]="{ backgroundColor: chartColors[i].backgroundColor }"
+                            class=""
+                            style="width: 15px; height: 15px; display: inline-block"
+                        ></div>
+                        <p class="m-0">{{ customLegends[i].text + ':  ' + item.name }}</p>
+                    </div>
+                    <div>{{ item.description }}</div>
+                </div>
+            </div>
+            <div [ngClass]="{ 'col-xl-8': content }" class="col-12 mt-4">
+                <!-- [colors]="chartColors" -->
+                <canvas
+                    data-chartId="radar-chart"
+                    [options]="options"
+                    [width]="width ? width : 700"
+                    [height]="height ? height : 345"
+                    [style]="{ minHeight: '345px' }"
+                    [data]="radarChartData"
+                    [labels]="labels"
+                    [legend]="false"
+                    baseChart
+                    [type]="'radar'"
+                >
+                </canvas>
+                <!-- <canvas baseChart class="chart" [data]="radarChartData2" [options]="radarChartOptions" [type]="radarChartType"> </canvas> -->
+            </div>
+        </div>
+    </div>
+</div>

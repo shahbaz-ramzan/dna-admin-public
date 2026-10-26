@@ -1,0 +1,207 @@
+:host {
+    .icon-information {
+        color: var(--primary-color);
+    }
+    ::ng-deep .userInfoBar {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        justify-content: space-between;
+        padding-bottom: 15px;
+        margin-bottom: 15px;
+        border-bottom: solid 1px var(--cm-border-clr);
+        .user-p-wrap {
+            min-width: 0;
+            @media screen and (min-width: 577px) {
+                gap: 20px;
+            }
+            @media screen and (min-width: 1199px) {
+                gap: 30px;
+            }
+            @media screen and (max-width: 991px) {
+                flex-wrap: wrap;
+                row-gap: 15px;
+            }
+            @media screen and (max-width: 767px) {
+                justify-content: center;
+            }
+            // Single user: avatar and info list sit in bootstrap columns, so gutters come from padding, not gap
+            &.single-layout {
+                flex-wrap: wrap;
+                column-gap: 0;
+                row-gap: 15px;
+                ul.user-info-list {
+                    @media screen and (min-width: 768px) {
+                        padding-left: 40px !important;
+                    }
+                }
+            }
+        }
+        @media screen and (max-width: 767px) {
+            flex-wrap: wrap;
+            row-gap: 10px;
+        }
+        .uAvatar {
+            flex-direction: column;
+            text-align: center;
+            min-width: 0;
+            max-width: 100%;
+            .uAvatar-cnt {
+                min-width: 0;
+                max-width: 100%;
+                h5,
+                a {
+                    word-break: break-word;
+                }
+                h5 {
+                    font-size: 12px;
+                    font-weight: 700;
+                    color: var(--title-clr);
+                    margin-bottom: 0;
+                }
+                a {
+                    display: block;
+                    color: var(--cm-gray-clr);
+                    text-decoration: none;
+                    font-weight: 700;
+                    font-size: 8px;
+                }
+            }
+        }
+        ul.user-info-list {
+            margin-bottom: 0;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: space-between;
+            li {
+                span {
+                    font-size: 12px;
+                    font-weight: 400;
+                    color: var(--cm-gray-clr);
+                }
+                p {
+                    font-size: 0.875rem;
+                    color: var(--dk-gray-clr);
+                    font-weight: 700;
+                    margin-bottom: 0;
+                    margin-top: 3px;
+                    .icon-information {
+                        margin-left: 8px;
+                        color: var(--primary-color);
+                    }
+                }
+            }
+        }
+    }
+    ::ng-deep .p-field-radiobutton {
+        display: flex;
+        align-items: center;
+        label {
+            margin-bottom: 0;
+            margin-left: 10px;
+            font-size: 14px !important;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        & + .p-field-radiobutton {
+            margin-top: 18px;
+        }
+        .p-radiobutton-icon {
+            width: 8px;
+            height: 8px;
+            background-color: var(--dark-black-color);
+        }
+        .p-radiobutton-box {
+            border-color: var(--dark-black-color) !important;
+            &.p-highlight {
+                border-color: var(--dark-black-color);
+                background-color: transparent;
+                box-shadow: none;
+                &:hover {
+                    background-color: transparent;
+                }
+            }
+        }
+    }
+    ::ng-deep .selectField {
+        @media screen and (min-width: 768px) {
+            min-width: 200px;
+        }
+        .p-dropdown {
+            gap: 5px;
+        }
+        .p-dropdown-label {
+            text-align: left;
+        }
+        ul {
+            text-align: left;
+        }
+    }
+    ::ng-deep .user-toast {
+        .pi-info-circle {
+            font-size: 2rem;
+            color: var(--secondary-color2);
+        }
+        .p-toast-icon-close {
+            width: 4rem;
+            color: var(--secondary-color2);
+        }
+        .p-toast-message {
+            background-color: #fff;
+            border-color: var(--primary-color);
+
+            p {
+                margin-left: 20px;
+                color: var(--title-clr);
+            }
+        }
+    }
+}
+
+.user-btn-wrapper {
+    min-width: 0;
+    @media screen and (max-width: 767px) {
+        gap: 5px;
+    }
+    @media screen and (max-width: 575px) {
+        flex-wrap: wrap;
+    }
+
+    .report-actions {
+        flex: 0 1 260px;
+        min-width: 0;
+        @media screen and (max-width: 575px) {
+            flex-basis: 100%;
+        }
+    }
+}
+
+.subs-user-txt {
+    font-size: 13px;
+    font-weight: 400;
+    margin-top: -3px;
+    color: var(--dk-gray-clr);
+    @media screen and (max-width: 767px) {
+        br {
+            display: none;
+        }
+    }
+}
+.cb-heading {
+    color: #000000;
+}
+
+.sales-report-btn {
+    background-color: var(--Whitesmoke-clr);
+    border: none;
+    color: var(--dk-gray-clr);
+    font-weight: 500;
+    justify-content: center;
+}
+
+::ng-deep .p-tree .p-tree-container .p-treenode:focus > .p-treenode-content {
+    box-shadow: none !important;
+}

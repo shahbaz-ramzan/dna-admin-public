@@ -1,0 +1,21 @@
+<div class="legacyCard w-100">
+    <app-loading-spinner *ngIf="loading"></app-loading-spinner>
+    <h3 data-testId="title" class="fs-6 fw-bold mb-3">Legacy Reports</h3>
+    <p>
+        This user completed their discovery in the previous DNA Admin System. The following reports are available for you to review as a historical reference.
+    </p>
+    <div data-testId="content" class="legacy-list">
+        <ul>
+            <ng-container *ngFor="let report of reportsList">
+                <li>
+                    <a [href]="report.blobLink" target="_blank" styleClass="p-button-link">{{ report?.label }}</a>
+                </li>
+            </ng-container>
+        </ul>
+    </div>
+    <p class="click-text">
+        Please note that the insights have been updated in this platform and will differ from the insights shown in the above PDF files.
+        <a href="https://kb.dnabehavior.com/gene/periodic-updates-to-dna-insight-algorithms" target="_blank">Click here</a>
+        to learn more about how we update insights.
+    </p>
+</div>

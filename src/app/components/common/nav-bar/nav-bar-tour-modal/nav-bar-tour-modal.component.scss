@@ -1,0 +1,186 @@
+:host {
+    ::ng-deep .tutsModal {
+        .p-dialog {
+            max-width: 540px;
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .p-dialog-header {
+            padding: 0.5rem !important;
+        }
+        .p-dialog-footer {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        /* Ensure Skip is left, Take the Tour is right */
+        .p-dialog-footer .skip-btn {
+            order: 1;
+            background-color: #dadada !important;
+            border-color: #dadada !important;
+            color: #000 !important;
+            font-size: 20px !important;
+            font-weight: 500 !important;
+            height: 45px !important;
+            min-width: 120px !important;
+        }
+        .p-dialog-footer .nextBtn {
+            order: 2;
+            margin-left: auto;
+
+            ::ng-deep .p-button {
+                font-size: 20px !important;
+                font-weight: 500 !important;
+                height: 45px !important;
+                min-width: 120px !important;
+            }
+
+            ::ng-deep .p-button-label {
+                font-size: 20px !important;
+                font-weight: 500 !important;
+            }
+        }
+        .p-dialog-footer .get-started-btn {
+            background-color: var(--primary-color) !important;
+            border-color: var(--primary-color) !important;
+            color: #fff !important;
+            font-size: 20px !important;
+            font-weight: 500 !important;
+        }
+        video {
+            width: 100%;
+            height: 280px !important;
+            border-radius: 8px;
+        }
+
+        &.single-footer {
+            .p-dialog-footer {
+                display: flex;
+                justify-content: center;
+            }
+        }
+    }
+}
+
+.modal-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    color: #333;
+}
+
+.modal-content {
+    font-size: 16px;
+    text-align: center;
+    margin-top: 2rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+// App Walkthrough Modal Styles
+:host {
+    ::ng-deep .app-walkthrough-modal {
+        .p-dialog {
+            max-width: 500px;
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .p-dialog-header {
+            padding: 1.5rem 1.5rem 0.5rem 1.5rem !important;
+            border-bottom: none !important;
+
+            h4 {
+                font-size: 20px;
+                font-weight: 700;
+                color: #333;
+                margin: 0;
+            }
+        }
+
+        .p-dialog-content {
+            padding: 1rem 1.5rem !important;
+
+            .modal-content {
+                margin-top: 0;
+
+                .tour-selection {
+                    .radio-group {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 1rem;
+
+                        .radio-item {
+                            display: flex;
+                            align-items: center;
+                            gap: 0.75rem;
+
+                            .p-radiobutton {
+                                margin: 0;
+
+                                .p-radiobutton-box {
+                                    border-color: #666 !important;
+                                    background-color: #fff !important;
+
+                                    &:not(.p-disabled):hover {
+                                        border-color: #333 !important;
+                                    }
+
+                                    &.p-highlight {
+                                        border-color: #333 !important;
+                                        background-color: #fff !important;
+
+                                        .p-radiobutton-icon {
+                                            background-color: #333 !important;
+                                        }
+                                    }
+                                }
+                            }
+
+                            .radio-label {
+                                font-size: 16px;
+                                font-weight: 500;
+                                color: #333;
+                                cursor: pointer;
+                                margin: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .p-dialog-footer {
+            padding: 0.5rem 1.5rem 1.5rem 1.5rem !important;
+            border-top: none !important;
+            display: flex;
+            justify-content: flex-end;
+
+            .save-btn {
+                background-color: var(--primary-color) !important;
+                border-color: var(--primary-color) !important;
+                color: #fff !important;
+                font-size: 16px !important;
+                font-weight: 600 !important;
+                padding: 0.75rem 2rem !important;
+                border-radius: 6px !important;
+                min-width: 100px !important;
+
+                &:hover {
+                    background-color: var(--primary-color) !important;
+                    border-color: var(--primary-color) !important;
+                    opacity: 0.9;
+                }
+
+                &:focus {
+                    background-color: var(--primary-color) !important;
+                    border-color: var(--primary-color) !important;
+                    box-shadow: 0 0 0 0.2rem rgba(var(--primary-color-rgb), 0.25) !important;
+                }
+            }
+        }
+    }
+}

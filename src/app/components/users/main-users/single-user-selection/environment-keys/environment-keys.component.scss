@@ -1,0 +1,16 @@
+.enCard {
+    min-height: 100%;
+    h3 {
+        font-size: 1.125rem;
+        line-height: 1;
+        color: var(--title-clr);
+    }
+    ul {
+        padding-left: 20px;
+        li {
+            color: var(--cm-gray-clr);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+    }
+}

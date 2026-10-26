@@ -1,0 +1,28 @@
+<!-- <app-loading-spinner *ngIf="loading"></app-loading-spinner> -->
+
+<div *ngIf="!loading">
+    <h4>Next, let's get the labels right.</h4>
+    <div ngClass="form-group mw-420">
+        <label>What do you call people your business serves?</label>
+        <p-dropdown
+            #label="ngModel"
+            [(ngModel)]="selectedLabel"
+            (onChange)="getLabelName()"
+            inputId="dropdown"
+            [options]="labels"
+            [autoDisplayFirst]="false"
+            placeholder="Select Label"
+            optionLabel="name"
+            ngClass="p-dropdown"
+            [ngStyle]="{
+                'border-color': (isValidationChecked && !isLabelValid) || (isValidationChecked && label.touched && !isLabelValid) ? 'red' : ''
+            }"
+        >
+        </p-dropdown>
+
+        <span style="color: red" *ngIf="(isValidationChecked && !isLabelValid) || (isValidationChecked && label.touched && !isLabelValid)">
+            Please Select Label<br />
+        </span>
+        <small ngClass="form-group-helper">This will be used to personalize your Account and can be changed in the Account Settings later.</small>
+    </div>
+</div>

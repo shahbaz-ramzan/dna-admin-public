@@ -1,0 +1,10 @@
+<div [ngClass]="'mainWrapper'">
+    <div [ngClass]="'settingsWrapper'">
+        <div [ngClass]="'sideBar'">
+            <p-menu [model]="items"></p-menu>
+        </div>
+        <div [ngClass]="'cntWrapper'">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,173 @@
+<div class="navbar-container" #headerContainer>
+    <div [ngClass]="'navBar'" [class.with-banner]="isBannerVisible">
+        <div [ngClass]="'logoWrap align-center'">
+            <app-loading-spinner *ngIf="allAccountsLoading && !allAccounts?.length"></app-loading-spinner>
+            <p-dropdown
+                data-testId="logo-dropdown"
+                [options]="allAccounts"
+                [(ngModel)]="selectedAccount"
+                optionLabel="accountName"
+                [filter]="allAccounts.length > 5 ? true : false"
+                filterBy="accountId"
+                placeholder="Select an account"
+                class="logo-dropdown"
+                id="switch-account"
+                filterPlaceholder="Account ID"
+                (onChange)="onSelectionChanged($event)"
+                *ngIf="allAccounts?.length"
+            >
+                <ng-template pTemplate="selectedItem">
+                    <div data-testId="logo" *ngIf="selectedAccount">
+                        <a class="api-logo-wrap" href="/"><img src="{{ coBrandLogo }}" alt="Logo" /></a>
+                    </div>
+                </ng-template>
+                <ng-template let-account pTemplate="item">
+                    <div class="menuitem-text">
+                        <img *ngIf="account.cobrandingLogoPath; else defaultLogo" src="{{ account.cobrandingLogoPath }} " alt="" />
+                        <ng-template #defaultLogo>
+                            <img src="../../../../assets/images/logo.svg" alt="" />
+                        </ng-template>
+                        <div class="dropDownTxt">{{ account.accountName }}</div>
+                        <div *ngIf="account.isDefault" class="default-account">Default</div>
+                    </div>
+                </ng-template>
+            </p-dropdown>
+        </div>
+        <p-menubar data-testId="menu" [ngClass]="'menu-bar'" [model]="items1"></p-menubar>
+        <div [ngClass]="'navRight'">
+            <span class="headerSearch" *ngIf="permissionObject['Page-Search-All-Accounts']">
+                <em class="icon-search"></em>
+                <p-autoComplete
+                    data-testId="searchbar"
+                    [suggestions]="filteredUsers"
+                    (completeMethod)="filterUser()"
+                    (keyup.enter)="searcMultipleAccounts()"
+                    [(ngModel)]="query"
+                    placeholder="Search All Accounts"
+                    class="navSearch"
+                    field="name"
+                ></p-autoComplete>
+                <ng-container *ngIf="true">
+                    <!--Search button will be visible on the bases of search all account-->
+                    <button
+                        data-testId="search-btn"
+                        pButton
+                        type="button"
+                        class="p-button-sm search-btn"
+                        label="Search"
+                        (click)="searcMultipleAccounts()"
+                    ></button>
+                </ng-container>
+            </span>
+            <div class="d-flex align-items-center">
+                <em
+                    data-testId="help-center-icon"
+                    (click)="helpBar = true"
+                    class="icon-info"
+                    id="nav-help-icon"
+                    pTooltip="Help Center"
+                    tooltipPosition="right"
+                    tooltipEvent="hover"
+                    *ngIf="permissionObject['Page-Help']"
+                ></em>
+                <p-menu #notisfication [ngClass]="'notify-menu'" [popup]="true" [model]="notify"></p-menu>
+                <button type="button" pButton pRipple icon="pi pi-angle-down" class="userDropdown profile-dp p-button-link" (click)="menu.toggle($event)">
+                    <div [ngClass]="'userAvatar'">
+                        <p-avatar data-testId="avatar" image="{{ image }}" size="normal" shape="circle"> </p-avatar>
+                        <p>{{ userName }}</p>
+                    </div>
+                </button>
+                <p-menu data-testId="profile-menu" #menu [ngClass]="'Accounts'" [popup]="true" [model]="items2"></p-menu>
+            </div>
+        </div>
+    </div>
+    <!-- Banner feature disabled -->
+</div>
+
+<p-sidebar class="sidebarMenu helpBar" position="right" [showCloseIcon]="false" [(visible)]="helpBar" [visible]="false">
+    <div class="filterHeader d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center">
+            <i class="icon-info"></i>
+            <h5 class="mb-0 ms-3 fw-bold">Help</h5>
+        </div>
+        <button type="button" pButton pRipple (click)="helpBar = false" icon="pi pi-times" class="p-button-rounded p-button-text p-button-plain"></button>
+    </div>
+    <ul class="helpTrLink list-unstyled">
+        <li>
+            <a href="https://kb.dnabehavior.com/gene" target="_blank"><span>App Help Center</span> </a>
+            <a href="https://kb.dnabehavior.com/gene" target="_blank"><i class="icon-external-link"></i></a>
+        </li>
+        <li>
+            <a href="https://kb.dnabehavior.com/gene/knowledge" target="_blank"><span>DNA Knowledge</span> </a>
+            <a href="https://kb.dnabehavior.com/gene/knowledge" target="_blank"><i class="icon-external-link"> </i></a>
+        </li>
+        <!-- <li>
+            <a href="https://roadmap.dnabehavior.com" target="_blank"><span>App Feedback</span> </a>
+            <a href="https://roadmap.dnabehavior.com" target="_blank"><i class="icon-external-link"> </i></a>
+        </li> -->
+        <li>
+            <a href="https://dnabehavior.com/help" target="_blank"><span>Submit a Ticket</span> </a>
+            <a href="https://dnabehavior.com/help" target="_blank"><i class="icon-external-link"> </i></a>
+        </li>
+
+        <li>
+            <a><span (click)="tourModal.onAppWalkthroughClick()">Take the Tour Again</span> </a>
+        </li>
+        <!-- <li>
+            <a><span id="nav-video-modal-trigger" (click)="displayTutorial()">DNA App Tour</span> </a>
+        </li> -->
+
+        <!-- <li>
+            <a><span (click)="displayChatbot()">My Chatbot</span> </a>
+        </li> -->
+        <!-- <li>
+      <a href="https://businessdna.com/" target="_blank"
+        ><span>www.businessdna.com</span><i class="icon-external-link"></i
+      ></a>
+    </li> -->
+    </ul>
+</p-sidebar>
+
+<app-nav-bar-tour-modal #tourModal [personId]="personId" [permissionObject]="permissionObject" (closeHelpMenu)="helpBar = false"></app-nav-bar-tour-modal>
+
+<p-dialog
+    header="Error"
+    [(visible)]="errorMessage"
+    (onHide)="onErrorDialogHide()"
+    [modal]="true"
+    class="dna-modal manageTagModal"
+    [baseZIndex]="10000"
+    [draggable]="false"
+    [resizable]="false"
+>
+    <div [innerHTML]="errorMessage"></div>
+    <div *ngIf="allAccounts && allAccounts.length > 1" class="error-account-switcher">
+        <p>Switch to a different account:</p>
+        <p-dropdown
+            [options]="allAccounts"
+            [(ngModel)]="selectedAccount"
+            optionLabel="accountName"
+            [filter]="allAccounts.length > 5 ? true : false"
+            filterBy="accountId"
+            filterPlaceholder="Account ID"
+            placeholder="Select an account"
+            appendTo="body"
+            panelStyleClass="error-dialog-dropdown-panel"
+            (onChange)="onErrorDialogAccountChange($event)"
+        >
+            <ng-template let-account pTemplate="item">
+                <div class="menuitem-text">
+                    <img *ngIf="account.cobrandingLogoPath; else errorDefaultLogo" src="{{ account.cobrandingLogoPath }}" alt="" />
+                    <ng-template #errorDefaultLogo>
+                        <img src="../../../../assets/images/logo.svg" alt="" />
+                    </ng-template>
+                    <div class="dropDownTxt">{{ account.accountName }}</div>
+                    <div *ngIf="account.isDefault" class="default-account">Default</div>
+                </div>
+            </ng-template>
+        </p-dropdown>
+    </div>
+    <ng-template pTemplate="footer">
+        <button pButton (click)="onManageSubscriptionClick()" label="Manage Subscription" class="primary-btn"></button>
+    </ng-template>
+</p-dialog>

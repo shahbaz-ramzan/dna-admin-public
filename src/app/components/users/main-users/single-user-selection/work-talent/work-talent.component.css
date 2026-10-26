@@ -1,0 +1,37 @@
+:host ::ng-deep .workTlntRlt h3 {
+    color: var(--title-clr);
+}
+:host ::ng-deep .workTlntRlt .p-knob-text {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #12131a;
+}
+@media screen and (max-width: 1199px) {
+    :host ::ng-deep .workTlntRlt .khnobWrap {
+        flex-direction: column;
+        text-align: center;
+    }
+    :host ::ng-deep .workTlntRlt .khnobWrap .ps-4 {
+        padding-left: 0 !important;
+    }
+}
+:host ::ng-deep .workTlntRlt .khnobWrap h4 {
+    font-size: 1.125rem;
+    margin-bottom: 2px;
+    color: var(--title-clr);
+}
+:host ::ng-deep .workTlntRlt .khnobWrap h4 .sp1 {
+    color: var(--secondary-color);
+}
+:host ::ng-deep .workTlntRlt .khnobWrap h4 .sp2 {
+    color: var(--primary-color);
+}
+:host ::ng-deep .workTlntRlt .khnobWrap p {
+    font-size: 0.875rem;
+    font-weight: 400;
+    margin-bottom: 0;
+    color: var(--cm-gray-clr);
+}
+:host ::ng-deep .workTlntRlt .khnobWrap + .khnobWrap {
+    margin-top: 22px;
+} /*# sourceMappingURL=work-talent.component.css.map */

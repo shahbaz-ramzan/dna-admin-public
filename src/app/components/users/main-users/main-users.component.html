@@ -1,0 +1,314 @@
+<p-confirmPopup ngClass="user-confirm-popup"></p-confirmPopup>
+<div class="users-page-wrapper">
+    <i
+        class="icon-switch show"
+        [ngClass]="status ? 'full-bar' : 'side-bar'"
+        role="button"
+        tabindex="0"
+        (click)="handleSidebarStatus()"
+        (keydown.enter)="handleSidebarStatus()"
+    ></i>
+
+    <div class="users-table" [ngClass]="status ? 'full-bar' : 'side-bar'">
+        <div class="u-inner-row">
+            <div class="tags-filter-wrap mb-4">
+                <i
+                    [ngClass]="selectedItems?.length > 0 ? 'icon-switch' : 'icon-switch disabled-switch'"
+                    role="button"
+                    tabindex="0"
+                    (click)="handleSidebarStatus()"
+                    (keydown.enter)="handleSidebarStatus()"
+                    disabled="true"
+                ></i>
+                @if (permissionObject['Feature-User-Card-Filter']) {
+                    <p-avatar
+                        id="filter-btn"
+                        data-testId="user-avatar"
+                        icon="pi pi-sliders-v"
+                        severity="danger"
+                        role="button"
+                        tabindex="0"
+                        (click)="showFilterModal()"
+                        (keydown.enter)="showFilterModal()"
+                        class="filterIcon"
+                    ></p-avatar>
+                }
+
+                @if (permissionObject['Feature-User-Search']) {
+                    <div class="p-input-icon-left ms-2 search-input">
+                        <i class="pi pi-search"></i>
+                        <input
+                            id="search-input"
+                            name="users-search-query"
+                            data-testId="search-input"
+                            type="text"
+                            aria-label="Search"
+                            autocomplete="off"
+                            [(ngModel)]="searchUserFilter"
+                            (keyup.enter)="searchUser()"
+                            (input)="usersTableSearch($event.target)"
+                            pInputText
+                            placeholder="Search"
+                        />
+                    </div>
+                    <button data-testId="search-btn" pButton type="button" (click)="searchUser()" class="search-btn" label="Search"></button>
+                }
+                @if (!isAllaccountsList && usersList.length) {
+                    <button
+                        id="download-btn"
+                        data-testId="download-btn"
+                        pButton
+                        type="button"
+                        [icon]="'icon-download'"
+                        (click)="downloadData()"
+                        class="search-btn download-btn"
+                        iconPos="right"
+                    ></button>
+                }
+                <!-- Hide digital scan button when user doesn't have Digital-Scan permission -->
+                @if (permissionObject['Digital-Scan']) {
+                    <button id="digital-scan-btn" pButton type="button" (click)="showDialog()" class="search-btn ms-3" label="Scan"></button>
+                }
+            </div>
+
+            <div class="user-tag-wrap">
+                @for (user of tagUsersList; track user.personID) {
+                    <div class="clientBadge" pTooltip="{{ user.firstName }} {{ user.lastName }}" tooltipPosition="top">
+                        <span>{{ user.firstName }} {{ user.lastName }}</span>
+                        <button
+                            pButton
+                            pRipple
+                            type="button"
+                            icon="pi pi-times"
+                            class="p-button-rounded p-button-danger p-button-text"
+                            (click)="removeUser(user.personID)"
+                        ></button>
+                    </div>
+                }
+            </div>
+            @if (getUsersListLoading || deleteUserLoading) {
+                <app-loading-spinner></app-loading-spinner>
+            }
+
+            <div id="dnaTable" class="userTable" [class.table-loading]="getUsersListLoading">
+                <p-table
+                    id="participants-table"
+                    data-testId="user-table"
+                    #usersTable
+                    [value]="usersList"
+                    [paginator]="totalPages > 1 || currentPage > 1 ? true : false"
+                    [rows]="10"
+                    [first]="(currentPage - 1) * 10"
+                    [lazy]="true"
+                    [totalRecords]="totalRecords"
+                    (onLazyLoad)="loadMoreUsers($event)"
+                    [globalFilterFields]="['firstName', 'lastName', 'uniqueStyle', 'accountName']"
+                    selectionMode="multiple"
+                    [(selection)]="selectedItems"
+                    (selectionChange)="getSelectedItems()"
+                    [rowSelectable]="isRowSelectable"
+                >
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th scope="col">
+                                <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                            </th>
+
+                            <th scope="col" pSortableColumn="firstName">
+                                First Name
+                                <i class="icon-sort"></i>
+                            </th>
+
+                            <th scope="col" pSortableColumn="lastName">
+                                Last Name
+                                <i class="icon-sort"></i>
+                            </th>
+
+                            <th scope="col" pSortableColumn="uniqueStyle">
+                                Unique Style
+                                <i class="icon-sort"></i>
+                            </th>
+
+                            <th scope="col" pSortableColumn="accountName">
+                                Account
+                                <i class="icon-sort"></i>
+                            </th>
+                            <th scope="col"></th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-data let-index>
+                        <tr
+                            [pTooltip]="
+                                !data.uniqueStyle
+                                    ? '<strong>' + data.mail + '</strong><br>Discovery not completed for this participant'
+                                    : 'You need to check the checkbox to view people details.'
+                            "
+                            [escape]="false"
+                            tooltipPosition="top"
+                            tooltipEvent="hover"
+                        >
+                            <td>
+                                <p-tableCheckbox
+                                    [id]="index === 0 ? 'participant-checkbox' : null"
+                                    class="participant-checkbox-item"
+                                    [value]="data"
+                                    [disabled]="!data.uniqueStyle"
+                                ></p-tableCheckbox>
+                                <!-- {{log(selectedI)}} -->
+                            </td>
+                            <td>
+                                <span class="img-wrap">
+                                    <img
+                                        [src]="data.profilePictureUrl ? data.profilePictureUrl : '../../../../assets/images/profile.svg'"
+                                        alt="icon"
+                                        width="35"
+                                        height="35"
+                                        style="border-radius: 50%"
+                                    />
+                                    @if (data.isDigitalScanV1_5Imported) {
+                                        <i class="icon-stars" pTooltip="Results Predicted with Digital Scan" tooltipPosition="right"></i>
+                                    }
+                                    <span class="table-text-warp">{{ data.firstName }}</span>
+                                </span>
+                            </td>
+                            <td>
+                                <span class="table-text-warp">{{ data.lastName }}</span>
+                            </td>
+                            <td>
+                                <span class="table-text-warp">{{ data.uniqueStyle }}</span>
+                            </td>
+                            <td>
+                                <span class="table-text-warp">{{ data.accountName }}</span>
+                            </td>
+                            <td>
+                                <button
+                                    [id]="index === 0 ? 'participant-delete-btn' : null"
+                                    (click)="deleteUserConfirmation($event, data)"
+                                    [disabled]="deleteUserLoading"
+                                    pButton
+                                    pRipple
+                                    type="button"
+                                    icon="pi pi-trash"
+                                    class="p-button-rounded p-button-text p-button-danger participant-delete-item"
+                                ></button>
+                            </td>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="emptymessage">
+                        @if (!getUsersListLoading) {
+                            <tr class="no-border-row">
+                                <td colspan="6" class="empty-state-cell">
+                                    <div class="w-100 d-flex justify-content-center align-items-center no-user-data table-empty-state">
+                                        <img src="/assets/images/no-user-data.png" alt="" />
+                                        <h4>No {{ systemLabels.participantLabelName }}s Found</h4>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+    </div>
+    <div class="user-details" [ngClass]="status ? 'full-content' : 'side-content'">
+        @if (selectedPersons.length === 0) {
+            <div class="w-100 d-flex justify-content-center align-items-center no-user-data">
+                <img src="/assets/images/no-user-data.png" alt="" />
+                <h4>No {{ systemLabels.participantLabelName }} Selected</h4>
+                <p class="insight-text-desktop">Select {{ systemLabels.participantLabelName }}(s) from the left panel to access insights.</p>
+                <p class="insight-text-mobile">Select {{ systemLabels.participantLabelName }}(s) from the top panel to access insights.</p>
+            </div>
+        }
+        @if (selectedPersons.length === 1) {
+            <div class="w-100">
+                <app-single-user-selection
+                    data-testId="singleSelectionComponent"
+                    [personId]="selectedPersons[0]"
+                    [firstName]="selectedItems[0]?.firstName"
+                    [isFullView]="status"
+                ></app-single-user-selection>
+            </div>
+        }
+
+        @if (selectedPersons.length === 2) {
+            <div class="w-100">
+                <span>
+                    <app-double-user-selection
+                        data-testId="doubleSelectionComponent"
+                        [selectedPersons]="selectedPersons"
+                        [selectedUsers]="tagUsersList"
+                        [isFullView]="status"
+                    ></app-double-user-selection>
+                </span>
+            </div>
+        }
+        @if ((selectedPersons && selectedPersons.length) > 2) {
+            <div class="w-100">
+                <app-three-user-selection data-testId="threeSelectionComponent" [selectedPersons]="selectedPersons"></app-three-user-selection>
+            </div>
+        }
+    </div>
+</div>
+
+<app-user-filters-sidebar
+    data-testId="sidebar"
+    [visible]="filtersModal"
+    (visibleChange)="filtersModal = $event"
+    [permissionObject]="permissionObject"
+    [rawTags]="rawTags"
+    [selectedPersons]="selectedPersons"
+    (filtersApplied)="onFiltersApplied($event)"
+    (filtersReset)="onFiltersReset($event)"
+    (filtersHydrated)="onFiltersHydrated($event)"
+></app-user-filters-sidebar>
+<app-customize-theme-modal
+    [(visible)]="customizeModal"
+    [permissionObject]="permissionObject"
+    [accountId]="accountId"
+    (darkModeToggled)="onDarkModeToggled()"
+></app-customize-theme-modal>
+
+<p-dialog
+    header="You have not completed the Natural Behavior Discovery"
+    [(visible)]="discoveryStatusModal"
+    [modal]="true"
+    class="dna-modal disc-modal"
+    [baseZIndex]="10000"
+    [draggable]="false"
+    [resizable]="false"
+>
+    When you view records, we automatically compare you to them. To fully experience the DNA Web App, complete your own discovery by clicking on the button
+    below.
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancel" (click)="discoveryStatusModal = false" class="cancel-btn p-button-secondary p-button-text"></button>
+        <p-button class="save-btn" (onClick)="startDiscovery()" label="Start Discovery"></p-button>
+    </ng-template>
+</p-dialog>
+
+<p-dialog class="digital-scan-modal" header="Digital Scan" [modal]="true" [(visible)]="visible">
+    <app-digital-scan-form
+        #digitalScan
+        [modalVisible]="visible"
+        [digitalScanTourId]="digitalScanTourId"
+        (close)="closeModal()"
+        (refetchUserList)="searchParticipantsByFilters()"
+        (tourCompleted)="onDigitalScanCompleted()"
+    >
+    </app-digital-scan-form>
+</p-dialog>
+
+<app-popover
+    [(visible)]="showInfoDialog"
+    header="User Information"
+    [content]="popoverContent"
+    [popoverButtons]="popoverButtons"
+    (popoverButtonAction)="onPopoverButtonClick($event)"
+></app-popover>
+
+<app-popover
+    [(visible)]="showCompletionDialog"
+    header="Tour Complete"
+    [content]="completionPopoverContent"
+    [popoverButtons]="completionPopoverButtons"
+    (popoverButtonAction)="onPopoverButtonClick($event)"
+></app-popover>

@@ -1,0 +1,19 @@
+.crCard {
+    padding: 20px;
+    border-radius: 6px;
+    border: solid 1px var(--cm-border-clr);
+    min-height: 273px;
+    h3 {
+        font-size: 1.125rem;
+        line-height: 1;
+        color: var(--title-clr);
+    }
+    ul {
+        padding-left: 20px;
+        li {
+            color: var(--cm-gray-clr);
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+    }
+}

@@ -1,0 +1,15 @@
+<div>
+    <app-loading-spinner *ngIf="behaviralBiasesLoading"></app-loading-spinner>
+    <canvas
+        data-testId="horizontal-bar-chart"
+        *ngIf="!behaviralBiasesLoading"
+        height="550"
+        baseChart
+        [data]="barChartData"
+        [options]="options"
+        [type]="'bar'"
+        [legend]="showLegend"
+        [labels]="barChartLabels"
+    >
+    </canvas>
+</div>

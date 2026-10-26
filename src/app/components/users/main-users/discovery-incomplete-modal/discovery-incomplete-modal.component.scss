@@ -1,0 +1,19 @@
+// Matches the existing Discovery modal on the users page (.disc-modal, main-users.component.scss).
+:host ::ng-deep .discovery-incomplete-modal {
+    .p-dialog-header {
+        padding: 20px 28px;
+        .p-dialog-title {
+            line-height: 1.2;
+            font-size: 24px;
+            font-weight: 700;
+            color: #333;
+        }
+    }
+}
+
+.discovery-incomplete-text {
+    margin-bottom: 0;
+    font-size: 1rem;
+    line-height: 1.5;
+    word-break: break-word;
+}

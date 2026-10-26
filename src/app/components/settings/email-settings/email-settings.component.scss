@@ -1,0 +1,39 @@
+.email-setting {
+    max-width: 650px;
+    width: 100%;
+    h5 {
+        margin-bottom: 1rem;
+    }
+    .email-setting-label {
+        font-size: 13px;
+    }
+}
+
+:host {
+    ::ng-deep .switcher-wrap {
+        .brSwitch {
+            line-height: initial;
+            position: relative;
+            top: 4px;
+        }
+        .switch-label {
+            color: var(--dullblue-gray-txt);
+            font-size: 14px;
+            .icon-information {
+                color: var(--primary-color);
+                position: relative;
+                left: 2px;
+                top: 2px;
+            }
+        }
+    }
+    ::ng-deep .email-text-area {
+        max-height: 160px;
+        overflow: auto !important;
+        background-color: var(--white-color);
+        &:hover,
+        &:focus {
+            border-color: var(--primary-color);
+        }
+    }
+}

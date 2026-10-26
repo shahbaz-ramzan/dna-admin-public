@@ -1,0 +1,31 @@
+:host ::ng-deep .workTlntRlt h3 {
+    font-size: 1rem;
+    line-height: 1;
+    color: var(--title-clr);
+}
+:host ::ng-deep .workTlntRlt .f-dnaTxt {
+    font-size: 12px;
+}
+:host ::ng-deep .workTlntRlt .khnobWrap h4 {
+    font-size: 1.125rem;
+    margin-bottom: 2px;
+    color: var(--dark-blue-txt);
+}
+:host ::ng-deep .workTlntRlt .khnobWrap p {
+    font-size: 0.875rem;
+    font-weight: 400;
+    margin-bottom: 0;
+    color: var(--dk-gray-clr);
+}
+:host ::ng-deep .workTlntRlt .khnobWrap + .khnobWrap {
+    margin-top: 8px;
+}
+@media screen and (max-width: 1199px) {
+    :host ::ng-deep .workTlntRlt .khnobWrap {
+        flex-direction: column;
+        text-align: center;
+    }
+    :host ::ng-deep .workTlntRlt .khnobWrap .ps-4 {
+        padding-left: 0 !important;
+    }
+} /*# sourceMappingURL=financial-dna-score.component.css.map */

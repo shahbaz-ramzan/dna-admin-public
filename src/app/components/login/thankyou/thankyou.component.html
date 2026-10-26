@@ -1,0 +1,23 @@
+<app-loading-spinner *ngIf="loading && !redirecting"></app-loading-spinner>
+
+<div class="dna-spinner" *ngIf="redirecting">
+    <div class="spinner">
+        <p-progressSpinner id="progress-spinner"></p-progressSpinner>
+        <p>Fetching Account Information...</p>
+    </div>
+</div>
+<div ngClass="verified-email-wrap" *ngIf="!redirecting">
+    <div class="app-logo">
+        <img src="assets/images/site-logo.svg" alt="" />
+    </div>
+    <div ngClass="verified-email-card">
+        <img ngClass="verify-email-icon" src="assets/images/verify-email-icon.svg" alt="" />
+        <h2>Verify Your Email</h2>
+        <p>
+            In order to start using your DNA Behavior account, you need to confirm your email address. We have sent an email containing login details to the
+            address you provided. Access that email and continue to the Login page below.
+        </p>
+        <button (click)="login()" class="btn btn-orange primaryButton">Login</button>
+    </div>
+    <footer ngClass="verify-email-footer">&copy; 2001-{{ currentYear }} All Rights Reserved. DNA Behavior&reg;.</footer>
+</div>

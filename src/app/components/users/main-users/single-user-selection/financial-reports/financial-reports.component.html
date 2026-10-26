@@ -1,0 +1,93 @@
+<div class="reportsCard w-100 position-relative">
+    <app-loading-spinner *ngIf="loading"></app-loading-spinner>
+    <h3 data-testId="title" class="fs-6 fw-bold">Reports</h3>
+
+    <ul data-testId="reports" *ngFor="let financialReport of financialReports | slice: 0 : 4" class="reportsdButtons list-unstyled">
+        <li>
+            <button class="reportsBtn" style="text-decoration: none" (click)="goToReport()">
+                <i class="icon icon-reports"></i>
+                {{ financialReport.title }}
+                <i class="icon-download"></i>
+            </button>
+        </li>
+    </ul>
+
+    <div class="text-center w-100">
+        <p-dialog
+            header="Reports"
+            [(visible)]="displayModal"
+            [modal]="true"
+            class="dna-modal reportModal"
+            [baseZIndex]="10000"
+            [draggable]="false"
+            [resizable]="false"
+        >
+            <ul class="reportsdButtons reportsMListng list-unstyled">
+                <li *ngFor="let financialReport of financialReports">
+                    <div class="reportsBtn">
+                        <span>
+                            <i class="icon icon-reports"></i>
+                            {{ financialReport.title }}
+                        </span>
+                        <a
+                            *ngIf="financialReport.isExternalLink; else routerLink"
+                            style="text-decoration: none"
+                            href="{{ financialReport.link }}"
+                            target="_blank"
+                        >
+                            <i class="icon-download"></i>
+                        </a>
+                        <ng-template #routerLink>
+                            <a [routerLink]="['/', financialReport.link]" queryParamsHandling="preserve" style="text-decoration: none" target="_self">
+                                <i class="icon-download"></i>
+                            </a>
+                        </ng-template>
+                    </div>
+                </li>
+            </ul>
+        </p-dialog>
+    </div>
+</div>
+
+<p-dialog
+    header="Select Team Name & Leader"
+    [modal]="true"
+    class="dna-modal reportModal leaderModal"
+    [baseZIndex]="10000"
+    [draggable]="false"
+    [resizable]="false"
+    [(visible)]="leaderModal"
+>
+    <app-loading-spinner *ngIf="loading"></app-loading-spinner>
+    <div class="leader-field-warp">
+        <div class="cntBox p-0 mb-3">
+            <label class="headLabel">Team Name</label>
+            <input ngModel required placeholder="Enter Team Name" id="tname" name="teamName" type="text" value="label" [(ngModel)]="teamName" pInputText />
+        </div>
+        <label class="headLabel">Choose Leader</label>
+        <ul class="reportsdButtons leaderListing reportsMListng list-unstyled">
+            <li *ngFor="let participant of selectedParticipants">
+                <div class="reportsBtn">
+                    <p-radioButton class="p-field-radiobutton" name="groupname" [value]="participant.id" [(ngModel)]="leader"></p-radioButton>
+                    <label [for]="participant.id">{{ participant?.firstName }} {{ participant?.lastName }}</label>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="d-flex justify-content-center">
+        <a
+            pButton
+            [ngClass]="{
+                exportBtn: true,
+                'disabled-link': leader === undefined || teamName === undefined || teamName === ''
+            }"
+            label="Generate Report"
+            [routerLink]="[root, financialReports[0].link]"
+            [queryParams]="{ leader: leader, team: teamName }"
+            queryParamsHandling="merge"
+            style="text-decoration: none"
+            target="_self"
+        >
+        </a>
+    </div>
+</p-dialog>

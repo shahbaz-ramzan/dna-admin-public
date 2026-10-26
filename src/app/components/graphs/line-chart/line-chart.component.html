@@ -1,0 +1,17 @@
+<div class="dashboardGraphContainer">
+    <canvas
+        data-chartId="line-chart"
+        #myCanvas
+        baseChart
+        width="100%"
+        height="450"
+        [data]="lineChartData"
+        [labels]="lineChartLabels"
+        [options]="lineChartOptions"
+        [legend]="lineChartLegend"
+        [type]="'line'"
+    >
+    </canvas>
+    <!-- {{log()}} -->
+</div>
+<!-- [colors]="lineChartColors" -->

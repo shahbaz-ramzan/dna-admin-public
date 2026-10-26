@@ -1,0 +1,982 @@
+<!doctype html>
+<html>
+  <head>
+    <title></title>
+    <style>
+      body {
+      margin: 0;
+      font-size: 10px;
+      font-family: 'Calibri';
+      background: #f5f6fa;
+      box-sizing: border-box;
+    }
+    table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border-radius: 0;
+    width: 100%;
+    font-size: 14px;
+  }
+  @media print {
+  .page-break {
+  display: block;
+  page-break-before: always;
+}
+}
+td {
+font-weight: 500;
+}
+.text-center {
+text-align: center;
+}
+.text-left {
+text-align: left;
+}
+.text-right {
+text-align: right;
+}
+.uppercase {
+text-transform: uppercase;
+}
+.insight-table {
+margin-bottom: 2rem;
+}
+.insight-table th {
+/* background-color: pri; */
+color: white;
+font-size: 16px;
+padding: 8px;
+}
+.insight-table td {
+font-weight: 500;
+}
+.bg-semidark {
+background-color: #d0d8e8;
+color: black;
+}
+
+.bg-medium-dark {
+background-color: #376092;
+color: white;
+}
+
+.bg-semilight {
+background-color: #e9edf4;
+color: black;
+}
+.bg-darkish {
+background-color: #1a3462;
+color: white;
+}
+
+.insight-table td {
+padding: 6px;
+font-size: 14px;
+}
+.portfolio-table {
+margin-bottom: 1rem;
+}
+
+.portfolio-table th {
+padding: 6px;
+vertical-align: top;
+}
+
+.portfolio-table td {
+text-align: center;
+}
+.vertical-align-top {
+vertical-align: top;
+}
+.portfolio-anylasis-table th {
+color: white;
+padding: 6px;
+font-size: 10px;
+vertical-align: top;
+}
+
+.portfolio-anylasis-table td {
+padding: 6px;
+vertical-align: top;
+font-size: 12px;
+font-weight: 500;
+}
+.potential-table th {
+color: white;
+padding: 6px;
+font-size: 10px;
+text-align: center;
+}
+
+.potential-table td {
+padding: 6px;
+font-size: 11px;
+}
+.border {
+border-top: 20px solid;
+}
+.p-r-0 {
+padding-right: 0 !important;
+}
+.ps-0 {
+padding-left: 0 !important;
+}
+.ps-40 {
+padding-left: 40px;
+}
+.spacer-20 {
+height: 12px;
+}
+.spacer-40 {
+height: 40px;
+}
+.spacer {
+height: 30px;
+}
+.spacer-50 {
+height: 50px;
+}
+.block {
+display: block;
+}
+
+.mb-35 {
+margin-bottom: 35px;
+}
+.m-0 {
+margin: 0;
+}
+.p-0 {
+padding: 0;
+}
+.fs-14 {
+font-size: 14px;
+}
+.reports-wrapper {
+padding-bottom: 24px;
+}
+.reports-wrapper > :last-child {
+margin-bottom: 0;
+}
+.reports-header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 30px 20px;
+background: white;
+margin-bottom: 40px;
+}
+.report-title .icon-arrow-left {
+font-size: 16px;
+color: #7e84a3;
+}
+.reports-header button {
+background: var(--primary-color);
+border-color: var(--primary-color);
+}
+.page-wrapper {
+width: 610px;
+min-height: 790px;
+padding: 20px;
+margin: 0 auto 24px;
+background-color: #fff;
+position: relative;
+}
+
+.page-wrapper td.primary-color-box {
+height: 32px;
+width: 23px;
+background: #003366;
+}
+.page-wrapper .main-heading {
+font-size: 16px;
+font-weight: 700;
+color: #003366;
+padding-left: 16px;
+}
+.page-wrapper p {
+line-height: 17px;
+color: #000;
+}
+.page-wrapper p,
+.page-wrapper ul li,
+.labled-list ul li {
+line-height: 17px;
+color: #000;
+font-size: 14px;
+}
+.page-wrapper a {
+color: #000000;
+}
+.page-wrapper ul {
+margin-top: 0;
+padding-left: 25px;
+margin-bottom: 5px;
+}
+
+h5 {
+font-size: 1.25rem;
+margin: 0 0 8px 0;
+}
+
+h6 {
+font-size: 1rem;
+margin: 0;
+font-weight: 600;
+}
+.page-wrapper h5 {
+font-weight: 700;
+font-size: 14px;
+color: #000000;
+}
+.page-wrapper ul li {
+margin-bottom: 3px;
+}
+
+.page-footer {
+position: absolute;
+left: 0;
+right: 0;
+bottom: 0;
+width: 100%;
+padding: 0 4px;
+text-align: center;
+box-sizing: border-box;
+background-color: #fff;
+border-top: solid 2px #979797;
+}
+.page-footer table {
+width: 100%;
+font-size: 10px;
+}
+.page-footer td {
+color: #979797;
+padding: 10px;
+}
+
+.pattren-banner {
+height: 210px;
+padding: 0 15px;
+background-image: url(../../../../../assets/images/pattren-img.jpg);
+background-repeat: repeat;
+}
+.pattren-banner p {
+background-color: #fff;
+padding: 16px;
+border: solid 1px #000;
+}
+.report-card {
+padding: 45px 38px;
+border-top: solid 10px #003366;
+border-bottom: solid 10px #003366;
+}
+.report-card img {
+max-height: 60px;
+}
+.report-card h1 {
+font-size: 28px;
+line-height: 31px;
+color: #000000;
+margin: 16px 0;
+margin-bottom: 15px;
+font-weight: 700;
+}
+.report-card p {
+font-size: 18px;
+font-weight: 400;
+line-height: 25px;
+color: #5f5a5a;
+margin-top: 0;
+margin-bottom: 5px;
+}
+.footer-top {
+font-size: 12px;
+font-weight: 700;
+color: #fff;
+text-align: center;
+padding: 10px;
+background: #003366;
+}
+.footer {
+font-size: 12px;
+color: #808080;
+padding: 5px 5px;
+text-align: center;
+}
+
+.heading-bdna {
+font-weight: 700;
+font-size: 14px;
+color: #000000;
+}
+.p-bdna {
+font-weight: 400;
+font-size: 14px;
+color: #000000;
+}
+
+.facilitator-head {
+font-weight: 700 !important;
+font-size: 32px !important;
+}
+.span-color {
+color: #003366;
+}
+.exuberant-list li {
+line-height: 22px !important;
+}
+.financial-insight-wrap {
+display: flex;
+gap: 20px;
+align-items: center;
+}
+.mb-4 {
+margin-bottom: 1rem;
+}
+
+.mt-0 {
+margin-top: 0;
+}
+
+p {
+font-size: 13px;
+}
+
+.financial-insight-wrap h6 {
+font-size: 1.125rem;
+color: #000;
+font-weight: 700;
+margin-bottom: 5px;
+}
+.financial-insight-wrap + .financial-insight-wrap {
+margin-top: 10px;
+}
+.financial-insight-wrap p {
+font-size: 14px;
+font-weight: 400;
+color: #000;
+margin-bottom: 0;
+}
+.financial-span-green {
+color: var(--green-color);
+}
+.financial-span-gold {
+color: var(--gold-color);
+}
+.exuGreen {
+font-size: 20px;
+color: #2e9b66;
+}
+.exuGray {
+font-size: 20px;
+color: #bebebe;
+}
+.exuYellow {
+font-size: 20px;
+color: #eead32;
+}
+.exuRed {
+font-size: 20px;
+color: #e05534;
+}
+.badge-lock {
+height: 40px;
+width: 40px;
+display: flex;
+justify-content: center;
+align-items: center;
+background-color: var(--primary-color);
+border-radius: 50%;
+margin: auto;
+}
+.icon-lock {
+font-size: 18px;
+}
+.lock-heading h5 {
+font-weight: 700;
+font-size: 14px;
+color: var(--primary-color);
+margin-bottom: 0;
+}
+.lock-heading p {
+font-size: 14px;
+color: var(--primary-color);
+}
+.market-condition h6 {
+float: left;
+}
+.market-condition i {
+float: left;
+margin-left: 10px;
+}
+.mw-700 {
+max-width: 700px;
+width: 100%;
+}
+.content-wrapper {
+background-color: #ededed;
+padding: 10px;
+}
+.pb-16 {
+padding-bottom: 16px;
+}
+.content-title {
+font-weight: 500;
+font-size: 14px;
+padding-bottom: 6px;
+}
+.content-title span {
+font-weight: 600;
+display: inline-block;
+}
+.max-w-medium {
+max-width: 50%;
+display: inline-block;
+}
+.content-wrapper td.content-title {
+font-weight: 600;
+font-size: 14px;
+padding-bottom: 6px;
+}
+</style>
+</head>
+<body>
+  <app-discovery-incomplete-modal [visible]="discoveryIncomplete"></app-discovery-incomplete-modal>
+  <div class="reports-wrapper">
+    <app-chatbot [chat_payload_data]="chat_payload_data" [isDownloadReady]="isDownloadReady"></app-chatbot>
+    <div class="reports-header">
+      <div class="report-title d-flex align-items-center">
+        <i class="icon-arrow-left" (click)="onBack()"></i>
+        <h3 class="mb-0">{{ reportName }} Report</h3>
+      </div>
+      <button
+        pButton
+        type="button"
+        [label]="isDownloadReady ? 'Download' : 'Preparing... ' + progressPercentage + '%'"
+        [disabled]="!isDownloadReady"
+        [icon]="isDownloadReady ? 'icon-download' : ''"
+        (click)="downloadPdf()"
+        class="reports-download-btn p-button-sm"
+        iconPos="right"
+      ></button>
+    </div>
+    @if (isLoading) {
+      <app-report-loading-overlay></app-report-loading-overlay>
+    }
+    <div class="page-wrapper p-0" id="1">
+      <table width="100%">
+        <tr>
+          <td colspan="2" class="pattren-banner"></td>
+        </tr>
+        <tr>
+          <td
+            class="report-card"
+                            [ngStyle]="{
+                                borderTopColor: reportColor,
+                                borderBottomColor: reportColor
+                            }"
+            >
+            <img [src]="logo" alt />
+            <h1>
+              <!-- {{ reportName }} -->
+              <!-- {{ participantName }} -->
+              Sales Talent DNA Report:<br />
+              {{ participantName }}
+            </h1>
+            <p class="mb-0">
+              This report reveals your unique sales talents and work approach, offering data-driven guidance to boost career success and
+              workplace impact.
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" class="pattren-banner">
+            @if (isDigitalScan) {
+              <p>
+                This client's insights are based on a Digital Scan. Use this data for marketing, communication, and alignment purposes only—not
+                for high-stakes decisions.<br />
+                <a style="text-decoration: underline" href="https://kb.dnabehavior.com/gene/predicted-results" target="_blank"
+                  >Learn more in our Digital Scan Knowledge Base.</a
+                  >
+                </p>
+              }
+            </td>
+          </tr>
+          <tr>
+            <td class="footer-top" colspan="2" [ngStyle]="{ backgroundColor: reportColor }">
+              Based on your completion of the Natural Behavior Discovery Process
+            </td>
+          </tr>
+          <tr>
+            <td class="footer" colspan="2">Powered by DNA Behavior</td>
+          </tr>
+        </table>
+      </div>
+      <div class="page-wrapper" id="2">
+        <tr>
+          <td>
+            <table width="100%">
+              <tr>
+                <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+                <td class="main-heading" [ngStyle]="{ color: reportColor }">1. About your Unique Style: {{ uniqueStyle }}</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <tr>
+          <td colspan="2" class="spacer-20"></td>
+        </tr>
+
+        <tr>
+          <td class="content-wrapper">
+            <table width="100%" cellpadding="0" cellspacing="0">
+              <tr>
+                <td class="content-title">
+                  {{ participantName.split(' ').at(0) }}, your Unique Style Group is:
+                  <span [ngStyle]="{ color: reportColor }">{{ uniqueStyle }}</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>
+                    A unique style refers to how you communicate, operate, make decisions, and interact with others. Understanding these
+                    styles is vital in improving your performance and relationships at work and beyond.
+                  </p>
+                  <p>
+                    In the DNA Behavior framework, there are ten unique styles, which are Adapter, Community Builder, Engager, Facilitator,
+                    Influencer, Initiator, Reflective Thinker, Relationship Builder, Strategist, and Stylish Thinker.
+                  </p>
+                  <p>
+                    Knowing your style helps you recognize others on your team who are similar or different, making it easier to collaborate
+                    and communicate effectively.
+                  </p>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" class="spacer-20"></td>
+        </tr>
+        <tr>
+          <td class="content-wrapper" [ngStyle]="{ borderTop: '10px solid ' + reportColor }">
+            <table width="100%" cellpadding="0" cellspacing="0">
+              <tr>
+                <td class="content-title">What is {{ uniqueStyle | article }} {{ uniqueStyle }}?</td>
+              </tr>
+              <tr>
+                <td>
+                  <p>
+                    {{ uniqueStyleAndDescription }}
+                  </p>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td class="pb-16"></td>
+        </tr>
+        <tr style="display: flex; width: 50%">
+          <td class="content-wrapper" style="flex-grow: 1" [ngStyle]="{ borderTop: '10px solid ' + reportColor }">
+            <table width="100%" cellpadding="0" cellspacing="0">
+              <tr>
+                <td>
+                  <table width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td class="content-title">Top 2 Traits:</td>
+                    </tr>
+                    <tr>
+                      <td class="list-wrapper">
+                        <ul>
+                          @for (item of top2Traits; track trackByIndex($index, item)) {
+                            <li>{{ item }}</li>
+                          }
+                        </ul>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <div class="page-footer">
+          <table>
+            <tr>
+              <td>Page 2</td>
+              <td>{{ footerDate }}</td>
+              <td>
+                {{ participantName }}
+              </td>
+              <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+              <td>ID#{{ accountId }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="page-wrapper" id="3">
+        <table width="100%">
+          <tr>
+            <td>
+              <table width="100%">
+                <tr>
+                  <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+                  <td class="main-heading" [ngStyle]="{ color: reportColor }">2. Sales Career Insights</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" class="spacer-20"></td>
+          </tr>
+          <tr>
+            <td class="content-wrapper" colspan="6" [ngStyle]="{ borderTop: '10px solid ' + reportColor }">
+              <table width="100%" cellpadding="0" cellspacing="0" class="paragraph-wrapper">
+                <tr>
+                  <td>
+                    <p>
+                      Sales Career Insight refers to the application of DNA Behavior's insights to identify and align behavioral traits
+                      with roles in sales. This includes understanding which behavioral factors contribute to success in sales positions,
+                      such as relationship building, strategic focus, problem-solving, and risk behavior.
+                    </p>
+                    <p>
+                      These insights help you understand where you are most likely to succeed based on your natural tendencies and
+                      behaviors. It's a part of the broader DNA Behavior insights that match you with the most suitable job roles
+                      according to your inherent behavioral traits.
+                    </p>
+                    <p>
+                      The scoring of Sales Career Insights, is based on population percentages. This method compares an individual's
+                      behavior against the millions of other individuals who have previously completed the Natural Behavior Discovery
+                      Process, providing a percentile ranking. For example, if a score is given as 24 for a specific trait, it means that
+                      the individual shows less of that trait compared to most people, with 76 out of 100 people exhibiting a stronger
+                      presence of that trait.
+                    </p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" class="spacer-20"></td>
+          </tr>
+
+          <tr class="p-2">
+            <app-sales-career-insight [chartData]="salesInsights" [barColor]="secondaryColor"></app-sales-career-insight>
+          </tr>
+        </table>
+
+        <div class="page-footer">
+          <table>
+            <tr>
+              <td>Page 3</td>
+              <td>{{ footerDate }}</td>
+              <td>
+                {{ participantName }}
+              </td>
+              <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+              <td>ID#{{ accountId }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="page-wrapper" id="4">
+        <table width="100%">
+          <tr>
+            <td>
+              <table width="100%">
+                <tr>
+                  <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+                  <td class="main-heading" [ngStyle]="{ color: reportColor }">3. Hiring Insights</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" class="spacer-20"></td>
+          </tr>
+          <tr>
+            <td class="content-wrapper" [ngStyle]="{ borderTop: '10px solid ' + reportColor }">
+              <table width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td class="content-title">Talents</td>
+                </tr>
+                <tr>
+                  <td class="list-wrapper">
+                    <ul>
+                      @for (item of hiringData.talents; track trackByIndex($index, item)) {
+                        <li>{{ item.name }}</li>
+                      }
+                    </ul>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" class="spacer-20"></td>
+          </tr>
+
+          <tr>
+            <td width="100%" valign="top" class="pb-16" colspan="6">
+              <table cellpadding="0" cellspacing="0">
+                <tr>
+                  <td width="49%" class="content-wrapper" valign="top" [ngStyle]="{ borderTop: '10px solid ' + reportColor }">
+                    <table cellpadding="0" cellspacing="0">
+                      <tr>
+                        <td class="content-title">Roles</td>
+                      </tr>
+                      <tr>
+                        <td class="list-wrapper" valign="top">
+                          <ul>
+                            @for (item of hiringData.roles; track trackByIndex($index, item)) {
+                              <li>{{ item.name }}</li>
+                            }
+                          </ul>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                  <td width="1%"></td>
+                  <td width="49%" class="content-wrapper" valign="top" [ngStyle]="{ borderTop: '10px solid ' + reportColor }">
+                    <table cellpadding="0" cellspacing="0">
+                      <tr>
+                        <td class="content-title">Rewards</td>
+                      </tr>
+                      <tr>
+                        <td class="list-wrapper" valign="top">
+                          <ul>
+                            @for (item of hiringData.rewards; track trackByIndex($index, item)) {
+                              <li>{{ item.name }}</li>
+                            }
+                          </ul>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <!-- <ng-container *ngIf="showCard['fbInsights']">
+          <tr>
+            <td colspan="2">
+              <p>
+                The shaded circles and scores below indicate your strength level as a percentage of the population with the corresponding
+                descriptor in the same color.
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" class="spacer-20"></td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <tr class="financial-insight-wrap" *ngFor="let insight of scoreFDNA5; trackBy: trackByIndex">
+                <td>
+                  <circle-progress
+                    [percent]="insight?.value"
+                    [radius]="30"
+                    [outerStrokeWidth]="8"
+                    [innerStrokeWidth]="8"
+                    [outerStrokeColor]="secondaryColor2"
+                    [innerStrokeColor]="primaryColor"
+                    [animation]="false"
+                    [animationDuration]="300"
+                    [imageHeight]="74"
+                    [imageWidth]="74"
+                    [showSubtitle]="false"
+                    titleColor="#000000"
+                    unitsColor="#000000"
+                    >
+                  </circle-progress>
+                </td>
+
+                <td>
+                  <h6>{{ insight?.title }}</h6>
+                  <p>{{ insight?.description }}</p>
+                </td>
+              </tr>
+            </td>
+          </tr>
+        </ng-container>
+        <ng-container *ngIf="!showCard['fbInsights']">
+          <tr>
+            <td colspan="2" class="spacer-50"></td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <span class="badge badge-lock"><i class="icon-lock"></i></span>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" class="spacer-20"></td>
+          </tr>
+          <tr>
+            <td class="text-center lock-heading" colspan="2">
+              <h5>This report has been customized for you by your administrator.</h5>
+            </td>
+          </tr>
+          <tr>
+            <td class="text-center lock-heading" colspan="2">
+              <p>Contact your administrator to unlock this insight.</p>
+            </td>
+          </tr>
+        </ng-container> -->
+      </table>
+
+      <div class="page-footer">
+        <table>
+          <tr>
+            <td>Page 4</td>
+            <td>{{ footerDate }}</td>
+            <td>
+              {{ participantName }}
+            </td>
+            <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+            <td>ID#{{ accountId }}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="page-wrapper" id="5">
+      <tr>
+        <td>
+          <table width="100%">
+            <tr>
+              <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+              <td class="main-heading" [ngStyle]="{ color: reportColor }">3. Hiring Insights</td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" class="spacer-20"></td>
+      </tr>
+      <tr>
+        <td class="content-wrapper" [ngStyle]="{ borderTop: '10px solid ' + reportColor }">
+          <table width="100%" cellpadding="0" cellspacing="0">
+            <thead align="left">
+              <th>Behavioral Based Questions for Hiring Managers</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="pb-16"></td>
+              </tr>
+              <tr>
+                <td class="content-title">{{ top2Traits[0] }}:</td>
+              </tr>
+              <tr>
+                <td class="list-wrapper" valign="top">
+                  <ul>
+                    @for (desc of traitsDescription; track trackByIndex(i, desc); let i = $index) {
+                      @if (i < traitsDescription.length - 2) {
+                        <li>
+                          {{ desc[firstTraitKey] }}
+                        </li>
+                      }
+                    }
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td height="10px" width="100%"></td>
+              </tr>
+              <tr>
+                <td class="content-title">{{ top2Traits[1] }}:</td>
+              </tr>
+              <tr>
+                <td class="list-wrapper" valign="top">
+                  <ul>
+                    @for (desc of traitsDescription; track trackByIndex(i, desc); let i = $index) {
+                      @if (i < traitsDescription.length - 2) {
+                        <li>
+                          {{ desc[secondTraitKey] }}
+                        </li>
+                      }
+                    }
+                  </ul>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      <div class="page-footer">
+        <table>
+          <tr>
+            <td>Page 5</td>
+            <td>{{ footerDate }}</td>
+            <td>
+              {{ participantName }}
+            </td>
+            <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+            <td>ID#{{ accountId }}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="page-wrapper" id="6">
+      <table width="100%">
+        <tr>
+          <td>
+            <table width="100%">
+              <tr>
+                <td class="primary-color-box" [ngStyle]="{ backgroundColor: reportColor }"></td>
+                <td class="main-heading" [ngStyle]="{ color: reportColor }">4. Workplace Insights</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" class="spacer-20"></td>
+        </tr>
+        <tr>
+          <td class="content-wrapper" [ngStyle]="{ borderTop: '10px solid ' + reportColor }">
+            <table width="100%" cellpadding="0" cellspacing="0">
+              <tr>
+                <td>
+                  <p>
+                    Workplace Insights are derived from proprietary combinations of scores in the Natural Behavior Discovery Process
+                    used to describe how you will tend to behave in workplace situations and your approach to certain activities. These
+                    12 insights are all based on population percentages. This means that if a participant were placed in a room with 99
+                    other people, these scores would show how their behavior compares to that of others in the room. Higher scores
+                    indicate stronger behavior in a given area. For example, a score of 24 for the Desire to Make Decisions insight
+                    would indicate a lower desire than that of most people in the room; in fact, 76 people would have a stronger Desire
+                    to Make Decisions than the participant.
+                  </p>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" class="spacer-20"></td>
+        </tr>
+        <tr class="p-2">
+          <td colspan="2" class="workplace-title">Workplace Insights</td>
+        </tr>
+        <tr>
+          <app-workplace-insight [barColor]="secondaryColor" [chartData]="workplaceInsights"></app-workplace-insight>
+        </tr>
+      </table>
+
+      <div class="page-footer">
+        <table>
+          <tr>
+            <td>Page 6</td>
+            <td>{{ footerDate }}</td>
+            <td>
+              {{ participantName }}
+            </td>
+            <td>© Copyright {{ footerYear }} DNA Behavior Solutions, LLC</td>
+            <td>ID#{{ accountId }}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

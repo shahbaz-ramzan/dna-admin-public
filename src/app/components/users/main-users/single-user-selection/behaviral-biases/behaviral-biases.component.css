@@ -1,0 +1,23 @@
+.bsCard {
+    min-height: 265px;
+    overflow: auto;
+}
+.bsCard h3 {
+    font-size: 1.25rem;
+    line-height: 1;
+    color: var(--title-clr);
+    margin-bottom: 15px;
+}
+.bsCard h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #909090;
+}
+.bsCard h4 span {
+    color: #131523;
+}
+@media screen and (max-width: 767px) {
+    .bsCard .horizontal-graph {
+        width: 700px;
+    }
+} /*# sourceMappingURL=behaviral-biases.component.css.map */

@@ -1,0 +1,15 @@
+// export const GET_BASE_URL = 'https://devapimanagementenvironment.azure-api.net/private-api'
+// // export const GET_RISK_BEHAVIOR = 'NaturalBehavior/GetRiskAllocation';
+// export const GET_FDNA_SCORE = 'NaturalBehavior/GetFDNA5Scores'
+// export const GET_WORK_STYLE_MATCH = 'ParticipantProfile/GetStyleMatch'
+// export const GET_FINANCIAL_STYLE_MATCH = 'ParticipantProfile/GetStyleMatch'
+
+// export const GET_TSCORE_RESULTS = 'NaturalBehavior/GetAssessmentResultsArray'
+// export const GET_BEHAVIRAL_BIASES = 'NaturalBehavior/GetBehavioralBiasesArray'
+// export const GET_WORKPLACE_INSIGHT = 'NaturalBehavior/GetBDNAWorkplaceInsightsArray'
+// export const GET_LEGAL_TEXT = 'Accounts/GetLegalText'
+// export const GET_LANGUAGE = 'Accounts/GetLanguage'
+// export const GET_MARKET_MOOD = 'Accounts/GetMarketMoodPercent'
+// export const GET_UNIQUE_STYLE_GRAPH = 'Accounts/GetUniqueStyleCount'
+// export const GET_SELF_REGISTRATION_LINK = 'Accounts/ListSelfRegistrationLink'
+// export const DELETE_SELF_REGISTRATION_LINK = 'Accounts/DeleteSelfRegistrationLink'

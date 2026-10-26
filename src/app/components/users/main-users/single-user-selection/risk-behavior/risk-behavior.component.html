@@ -1,0 +1,34 @@
+<div class="user-card rbCard">
+    <h3 class="fw-bold">
+        <a class="fw-bold insights-card-headings" href="https://kb.dnabehavior.com/gene/financial-behavior-cards-explained#Risk-Behavior" target="_blank"
+            ><span data-testId="riek-behavior-title" pTooltip="Learn how to use these insights" tooltipPosition="top" tooltipEvent="hover">Risk Behavior</span>
+        </a>
+    </h3>
+    <app-loading-spinner *ngIf="loading"></app-loading-spinner>
+
+    <div class="w-100 dialMeter" *ngIf="!loading">
+        <ngx-gauge
+            data-testId="guage-chart"
+            [type]="gaugeType"
+            [value]="riskBehaviorObject && riskBehaviorObject.gaugeValue"
+            [label]="gaugeLabel"
+            [size]="gaugeSize"
+            [thick]="gaugeThick"
+            [thresholds]="thresholdConfig"
+            [backgroundColor]="primaryColor"
+        >
+        </ngx-gauge>
+    </div>
+
+    <p-divider class="riskDivider"></p-divider>
+    <ul>
+        <li>
+            Risk Group:
+            <span>{{ (riskBehaviorObject && riskBehaviorObject.riskGroup ? riskBehaviorObject && riskBehaviorObject.riskGroup : 0) + ' of 7' }}</span>
+        </li>
+        <li>
+            Portfolio Structure:
+            <span>{{ riskBehaviorObject && riskBehaviorObject.portfolioStructure }}</span>
+        </li>
+    </ul>
+</div>

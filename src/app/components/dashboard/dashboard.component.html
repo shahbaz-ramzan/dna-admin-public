@@ -1,0 +1,104 @@
+<div [ngClass]="'mainWrapper'">
+    <div [ngClass]="'inrWrapper'">
+        <div class="d-flex mainHeadingWrap">
+            <h3>
+                <span data-testId="username">{{ (user | async)?.name }}</span> {{ fullName }}
+            </h3>
+
+            <a style="text-decoration: none; color: inherit" routerLink="/settings/profile" routerLinkActive="active">
+                <i class="icon-external-link"></i>
+            </a>
+        </div>
+
+        <div class="row g-4">
+            @if (permissionObject['Dashboard-Your-Team-And-Clients']) {
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                    <div [ngClass]="{ toggled: expandCards.lineGraph }" class="dashboardGraphContainer position-relative">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h5 data-testId="teams-client-graph" class="graphHeading">Your Team & Clients</h5>
+                                <p class="graphTitle">Consider creating a balance of styles in your team to cater to your diverse clients.</p>
+                            </div>
+                            <div></div>
+                        </div>
+                        @if (uniqueStyleGraphLaoding) {
+                            <app-loading-spinner></app-loading-spinner>
+                        }
+                        @if (!uniqueStyleGraphLaoding) {
+                            <app-single-line-horizontal
+                                data-testId="single-line-chart"
+                                [yAxisPosition]="yAxisPosition"
+                                [chartLabels]="lineChartLabels"
+                                [chartData]="lineChartData"
+                                [chartColor]="lineChartColors"
+                                [isDashboard]="true"
+                            ></app-single-line-horizontal>
+                        }
+                    </div>
+                    <div class="overlay-box"></div>
+                </div>
+            }
+            @if (permissionObject['Dashboard-marketmood']) {
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                    <div [ngClass]="{ toggled: expandCards.pieChart }" class="dashboardGraphContainer pieChart position-relative">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h5 data-testId="market-mood-label" class="graphHeading">Market Mood</h5>
+                                <p class="graphTitle">A real-time measurement of the fear or exuberance of your client base.</p>
+                            </div>
+                            <div></div>
+                        </div>
+                        <div class="position-relative pie-chat-wrap">
+                            @if (!marketMoodLaoding) {
+                                <div class="marketMoodIcon">
+                                    <ul data-testId="market-mood-smilies">
+                                        <li><i class="exuGreen icon-smile"></i></li>
+                                        <li><i class="exuGray icon-squint"></i></li>
+                                        <li>
+                                            <i class="exuYellow icon-squint-yellow"></i>
+                                        </li>
+                                        <li><i class="exuRed icon-sad-squint"></i></li>
+                                    </ul>
+                                </div>
+                            }
+                            <div class="pie-chart">
+                                @if (!marketMoodLaoding) {
+                                    <app-pie-chart
+                                        data-testId="market-mood-graph"
+                                        [chartPosition]="chartPosition"
+                                        [chartLabels]="pieChartLabels"
+                                        [showLegends]="false"
+                                        [pointStyle]="true"
+                                        [chartData]="pieChartData"
+                                        [chartColors]="pieChartColors"
+                                    ></app-pie-chart>
+                                }
+                            </div>
+
+                            @if (marketMoodLaoding) {
+                                <app-loading-spinner></app-loading-spinner>
+                            }
+                        </div>
+                    </div>
+                    <div class="overlay-box"></div>
+                </div>
+            }
+            @if (permissionObject['Dashboard-recent-activity']) {
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                    <div class="dashboardGraphContainer" [ngClass]="{ toggled: expandCards.recentActivity }">
+                        <app-recent-activities data-testId="recent-activities" (toogleEvent)="expandRecentActivity($event)"></app-recent-activities>
+                    </div>
+                    <div class="overlay-box"></div>
+                </div>
+            }
+            @if (permissionObject['Dashboard-30daycompletion']) {
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 position-relative">
+                    <div class="dashboardGraphContainer" [ngClass]="{ toggled: expandCards.recentCompletion }">
+                        <app-recent-completions data-testId="recent-completions" (toogleEvent)="expandRecentCompletion($event)"></app-recent-completions>
+                    </div>
+                    <div class="overlay-box"></div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

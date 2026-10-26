@@ -1,0 +1,471 @@
+<app-discovery-incomplete-modal [visible]="discoveryIncomplete" [multiple]="multipleIncomplete"></app-discovery-incomplete-modal>
+<p-tabView data-testId="tabview" [(activeIndex)]="index" (onChange)="handleChange($event)" class="sUserTab doubleUserSelection">
+    <p-tabPanel class="financialTab" header="Financial Behavior">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 pt-3 doble-user-box">
+                <app-user-info-bar
+                    data-testId="user-info-bar"
+                    [selectedUser]="usersData[0]"
+                    [label]="navLabel1"
+                    [index]="0"
+                    [isUserDetailLoading]="isUserDetailLoading"
+                    [singleUser]="false"
+                ></app-user-info-bar>
+                <app-risk-behavior
+                    data-testId="risk-behavior"
+                    [loading]="riskBehaviorLoading"
+                    [riskBehaviorObject]="riskBehaviorObject_1"
+                    *ngIf="permissionObject['Financial-User-Card-RiskBehavior']"
+                ></app-risk-behavior>
+
+                <div class="user-divider"></div>
+                <app-financial-dna-score
+                    data-testId="dna-score"
+                    [financialBehaviours]="fdnaScoresObject_1"
+                    [loading]="fdnaLoading_1"
+                    *ngIf="permissionObject['Financial-User-Card-FinancialDNA5scores']"
+                ></app-financial-dna-score>
+                <div class="user-divider"></div>
+                <app-financial-behavior
+                    data-testId="financial-behavior"
+                    [marketData]="marketData"
+                    [marketMoodArray]="marketMoodArray"
+                    [mood]="mood_1"
+                    [smileyColor]="smileyColor_1"
+                    [loading]="getMarketDataLoading"
+                    [descriptionLoading]="isMarketMoodArrayLoading"
+                    *ngIf="permissionObject['Financial-User-Card-MarketMood']"
+                ></app-financial-behavior>
+
+                <!-- <div class="user-divider"></div>
+        <app-financial-behavior
+          [marketData]="marketData"
+          [loading]="getMarketDataLoading"
+        ></app-financial-behavior> -->
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 pt-3 doble-user-box">
+                <app-user-info-bar
+                    data-testId="user-info-bar-2"
+                    [selectedUser]="usersData[1]"
+                    [label]="navLabel2"
+                    [index]="0"
+                    [isUserDetailLoading]="isUserDetailLoading"
+                    [singleUser]="false"
+                ></app-user-info-bar>
+
+                <app-risk-behavior
+                    data-testId="risk-behavior-2"
+                    [loading]="riskBehaviorLoading2"
+                    [riskBehaviorObject]="riskBehaviorObject_2"
+                    *ngIf="permissionObject['Financial-User-Card-RiskBehavior']"
+                ></app-risk-behavior>
+                <div class="user-divider"></div>
+                <app-financial-dna-score
+                    data-testId="dna-score-2"
+                    [financialBehaviours]="fdnaScoresObject_2"
+                    [loading]="fdnaLoading_2"
+                    *ngIf="permissionObject['Financial-User-Card-FinancialDNA5scores']"
+                ></app-financial-dna-score>
+                <div class="user-divider"></div>
+                <app-financial-behavior
+                    data-testId="financial-behavior-2"
+                    [marketData]="marketData"
+                    [marketMoodArray]="marketMoodArray2"
+                    [mood]="mood_2"
+                    [smileyColor]="smileyColor_2"
+                    [loading]="getMarketDataLoading"
+                    [descriptionLoading]="isMarketMoodArrayLoading2"
+                    *ngIf="permissionObject['Financial-User-Card-MarketMood']"
+                ></app-financial-behavior>
+                <!-- <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"></div> -->
+            </div>
+            <div class="user-divider"></div>
+            <app-style-match
+                data-testId="app-style-match"
+                [firstName]="usersData[0]?.firstName"
+                [secondName]="usersData[1]?.firstName"
+                [styleMatchObject]="financialStyleMatchObject_1"
+                [loading]="financialStyleMatchLoading"
+                [isFinancial]="true"
+                [singleUser]="false"
+                *ngIf="permissionObject['Financial-User-Card-StyleMatch']"
+            ></app-style-match>
+        </div>
+        <div class="user-divider"></div>
+        <app-behaviral-biases
+            data-testId="financial-biases"
+            [loading]="behaviralBiasesLoading_1"
+            [isSingleUser]="false"
+            [behaviralBiasesObject]="doubleUserSingleBarChartData"
+            [chartColor]="doubleUserbehavioralBiasesColor"
+            *ngIf="permissionObject['Financial-User-Card-BehavioralBiases']"
+        >
+        </app-behaviral-biases>
+        <div class="user-divider"></div>
+        <ng-container *ngIf="index === 0">
+            <app-t-scores
+                data-testId="t-scores"
+                [showLabel]="false"
+                [chartData]="doubleUserFinancialDoubleBarChartData"
+                [index]="id"
+                [loading]="tScoreLoading"
+                [isFullView]="isFullView"
+                *ngIf="permissionObject['Financial-User-Card-T-Scores']"
+            ></app-t-scores>
+        </ng-container>
+        <div class="row" *ngIf="permissionObject['Financial-User-Card-EnvironmentKeys']">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 pt-3">
+                <app-environment-keys
+                    data-testId="environment-keys-communication-keys-person-1"
+                    [loading]="environmentKeysLoading_1"
+                    [name]="doubleName1"
+                    performanceType="Communication Keys"
+                    [data]="performanceGuide_1?.environmentKeys"
+                ></app-environment-keys>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 pt-3">
+                <app-environment-keys
+                    data-testId="environment-keys-communication-keys-person-2"
+                    [loading]="environmentKeysLoading_2"
+                    [name]="doubleName2"
+                    performanceType="Communication Keys"
+                    [data]="performanceGuide_2?.environmentKeys"
+                ></app-environment-keys>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 pt-3">
+                <app-environment-keys
+                    data-testId="environment-keys-struggles-person-1"
+                    [loading]="environmentKeysLoading_1"
+                    [name]="doubleName1"
+                    performanceType="Struggles"
+                    [data]="performanceGuide_1?.struggles"
+                ></app-environment-keys>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 pt-3">
+                <app-environment-keys
+                    data-testId="environment-keys-struggles-person-2"
+                    [loading]="environmentKeysLoading_2"
+                    [name]="doubleName2"
+                    performanceType="Struggles"
+                    [data]="performanceGuide_2?.struggles"
+                ></app-environment-keys>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 pt-3">
+                <app-environment-keys
+                    data-testId="environment-keys-strengths-person-1"
+                    [loading]="environmentKeysLoading_1"
+                    [name]="doubleName1"
+                    performanceType="Strengths"
+                    [data]="performanceGuide_1?.strengths"
+                ></app-environment-keys>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 pt-3">
+                <app-environment-keys
+                    data-testId="environment-keys-strengths-person-2"
+                    [loading]="environmentKeysLoading_2"
+                    [name]="doubleName2"
+                    performanceType="Strengths"
+                    [data]="performanceGuide_2?.strengths"
+                ></app-environment-keys>
+            </div>
+        </div>
+
+        <!-- <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 pt-3">
+        <app-growth-chart
+          [pieChartColors]="financialPieChartColors"
+        ></app-growth-chart>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 pt-3">
+        <app-growth-chart
+          [pieChartColors]="financialPieChartColors"
+        ></app-growth-chart>
+      </div>
+    </div> -->
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 pt-3" *ngIf="permissionObject['Financial-User-Card-Communication']">
+                <app-communication
+                    data-testId="communication-person-1"
+                    [loading]="communicationInsightsLoading1"
+                    [data]="communicationInsightsData1"
+                    [isWorkTalent]="false"
+                ></app-communication>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 pt-3" *ngIf="permissionObject['Financial-User-Card-Communication']">
+                <app-communication
+                    data-testId="communication-person-2"
+                    [loading]="communicationInsightsLoading2"
+                    [data]="communicationInsightsData2"
+                    [isWorkTalent]="false"
+                ></app-communication>
+            </div>
+        </div>
+        <div class="row d-block">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 pt-3 float-start" *ngIf="showLegacyReports1">
+                <app-legacy-reports data-testId="legacy-reports-person-1" [loading]="legacyReportsLoading1" [reportsList]="fdnaLegacyReportsList1">
+                </app-legacy-reports>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 pt-3 float-end" *ngIf="showLegacyReports2">
+                <app-legacy-reports data-testId="legacy-reports-person-2" [loading]="legacyReportsLoading2" [reportsList]="fdnaLegacyReportsList2">
+                </app-legacy-reports>
+            </div>
+
+            <div
+                class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 pt-3 float-start"
+                *ngIf="permissionObject['Feature-User-Card-Reports'] && completionDate1 !== undefined && completionDate2 !== undefined"
+            >
+                <app-financial-reports data-testId="financial-reports" pageType="double-user"></app-financial-reports>
+            </div>
+        </div>
+        <div class="row d-block">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 pt-3 float-start">
+                <app-radar-chart
+                    data-testId="radar-chart"
+                    [data]="doubleUserRadarChartUser"
+                    [labels]="uniqueStyle"
+                    [customLegends]="doubleUserRadarChartLegends"
+                    [chartColors]="doubleUserRadarChartColors"
+                    [showRadarChart]="showRadarChart"
+                    [loading]="radarChartLoading"
+                    [extraContent]="behaviorType"
+                ></app-radar-chart>
+            </div>
+        </div>
+        <!-- <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 pt-3 float-start">
+            <app-radar-chart
+                data-testId="radar-chart"
+                [data]="doubleUserRadarChartUser"
+                [labels]="uniqueStyle"
+                [customLegends]="doubleUserRadarChartLegends"
+                [chartColors]="doubleUserRadarChartColors"
+                [showRadarChart]="showRadarChart"
+                [loading]="radarChartLoading"
+                [extraContent]="behaviorType"
+            ></app-radar-chart>
+        </div> -->
+        <!-- <div class="row">
+    </div> -->
+    </p-tabPanel>
+    <p-tabPanel data-testId="tab-panel-work-talents" header="Work Talents">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 pt-3 doble-user-box">
+                <app-user-info-bar data-testId="user-info-bar-3" [label]="navLabel1" [selectedUser]="usersData[0]" [index]="1" [singleUser]="false"></app-user-info-bar>
+
+                <ng-container *ngIf="!workTalentLoading_1">
+                    <app-work-talent
+                        data-testId="app-work-talent"
+                        class="border-radius-none"
+                        [workTalentObject]="workTalentsObject_1"
+                        [loading]="workTalentLoading_1"
+                        *ngIf="permissionObject['Business-User-Card-BusinessDNA5Scores']"
+                    ></app-work-talent>
+                </ng-container>
+                <div class="user-divider"></div>
+                <app-strongest-factors
+                    data-testId="app-strongest-factors"
+                    [loading]="strongestFactorsLoading_1"
+                    [strongestFactorsObject]="strongestFactorObject_1"
+                    *ngIf="permissionObject['Business-User-Card-TheStrongestFactors']"
+                ></app-strongest-factors>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 pt-3 doble-user-box">
+                <app-user-info-bar [label]="navLabel2" [selectedUser]="usersData[1]" [index]="1" [singleUser]="false"></app-user-info-bar>
+                <ng-container *ngIf="!workTalentLoading_2">
+                    <app-work-talent
+                        data-testId="app-work-talent-2"
+                        class="border-radius-none"
+                        [workTalentObject]="workTalentsObject_2"
+                        [loading]="workTalentLoading_2"
+                        *ngIf="permissionObject['Business-User-Card-BusinessDNA5Scores']"
+                    ></app-work-talent>
+                </ng-container>
+                <div class="user-divider"></div>
+                <app-strongest-factors
+                    data-testId="app-strongest-factors-2"
+                    [loading]="strongestFactorsLoading_2"
+                    [strongestFactorsObject]="strongestFactorObject_2"
+                    *ngIf="permissionObject['Business-User-Card-TheStrongestFactors']"
+                ></app-strongest-factors>
+            </div>
+        </div>
+
+        <div class="user-divider"></div>
+        <app-style-match
+            data-testId="app-style-match-2"
+            [firstName]="usersData[0]?.firstName"
+            [secondName]="usersData[1]?.firstName"
+            [styleMatchObject]="financialStyleMatchObject_1"
+            [isFinancial]="false"
+            [loading]="workStyleMatchLoading"
+            [singleUser]="false"
+            *ngIf="permissionObject['Business-User-Card-StyleMatch']"
+        ></app-style-match>
+        <div class="user-divider"></div>
+        <ng-container *ngIf="index === 1">
+            <app-t-scores
+                data-testId="t-scores-2"
+                [showLabel]="false"
+                [chartData]="doubleUserWorkDoubleBarChartData"
+                [index]="id"
+                [isFullView]="isFullView"
+            ></app-t-scores>
+        </ng-container>
+
+        <div class="user-divider"></div>
+        <!-- <app-workplace-insights
+      [chartData]="doubleUserWorkPlaceData"
+      [chartColor]="doubleUserWorkPlaceColor"
+      [chartLabels]="doubleUserWorkPlaceLabels"
+    ></app-workplace-insights> -->
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 pt-3">
+                <app-career-insights
+                    data-testId="app-career-insights-person-1"
+                    [loading]="careersInsightLoading_1"
+                    [careerInsightsObject]="careersInsightsObject_1"
+                    *ngIf="permissionObject['Business-User-CareerInsights']"
+                ></app-career-insights>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 pt-3">
+                <app-career-insights
+                    data-testId="app-career-insights-person-2"
+                    [loading]="careersInsightLoading_2"
+                    [careerInsightsObject]="careersInsightsObject_2"
+                    *ngIf="permissionObject['Business-User-CareerInsights']"
+                ></app-career-insights>
+            </div>
+        </div>
+        <div class="row" *ngIf="permissionObject['Business-User-Card-EnvironmentKeys']">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 pt-3">
+                <app-environment-keys
+                    data-testId="env-keys-work-talent-tab-p1"
+                    [loading]="environmentKeysLoading_1"
+                    [name]="doubleName1"
+                    performanceType="Communication Keys"
+                    [data]="performanceGuide_1?.environmentKeys"
+                ></app-environment-keys>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 pt-3">
+                <app-environment-keys
+                    data-testId="env-keys-work-talent-tab-p2"
+                    [loading]="environmentKeysLoading_2"
+                    [name]="doubleName2"
+                    performanceType="Communication Keys"
+                    [data]="performanceGuide_2?.environmentKeys"
+                ></app-environment-keys>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 pt-3">
+                <app-environment-keys
+                    data-testId="env-keys-work-talent-tab-struggles-p1"
+                    [loading]="environmentKeysLoading_1"
+                    [name]="doubleName1"
+                    performanceType="Struggles"
+                    [data]="performanceGuide_1?.struggles"
+                ></app-environment-keys>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 pt-3">
+                <app-environment-keys
+                    data-testId="env-keys-work-talent-tab-struggles-p2"
+                    [loading]="environmentKeysLoading_2"
+                    [name]="doubleName2"
+                    performanceType="Struggles"
+                    [data]="performanceGuide_2?.struggles"
+                ></app-environment-keys>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 pt-3">
+                <app-environment-keys
+                    data-testId="env-keys-work-talent-tab-strengths-p1"
+                    [loading]="environmentKeysLoading_1"
+                    [name]="doubleName1"
+                    performanceType="Strengths"
+                    [data]="performanceGuide_1?.strengths"
+                ></app-environment-keys>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 pt-3">
+                <app-environment-keys
+                    data-testId="env-keys-work-talent-tab-strengths-p2"
+                    [loading]="environmentKeysLoading_2"
+                    [name]="doubleName2"
+                    performanceType="Strengths"
+                    [data]="performanceGuide_2?.strengths"
+                ></app-environment-keys>
+            </div>
+        </div>
+        <div class="row" *ngIf="permissionObject['Financial-User-Card-Communication']">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 pt-3">
+                <app-communication
+                    data-testId="work-talent-tab-comm-p1"
+                    [loading]="communicationInsightsLoading1"
+                    [data]="communicationInsightsData1"
+                    [isWorkTalent]="true"
+                ></app-communication>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 pt-3">
+                <app-communication
+                    data-testId="work-talent-tab-comm-p2"
+                    [loading]="communicationInsightsLoading2"
+                    [data]="communicationInsightsData2"
+                    [isWorkTalent]="true"
+                ></app-communication>
+            </div>
+        </div>
+        <!-- <div class="row" *ngIf="permissionObject['Business-User-Card-GrowthSustain']"> -->
+        <div class="row" *ngIf="false">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 pt-3">
+                <app-growth-chart [pieChartColors]="workTalentPieChartColors"></app-growth-chart>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 pt-3">
+                <app-growth-chart [pieChartColors]="workTalentPieChartColors"></app-growth-chart>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 pt-3">
+                <app-legacy-reports
+                    data-testId="work-talent-tab-legacy-reports-p1"
+                    [loading]="legacyReportsLoading1"
+                    [reportsList]="bdnaLegacyReportsList1"
+                    *ngIf="showLegacyReports1"
+                >
+                </app-legacy-reports>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 pt-3">
+                <app-legacy-reports
+                    data-testId="work-talent-tab-legacy-reports-p2"
+                    [loading]="legacyReportsLoading2"
+                    [reportsList]="bdnaLegacyReportsList2"
+                    *ngIf="showLegacyReports2"
+                >
+                </app-legacy-reports>
+            </div>
+            <div
+                class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 pt-3 float-start"
+                *ngIf="permissionObject['Feature-User-Card-Reports'] && completionDate1 !== undefined && completionDate2 !== undefined"
+            >
+                <app-financial-reports data-testId="work-talent-tab-financial-reports" pageType="double-user"></app-financial-reports>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 pt-3 float-start">
+                <app-radar-chart
+                    data-testId="radar-chart"
+                    [data]="doubleUserRadarChartUser"
+                    [labels]="uniqueStyle"
+                    [customLegends]="doubleUserRadarChartLegends"
+                    [chartColors]="doubleUserRadarChartColors"
+                    [showRadarChart]="showRadarChart"
+                    [loading]="radarChartLoading"
+                    [extraContent]="behaviorType"
+                ></app-radar-chart>
+            </div>
+        </div>
+    </p-tabPanel>
+</p-tabView>

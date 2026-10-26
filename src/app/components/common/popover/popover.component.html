@@ -1,0 +1,45 @@
+<p-dialog
+    [(visible)]="visible"
+    (visibleChange)="onClose()"
+    [modal]="modal"
+    [draggable]="draggable"
+    [resizable]="resizable"
+    [class]="dialogClass"
+    [baseZIndex]="baseZIndex"
+    [closable]="false"
+>
+    <ng-template pTemplate="header">
+        <img src="assets/images/logo.svg" alt="Logo" height="60px" width="100%" />
+    </ng-template>
+
+    <div class="popover-content">
+        <div *ngIf="content.title" class="content-title">
+            {{ content.title }}
+        </div>
+
+        <div *ngIf="content.description" class="content-description">
+            {{ content.description }}
+        </div>
+
+        <ul *ngIf="content.listItems && content.listItems.length > 0" class="content-list">
+            <li *ngFor="let item of content.listItems">{{ item }}</li>
+        </ul>
+
+        <div *ngIf="content.footerText" class="content-footer">
+            {{ content.footerText }}
+        </div>
+    </div>
+
+    <ng-template pTemplate="footer" *ngIf="popoverButtons && popoverButtons.length > 0">
+        <div class="dialog-footer-buttons">
+            <button
+                *ngFor="let button of popoverButtons"
+                pButton
+                pRipple
+                [label]="button.label"
+                (click)="onPopoverButtonClick(button.action)"
+                [class]="button.class || 'p-button-secondary'"
+            ></button>
+        </div>
+    </ng-template>
+</p-dialog>

@@ -1,0 +1,23 @@
+:host ::ng-deep {
+    .p-checkbox,
+    .p-checkbox .p-checkbox-box {
+        width: 16px;
+        height: 16px;
+        .p-checkbox-icon {
+            font-size: 10px;
+        }
+    }
+    .onboarding-close-btn {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 1;
+        color: #495057;
+        border-color: transparent;
+        background: #e9ecef;
+        &:hover {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+    }
+}

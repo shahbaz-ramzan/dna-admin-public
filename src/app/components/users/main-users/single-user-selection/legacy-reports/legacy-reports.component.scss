@@ -1,0 +1,31 @@
+.legacyCard {
+    padding: 20px;
+    border-radius: 6px;
+    border: solid 1px var(--cm-border-clr);
+    min-height: 100%;
+    h3 {
+        font-size: 1.125rem;
+        line-height: 1;
+        color: var(--title-clr);
+    }
+    p {
+        color: var(--dk-gray-clr);
+        &.click-text {
+            font-size: 12px;
+            line-height: 16px;
+            a {
+                color: var(--primary-color);
+            }
+        }
+    }
+}
+
+:host {
+    ::ng-deep .legacy-list {
+        margin-bottom: 25px;
+        a {
+            padding: 0;
+            color: var(--primary-color) !important;
+        }
+    }
+}

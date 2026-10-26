@@ -1,0 +1,113 @@
+.upload-message-txt {
+    margin-top: 20px;
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: var(--dk-gray-clr);
+}
+
+.subs-user-txt {
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--primary-color);
+
+    @media screen and (max-width: 767px) {
+        br {
+            display: none;
+        }
+    }
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+:host {
+    ::ng-deep .fileUploader {
+        position: relative;
+        .upload-txt {
+            font-size: 0.875rem;
+            color: var(--nav-gray-txt);
+            font-weight: 400;
+            margin-bottom: 16px;
+        }
+        .browse-btn {
+            font-size: 14px;
+            border-radius: 4px;
+            width: 100px;
+            height: 32px;
+            color: #fff;
+            padding: 5px;
+            margin: 0 auto;
+            text-align: center;
+            background-color: #333333;
+            border-color: #333333;
+        }
+        .custom-file-input {
+            position: absolute;
+            min-height: 135px;
+            background-color: transparent;
+            text-indent: -999px;
+        }
+    }
+}
+
+.uploaded-logo,
+.custom-file-label {
+    position: relative;
+    min-height: 135px;
+    border-radius: 8px;
+    padding: 25px 20px 30px;
+    margin-top: 10px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    background-color: transparent;
+    border: dashed 2px #8d8d8d;
+    img {
+        max-width: 214px;
+        max-height: 78px;
+        width: 100%;
+        object-fit: contain;
+    }
+    .btn-del-logo {
+        border: 0;
+        background-color: transparent;
+        color: #000;
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        padding: 5px;
+    }
+    @media screen and (max-width: 767px) {
+        margin-top: 20px;
+        font-size: 12px;
+    }
+}
+
+:host {
+    ::ng-deep .subsField {
+        .p-inputwrapper {
+            width: 100%;
+            .p-inputnumber {
+                width: 100%;
+            }
+        }
+    }
+}
+
+.co-branding-wrap {
+    @media screen and (max-width: 1199px) {
+        order: 3;
+        margin-top: 24px;
+    }
+}
+
+:host {
+    ::ng-deep .accountTextarea {
+        height: 150px !important;
+        overflow: auto !important;
+        background-color: var(--Whitesmoke-clr);
+        border: none;
+    }
+}

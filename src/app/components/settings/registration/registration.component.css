@@ -1,0 +1,353 @@
+:host ::ng-deep .addReg .adBtn .p-button {
+    background-color: var(--dark-gray-shade-clr);
+    border-color: var(--dark-gray-shade-clr);
+    color: var(--white-color);
+    border-radius: 4px;
+    font-size: 0.875rem;
+    height: 32px;
+}
+:host ::ng-deep .addReg .adBtn .p-button .p-button-icon {
+    font-size: 12px;
+}
+:host ::ng-deep .addReg .manageBtn {
+    border-color: var(--dark-black-color);
+    color: var(--dark-black-color);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 700;
+    min-width: 141px;
+    height: 32px;
+}
+:host ::ng-deep .addReg .manageBtn:hover {
+    border-color: var(--dark-black-color);
+    color: var(--dark-black-color);
+}
+:host ::ng-deep .addReg .manageBtn + .adBtn {
+    margin-left: 30px;
+}
+
+:host ::ng-deep .save-btn {
+    margin-left: 20px;
+}
+@media screen and (max-width: 767px) {
+    :host ::ng-deep .save-btn {
+        margin-left: 10px;
+    }
+    :host ::ng-deep .save-btn .p-button {
+        min-width: auto;
+    }
+}
+
+:host ::ng-deep .p-field-checkbox {
+    display: flex;
+    align-items: flex-start;
+}
+:host ::ng-deep .p-field-checkbox label {
+    margin-bottom: 0;
+    margin-left: 3px;
+    font-weight: 400 !important;
+    color: var(--dullblue-gray-txt) !important;
+}
+:host ::ng-deep .p-field-checkbox .p-checkbox-box {
+    width: 14px;
+    height: 14px;
+    position: relative;
+    border-radius: 0;
+    border: solid 2px #909090;
+    background-color: var(--white-color);
+    top: 3px;
+}
+:host ::ng-deep .p-field-checkbox .p-checkbox-box .p-checkbox-icon {
+    font-size: 10px;
+}
+@media screen and (max-width: 767px) {
+    :host ::ng-deep .p-field-checkbox {
+        margin-top: 8px;
+    }
+}
+
+.regHead {
+    padding-bottom: 14px;
+    min-height: 43px;
+    border-bottom: solid 1px var(--cm-border-clr);
+}
+.regHead h5 .icon-information {
+    color: var(--primary-color);
+    position: relative;
+    left: 2px;
+    top: 2px;
+}
+.regHead .cancel-btn {
+    min-height: 35px;
+}
+.regHead .p-button {
+    font-size: 1.125rem;
+    color: var(--dk-gray-clr);
+    opacity: 0.5;
+    padding: 0;
+    height: auto;
+}
+
+.regFieldWrap {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+.regFieldWrap + .regFieldWrap {
+    border-top: solid 1px var(--cm-border-clr);
+}
+.regFieldWrap .langWrap {
+    margin-top: 36px;
+}
+
+.disabledField .p-inputtext {
+    opacity: 1;
+}
+.disabledField .icon-clipboard {
+    font-size: 1.25rem;
+    color: var(--dark-black-color);
+    right: 13px;
+    top: 10px;
+    position: absolute;
+    cursor: pointer;
+}
+.disabledField .clipboard-text {
+    position: absolute;
+    right: -45px;
+    top: 5px;
+    font-weight: 600;
+    color: #4bb543;
+}
+
+@media screen and (max-width: 1199px) {
+    .regResMargin {
+        margin-top: 36px;
+    }
+}
+
+.tagsWrap .p-field-checkbox {
+    text-transform: uppercase;
+}
+.tagsWrap .tagsWrapinr {
+    max-width: 350px;
+    width: 100%;
+}
+.tagsWrap ul {
+    display: flex;
+    flex-wrap: wrap;
+}
+.tagsWrap ul li {
+    padding: 0 15px;
+}
+@media screen and (min-width: 768px) {
+    .tagsWrap ul li {
+        width: 50%;
+    }
+}
+@media screen and (min-width: 960px) {
+    .tagsWrap ul li {
+        margin-bottom: 12px;
+    }
+}
+
+:host ::ng-deep .p-field-radiobutton {
+    display: flex;
+    align-items: center;
+}
+:host ::ng-deep .p-field-radiobutton label {
+    margin-bottom: 0;
+    margin-left: 10px;
+    font-size: 12px !important;
+}
+:host ::ng-deep .p-field-radiobutton + .p-field-radiobutton {
+    margin-top: 18px;
+}
+:host ::ng-deep .p-field-radiobutton .p-radiobutton-icon {
+    width: 8px;
+    height: 8px;
+    background-color: var(--dark-black-color);
+}
+:host ::ng-deep .p-field-radiobutton .p-radiobutton-box {
+    border-color: var(--dark-black-color) !important;
+}
+:host ::ng-deep .p-field-radiobutton .p-radiobutton-box.p-highlight {
+    border-color: var(--dark-black-color);
+    background-color: transparent;
+    box-shadow: none;
+}
+:host ::ng-deep .p-field-radiobutton .p-radiobutton-box.p-highlight:hover {
+    background-color: transparent;
+}
+
+:host ::ng-deep .addBtn button {
+    min-width: auto !important;
+    margin-left: 10px;
+}
+
+.legalText {
+    min-height: 160px;
+}
+.legalText .regHead {
+    padding-bottom: 15px !important;
+    border: none !important;
+}
+.legalText .regHead h5 {
+    margin-bottom: 0;
+}
+.legalText .regHead p {
+    margin-bottom: 0;
+    font-size: 14px;
+    color: var(--dk-gray-clr);
+}
+
+:host ::ng-deep .manageTagModal .p-dialog h4 {
+    font-size: 1rem;
+    color: var(--dark-black-color);
+    font-weight: 400;
+    margin-bottom: 14px;
+}
+:host ::ng-deep .manageTagModal .p-dialog .icon-info {
+    color: var(--primary-color);
+}
+:host ::ng-deep .manageTagModal .p-dialog h6 {
+    color: var(--dark-black-color);
+}
+:host ::ng-deep .manageTagModal .p-dialog input {
+    width: 100%;
+    border: none;
+    height: 40px;
+    margin-bottom: 15px;
+    padding-left: 16px;
+    padding-right: 16px;
+    border-radius: 4px;
+    background-color: #f4f4f4;
+    outline: none;
+}
+:host ::ng-deep .manageTagModal .p-dialog .p-button-text {
+    color: #333333;
+}
+:host ::ng-deep .manageTagModal .p-dialog .nextBtn .p-button {
+    font-size: 0.875rem;
+    height: 40px;
+    margin-right: 0;
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+@media screen and (min-width: 767px) {
+    :host ::ng-deep .manageTagModal .p-dialog .nextBtn .p-button {
+        min-width: 174px;
+    }
+}
+:host ::ng-deep .manageTagModal .p-field-checkbox {
+    margin-top: 0;
+}
+:host ::ng-deep .manageTagModal .p-dialog-header {
+    padding: 20px 30px;
+    margin-bottom: 10px;
+}
+:host ::ng-deep .manageTagModal .p-dialog-header .p-dialog-title {
+    font-size: 1.25rem;
+    color: var(--title-clr);
+    font-weight: 700;
+}
+:host ::ng-deep .manageTagModal .discListing .p-listbox {
+    max-width: 100%;
+    margin-top: 10px;
+}
+:host ::ng-deep .manageTagModal .p-listbox-item {
+    display: flex;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 960px) {
+    .tagOt {
+        margin-top: 20px;
+    }
+}
+.reg-links-box {
+    min-height: auto;
+}
+
+:host ::ng-deep .registration-linkstable {
+    overflow: auto;
+}
+:host ::ng-deep .registration-linkstable .disabledField {
+    width: 190px;
+}
+:host ::ng-deep .registration-linkstable .disabledField input {
+    height: 30px;
+    border-radius: 50px;
+    color: var(--dk-gray-clr);
+    padding-left: 12px;
+}
+:host ::ng-deep .registration-linkstable .disabledField .icon-clipboard {
+    font-size: 0.95rem;
+    top: 8px;
+    right: 10px;
+}
+:host ::ng-deep .registration-linkstable tbody tr {
+    background-color: var(--white-color);
+}
+:host ::ng-deep .registration-linkstable tbody tr td.leaders {
+    white-space: nowrap;
+}
+:host ::ng-deep .registration-linkstable tbody tr:last-child td {
+    border-bottom: none !important;
+}
+:host ::ng-deep .registration-linkstable td {
+    font-size: 0.875rem;
+    padding: 0.7rem 1rem !important;
+    color: var(--dk-gray-clr);
+    border-bottom: solid 1px var(--cm-border-clr) !important;
+}
+@media screen and (max-width: 960px) {
+    :host ::ng-deep .registration-linkstable td {
+        display: table-cell !important;
+    }
+}
+:host ::ng-deep .registration-linkstable td:first-child {
+    width: 25%;
+}
+:host ::ng-deep .registration-linkstable td .actions .icon-edit {
+    color: var(--dark-gray-shade-clr);
+    opacity: 0.5;
+    cursor: pointer;
+    font-size: 1rem;
+}
+:host ::ng-deep .registration-linkstable td .actions .icon-edit + .icon-trash {
+    margin-left: 20px;
+}
+:host ::ng-deep .registration-linkstable td .actions .icon-trash {
+    font-size: 1rem;
+    color: var(--dark-gray-shade-clr);
+    opacity: 0.5;
+    cursor: pointer;
+}
+:host ::ng-deep .registration-linkstable td:last-child {
+    width: 10%;
+}
+:host ::ng-deep .registration-linkstable th {
+    font-size: 0.875rem;
+    font-weight: 500 !important;
+    padding: 0.9rem 1rem !important;
+    color: var(--title-clr) !important;
+    background-color: transparent !important;
+    border-bottom: solid 1px var(--cm-border-clr) !important;
+}
+
+@media screen and (max-width: 1199px) {
+    .disc-Setting {
+        margin-top: 36px;
+    }
+}
+
+.tagItem {
+    display: flex;
+    justify-content: space-between;
+}
+
+.icon-edit {
+    color: var(--dark-gray-shade-clr);
+    opacity: 0.5;
+    cursor: pointer;
+    font-size: 1rem;
+} /*# sourceMappingURL=registration.component.css.map */
